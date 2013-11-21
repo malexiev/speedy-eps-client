@@ -1,0 +1,10 @@
+====================================================================================
+Java Speedy Web Service client library version @@VERSION 
+====================================================================================
+
+INSTALLATION INSTRUCTIONS
+-------------------------
+
+Add speedy-eps-java-client-soap-<version>.jar in your classpath. 
+
+See examples in "examples" package in speedy-eps-java-client-soap-<version>-sources.jar for reference.

@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<project 
+    xmlns="http://maven.apache.org/POM/4.0.0" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
+  
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.omgm.speedy.eps.client</groupId>
+	<artifactId>speedy-eps-java-client-lib</artifactId>
+	<version>${lib.version}</version>
+	<packaging>pom</packaging>
+	<name>speedy-eps-java-client-lib</name>
+	<url>http://maven.apache.org</url>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+		    		<source>${lib.java.version}</source>
+					<target>${lib.java.version}</target>
+				</configuration>
+			</plugin>
+		</plugins>
+ 	</build>
+ 	
+	<properties>
+		<lib.version>2.0-ga0</lib.version>
+		<lib.junit.version>4.11</lib.junit.version>
+		<lib.java.version>1.7</lib.java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<modules>
+		<module>speedy-eps-java-client-soap</module>
+	</modules>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${lib.junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
+</project>

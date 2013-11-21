@@ -1,0 +1,33 @@
+====================================================================================
+Java Speedy Web Service client library version @@VERSION
+====================================================================================
+
+CHANGE LOG
+----------
+* Version 2.0
+  - Major re-factoring, package renamed and moved to google code.  
+  
+* Version 1.6
+  - New method searchClients is available 
+  
+* Version 1.5
+  - New method getMicroregionId is available 
+  
+* Version 1.4
+  - New method trackParcel is available
+  
+* Version 1.3
+  - New property willBringToOfficeId added in ParamPicking type
+  - General example is changed to create Bill Of Lading with COD (Collection On Delivery) and "to be called" option. 
+    Caller contract preferences are used for price calculation 
+
+* Version 1.2.2
+  - Support for Speedy Time Zone added - it is recommended to provide datetime arguments and parameters in Speedy Time Zone to avoid miscalculations
+  - Usage of listSites is replaced with usage of more flexible listSitesEx method
+  - Additional comments added
+    
+* Version 1.2.1
+  - Picking creation code in example code is commented by default
+
+* Version 1.2
+  - Initial Speedy EPS SOAP v01 implementation.
