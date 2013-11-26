@@ -1,4 +1,7 @@
-package examples;
+/**
+ * Примери с коментари на български език
+ */
+package examples.bg;
 
 import java.io.File;
 import java.net.URL;
@@ -28,14 +31,13 @@ import com.omgm.speedy.eps.soap.model.ResultSiteEx;
 import com.omgm.speedy.eps.soap.model.ResultStreet;
 
 /**
- * В този пример приемаме, че подателят е този клиент на EPS, който съотвества на профила за автентикация предоставен от Speedy. Данните необходими за подател (адрес) ще извличаме от конфигурацията на
- * потребителя в системата на Speedy. Ако е необходимо да се използва различен подател, то данните за него се определят по начина, по който се извличат данните за получателя
+ * В този пример приемаме, че подателят е този клиент на EPS, който съотвества на профила за автентикация предоставен от Speedy. 
+ * Данните необходими за подател (адрес) ще извличаме от конфигурацията на потребителя в системата на Speedy.
+ * Ако е необходимо да се използва различен подател, то данните за него се определят по начина, 
+ * по който се извличат данните за получателя
  */
 public class GeneralExample {
     
-    /**
-     * 
-     */
     public final static SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss ZZZ");
 
     // Клиентска конфигурация.
@@ -89,10 +91,8 @@ public class GeneralExample {
     private final static String S_OUTPUT_FOLDER = ".";
 
     /**
-     * Main function
-     * 
-     * @param args
-     *            Input arguments
+     * Main method
+     * @param args Command line arguments
      * @throws Exception
      */
     public static void main(String args[]) throws Exception {
@@ -223,7 +223,7 @@ public class GeneralExample {
 //                 null
 //            );
 //            if (listAllowedDaysForTaking == null || listAllowedDaysForTaking.size() == 0) {
-//                throw new ClientException("Не са налични дати за вземане на пратката.");
+//                throw new RuntimeException("Не са налични дати за вземане на пратката.");
 //            } else if (listAllowedDaysForTaking.size()== 1) {
 //                // Датата за вземане е една и е единствено възможна
 //                pickingData.takingDate = listAllowedDaysForTaking.get(0);
@@ -513,6 +513,7 @@ public class GeneralExample {
             System.out.println("--------------------------------------------------------------------");
 
             // Данни за товарителница
+/*            
             System.out.println("\n\n");
             System.out.println("Откриване на товарителница за пратка 1 [createBillOfLading]...");
             System.out.println("--------------------------------------------------------------");
@@ -557,7 +558,7 @@ public class GeneralExample {
             Util.saveFile(pdfFile, eps.createPDF(paramPDF));
 
             System.out.println("\nTоварителница No." + lPickingId + " за пратка 1 е съхранена във файл: " + pdfFile.getAbsolutePath());
-
+*/
             // ------------------------------------------------------------------------------------------------------
             // Коментираният в секцията по-долу код може да се ползва за печат на етикет за пратка 1,
             // вместо печат на товарителница
@@ -687,6 +688,7 @@ public class GeneralExample {
 //            System.out.println("\nЗаявката за куриер е направена.");
 //
 //            // Проверка за успешна заявка
+//            boolean orderIsCreated = true;
 //            for (int i = 0; i < listResultOrderPickingInfo.size(); ++i) {
 //                ResultOrderPickingInfo resultOrderPickingInfo = listResultOrderPickingInfo.get(i);
 //                List<String> listErrorDescriptions = resultOrderPickingInfo.getErrorDescriptions();
@@ -697,11 +699,17 @@ public class GeneralExample {
 //                        System.out.println("\n    Грешкa " + (j + 1) + ": " + listErrorDescriptions.get(j));
 //                    }
 //                    System.out.println("");
+//			          orderIsCreated = false;
 //                } else {
 //                    // Успешна заявка за куриер
 //                    System.out.println("\nТоварителница " + resultOrderPickingInfo.getBillOfLading() + " е успешно заявена.");
 //                }
 //            }
+//            if (orderIsCreated) {
+//                System.out.println("\n\nOrder is successfully created.");
+//            } else {
+//                System.out.println("\n\nOrder is not created.");
+//            }            
             // -------------------------------------------------------------------------------------------------------------------
 
             System.out.println("\n\n=========================================================================================================\nКРАЙ");

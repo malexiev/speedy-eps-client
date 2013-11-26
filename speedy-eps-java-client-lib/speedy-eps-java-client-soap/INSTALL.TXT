@@ -5,6 +5,16 @@ Java Speedy Web Service client library version @@VERSION
 INSTALLATION INSTRUCTIONS
 -------------------------
 
-Add speedy-eps-java-client-soap-<version>.jar in your classpath. 
+1. Non-maven users
+Add speedy-eps-java-client-soap-@@VERSION.jar in your classpath. 
 
-See examples in "examples" package in speedy-eps-java-client-soap-<version>-sources.jar for reference.
+2. Maven users
+Add the following dependency in pom.xml:
+
+<dependency>
+	<groupId>com.omg-m.speedy.eps</groupId>
+	<artifactId>speedy-eps-java-client-soap</artifactId>
+	<version>@@VERSION</version>
+</dependency>
+
+The library is hosted in Sonatype maven repository - https://oss.sonatype.org/

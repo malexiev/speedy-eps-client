@@ -8,9 +8,7 @@
        <directory>target/resources</directory>
        <outputDirectory>.</outputDirectory>
       <includes>
-        <include>README*</include>
-        <include>CHANGELOG*</include>
-        <include>INSTALL*</include>
+        <include>*.TXT</include>
       </includes>
     </fileSet>
     <fileSet>

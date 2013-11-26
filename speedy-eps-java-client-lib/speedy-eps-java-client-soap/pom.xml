@@ -8,14 +8,54 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<parent>
-		<groupId>com.omgm.speedy.eps.client</groupId>
-		<artifactId>speedy-eps-java-client-lib</artifactId>
-		<version>${lib.version}</version>
+	    <groupId>org.sonatype.oss</groupId>
+   		<artifactId>oss-parent</artifactId>
+		<version>7</version>
 	</parent>
 	
+	<groupId>com.omg-m.speedy.eps</groupId>
 	<artifactId>speedy-eps-java-client-soap</artifactId>
 	<name>speedy-eps-java-client-soap</name>
-	<url>http://maven.apache.org</url>
+	<version>2.0.0</version>
+	<description>Speedy EPS SOAP java client library, examples and recommendations</description>
+	<url>https://code.google.com/p/speedy-eps-client/</url>
+	<licenses>
+	    	<license>
+				<name>The Apache Software License, Version 2.0</name>
+				<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+				<distribution>repo</distribution>
+				<comments>A business-friendly OSS license</comments>
+			</license>
+	</licenses>
+	
+	<scm>
+	    <connection>scm:git:https://code.google.com/p/speedy-eps-client/</connection>
+		<developerConnection>scm:git:https://code.google.com/p/speedy-eps-client/</developerConnection>
+		<url>https://code.google.com/p/speedy-eps-client/source/browse/</url>
+	</scm>
+
+	<organization>
+		<name>OMG Mobile</name>
+		<url>http://omg-m.com/</url>
+	</organization>
+	
+	<developers>
+		<developer>
+			<organization>OMG Mobile</organization>
+	        <email>mladen@omg-m.com</email>
+	        <organizationUrl>http://omg-m.com/</organizationUrl>
+	        <roles>
+	            <role>Owner</role>
+            </roles>
+            <timezone>2</timezone>
+            <name>Mladen Aleksiev</name>
+		</developer>
+	</developers>
+	
+	<issueManagement>
+		<system>Google code</system>
+		<url>https://code.google.com/p/speedy-eps-client/issues/list</url>
+	</issueManagement>
 	
 	<build>
 	    
@@ -43,6 +83,7 @@
 										<include>README.TXT</include>
 										<include>INSTALL.TXT</include>
 										<include>CHANGELOG.TXT</include>
+										<include>LICENSE.TXT</include>
 									</includes>
 								</resource>
 							</resources>
@@ -68,7 +109,9 @@
 					<archive>
 						<addMavenDescriptor>false</addMavenDescriptor>
 						<manifestEntries>
-							<version>${lib.version}</version>
+						    <Built-By>OMG Mobile</Built-By>
+							<Built-Date>${build.date}</Built-Date>
+							<Implementation-Version>${lib.version}</Implementation-Version>
 						</manifestEntries>
 					</archive>
 				</configuration>
@@ -132,6 +175,7 @@
 				<artifactId>maven-assembly-plugin</artifactId>
 				<version>2.4</version>
 				<configuration>
+				    <appendAssemblyId>false</appendAssemblyId>
 					<outputDirectory>target</outputDirectory>
 					<descriptor>assembly.xml</descriptor>
 					<finalName>${project.artifactId}-${project.version}</finalName>
@@ -140,8 +184,23 @@
 					<execution>
 						<phase>package</phase>
 						<goals>
-                        	<goal>attached</goal>
+                        	<goal>single</goal>
                    		</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>1.4</version>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
 					</execution>
 				</executions>
 			</plugin>
@@ -157,8 +216,20 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
+			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	
+	<distributionManagement>
+		<repository>
+			<id>sonatype-nexus-staging</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+		</repository>
+		<snapshotRepository>
+			<id>sonatype-nexus-snapshots</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
 	
 </project>
