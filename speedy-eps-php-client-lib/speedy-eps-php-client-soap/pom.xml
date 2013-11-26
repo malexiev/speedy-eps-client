@@ -1,0 +1,134 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.omg-m.speedy.eps</groupId>
+	<artifactId>speedy-eps-php-client-soap</artifactId>
+	<version>2.0.0</version>
+	<packaging>pom</packaging>
+	<description>Speedy EPS SOAP php client library, examples and recommendations</description>
+	<url>https://code.google.com/p/speedy-eps-client/</url>
+	<licenses>
+	    	<license>
+				<name>The Apache Software License, Version 2.0</name>
+				<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+				<distribution>repo</distribution>
+				<comments>A business-friendly OSS license</comments>
+			</license>
+	</licenses>
+	<scm>
+	    <connection>scm:git:https://code.google.com/p/speedy-eps-client/</connection>
+		<developerConnection>scm:git:https://code.google.com/p/speedy-eps-client/</developerConnection>
+		<url>https://code.google.com/p/speedy-eps-client/source/browse/</url>
+	</scm>
+	
+	<organization>
+		<name>OMG Mobile</name>
+		<url>http://omg-m.com/</url>
+	</organization>
+	
+	<developers>
+		<developer>
+			<organization>OMG Mobile</organization>
+	        <email>mladen@omg-m.com</email>
+	        <organizationUrl>http://omg-m.com/</organizationUrl>
+	        <roles>
+	            <role>Owner</role>
+            </roles>
+            <timezone>2</timezone>
+            <name>Mladen Aleksiev</name>
+		</developer>
+	</developers>
+	
+	<issueManagement>
+		<system>Google code</system>
+		<url>https://code.google.com/p/speedy-eps-client/issues/list</url>
+	</issueManagement>
+	
+	<build>
+	    
+		<finalName>${project.artifactId}-${project.version}</finalName>
+	    
+		<plugins>
+		    
+			<plugin>
+ 				<groupId>org.apache.maven.plugins</groupId>
+ 				<artifactId>maven-resources-plugin</artifactId>
+ 				<version>2.6</version>
+ 				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>target/resources</outputDirectory>
+							<resources>
+								<resource>
+									<directory>.</directory>
+									<includes>
+										<include>README.TXT</include>
+										<include>INSTALL.TXT</include>
+										<include>CHANGELOG.TXT</include>
+										<include>LICENSE.TXT</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+ 			</plugin>
+ 			
+			<plugin>
+				<groupId>com.google.code.maven-replacer-plugin</groupId>
+	           <artifactId>replacer</artifactId>
+				<version>1.5.1</version>
+				<executions>
+					<execution>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>replace</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<includes>
+						<include>target/resources/*.TXT</include>
+					</includes>
+					<replacements>
+						<replacement>
+							<token>@@VERSION</token>
+							<value>${project.version}</value>
+						</replacement>
+					</replacements>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+				    <appendAssemblyId>false</appendAssemblyId>
+					<outputDirectory>target</outputDirectory>
+					<descriptor>assembly.xml</descriptor>
+					<finalName>${project.artifactId}-${project.version}</finalName>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+                        	<goal>single</goal>
+                   		</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+			
+		</plugins>
+ 	</build>
+ 	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+</project>
