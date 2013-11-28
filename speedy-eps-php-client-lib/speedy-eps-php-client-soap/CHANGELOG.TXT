@@ -4,6 +4,9 @@ PHP Speedy Web Service client library @@VERSION
 
 CHANGE LOG
 ----------
+* Version 2.0.1
+  - Fixed bug #1 "The field willBringToOfficeId is not mapped in ParamPicking stdClass instance"
+  
 * Version 2.0.0
   - Project moved to google code
   - Root project folder renamed to speedy-eps-php-client-soap   
