@@ -563,79 +563,85 @@ public class GeneralExample {
             // Коментираният в секцията по-долу код може да се ползва за печат на етикет за пратка 1,
             // вместо печат на товарителница
             // ------------------------------------------------------------------------------------------------------
-             // Печат на етикет
-//            System.out.println("\n\nПечат на етикет за пратка 1 с товарителница No." + lPickingId + " [createPDF]...");
-//            ParamPDF paramLblPDF = new ParamPDF();
-//            paramLblPDF.getIds().add(Long.valueOf(lPickingId));
-//            paramLblPDF.setType(Util.PARAM_PDF_TYPE_LBL);
-//            paramLblPDF.setIncludeAutoPrintJS(true);
-//
-//            // Запис на pdf-а на етикет във файл
-//            String sPcikingFileNameOnly = eps.getUserName() + "_lbl_" + lPickingId + "_"+ System.currentTimeMillis() + ".pdf";
-//            File pdfFileLbl = new File(S_OUTPUT_FOLDER, sPcikingFileNameOnly);
-//            Util.saveFile(pdfFileLbl, eps.createPDF(paramLblPDF));
-//
-//            System.out.println("\nЕтикет за пратка 1 с товарителница No."+ lPickingId + " е съхранен във файл: " + pdfFileLbl.getAbsolutePath());
+            // Печат на етикет
+/*            
+            System.out.println("\n\nПечат на етикет за пратка 1 с товарителница No." + lPickingId + " [createPDF]...");
+            ParamPDF paramLblPDF = new ParamPDF();
+            paramLblPDF.getIds().add(Long.valueOf(lPickingId));
+            paramLblPDF.setType(Util.PARAM_PDF_TYPE_LBL);
+            paramLblPDF.setIncludeAutoPrintJS(true);
+
+            // Запис на pdf-а на етикет във файл
+            String sPcikingFileNameOnly = eps.getUserName() + "_lbl_" + lPickingId + "_"+ System.currentTimeMillis() + ".pdf";
+            File pdfFileLbl = new File(S_OUTPUT_FOLDER, sPcikingFileNameOnly);
+            Util.saveFile(pdfFileLbl, eps.createPDF(paramLblPDF));
+
+            System.out.println("\nЕтикет за пратка 1 с товарителница No."+ lPickingId + " е съхранен във файл: " + pdfFileLbl.getAbsolutePath());
+*/
             // -------------------------------------------------------------------------------------------------------------------
 
             // -------------------------------------------------------------------------------------------------------------------
             // ОТКРИВАНЕ НА ВТОРА ТОВАРИТЕЛНИЦА (ПО-КОМПЛЕКСЕН ВАРИАНТ - ТРИПАКЕТНА СЪС ЗАСТРАХОВКА)
             // -------------------------------------------------------------------------------------------------------------------
             //Предвиждаме пратката да е до адрес на получателя, в този случай е адрес на получател е необхдим.
-//            receiver.setAddress(receiverAddress);
+/*
+            receiver.setAddress(receiverAddress);
             
-//            // Данни за товарителница
-//            System.out.println("\n\n");
-//            System.out.println("Откриване на товарителница за пратка 2 [createBillOfLading]...");
-//            System.out.println("--------------------------------------------------------------");
-//            ParamPicking picking2 = new ParamPicking();
-//            picking2.setServiceTypeId(lServiceTypeId);
-//            picking2.setBackDocumentsRequest(pickingData.flagBackDocumentReq);
-//            picking2.setBackReceiptRequest(pickingData.flagBackReceiptReq);
-//            picking2.setWillBringToOffice(pickingData.bringToOfficeId != null);
-//
-//            picking2.setWeightDeclared(pickingData.dblWeightDeclared);
-//            picking2.setContents(pickingData.sContents);
-//            picking2.setPacking(pickingData.sPacking);
-//            picking2.setDocuments(pickingData.flagDocuments);
-//            picking2.setPalletized(pickingData.flagPalletized);
-//            picking2.setSender(sender);
-//            picking2.setReceiver(receiver);
-//            picking2.setPayerType(pickingData.nPayerType);
-//            picking2.setTakingDate(Util.toXMLGregorianCalendar(pickingData.takingDate));
-//            picking2.setAmountInsuranceBase(20.0);
-//            picking2.setPayerTypeInsurance(Util.PAYER_TYPE_SENDER);
-//            picking2.setFragile(true);
-//            picking2.setParcelsCount(3); // Пратка с 3 пакета
-//
-//            // Откриване на товарителница. Откриването се прави след окомплектоване на пратката, а не при поръчка (в онлайн магазина)
-//            ResultBOL resultBOL2 = eps.createBillOfLading(picking2);
-//
-//            // Идентификатор на откритата товарителница. Идентификаторът на откритата товарителница е и идентификатор на първия пакет
-//            long lPickingId2 = resultBOL2.getGeneratedParcels().get(0).getParcelId();
-//
-//            long lPickingId2Parcel1Id = lPickingId2; // Същото като resultBOL2.getGeneratedParcels().get(0).getParcelId();
-//            long lPickingId2Parcel2Id = resultBOL2.getGeneratedParcels().get(1).getParcelId();
-//            long lPickingId2Parcel3Id = resultBOL2.getGeneratedParcels().get(2).getParcelId();
-//
-//            System.out.println("\nТоварителницата за пратка 2 е открита с No." + lPickingId2);
+            // Данни за товарителница
+            System.out.println("\n\n");
+            System.out.println("Откриване на товарителница за пратка 2 [createBillOfLading]...");
+            System.out.println("--------------------------------------------------------------");
+            ParamPicking picking2 = new ParamPicking();
+            picking2.setServiceTypeId(lServiceTypeId);
+            picking2.setBackDocumentsRequest(pickingData.flagBackDocumentReq);
+            picking2.setBackReceiptRequest(pickingData.flagBackReceiptReq);
+            //picking2.setWillBringToOffice(pickingData.bringToOfficeId != null);
+            picking2.setWillBringToOfficeId(pickingData.bringToOfficeId);
+            picking2.setWeightDeclared(pickingData.dblWeightDeclared);
+            picking2.setContents(pickingData.sContents);
+            picking2.setPacking(pickingData.sPacking);
+            picking2.setDocuments(pickingData.flagDocuments);
+            picking2.setPalletized(pickingData.flagPalletized);
+            picking2.setSender(sender);
+            picking2.setReceiver(receiver);
+            picking2.setPayerType(pickingData.nPayerType);
+            picking2.setTakingDate(Util.toXMLGregorianCalendar(pickingData.takingDate));
+            picking2.setAmountInsuranceBase(20.0);
+            picking2.setPayerTypeInsurance(Util.PAYER_TYPE_SENDER);
+            picking2.setFragile(true);
+            picking2.setParcelsCount(3); // Пратка с 3 пакета
+
+            // Откриване на товарителница. Откриването се прави след окомплектоване на пратката, а не при поръчка (в онлайн магазина)
+            ResultBOL resultBOL2 = eps.createBillOfLading(picking2);
+
+            // Идентификатор на откритата товарителница. Идентификаторът на откритата товарителница е и идентификатор на първия пакет
+            long lPickingId2 = resultBOL2.getGeneratedParcels().get(0).getParcelId();
+
+            long lPickingId2Parcel1Id = lPickingId2; // Същото като resultBOL2.getGeneratedParcels().get(0).getParcelId();
+            long lPickingId2Parcel2Id = resultBOL2.getGeneratedParcels().get(1).getParcelId();
+            long lPickingId2Parcel3Id = resultBOL2.getGeneratedParcels().get(2).getParcelId();
+
+            System.out.println("\nТоварителницата за пратка 2 е открита с No." + lPickingId2);
+*/
             // -------------------------------------------------------------------------------------------------------------------
 
             // ------------------------------------------------------------------------------------------------------
             // Коментираният в секцията по-долу код може да се ползва за печат на окритата товарителница за пратка 2
             // ------------------------------------------------------------------------------------------------------
-//            System.out.println("\nПечат на товарителница No." + lPickingId2 + " [createPDF]...");
-//            ParamPDF paramPDF2 = new ParamPDF();
-//            paramPDF2.getIds().add(Long.valueOf(lPickingId2));
-//            paramPDF2.setType(Util.PARAM_PDF_TYPE_BOL);
-//            paramPDF2.setIncludeAutoPrintJS(true);
-//
-//            // Запис на pdf-а на етикет във файл
-//            String sPciking2FileNameOnly = eps.getUserName() + "_picking_" + lPickingId2 + "_" + System.currentTimeMillis() + ".pdf";
-//            File pdfPicking2File = new File(S_OUTPUT_FOLDER, sPciking2FileNameOnly);
-//            Util.saveFile(pdfPicking2File, eps.createPDF(paramPDF2));
-//
-//            System.out.println("\nTоварителница No."+ lPickingId2 + " за пратка 2 е съхранена във файл: " + pdfPicking2File.getAbsolutePath());
+/*
+            System.out.println("\nПечат на товарителница No." + lPickingId2 + " [createPDF]...");
+            ParamPDF paramPDF2 = new ParamPDF();
+            paramPDF2.getIds().add(Long.valueOf(lPickingId2));
+            paramPDF2.setType(Util.PARAM_PDF_TYPE_BOL);
+            paramPDF2.setIncludeAutoPrintJS(true);
+
+            // Запис на pdf-а на етикет във файл
+            String sPciking2FileNameOnly = eps.getUserName() + "_picking_" + lPickingId2 + "_" + System.currentTimeMillis() + ".pdf";
+            File pdfPicking2File = new File(S_OUTPUT_FOLDER, sPciking2FileNameOnly);
+            Util.saveFile(pdfPicking2File, eps.createPDF(paramPDF2));
+
+            System.out.println("\nTоварителница No."+ lPickingId2 + " за пратка 2 е съхранена във файл: " + pdfPicking2File.getAbsolutePath());
+*/
             // -------------------------------------------------------------------------------------------------------
 
             // ------------------------------------------------------------------------------------------------------
@@ -643,21 +649,22 @@ public class GeneralExample {
             // (Етикетите могат да се печат и последователно един по един, по същия начин,
             // с подаване на списък с един идентификатор на сътоветния пакет в аргументите на метода за печат)
             // ------------------------------------------------------------------------------------------------------
-//            System.out.println("\n\nГрупов печат на етикети за пратка 2 с товарителница No." + lPickingId2 + " [createPDF]...");
-//            ParamPDF paramLblPDF2 = new ParamPDF();
-//            paramLblPDF2.getIds().add(Long.valueOf(lPickingId2Parcel1Id));
-//            paramLblPDF2.getIds().add(Long.valueOf(lPickingId2Parcel2Id));
-//            paramLblPDF2.getIds().add(Long.valueOf(lPickingId2Parcel3Id));
-//            paramLblPDF2.setType(Util.PARAM_PDF_TYPE_LBL);
-//            paramLblPDF2.setIncludeAutoPrintJS(true);
-//
-//            // Запис на pdf-а на етикетите във файл
-//            String sLblFileNameOnly2 = eps.getUserName() + "_lbl_" + lPickingId2 + "_"+ System.currentTimeMillis() + ".pdf";
-//            File pdfFileLbl2 = new File(S_OUTPUT_FOLDER, sLblFileNameOnly2);
-//            Util.saveFile(pdfFileLbl2, eps.createPDF(paramLblPDF2));
-//
-//            System.out.println("\nЕтикетите за пратка 2 с товарителница No." + lPickingId2 + " са съхранени във файл: " + pdfFileLbl2.getAbsolutePath());
+/*
+            System.out.println("\n\nГрупов печат на етикети за пратка 2 с товарителница No." + lPickingId2 + " [createPDF]...");
+            ParamPDF paramLblPDF2 = new ParamPDF();
+            paramLblPDF2.getIds().add(Long.valueOf(lPickingId2Parcel1Id));
+            paramLblPDF2.getIds().add(Long.valueOf(lPickingId2Parcel2Id));
+            paramLblPDF2.getIds().add(Long.valueOf(lPickingId2Parcel3Id));
+            paramLblPDF2.setType(Util.PARAM_PDF_TYPE_LBL);
+            paramLblPDF2.setIncludeAutoPrintJS(true);
 
+            // Запис на pdf-а на етикетите във файл
+            String sLblFileNameOnly2 = eps.getUserName() + "_lbl_" + lPickingId2 + "_"+ System.currentTimeMillis() + ".pdf";
+            File pdfFileLbl2 = new File(S_OUTPUT_FOLDER, sLblFileNameOnly2);
+            Util.saveFile(pdfFileLbl2, eps.createPDF(paramLblPDF2));
+
+            System.out.println("\nЕтикетите за пратка 2 с товарителница No." + lPickingId2 + " са съхранени във файл: " + pdfFileLbl2.getAbsolutePath());
+*/
             // -----------------------------------------------------------------------------------------------------
 
             // -------------------------------------------------------------------------------------------------------------------
@@ -665,51 +672,53 @@ public class GeneralExample {
             // Заявката се прави в края на работния ден - за предпочитане веднъж дневно, като включва всички окомплектовани пратки за деня
             // За целта се подава списък от всички пратки, които са за този ден.
             // -------------------------------------------------------------------------------------------------------------------
-//            // Данни за заявка за куриер
-//            // ReadinessTime не може да бъде време преди текущото време на генериране на заявката
-//            System.out.println("\n\n");
-//            System.out.println("Заявка за куриер за двете окомплектовани пратки [createOrder]...");
-//            System.out.println("----------------------------------------------------------------");
-//            ParamOrder order = new ParamOrder();
-//            order.getBillOfLadingsList().add(Long.valueOf(lPickingId));
-//            order.getBillOfLadingsList().add(Long.valueOf(lPickingId2)); // Списък от товарителници
-//            order.setBillOfLadingsToIncludeType(Util.ORDER_BOL_INCLUDE_TYPE_EXPLICIT); // Заявка за куриер за списъка
-//            order.setPickupDate(Util.toXMLGregorianCalendar(pickingData.takingDate)); // Дата на вземане на пратката от куриер
-//            order.setReadinessTime((short) 1750); // Пакетите са готови за вземане след 17:30
-//            order.setContactName(clientConfiguration.sContactName); // Име за контакт
-//            paramPhoneNumber = new ParamPhoneNumber();
-//            paramPhoneNumber.setNumber(clientConfiguration.sContactPhone);
-//            order.setPhoneNumber(paramPhoneNumber); // Тел. номер за контакт
-//            order.setWorkingEndTime((short) 1800); // Край на работното време на подателя - 18:00
-//
-//            // Създаване на заявка
-//            List<ResultOrderPickingInfo> listResultOrderPickingInfo = eps.createOrder(order);
-//
-//            System.out.println("\nЗаявката за куриер е направена.");
-//
-//            // Проверка за успешна заявка
-//            boolean orderIsCreated = true;
-//            for (int i = 0; i < listResultOrderPickingInfo.size(); ++i) {
-//                ResultOrderPickingInfo resultOrderPickingInfo = listResultOrderPickingInfo.get(i);
-//                List<String> listErrorDescriptions = resultOrderPickingInfo.getErrorDescriptions();
-//                if (listErrorDescriptions.size() > 0) {
-//                    // Неуспешна заявка. Грешките се съдържат в масива. Обработка на грешките
-//                    System.out.println("\n  Грешки при заявка за куриер за пратка с товарителница " + resultOrderPickingInfo.getBillOfLading() + ".");
-//                    for (int j = 0; j < listErrorDescriptions.size(); ++j) {
-//                        System.out.println("\n    Грешкa " + (j + 1) + ": " + listErrorDescriptions.get(j));
-//                    }
-//                    System.out.println("");
-//			          orderIsCreated = false;
-//                } else {
-//                    // Успешна заявка за куриер
-//                    System.out.println("\nТоварителница " + resultOrderPickingInfo.getBillOfLading() + " е успешно заявена.");
-//                }
-//            }
-//            if (orderIsCreated) {
-//                System.out.println("\n\nOrder is successfully created.");
-//            } else {
-//                System.out.println("\n\nOrder is not created.");
-//            }            
+            // Данни за заявка за куриер
+            // ReadinessTime не може да бъде време преди текущото време на генериране на заявката
+/*
+            System.out.println("\n\n");
+            System.out.println("Заявка за куриер за двете окомплектовани пратки [createOrder]...");
+            System.out.println("----------------------------------------------------------------");
+            ParamOrder order = new ParamOrder();
+            order.getBillOfLadingsList().add(Long.valueOf(lPickingId));
+            order.getBillOfLadingsList().add(Long.valueOf(lPickingId2)); // Списък от товарителници
+            order.setBillOfLadingsToIncludeType(Util.ORDER_BOL_INCLUDE_TYPE_EXPLICIT); // Заявка за куриер за списъка
+            order.setPickupDate(Util.toXMLGregorianCalendar(pickingData.takingDate)); // Дата на вземане на пратката от куриер
+            order.setReadinessTime((short) 1750); // Пакетите са готови за вземане след 17:30
+            order.setContactName(clientConfiguration.sContactName); // Име за контакт
+            paramPhoneNumber = new ParamPhoneNumber();
+            paramPhoneNumber.setNumber(clientConfiguration.sContactPhone);
+            order.setPhoneNumber(paramPhoneNumber); // Тел. номер за контакт
+            order.setWorkingEndTime((short) 1800); // Край на работното време на подателя - 18:00
+
+            // Създаване на заявка
+            List<ResultOrderPickingInfo> listResultOrderPickingInfo = eps.createOrder(order);
+
+            System.out.println("\nЗаявката за куриер е направена.");
+
+            // Проверка за успешна заявка
+            boolean orderIsCreated = true;
+            for (int i = 0; i < listResultOrderPickingInfo.size(); ++i) {
+                ResultOrderPickingInfo resultOrderPickingInfo = listResultOrderPickingInfo.get(i);
+                List<String> listErrorDescriptions = resultOrderPickingInfo.getErrorDescriptions();
+                if (listErrorDescriptions.size() > 0) {
+                    // Неуспешна заявка. Грешките се съдържат в масива. Обработка на грешките
+                    System.out.println("\n  Грешки при заявка за куриер за пратка с товарителница " + resultOrderPickingInfo.getBillOfLading() + ".");
+                    for (int j = 0; j < listErrorDescriptions.size(); ++j) {
+                        System.out.println("\n    Грешкa " + (j + 1) + ": " + listErrorDescriptions.get(j));
+                    }
+                    System.out.println("");
+			          orderIsCreated = false;
+                } else {
+                    // Успешна заявка за куриер
+                    System.out.println("\nТоварителница " + resultOrderPickingInfo.getBillOfLading() + " е успешно заявена.");
+                }
+            }
+            if (orderIsCreated) {
+                System.out.println("\n\nOrder is successfully created.");
+            } else {
+                System.out.println("\n\nOrder is not created.");
+            }
+*/            
             // -------------------------------------------------------------------------------------------------------------------
 
             System.out.println("\n\n=========================================================================================================\nКРАЙ");

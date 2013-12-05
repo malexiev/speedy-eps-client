@@ -2,12 +2,15 @@
 package com.omgm.speedy.eps.soap.model;
 
 import java.util.List;
+
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.datatype.XMLGregorianCalendar;
+import javax.xml.ws.Action;
+import javax.xml.ws.FaultAction;
 import javax.xml.ws.RequestWrapper;
 import javax.xml.ws.ResponseWrapper;
 
@@ -876,4 +879,23 @@ public interface EPSProvider {
         throws InvalidSessionException_Exception
     ;
 
+    /**
+     * 
+     * @param sessionId
+     * @return
+     *     returns java.util.List<com.omgm.speedy.eps.soap.model.ResultSpecialDeliveryRequirement>
+     * @throws InvalidSessionException_Exception
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "listSpecialDeliveryRequirements", targetNamespace = "http://ver01.eps.speedy.sirma.com/", className = "com.omgm.speedy.eps.soap.model.ListSpecialDeliveryRequirements")
+    @ResponseWrapper(localName = "listSpecialDeliveryRequirementsResponse", targetNamespace = "http://ver01.eps.speedy.sirma.com/", className = "com.omgm.speedy.eps.soap.model.ListSpecialDeliveryRequirementsResponse")
+    @Action(input = "http://ver01.eps.speedy.sirma.com/EPSProvider/listSpecialDeliveryRequirementsRequest", output = "http://ver01.eps.speedy.sirma.com/EPSProvider/listSpecialDeliveryRequirementsResponse", fault = {
+        @FaultAction(className = InvalidSessionException_Exception.class, value = "http://ver01.eps.speedy.sirma.com/EPSProvider/listSpecialDeliveryRequirements/Fault/InvalidSessionException")
+    })
+    public List<ResultSpecialDeliveryRequirement> listSpecialDeliveryRequirements(
+        @WebParam(name = "sessionId", targetNamespace = "")
+        String sessionId)
+        throws InvalidSessionException_Exception
+    ;
 }

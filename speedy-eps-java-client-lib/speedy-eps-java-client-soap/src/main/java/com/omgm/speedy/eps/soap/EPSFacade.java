@@ -34,6 +34,7 @@ import com.omgm.speedy.eps.soap.model.ResultParcelInfo;
 import com.omgm.speedy.eps.soap.model.ResultQuarter;
 import com.omgm.speedy.eps.soap.model.ResultSite;
 import com.omgm.speedy.eps.soap.model.ResultSiteEx;
+import com.omgm.speedy.eps.soap.model.ResultSpecialDeliveryRequirement;
 import com.omgm.speedy.eps.soap.model.ResultStreet;
 import com.omgm.speedy.eps.soap.model.ResultTrackPicking;
 import com.omgm.speedy.eps.soap.model.ResultTrackPickingEx;
@@ -820,6 +821,22 @@ public class EPSFacade {
     throws ServerException {
         try {
 			return m_eps.searchClients(getResultLogin(true).getSessionId(), clientQuery);
+		} catch (Exception ex) {
+			throw new ServerException(ex);
+		}
+    }
+    
+    /**
+     * Returns list with available special delivery requirements for logged user
+     * @return List of ResultSpecialDeliveryRequirement
+     * @throws ServerException Thrown in case communication with server has failed
+     * 
+     * @since 2.1.0
+     */
+    public List<ResultSpecialDeliveryRequirement> listSpecialDeliveryRequirements() 
+    throws ServerException {
+    	try {
+			return m_eps.listSpecialDeliveryRequirements(getResultLogin(true).getSessionId());
 		} catch (Exception ex) {
 			throw new ServerException(ex);
 		}

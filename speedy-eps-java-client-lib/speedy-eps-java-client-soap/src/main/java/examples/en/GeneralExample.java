@@ -16,6 +16,7 @@ import com.omgm.speedy.eps.soap.model.ParamAddress;
 import com.omgm.speedy.eps.soap.model.ParamCalculation;
 import com.omgm.speedy.eps.soap.model.ParamClientData;
 import com.omgm.speedy.eps.soap.model.ParamFilterSite;
+import com.omgm.speedy.eps.soap.model.ParamOrder;
 import com.omgm.speedy.eps.soap.model.ParamPDF;
 import com.omgm.speedy.eps.soap.model.ParamPhoneNumber;
 import com.omgm.speedy.eps.soap.model.ParamPicking;
@@ -25,6 +26,7 @@ import com.omgm.speedy.eps.soap.model.ResultCalculationMS;
 import com.omgm.speedy.eps.soap.model.ResultClientData;
 import com.omgm.speedy.eps.soap.model.ResultCourierServiceExt;
 import com.omgm.speedy.eps.soap.model.ResultLogin;
+import com.omgm.speedy.eps.soap.model.ResultOrderPickingInfo;
 import com.omgm.speedy.eps.soap.model.ResultQuarter;
 import com.omgm.speedy.eps.soap.model.ResultSite;
 import com.omgm.speedy.eps.soap.model.ResultSiteEx;
@@ -571,19 +573,21 @@ public class GeneralExample {
             // ------------------------------------------------------------------------------------------------------
             //  Commented code below, could be used for label printing instead of bill of lading printing
             // ------------------------------------------------------------------------------------------------------
-             // Print label
-//            System.out.println("\n\nPrint label for bill of lading id:" + lPickingId + " [createPDF]...");
-//            ParamPDF paramLblPDF = new ParamPDF();
-//            paramLblPDF.getIds().add(Long.valueOf(lPickingId));
-//            paramLblPDF.setType(Util.PARAM_PDF_TYPE_LBL);
-//            paramLblPDF.setIncludeAutoPrintJS(true);
-//
-//            // Save label pdf in file
-//            String sPcikingFileNameOnly = eps.getUserName() + "_lbl_" + lPickingId + "_"+ System.currentTimeMillis() + ".pdf";
-//            File pdfFileLbl = new File(S_OUTPUT_FOLDER, sPcikingFileNameOnly);
-//            Util.saveFile(pdfFileLbl, eps.createPDF(paramLblPDF));
-//
-//            System.out.println("\nLabel for bill of lading id: "+ lPickingId + " is saved in file: " + pdfFileLbl.getAbsolutePath());
+            // Print label
+/*
+            System.out.println("\n\nPrint label for bill of lading id:" + lPickingId + " [createPDF]...");
+            ParamPDF paramLblPDF = new ParamPDF();
+            paramLblPDF.getIds().add(Long.valueOf(lPickingId));
+            paramLblPDF.setType(Util.PARAM_PDF_TYPE_LBL);
+            paramLblPDF.setIncludeAutoPrintJS(true);
+
+            // Save label pdf in file
+            String sPcikingFileNameOnly = eps.getUserName() + "_lbl_" + lPickingId + "_"+ System.currentTimeMillis() + ".pdf";
+            File pdfFileLbl = new File(S_OUTPUT_FOLDER, sPcikingFileNameOnly);
+            Util.saveFile(pdfFileLbl, eps.createPDF(paramLblPDF));
+
+            System.out.println("\nLabel for bill of lading id: "+ lPickingId + " is saved in file: " + pdfFileLbl.getAbsolutePath());
+*/
             // -------------------------------------------------------------------------------------------------------------------
 
             // -------------------------------------------------------------------------------------------------------------------
@@ -591,80 +595,85 @@ public class GeneralExample {
             // -------------------------------------------------------------------------------------------------------------------
             // We'll remove takeFromOffice flag and courier should deliver the picking to receiver address
             // Therefore we need to set that address
-//            receiver.setAddress(receiverAddress);
+/*
+            receiver.setAddress(receiverAddress);
             
-//            // Picking details
-//            System.out.println("\n\n");
-//            System.out.println("Open second bill of lading 2 [createBillOfLading]...");
-//            System.out.println("--------------------------------------------------------------");
-//            ParamPicking picking2 = new ParamPicking();
-//            picking2.setServiceTypeId(lServiceTypeId);
-//            picking2.setBackDocumentsRequest(pickingData.flagBackDocumentReq);
-//            picking2.setBackReceiptRequest(pickingData.flagBackReceiptReq);
-//            picking2.setWillBringToOffice(pickingData.bringToOfficeId != null);
-//
-//            picking2.setWeightDeclared(pickingData.dblWeightDeclared);
-//            picking2.setContents(pickingData.sContents);
-//            picking2.setPacking(pickingData.sPacking);
-//            picking2.setDocuments(pickingData.flagDocuments);
-//            picking2.setPalletized(pickingData.flagPalletized);
-//            picking2.setSender(sender);
-//            picking2.setReceiver(receiver);
-//            picking2.setPayerType(pickingData.nPayerType);
-//            picking2.setTakingDate(Util.toXMLGregorianCalendar(pickingData.takingDate));
-//            picking2.setAmountInsuranceBase(20.0);
-//            picking2.setPayerTypeInsurance(Util.PAYER_TYPE_SENDER);
-//            picking2.setFragile(true);
-//            picking2.setParcelsCount(3); // Picking with 3 parcels
-//
-//            // Open bill of lading
-//            ResultBOL resultBOL2 = eps.createBillOfLading(picking2);
-//
-//            // Bill of lading id is first parcel id
-//            long lPickingId2 = resultBOL2.getGeneratedParcels().get(0).getParcelId();
-//
-//            long lPickingId2Parcel1Id = lPickingId2; // The same as  resultBOL2.generatedParcels[0].parcelId
-//            long lPickingId2Parcel2Id = resultBOL2.getGeneratedParcels().get(1).getParcelId();
-//            long lPickingId2Parcel3Id = resultBOL2.getGeneratedParcels().get(2).getParcelId();
-//
-//            System.out.println("\nBill of lading with id:" + lPickingId2 + " is open.");
+            // Picking details
+            System.out.println("\n\n");
+            System.out.println("Open second bill of lading 2 [createBillOfLading]...");
+            System.out.println("--------------------------------------------------------------");
+            ParamPicking picking2 = new ParamPicking();
+            picking2.setServiceTypeId(lServiceTypeId);
+            picking2.setBackDocumentsRequest(pickingData.flagBackDocumentReq);
+            picking2.setBackReceiptRequest(pickingData.flagBackReceiptReq);
+            //picking2.setWillBringToOffice(pickingData.bringToOfficeId != null);
+            picking2.setWillBringToOfficeId(pickingData.bringToOfficeId);
+            picking2.setWeightDeclared(pickingData.dblWeightDeclared);
+            picking2.setContents(pickingData.sContents);
+            picking2.setPacking(pickingData.sPacking);
+            picking2.setDocuments(pickingData.flagDocuments);
+            picking2.setPalletized(pickingData.flagPalletized);
+            picking2.setSender(sender);
+            picking2.setReceiver(receiver);
+            picking2.setPayerType(pickingData.nPayerType);
+            picking2.setTakingDate(Util.toXMLGregorianCalendar(pickingData.takingDate));
+            picking2.setAmountInsuranceBase(20.0);
+            picking2.setPayerTypeInsurance(Util.PAYER_TYPE_SENDER);
+            picking2.setFragile(true);
+            picking2.setParcelsCount(3); // Picking with 3 parcels
+
+            // Open bill of lading
+            ResultBOL resultBOL2 = eps.createBillOfLading(picking2);
+
+            // Bill of lading id is first parcel id
+            long lPickingId2 = resultBOL2.getGeneratedParcels().get(0).getParcelId();
+
+            long lPickingId2Parcel1Id = lPickingId2; // The same as  resultBOL2.generatedParcels[0].parcelId
+            long lPickingId2Parcel2Id = resultBOL2.getGeneratedParcels().get(1).getParcelId();
+            long lPickingId2Parcel3Id = resultBOL2.getGeneratedParcels().get(2).getParcelId();
+
+            System.out.println("\nBill of lading with id:" + lPickingId2 + " is open.");
+*/
             // -------------------------------------------------------------------------------------------------------------------
 
             // ------------------------------------------------------------------------------------------------------
             // Commented section below could be used for bill of lading and/or label printing
             // ------------------------------------------------------------------------------------------------------
-//            System.out.println("\nPrint bill of lading with id:" + lPickingId2 + " [createPDF]...");
-//            ParamPDF paramPDF2 = new ParamPDF();
-//            paramPDF2.getIds().add(Long.valueOf(lPickingId2));
-//            paramPDF2.setType(Util.PARAM_PDF_TYPE_BOL);
-//            paramPDF2.setIncludeAutoPrintJS(true);
-//
-//            // ave bill of lading pdf to file
-//            String sPciking2FileNameOnly = eps.getUserName() + "_picking_" + lPickingId2 + "_" + System.currentTimeMillis() + ".pdf";
-//            File pdfPicking2File = new File(S_OUTPUT_FOLDER, sPciking2FileNameOnly);
-//            Util.saveFile(pdfPicking2File, eps.createPDF(paramPDF2));
-//
-//            System.out.println("\nBill of lading with id:"+ lPickingId2 + " is saved in file: " + pdfPicking2File.getAbsolutePath());
+/*
+            System.out.println("\nPrint bill of lading with id:" + lPickingId2 + " [createPDF]...");
+            ParamPDF paramPDF2 = new ParamPDF();
+            paramPDF2.getIds().add(Long.valueOf(lPickingId2));
+            paramPDF2.setType(Util.PARAM_PDF_TYPE_BOL);
+            paramPDF2.setIncludeAutoPrintJS(true);
+
+            // ave bill of lading pdf to file
+            String sPciking2FileNameOnly = eps.getUserName() + "_picking_" + lPickingId2 + "_" + System.currentTimeMillis() + ".pdf";
+            File pdfPicking2File = new File(S_OUTPUT_FOLDER, sPciking2FileNameOnly);
+            Util.saveFile(pdfPicking2File, eps.createPDF(paramPDF2));
+
+            System.out.println("\nBill of lading with id:"+ lPickingId2 + " is saved in file: " + pdfPicking2File.getAbsolutePath());
+*/
             // -------------------------------------------------------------------------------------------------------
 
             // ------------------------------------------------------------------------------------------------------
             // Group label printing for multi-parcel bill of lading
             // ------------------------------------------------------------------------------------------------------
-//            System.out.println("\n\nGroup label printing for bill of lading id:" + lPickingId2 + " [createPDF]...");
-//            ParamPDF paramLblPDF2 = new ParamPDF();
-//            paramLblPDF2.getIds().add(Long.valueOf(lPickingId2Parcel1Id));
-//            paramLblPDF2.getIds().add(Long.valueOf(lPickingId2Parcel2Id));
-//            paramLblPDF2.getIds().add(Long.valueOf(lPickingId2Parcel3Id));
-//            paramLblPDF2.setType(Util.PARAM_PDF_TYPE_LBL);
-//            paramLblPDF2.setIncludeAutoPrintJS(true);
-//
-//            // Save labels pdf in file
-//            String sLblFileNameOnly2 = eps.getUserName() + "_lbl_" + lPickingId2 + "_"+ System.currentTimeMillis() + ".pdf";
-//            File pdfFileLbl2 = new File(S_OUTPUT_FOLDER, sLblFileNameOnly2);
-//            Util.saveFile(pdfFileLbl2, eps.createPDF(paramLblPDF2));
-//
-//            System.out.println("\nLabels for bill of lading id: " + lPickingId2 + " are saved in file: " + pdfFileLbl2.getAbsolutePath());
+/*
+            System.out.println("\n\nGroup label printing for bill of lading id:" + lPickingId2 + " [createPDF]...");
+            ParamPDF paramLblPDF2 = new ParamPDF();
+            paramLblPDF2.getIds().add(Long.valueOf(lPickingId2Parcel1Id));
+            paramLblPDF2.getIds().add(Long.valueOf(lPickingId2Parcel2Id));
+            paramLblPDF2.getIds().add(Long.valueOf(lPickingId2Parcel3Id));
+            paramLblPDF2.setType(Util.PARAM_PDF_TYPE_LBL);
+            paramLblPDF2.setIncludeAutoPrintJS(true);
 
+            // Save labels pdf in file
+            String sLblFileNameOnly2 = eps.getUserName() + "_lbl_" + lPickingId2 + "_"+ System.currentTimeMillis() + ".pdf";
+            File pdfFileLbl2 = new File(S_OUTPUT_FOLDER, sLblFileNameOnly2);
+            Util.saveFile(pdfFileLbl2, eps.createPDF(paramLblPDF2));
+
+            System.out.println("\nLabels for bill of lading id: " + lPickingId2 + " are saved in file: " + pdfFileLbl2.getAbsolutePath());
+*/
             // -----------------------------------------------------------------------------------------------------
 
             // -------------------------------------------------------------------------------------------------------------------
@@ -673,53 +682,55 @@ public class GeneralExample {
             // The order is done at the end of working day (preferably once a day) and includes all pickings ready for collection
             // for that day
             // -------------------------------------------------------------------------------------------------------------------
-//            // Order details
-//            // ReadinessTime could not be a time before the time of requesting order
-//            System.out.println("\n\n");
-//            System.out.println("Create order for the two bills of lading [createOrder]...");
-//            System.out.println("----------------------------------------------------------------");
-//            ParamOrder order = new ParamOrder();
-//            order.getBillOfLadingsList().add(Long.valueOf(lPickingId));
-//            order.getBillOfLadingsList().add(Long.valueOf(lPickingId2));
-//            order.setBillOfLadingsToIncludeType(Util.ORDER_BOL_INCLUDE_TYPE_EXPLICIT); // Order for the list of pickings
-//            order.setPickupDate(Util.toXMLGregorianCalendar(pickingData.takingDate));
-//            order.setReadinessTime((short) 1750); // Parcels are ready for collection after 17:50
-//            order.setContactName(clientConfiguration.sContactName);
-//            paramPhoneNumber = new ParamPhoneNumber();
-//            paramPhoneNumber.setNumber(clientConfiguration.sContactPhone);
-//            order.setPhoneNumber(paramPhoneNumber); 
-//            order.setWorkingEndTime((short) 1800); // Sender work time end is 18:00
-//
-//            // Request order
-//            List<ResultOrderPickingInfo> listResultOrderPickingInfo = eps.createOrder(order);
-//
-//            System.out.println("\nCreate order.");
-//
-//            // Verify response
-//            // If there is at least one error in response list, the order is not created
-//            boolean orderIsCreated = true;
-//            for (int i = 0; i < listResultOrderPickingInfo.size(); ++i) {
-//                ResultOrderPickingInfo resultOrderPickingInfo = listResultOrderPickingInfo.get(i);
-//                List<String> listErrorDescriptions = resultOrderPickingInfo.getErrorDescriptions();
-//                if (listErrorDescriptions.size() > 0) {
-//                    // Unsuccessful order. We have errors in result array
-//                    System.out.println("\n  Errors for bill of lading " + resultOrderPickingInfo.getBillOfLading() + ".");
-//                    for (int j = 0; j < listErrorDescriptions.size(); ++j) {
-//                        System.out.println("\n    Error " + (j + 1) + ": " + listErrorDescriptions.get(j));
-//                    }
-//                    System.out.println("");
-//			          orderIsCreated = false;
-//                } else {
-//                    // Good order
-//                    System.out.println("\nBill of lading  " + resultOrderPickingInfo.getBillOfLading() + " has no errors.");
-//                }
-//            }
-//            
-//            if (orderIsCreated) {
-//                System.out.println("\n\nOrder is successfully created.");
-//            } else {
-//                System.out.println("\n\nOrder is not created.");
-//            }
+            // Order details
+            // ReadinessTime could not be a time before the time of requesting order
+/*            
+            System.out.println("\n\n");
+            System.out.println("Create order for the two bills of lading [createOrder]...");
+            System.out.println("----------------------------------------------------------------");
+            ParamOrder order = new ParamOrder();
+            order.getBillOfLadingsList().add(Long.valueOf(lPickingId));
+            order.getBillOfLadingsList().add(Long.valueOf(lPickingId2));
+            order.setBillOfLadingsToIncludeType(Util.ORDER_BOL_INCLUDE_TYPE_EXPLICIT); // Order for the list of pickings
+            order.setPickupDate(Util.toXMLGregorianCalendar(pickingData.takingDate));
+            order.setReadinessTime((short) 1130); // Parcels are ready for collection after 17:50
+            order.setContactName(clientConfiguration.sContactName);
+            paramPhoneNumber = new ParamPhoneNumber();
+            paramPhoneNumber.setNumber(clientConfiguration.sContactPhone);
+            order.setPhoneNumber(paramPhoneNumber); 
+            order.setWorkingEndTime((short) 1800); // Sender work time end is 18:00
+
+            // Request order
+            List<ResultOrderPickingInfo> listResultOrderPickingInfo = eps.createOrder(order);
+
+            System.out.println("\nCreate order.");
+
+            // Verify response
+            // If there is at least one error in response list, the order is not created
+            boolean orderIsCreated = true;
+            for (int i = 0; i < listResultOrderPickingInfo.size(); ++i) {
+                ResultOrderPickingInfo resultOrderPickingInfo = listResultOrderPickingInfo.get(i);
+                List<String> listErrorDescriptions = resultOrderPickingInfo.getErrorDescriptions();
+                if (listErrorDescriptions.size() > 0) {
+                    // Unsuccessful order. We have errors in result array
+                    System.out.println("\n  Errors for bill of lading " + resultOrderPickingInfo.getBillOfLading() + ".");
+                    for (int j = 0; j < listErrorDescriptions.size(); ++j) {
+                        System.out.println("\n    Error " + (j + 1) + ": " + listErrorDescriptions.get(j));
+                    }
+                    System.out.println("");
+			          orderIsCreated = false;
+                } else {
+                    // Good order
+                    System.out.println("\nBill of lading  " + resultOrderPickingInfo.getBillOfLading() + " has no errors.");
+                }
+            }
+            
+            if (orderIsCreated) {
+                System.out.println("\n\nOrder is successfully created.");
+            } else {
+                System.out.println("\n\nOrder is not created.");
+            }
+*/  
             // -------------------------------------------------------------------------------------------------------------------
 
             System.out.println("\n\n=========================================================================================================\nEND");

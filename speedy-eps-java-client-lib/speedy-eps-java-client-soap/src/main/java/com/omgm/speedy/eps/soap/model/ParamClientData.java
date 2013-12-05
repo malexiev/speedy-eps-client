@@ -22,6 +22,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="address" type="{http://ver01.eps.speedy.sirma.com/}paramAddress" minOccurs="0"/>
  *         &lt;element name="clientId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="contactName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="email" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="objectName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="partnerName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="phones" type="{http://ver01.eps.speedy.sirma.com/}paramPhoneNumber" maxOccurs="unbounded" minOccurs="0"/>
@@ -38,6 +39,7 @@ import javax.xml.bind.annotation.XmlType;
     "address",
     "clientId",
     "contactName",
+    "email",
     "objectName",
     "partnerName",
     "phones"
@@ -47,6 +49,7 @@ public class ParamClientData {
     protected ParamAddress address;
     protected Long clientId;
     protected String contactName;
+    protected String email;
     protected String objectName;
     protected String partnerName;
     @XmlElement(nillable = true)
@@ -122,6 +125,30 @@ public class ParamClientData {
      */
     public void setContactName(String value) {
         this.contactName = value;
+    }
+
+    /**
+     * Gets the value of the email property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * Sets the value of the email property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setEmail(String value) {
+        this.email = value;
     }
 
     /**
