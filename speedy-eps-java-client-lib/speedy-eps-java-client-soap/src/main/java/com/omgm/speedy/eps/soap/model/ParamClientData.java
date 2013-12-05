@@ -32,7 +32,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Used to pass client data in requests
  * 
+ * @since 1.0.0
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "paramClientData", propOrder = {
@@ -46,13 +48,56 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ParamClientData {
 
+	/**
+     * Address details
+     * MANDATORY: Required when clientId is null
+     */
     protected ParamAddress address;
+    
+    /**
+     * Client/Partner ID
+     * MANDATORY: NO
+     */
     protected Long clientId;
+    
+    /**
+     * Contact name.
+     * Maximum size is 60 symbols.
+     * MANDATORY: NO
+     */
     protected String contactName;
+    
+    /**
+     * Email
+     * Maximum size is 256 symbols.
+     * MANDATORY: NO
+     * @since 2.1.0
+     */
     protected String email;
+    
+    /**
+     * Company department/office.
+     * Maximum size is 60 symbols.
+     * MANDATORY: Allowed <=> clientId is null.
+     */
     protected String objectName;
+    
+    /**
+     * Name of the client (company or private person).
+     * Maximum size is 60 symbols.
+     * MANDATORY: Must be set <=> clientId is null.
+     */
     protected String partnerName;
     @XmlElement(nillable = true)
+    
+    /**
+     * Phone numbers.
+     * This list contains maximum 3 phone numbers.
+     * MANDATORY: Sender's phone number is always required.
+     *   Receiver's phone number is required if the shipment is to be delivered on a half-working day or
+     *   the shipment needs to be delivered the day it has been picked up.
+     *   ("Required" means at least one valid phone number must be set.)
+     */
     protected List<ParamPhoneNumber> phones;
 
     /**

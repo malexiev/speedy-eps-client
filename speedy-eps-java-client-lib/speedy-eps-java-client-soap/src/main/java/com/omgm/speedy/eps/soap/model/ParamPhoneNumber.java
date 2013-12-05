@@ -24,7 +24,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Instances of this class are used as a parameter for client phone numbers in web service calls
  * 
+ * @since 1.0.0
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "paramPhoneNumber", propOrder = {
@@ -33,7 +35,18 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ParamPhoneNumber {
 
+	/**
+     * An extension number.
+     * Max size is 10 symbols.
+     * MANDATORY: NO
+     */
     protected String internal;
+    
+    /**
+     * Phone number (example: "0888123456", "+35932261020" etc.).
+     * Max size is 20 symbols.
+     * MANDATORY: YES
+     */
     protected String number;
 
     /**

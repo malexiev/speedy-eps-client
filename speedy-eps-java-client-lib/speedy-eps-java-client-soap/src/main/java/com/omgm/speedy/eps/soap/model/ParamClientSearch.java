@@ -28,7 +28,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Used to define search criteria for clients
  * 
+ * @since 1.6.0
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "paramClientSearch", propOrder = {
@@ -41,11 +43,40 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ParamClientSearch {
 
+	/**
+     * Client id
+     * MANDATORY: NO
+     */
     protected Long clientId;
+    
+    /**
+     * Client name
+     * MANDATORY: NO
+     */
     protected String clientName;
+    
+    /**
+     * Common object name
+     * MANDATORY: NO
+     */
     protected String objectName;
+    
+    /**
+     * Client phone
+     * MANDATORY: NO
+     */
     protected String phone;
+    
+    /**
+     * Site id
+     * MANDATORY: NO
+     */
     protected Long siteId;
+    
+    /**
+     * User def tag
+     * MANDATORY: NO
+     */
     protected String userDefTag;
 
     /**

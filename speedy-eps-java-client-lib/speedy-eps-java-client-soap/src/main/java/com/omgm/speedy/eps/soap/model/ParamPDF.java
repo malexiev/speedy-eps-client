@@ -31,7 +31,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Instances of this class are used as a parameter for createPDF documents web service methods
  * 
+ * @since 1.0.0
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "paramPDF", propOrder = {
@@ -44,13 +46,48 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ParamPDF {
 
+	/**
+     * Only allowed for type 25. A list of additional (second) barcodes to be printed on the bottom of each label in the PDF document.
+     * Note that the additional barcodes take some extra space so the label height for type 25 is greater than the label height for type 20.
+     * Each element in the list corresponds to the element of 'ids' with the same index (position).
+     * MANDATORY: NO
+     */
     @XmlElement(nillable = true)
     protected List<ParamBarcodeInfo> additionalBarcodes;
+    
+    /**
+     * Only allowed for type 25.
+     * Specifies the barcode format to be used for additionalBarcodes.
+     * Accepts the following values: 'CODE128', 'EAN13', 'EAN8', 'UPC-A', 'UPC-E'
+     * MANDATORY: NO
+     */
     protected String additionalBarcodesFormat;
     @XmlElement(nillable = true)
+    
+    /**
+     * List of IDs.
+     * For type 10 only the BOL number is needed.
+     * For types 20 and 25 one or more parcel IDs are expected (parcels must be of a single BOL).
+     * MANDATORY: YES
+     */
     protected List<Long> ids;
+    
+    /**
+     * Specifies if embedded JavaScript code for direct printing to be generated (works for Adobe Acrobat Reader only).
+     * MANDATORY: YES
+     */
     protected boolean includeAutoPrintJS;
+    
+    /**
+     * The printer name. If empty, the default printer is to be used. Only applicable if includeAutoPrintJS = true.
+     * MANDATORY: NO
+     */
     protected String printerName;
+    
+    /**
+     * The document type (10 - BOL; 20 - labels; 25 - labels with additional barcode)
+     * MANDATORY: YES
+     */
     protected int type;
 
     /**

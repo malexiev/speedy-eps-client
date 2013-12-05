@@ -66,6 +66,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Instances of this class are passed as a parameter of Speedy web service calls for calclualation and registration
+ * 
+ * @since 1.0.0
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -112,46 +115,259 @@ import javax.xml.datatype.XMLGregorianCalendar;
 })
 public class ParamPicking {
 
+	/**
+     * Cash-on-Delivery (COD) amount.
+     * The value is limited depending on user's permissions and Speedy's current policy
+     * MANDATORY: NO
+     */
     protected Double amountCodBase;
+    
+    /**
+     * Shipment insurance value (if the shipment is insured).
+     * The value is limited depending on user's permissions and Speedy's current policy
+     * MANDATORY: NO
+     */
     protected Double amountInsuranceBase;
+    
+    /**
+     * Specifies if the shipment has a "request for return documents"
+     * MANDATORY: YES
+     */
     protected boolean backDocumentsRequest;
+    
+    /**
+     * Specifies if the shipment has a "request for return receipt"
+     * MANDATORY: YES
+     */
     protected boolean backReceiptRequest;
+    
+    /**
+     * BOL number
+     * MANDATORY: Only for updateBillOfLading. Null otherwise
+     */
     protected Long billOfLading;
+    
+    /**
+     * An optional value used to identify user's client software.
+     * Please verify the allowed values with Speedy's IT Department.
+     * MANDATORY: NO
+     */
     protected Long clientSystemId;
+    
+    /**
+     * Contents. Max text size - 50 symbols
+     * MANDATORY: YES
+     */
     protected String contents;
+    
+    /**
+     * In some rare cases users might prefer the delivery to be deferred by a day or two.
+     * This parameter allows users to specify by how many (working) days they would like to postpone the shipment delivery.
+     * Max 2 days
+     * MANDATORY: No
+     */
     protected Integer deferredDeliveryWorkDays;
+    
+    /**
+     * Card/Coupon/Voucher number for fixed discount
+     * MANDATORY: NO
+     */
     protected FixedDiscountCardId discCalc;
+    
+    /**
+     * Specifies whether the shipment consists of documents
+     * MANDATORY: YES
+     */
     protected boolean documents;
+    
+    /**
+     * Fixed time for delivery ("HHmm" format, i.e., the number "1315" means "13:15", "830" means "8:30" etc.)
+     * MANDATORY: Depending on the courier service, this property could be required, allowed or banned
+     */
     protected Short fixedTimeDelivery;
+    
+    /**
+     * Specifies whether the shipment is fragile - necessary when the price of insurance is being calculated
+     * MANDATORY: YES
+     */
     protected boolean fragile;
+    
+    /**
+     * Client's note
+     * MANDATORY: NO
+     */
     protected String noteClient;
+    
+    /**
+     * ID of an office "to be called"
+     * MANDATORY: Only for "to be called" pickings
+     */
     protected Long officeToBeCalledId;
+    
+    /**
+     * Packing ID (number)
+     * MANDATORY: NO
+     */
     protected Long packId;
+    
+    /**
+     * Packing
+     * MANDATORY: YES
+     */
     protected String packing;
+    
+    /**
+     * Specifies whether the shipment is palletized
+     * MANDATORY: YES
+     */
     protected boolean palletized;
+    
+    /**
+     * Data for parcels with explicit/fixed IDs (from the second one onward)
+     * The list has maximum lenght 998
+     * MANDATORY: NO
+     */
     @XmlElement(nillable = true)
     protected List<ParamParcelInfo> parcels;
+    
+    /**
+     * Parcels count. Maximum value is 999.
+     * MANDATORY: YES
+     */
     protected int parcelsCount;
+    
+    /**
+     * Specifies if the COD value is to be paid to a third party. Allowed only if the shipment has payerType = 2 (third party).
+     * MANDATORY: NO
+     */
     protected Boolean payCodToThirdParty;
+    
+    /**
+     * Payer ID.
+     * MANDATORY: Must be set <=> payer is "third party".
+     */
     protected Long payerRefId;
+    
+    /**
+     * Insurance payer ID
+     * MANDATORY: Must be set <=> shipment has insurance (i.e. amountInsuranceBase > 0) and it is payed by a "third party".
+     */
     protected Long payerRefInsuranceId;
+
+    /**
+     * Payer type (0=sender, 1=receiver or 2=third party)
+     * MANDATORY: YES
+     */
     protected int payerType;
+    
+    /**
+     * Insurance payer type (0=sender, 1=reciever or 2=third party)
+     * MANDATORY: Must be set <=> shipment is insured (i.e. amountInsuranceBase > 0).
+     */
     protected Integer payerTypeInsurance;
+    
+    /**
+     * Specifies if the service/system should allow parcels to be added to the shipment at a later stage.
+     * MANDATORY: NO
+     */
     protected Boolean pendingParcelsDescription;
+    
+    /**
+     * Specifies if the service/system should allow BOL's modification at a later stage.
+     * MANDATORY: NO
+     */
     protected Boolean pendingShipmentDescription;
+    
+    /**
+     * Data for the receiver
+     * MANDATORY: YES
+     */
     protected ParamClientData receiver;
+    
+    /**
+     * An optional reference code.
+     * Maximum 30 symbols
+     * MANDATORY: NO
+     */
     protected String ref1;
+    
+    /**
+     * An optional reference code.
+     * Maximum 30 symbols
+     * MANDATORY: NO
+     */
     protected String ref2;
+
+    /**
+     * Return money-transfer request amount
+     * The value is limited depending on user's permissions and Speedy's current policy
+     * MANDATORY: NO
+     */
     protected Double retMoneyTransferReqAmount;
+    
+    /**
+     * ID of the client who is to receive the return receipt and/or the return documents.
+     * If payer is "third party" then this client has to be payer's contract member.
+     * Otherwise the client has to be sender's contract member.
+     * MANDATORY: NO
+     */
     protected Long retToClientId;
+    
+    /**
+     * Data for the sender
+     * MANDATORY: YES
+     */
     protected ParamClientData sender;
+    
+    /**
+     * Courier service type ID
+     * MANDATORY: YES
+     */
     protected long serviceTypeId;
+    
+    /**
+     * Size of shipment
+     * MANDATORY: NO
+     */
     protected Size size;
+    
+    /**
+     * When parcelsCount > 1 and no explicit data has been set in the parcels property during the creation,
+     * then parcels will be created automatically by default.
+     * This parameter allows users to control this behaviour.
+     * MANDATORY: NO
+     */
     protected Boolean skipAutomaticParcelsCreation;
+    
+    /**
+     * The date for shipment pick-up (the "time" component is ignored). Default value is "today".
+     * MANDATORY: NO
+     */
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar takingDate;
+    
+    /**
+     * Declared weight (the greater of "volume" and "real" weight values).
+     * Maximum value is 100.00
+     * MANDATORY: YES
+     */
     protected double weightDeclared;
+
+    /**
+     * Specifies if the sender intends to deliver the shipment to a Speedy office by him/herself instead of ordering a visit by courier
+     * MANDATORY: YES
+     */
     protected boolean willBringToOffice;
+    
+    /**
+     * Specifies the specific Speedy office, where the sender intends to deliver the shipment by him/herself. 
+     * If willBringToOfficeId is provided, willBringToOffice flag is considered "true", regardless the value provided. 
+     * If willBringToOfficeId is not provied (0 or null) and willBringToOffice flag is "true", 
+     * willBringToOfficeId is automatically set with default value configured for caller user profile. 
+     * The default willBringToOfficeId value could be managed using profile configuration page in client's Speedy web site. 
+     * MANDATORY: NO
+     * @since 1.3
+     */
     protected Long willBringToOfficeId;
 
     /**

@@ -24,7 +24,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Instance of this class are used as parameters for providing barcode inpuit fot pdf generation web service calls
  * 
+ * @since 1.0.0
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "paramBarcodeInfo", propOrder = {
@@ -33,55 +35,49 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ParamBarcodeInfo {
 
+	/**
+     * Barcode value. For barcode formats other than 'CODE128' it must contain digits only.
+     * MANDATORY: YES
+     */
     protected String barcodeLabel;
+    
+    /**
+     * Barcode label. It is printed just below the barcode image.
+     * For barcode formats other than 'CODE128' barcodeLabel must be equal to barcodeValue.
+     * MANDATORY: NO
+     */
     protected String barcodeValue;
 
     /**
-     * Gets the value of the barcodeLabel property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the barcodeLabel
+     * @return Barcode label
      */
     public String getBarcodeLabel() {
         return barcodeLabel;
     }
 
     /**
-     * Sets the value of the barcodeLabel property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the barcodeLabel
+     * @param barcodeLabel Barcode label
      */
-    public void setBarcodeLabel(String value) {
-        this.barcodeLabel = value;
+    public void setBarcodeLabel(String barcodeLabel) {
+        this.barcodeLabel = barcodeLabel;
     }
 
     /**
-     * Gets the value of the barcodeValue property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the barcodeValue
+     * @return Barcode value
      */
     public String getBarcodeValue() {
         return barcodeValue;
     }
 
     /**
-     * Sets the value of the barcodeValue property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the barcodeValue
+     * @param barcodeValue Barcode value
      */
-    public void setBarcodeValue(String value) {
-        this.barcodeValue = value;
+    public void setBarcodeValue(String barcodeValue) {
+        this.barcodeValue = barcodeValue;
     }
 
 }

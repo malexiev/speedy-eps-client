@@ -27,7 +27,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Instances of this class are used as a parameter to filter Speedy web service site quiery
  * 
+ * @since 1.0.0
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "paramFilterSite", propOrder = {
@@ -39,10 +41,34 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ParamFilterSite {
 
+	/**
+     * Site municipality name
+     * MANDATORY: NO
+     */
     protected String municipality;
+    
+    /**
+     * Site name
+     * MANDATORY: NO
+     */
     protected String name;
+    
+    /**
+     * Post code
+     * MANDATORY: NO
+     */
     protected String postCode;
+    
+    /**
+     * Site region name
+     * MANDATORY: NO
+     */
     protected String region;
+    
+    /**
+     * Site type
+     * MANDATORY: NO
+     */
     protected String type;
 
     /**

@@ -47,7 +47,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>This class is used to pass parameters for calculation
  * 
+ * @since 1.0.0
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "paramCalculation", propOrder = {
@@ -77,29 +79,156 @@ import javax.xml.datatype.XMLGregorianCalendar;
 })
 public class ParamCalculation {
 
+	/**
+     * Cash-on-Delivery (COD) amount
+     * The limit of this value depends on user's permissions and Speedy's current policy.
+     * MANDATORY: NO
+     */
     protected Double amountCodBase;
+    
+    /**
+     * Shipment insurance value (if the shipment is insured).
+     * The limit of this value depends on user's permissions and Speedy's current policy.
+     * MANDATORY: NO
+     */
     protected Double amountInsuranceBase;
+    
+    /**
+     * If set to true, the "takingDate" field is not just to be validated, but the first allowed (following)
+     * date will be used instead (in compliance with the pick-up schedule etc.).
+     * MANDATORY: NO
+     */
     protected Boolean autoAdjustTakingDate;
+    
+    /**
+     * Specifies if the sender intends to deliver the shipment to a Speedy office by him/herself instead of ordering a visit by courier
+     * MANDATORY: YES
+     */
     protected boolean broughtToOffice;
+    
+    /**
+     * In some rare cases users might prefer the delivery to be deferred by a day or two.
+     * This parameter allows users to specify by how many (working) days they would like to postpone the shipment delivery.
+     * Max value is 2.
+     * MANDATORY: NO
+     */
     protected Integer deferredDeliveryWorkDays;
+    
+    /**
+     * Specifies whether the shipment consists of documents
+     * MANDATORY: YES
+     */
     protected boolean documents;
+    
+    /**
+     * Fixed time for delivery ("HHmm" format, i.e., the number "1315" means "13:15", "830" means "8:30" etc.).
+     * Depending on the courier service, this property could be required, allowed or banned
+     * MANDATORY: NO
+     */
     protected Short fixedTimeDelivery;
+    
+    /**
+     * Specifies whether the shipment is fragile - necessary when the price of insurance is being calculated
+     * MANDATORY: YES
+     */
     protected boolean fragile;
+    
+    /**
+     * Specifies whether the shipment is palletized
+     * MANDATORY: YES
+     */
     protected boolean palletized;
+    
+    /**
+     * Parcels count.
+     * Max 999.
+     * MANDATORY: YES
+     */
     protected int parcelsCount;
+    
+    /**
+     * Specifies if the COD value is to be paid to a third party. Allowed only if the shipment has payerType = 2 (third party).
+     * MANDATORY: NO
+     */
     protected Boolean payCodToThirdParty;
+    
+    /**
+     * Payer ID. Must be set <=> payer is "third party".
+     * MANDATORY: NO
+     */
     protected Long payerRefId;
+    
+    /**
+     * Insurance payer ID. Must be set <=> shipment has insurance (i.e. amountInsuranceBase > 0) and it is payed by a "third party".
+     * MANDATORY: NO
+     */
     protected Long payerRefInsuranceId;
+    
+    /**
+     * Payer type (0=sender, 1=receiver or 2=third party)
+     * MANDATORY: YES
+     */
     protected int payerType;
+    
+    /**
+     * Insurance payer type (0=sender, 1=reciever or 2=third party).
+     * Must be set <=> shipment is insured (i.e. amountInsuranceBase > 0).
+     * MANDATORY: NO
+     */
     protected Integer payerTypeInsurance;
+    
+    /**
+     * Receiver's ID.
+     * Either receiverId or receiverSiteId must be set
+     * MANDATORY: NO
+     */
     protected Long receiverId;
+    
+    /**
+     * Receiver's site ID
+     * Either receiverId or receiverSiteId must be set
+     * MANDATORY: NO
+     */
     protected Long receiverSiteId;
+    
+    /**
+     * Sender's ID.
+     * Either senderId or senderSiteId must be set
+     * MANDATORY: NO
+     */
     protected Long senderId;
+    
+    /**
+     * Sender's site ID.
+     * Either senderId or senderSiteId must be set
+     * MANDATORY: NO
+     */
     protected Long senderSiteId;
+    
+    /**
+     * Courier service type ID
+     * MANDATORY: YES
+     */
     protected long serviceTypeId;
+    
+    /**
+     * The date for shipment pick-up (the "time" component is ignored). Default value is "today".
+     * MANDATORY: NO
+     */
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar takingDate;
+    
+    /**
+     * Specifies if the shipment is "to be called"
+     * MANDATORY: YES
+     */
     protected boolean toBeCalled;
+    
+    /**
+     * Declared weight (the greater of "volume" and "real" weight values).
+     * Max 100.00
+     * MANDATORY: YES
+     */
     protected double weightDeclared;
 
     /**

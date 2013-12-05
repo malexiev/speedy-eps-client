@@ -19,18 +19,37 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/simpleType>
  * </pre>
  * 
+ * <p>Language enumeration
+ * 
+ * @since 1.2.0
  */
 @XmlType(name = "paramLanguage")
 @XmlEnum
 public enum ParamLanguage {
 
+	/**
+     * Bulgarian language
+     */
     BG,
+    
+    /**
+     * Engilish language
+     */
     EN;
 
+    /**
+     * Get enumeration name as value
+     * @return Enumeration name
+     */
     public String value() {
         return name();
     }
 
+    /**
+     * Get enum instance from string
+     * @param v String value
+     * @return Enum instance
+     */
     public static ParamLanguage fromValue(String v) {
         return valueOf(v);
     }

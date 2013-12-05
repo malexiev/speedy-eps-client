@@ -27,7 +27,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Instances of this class are used to define parcels in pickings
  * 
+ * @since 1.0.0
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "paramParcel", propOrder = {
@@ -39,10 +41,34 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ParamParcel {
 
+	/**
+     * The BOL to which the parcel is to be added
+     * MANDATORY: YES
+     */
     protected long billOfLading;
+    
+    /**
+     * Packing ID
+     * MANDATORY: NO
+     */
     protected Long packId;
+    
+    /**
+     * Parcel ID (if empty, the server will generate one)
+     * MANDATORY: NO
+     */
     protected Long parcelId;
+    
+    /**
+     * Real weight (kg)
+     * MANDATORY: YES
+     */
     protected Size size;
+    
+    /**
+     * Parcel size
+     * MANDATORY: NO
+     */
     protected double weight;
 
     /**

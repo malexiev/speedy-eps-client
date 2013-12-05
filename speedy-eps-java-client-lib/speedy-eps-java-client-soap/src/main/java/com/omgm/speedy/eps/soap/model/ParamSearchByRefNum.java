@@ -28,6 +28,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Instances of thics class are used az parameters for picking search web services class
+ * 
+ * @since 1.0.0
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -39,11 +42,30 @@ import javax.xml.datatype.XMLGregorianCalendar;
 })
 public class ParamSearchByRefNum {
 
+	/**
+     * Pick-up date - from
+     * MANDATORY: NO
+     */
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar dateFrom;
+    
+    /**
+     * Pick-up date - to
+     * MANDATORY: NO
+     */
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar dateTo;
+    
+    /**
+     * The reference code to be searched (exact match, case sensitive)
+     * MANDATORY: YES
+     */
     protected String referenceNumber;
+    
+    /**
+     * Specifies where to search: 0 means [Ref1 or Ref2], 1 means [Ref1], 2 means [Ref2]
+     * MANDATORY: YES
+     */
     protected int searchInField;
 
     /**

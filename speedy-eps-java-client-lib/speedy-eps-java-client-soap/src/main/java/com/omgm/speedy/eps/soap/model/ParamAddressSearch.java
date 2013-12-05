@@ -29,7 +29,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Used as a search criteria in address search methods
  * 
+ * @since 1.0.0
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "paramAddressSearch", propOrder = {
@@ -43,172 +45,158 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ParamAddressSearch {
 
+	/**
+     * Block No/name
+     * MANDATORY: NO
+     */
     protected String blockNo;
+    
+    /**
+     * Common object ID
+     * MANDATORY: NO
+     */
     protected Long commonObjectId;
+    
+    /**
+     * Entrance
+     * MANDATORY: NO
+     */
     protected String entranceNo;
+    
+    /**
+     * Quarter ID
+     * MANDATORY: NO
+     */
     protected Long quarterId;
+    
+    /**
+     * Site ID
+     * MANDATORY: YES
+     */
     protected long siteId;
+    
+    /**
+     * Street ID
+     * MANDATORY: NO
+     */
     protected Long streetId;
+    
+    /**
+     * Street No
+     * MANDATORY: NO
+     */
     protected String streetNo;
 
     /**
-     * Gets the value of the blockNo property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the blockNo.
+     * @return Block No
      */
     public String getBlockNo() {
         return blockNo;
     }
 
     /**
-     * Sets the value of the blockNo property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the blockNo
+     * @param blockNo Block No
      */
-    public void setBlockNo(String value) {
-        this.blockNo = value;
+    public void setBlockNo(String blockNo) {
+        this.blockNo = blockNo;
     }
 
     /**
-     * Gets the value of the commonObjectId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
+     * Gets the commonObjectId
+     * @return Common object id
      */
     public Long getCommonObjectId() {
         return commonObjectId;
     }
 
     /**
-     * Sets the value of the commonObjectId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
+     * Sets the commonObjectId
+     * @param commonObjectId Common object id
      */
-    public void setCommonObjectId(Long value) {
-        this.commonObjectId = value;
+    public void setCommonObjectId(Long commonObjectId) {
+        this.commonObjectId = commonObjectId;
     }
 
     /**
-     * Gets the value of the entranceNo property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the entranceNo
+     * @return Entrance No
      */
     public String getEntranceNo() {
         return entranceNo;
     }
 
     /**
-     * Sets the value of the entranceNo property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the entranceNo
+     * @param entranceNo Entrance No
      */
-    public void setEntranceNo(String value) {
-        this.entranceNo = value;
+    public void setEntranceNo(String entranceNo) {
+        this.entranceNo = entranceNo;
     }
 
     /**
-     * Gets the value of the quarterId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
+     * Gets the quarterId
+     * @return Quarter id
      */
     public Long getQuarterId() {
         return quarterId;
     }
 
     /**
-     * Sets the value of the quarterId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
+     * Sets the quarterId
+     * @param quarterId Quarter id
      */
-    public void setQuarterId(Long value) {
-        this.quarterId = value;
+    public void setQuarterId(Long quarterId) {
+        this.quarterId = quarterId;
     }
 
     /**
-     * Gets the value of the siteId property.
-     * 
+     * Gets the siteId
+     * @return Site id
      */
     public long getSiteId() {
         return siteId;
     }
 
     /**
-     * Sets the value of the siteId property.
-     * 
+     * Sets the siteId
+     * @param siteId Site id
      */
-    public void setSiteId(long value) {
-        this.siteId = value;
+    public void setSiteId(long siteId) {
+        this.siteId = siteId;
     }
 
     /**
-     * Gets the value of the streetId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
+     * Gets the streetId
+     * @return Street id
      */
     public Long getStreetId() {
         return streetId;
     }
 
     /**
-     * Sets the value of the streetId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
+     * Sets the streetId
+     * @param streetId Street id
      */
-    public void setStreetId(Long value) {
-        this.streetId = value;
+    public void setStreetId(Long streetId) {
+        this.streetId = streetId;
     }
 
     /**
-     * Gets the value of the streetNo property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets streetNo
+     * @return Street No
      */
     public String getStreetNo() {
         return streetNo;
     }
 
     /**
-     * Sets the value of the streetNo property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the streetNo
+     * @param streetNo Street No
      */
-    public void setStreetNo(String value) {
-        this.streetNo = value;
+    public void setStreetNo(String streetNo) {
+        this.streetNo = streetNo;
     }
 
 }

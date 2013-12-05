@@ -34,7 +34,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Instances of this class are used as parameters for orders web service calls
  * 
+ * @since 1.0.0
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "paramOrder", propOrder = {
@@ -48,14 +50,53 @@ import javax.xml.datatype.XMLGregorianCalendar;
 })
 public class ParamOrder {
 
+	/**
+     * List of BOL numbers.
+     * MANDATORY: Must be set <=> billOfLadingsToIncludeType = 10.
+     */
     @XmlElement(nillable = true)
     protected List<Long> billOfLadingsList;
+    
+    /**
+     * Specifies the set of shipments/BOLs to be ordered:
+     * •[10] Explicit numbers (in billOfLadingsList)
+     * •[20] All not-ordered-yet BOLs created by the logged client
+     * •[30] All not-ordered-yet BOLs created by the logged client or members of his/her contract (taking into account user's permissions)
+     * MANDATORY: YES
+     */
     protected int billOfLadingsToIncludeType;
+    
+
+    /**
+     * Contact name.
+     * Limited to 60 symbols.
+     * MANDATORY: YES
+     */
     protected String contactName;
+    
+    /**
+     * Phone number
+     * MANDATORY: YES
+     */
     protected ParamPhoneNumber phoneNumber;
+    
+    /**
+     * The date for shipments pick-up (the "time" component is ignored). The default value is "today".
+     * MANDATORY: NO
+     */
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar pickupDate;
+    
+    /**
+     * Specifies when all the shipments/parcels will be ready for pickup. The default value is "now".
+     * MANDATORY: Only if pickupDate > today
+     */
     protected Short readinessTime;
+    
+    /**
+     * The sender's working time end
+     * MANDATORY: YES
+     */
     protected Short workingEndTime;
 
     /**

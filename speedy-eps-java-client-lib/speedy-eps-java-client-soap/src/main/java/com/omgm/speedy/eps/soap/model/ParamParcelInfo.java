@@ -25,7 +25,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Instances of this class are used as parameters in web service calls for picking calculation and registration
  * 
+ *  @since 1.0.0
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "paramParcelInfo", propOrder = {
@@ -35,8 +37,22 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ParamParcelInfo {
 
+	/**
+     * Parcel's serial number (2, 3, ...)
+     * MANDATORY: YES
+     */
     protected Long packId;
+    
+    /**
+     * Parcel ID
+     * MANDATORY: YES
+     */
     protected long parcelId;
+    
+    /**
+     * Parcel's serial number (2, 3, ...)
+     * MANDATORY: YES
+     */
     protected int seqNo;
 
     /**
