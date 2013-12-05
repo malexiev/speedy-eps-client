@@ -20,19 +20,42 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/simpleType>
  * </pre>
  * 
+ * <p>Enumeration to determine whether complementary services are banned, allowed or required for particular service
+ * 
+ * @since 1.0.0
  */
 @XmlType(name = "complementaryServiceAllowance")
 @XmlEnum
 public enum ComplementaryServiceAllowance {
 
+	/**
+     * The complementary service is not allowed.
+     */
     BANNED,
+    
+    /**
+     * The complementary service is allowed (but not required).
+     */
     ALLOWED,
+    
+    /**
+     * The complementary service is required.
+     */
     REQUIRED;
 
+    /**
+     * Get enumeration name as value
+     * @return Enumeration name
+     */
     public String value() {
         return name();
     }
 
+    /**
+     * Get enum instance from string
+     * @param v String value
+     * @return Enum instance
+     */
     public static ComplementaryServiceAllowance fromValue(String v) {
         return valueOf(v);
     }

@@ -19,6 +19,7 @@ require_once 'ResultBOL.class.php';
 require_once 'ResultOrderPickingInfo.class.php';
 require_once 'ResultTrackPicking.class.php';
 require_once 'ResultTrackPickingEx.class.php';
+require_once 'ResultSpecialDeliveryRequirement.class.php';
 require_once 'ParamCalculation.class.php';
 require_once 'ParamFilterSite.class.php';
 require_once 'ParamAddressSearch.class.php';
@@ -494,5 +495,14 @@ interface EPSInterface {
      * @return array List of ResultClientData
      */
     public function searchClients($sessionId, $clientQuery);
+    
+    /**
+     * Returns list with available special delivery requirements for logged user
+     * @param string $sessionId
+     * @throws ServerException Thrown in case communication with server has failed
+     * @return array List of ResultSpecialDeliveryRequirement
+     * @since 2.1.0
+     */
+    public function listSpecialDeliveryRequirements($sessionId);
 }
 ?>

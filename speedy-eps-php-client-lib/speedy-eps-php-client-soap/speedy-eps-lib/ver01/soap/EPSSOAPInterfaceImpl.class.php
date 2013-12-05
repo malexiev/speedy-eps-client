@@ -958,7 +958,6 @@ class EPSSOAPInterfaceImpl extends SoapClient implements EPSInterface {
      */
     public function searchClients($sessionId, $clientQuery) {
         try {
-            
             $searchClientsStdObject = new stdClass();
             $searchClientsStdObject->sessionId   = $sessionId;
             $searchClientsStdObject->clientQuery = $clientQuery->toStdClass();
@@ -980,5 +979,31 @@ class EPSSOAPInterfaceImpl extends SoapClient implements EPSInterface {
             throw new ServerException($sf);
         }
     }
+    
+    /**
+     * @see EPSInterface::listSpecialDeliveryRequirements()
+     */
+    public function listSpecialDeliveryRequirements($sessionId) {
+    	try {    
+    		$listSpecialDeliveryRequirementsStdObject = new stdClass();
+            $listSpecialDeliveryRequirementsStdObject->sessionId = $sessionId;
+            $response = parent::listSpecialDeliveryRequirements($listSpecialDeliveryRequirementsStdObject);
+            $arrResultSpecialDeliveryRequirement = array();
+        
+            if (isset($response->return)) {
+                $arrStdResultSpecialDeliveryRequirement = $response->return;
+                if (is_array($arrStdResultSpecialDeliveryRequirement)) {
+                    for($i = 0; $i < count($arrStdResultSpecialDeliveryRequirement); $i++) {
+                        $arrResultSpecialDeliveryRequirement[$i] = new ResultSpecialDeliveryRequirement($arrStdResultSpecialDeliveryRequirement[$i]);
+                    }
+                } else {
+                    $arrResultSpecialDeliveryRequirement[0] = new ResultSpecialDeliveryRequirement($arrStdResultSpecialDeliveryRequirement);
+                }
+            }
+            return $arrResultSpecialDeliveryRequirement;
+        } catch (SoapFault $sf) {
+            throw new ServerException($sf);
+        }
+       }
 }
 ?>

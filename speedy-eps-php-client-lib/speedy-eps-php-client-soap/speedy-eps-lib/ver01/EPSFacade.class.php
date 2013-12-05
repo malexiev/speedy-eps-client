@@ -715,5 +715,18 @@ class EPSFacade {
         $this->checkStateBeforeCall();
         return $this->_epsInterfaceImpl->searchClients($this->getResultLogin(true)->getSessionId(), $clientQuery);
     }
+    
+    
+	/**
+     * Returns list with available special delivery requirements for logged user
+     * @throws ClientException Thrown in case EPS interface implementation is not set
+     * @throws ServerException Thrown in case communication with server has failed
+     * @return array List of ResultSpecialDeliveryRequirement
+     * @since 2.1.0
+     */
+    public function listSpecialDeliveryRequirements() {
+    	$this->checkStateBeforeCall();
+    	return $this->_epsInterfaceImpl->listSpecialDeliveryRequirements($this->getResultLogin(true)->getSessionId());
+    }
 }
 ?>

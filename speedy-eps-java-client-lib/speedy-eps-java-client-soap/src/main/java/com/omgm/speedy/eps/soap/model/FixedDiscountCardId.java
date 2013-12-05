@@ -24,7 +24,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Instances of this class are used for fixed discount cards
  * 
+ * @since 1.0.0
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "fixedDiscountCardId", propOrder = {
@@ -33,55 +35,46 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class FixedDiscountCardId {
 
+	/**
+     * Agreement (contract) ID
+     */
     protected Long agreementId;
+    
+    /**
+     * Card ID
+     */
     protected Long cardId;
 
     /**
-     * Gets the value of the agreementId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
+     * Get aggreement (contract) id
+     * @return Aggreement (contract) id
      */
     public Long getAgreementId() {
         return agreementId;
     }
 
     /**
-     * Sets the value of the agreementId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
+     * Set aggreement (contract) id
+     * @param agreementId Aggreement (contract) id
      */
-    public void setAgreementId(Long value) {
-        this.agreementId = value;
+    public void setAgreementId(Long agreementId) {
+        this.agreementId = agreementId;
     }
 
     /**
-     * Gets the value of the cardId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
+     * Get card id
+     * @return Card id
      */
     public Long getCardId() {
         return cardId;
     }
 
     /**
-     * Sets the value of the cardId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
+     * Sets card id
+     * @param cardId Card id
      */
-    public void setCardId(Long value) {
-        this.cardId = value;
+    public void setCardId(Long cardId) {
+        this.cardId = cardId;
     }
 
 }

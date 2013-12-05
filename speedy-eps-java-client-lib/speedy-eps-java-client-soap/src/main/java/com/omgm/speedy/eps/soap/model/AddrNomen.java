@@ -20,21 +20,43 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/simpleType>
  * </pre>
  * 
+ * <p>Enumeration to determine whether speedy address nomenclature is full, partial or missing for certain sites
+ * 
+ * @since 1.0.0
  */
 @XmlType(name = "addrNomen")
 @XmlEnum
 public enum AddrNomen {
 
+	/**
+     * Speedy has no address nomenclature (streets, quarters etc.) for the site.
+     */
     NO,
+    
+    /**
+     * Speedy has full address nomenclature (streets, quarters etc.) for the site.
+     */    
     FULL,
+    
+    /**
+     * Speedy has partial address nomenclature (streets, quarters etc.) for this site.
+     */
     PARTIAL;
 
+    /**
+     * Get enumeration name as value
+     * @return Enumeration name
+     */
     public String value() {
         return name();
     }
 
+    /**
+     * Get enum instance from string
+     * @param v String value
+     * @return Enum instance
+     */
     public static AddrNomen fromValue(String v) {
         return valueOf(v);
     }
-
 }

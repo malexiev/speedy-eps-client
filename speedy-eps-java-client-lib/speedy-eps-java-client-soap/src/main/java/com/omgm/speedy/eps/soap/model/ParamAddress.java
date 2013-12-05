@@ -38,7 +38,15 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Instances of this class are used as parameters on web service method calls for picking calculation and registration
+ *
+ * <p>When address is required (i.e. when clientId is null), at least one of the following rules must be met:
+ * •not empty street (ID or Type&Name) and (streetNo or blockNo);
+ * •not empty quarter (ID or Type&Name) and (streetNo or blockNo);
+ * •not empty common object;
+ * •not empty addressNote.
  * 
+ * @since 1.0.0
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "paramAddress", propOrder = {
@@ -61,53 +69,121 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ParamAddress {
 
+	/**
+     * Address note. Max size is 200 symbols.
+     * MANDATORY: NO
+     */
     protected String addressNote;
+    
+    /**
+     * Appartment No. Max size is 10 symbols.
+     * MANDATORY: NO
+     */
     protected String apartmentNo;
+    
+    /**
+     * Block No. Max size is 32 symbols.
+     * MANDATORY: NO
+     */
     protected String blockNo;
+    
+    /**
+     * Common object ID
+     * MANDATORY: NO
+     */
     protected Long commonObjectId;
+    
+    /**
+     * GIS coordinates - X
+     * MANDATORY: NO
+     */
     protected Double coordX;
+    
+    /**
+     * GIS coordinates - Y
+     * MANDATORY: NO
+     */
     protected Double coordY;
+    
+    /**
+     * Entrance No. Max size is 10 symbols.
+     * MANDATORY: NO
+     */    
     protected String entranceNo;
+    
+    /**
+     * Floor No. Max size is 10 symbols.
+     * MANDATORY: NO
+     */
     protected String floorNo;
+    
+    /**
+     * Quarter ID
+     * MANDATORY: NO
+     */
     protected Long quarterId;
+    
+    /**
+     * Quarter name. Max size is 50 symbols.
+     * MANDATORY: NO
+     */
     protected String quarterName;
+    
+    /**
+     * Quarter type. Max size is 15 symbols.
+     * MANDATORY: NO
+     */    
     protected String quarterType;
+    
+    /**
+     * Site ID
+     * MANDATORY: YES
+     */
     protected long siteId;
+    
+    /**
+     * Street ID
+     * MANDATORY: NO
+     */
     protected Long streetId;
+    
+    /**
+    * Street name. Max size is 50 symbols.
+    * MANDATORY: NO
+    */
     protected String streetName;
+    
+    /**
+     * Street No. Max size is 10 symbols.
+     * MANDATORY: NO
+     */
     protected String streetNo;
+    
+    /**
+     * Street type. Max size is 15 symbols.
+     * MANDATORY: NO
+     */
     protected String streetType;
 
     /**
-     * Gets the value of the addressNote property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets addressNote
+     * @return address note
      */
     public String getAddressNote() {
         return addressNote;
     }
 
     /**
-     * Sets the value of the addressNote property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets addressNote
+     * @param addressNote Address note
      */
-    public void setAddressNote(String value) {
-        this.addressNote = value;
+    public void setAddressNote(String addressNote) {
+        this.addressNote = addressNote;
     }
 
     /**
-     * Gets the value of the apartmentNo property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
+     * Gets the apartmentNo.
+     * @return Appartment No
      *     
      */
     public String getApartmentNo() {
@@ -115,96 +191,64 @@ public class ParamAddress {
     }
 
     /**
-     * Sets the value of the apartmentNo property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the apartmentNo
+     * @param apartmentNo Appartment No
      */
-    public void setApartmentNo(String value) {
-        this.apartmentNo = value;
+    public void setApartmentNo(String apartmentNo) {
+        this.apartmentNo = apartmentNo;
     }
 
     /**
-     * Gets the value of the blockNo property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the blockNo
+     * @return Block No
      */
     public String getBlockNo() {
         return blockNo;
     }
 
     /**
-     * Sets the value of the blockNo property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the blockNo
+     * @param blockNo Block No
      */
-    public void setBlockNo(String value) {
-        this.blockNo = value;
+    public void setBlockNo(String blockNo) {
+        this.blockNo = blockNo;
     }
 
     /**
-     * Gets the value of the commonObjectId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
+     * Gets the commonObjectId
+     * @return Common object id
      */
     public Long getCommonObjectId() {
         return commonObjectId;
     }
 
     /**
-     * Sets the value of the commonObjectId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
+     * Sets the commonObjectId
+     * @param commonObjectId Common object id
      */
-    public void setCommonObjectId(Long value) {
-        this.commonObjectId = value;
+    public void setCommonObjectId(Long commonObjectId) {
+        this.commonObjectId = commonObjectId;
     }
 
     /**
-     * Gets the value of the coordX property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Double }
-     *     
+     * Gets the GPS coordX
+     * @return GPS coord X
      */
     public Double getCoordX() {
         return coordX;
     }
 
     /**
-     * Sets the value of the coordX property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Double }
-     *     
+     * Sets the GPS coordX 
+     * @param coordX GPS coord X
      */
-    public void setCoordX(Double value) {
-        this.coordX = value;
+    public void setCoordX(Double coordX) {
+        this.coordX = coordX;
     }
 
     /**
-     * Gets the value of the coordY property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Double }
-     *     
+     * Gets the GPS coordY.
+     * @return GPS coord Y
      */
     public Double getCoordY() {
         return coordY;
@@ -212,246 +256,169 @@ public class ParamAddress {
 
     /**
      * Sets the value of the coordY property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Double }
-     *     
+     * @param coordY GPS coord Y
      */
-    public void setCoordY(Double value) {
-        this.coordY = value;
+    public void setCoordY(Double coordY) {
+        this.coordY = coordY;
     }
 
     /**
-     * Gets the value of the entranceNo property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the entranceNo
+     * @return Entrance No
      */
     public String getEntranceNo() {
         return entranceNo;
     }
 
     /**
-     * Sets the value of the entranceNo property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the entranceNo.
+     * @param entranceNo Entrance No
      */
-    public void setEntranceNo(String value) {
-        this.entranceNo = value;
+    public void setEntranceNo(String entranceNo) {
+        this.entranceNo = entranceNo;
     }
 
     /**
-     * Gets the value of the floorNo property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the floorNo.
+     * @return Floor No
      */
     public String getFloorNo() {
         return floorNo;
     }
 
     /**
-     * Sets the value of the floorNo property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the floorNo.
+     * @param floorNo Floor No
      */
-    public void setFloorNo(String value) {
-        this.floorNo = value;
+    public void setFloorNo(String floorNo) {
+        this.floorNo = floorNo;
     }
 
     /**
-     * Gets the value of the quarterId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
+     * Gets the quarterId
+     * @return Quarter id
      */
     public Long getQuarterId() {
         return quarterId;
     }
 
     /**
-     * Sets the value of the quarterId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
+     * Sets the quarterId
+     * @param quarterId Quarter id
      */
-    public void setQuarterId(Long value) {
-        this.quarterId = value;
+    public void setQuarterId(Long quarterId) {
+        this.quarterId = quarterId;
     }
 
     /**
-     * Gets the value of the quarterName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets quarterName
+     * @return Quarter name
      */
     public String getQuarterName() {
         return quarterName;
     }
 
     /**
-     * Sets the value of the quarterName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the quarterName
+     * @param quarterName
      */
-    public void setQuarterName(String value) {
-        this.quarterName = value;
+    public void setQuarterName(String quarterName) {
+        this.quarterName = quarterName;
     }
 
     /**
-     * Gets the value of the quarterType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the quarterType
+     * @return Quarter type
      */
     public String getQuarterType() {
         return quarterType;
     }
 
     /**
-     * Sets the value of the quarterType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the quarterType
+     * @param quarterType Quarter type
      */
-    public void setQuarterType(String value) {
-        this.quarterType = value;
+    public void setQuarterType(String quarterType) {
+        this.quarterType = quarterType;
     }
 
     /**
-     * Gets the value of the siteId property.
-     * 
+     * Gets the siteId.
+     * @return Site id
      */
     public long getSiteId() {
         return siteId;
     }
 
     /**
-     * Sets the value of the siteId property.
-     * 
+     * Sets the siteId
+     * @param siteId site id
      */
-    public void setSiteId(long value) {
-        this.siteId = value;
+    public void setSiteId(long siteId) {
+        this.siteId = siteId;
     }
 
     /**
-     * Gets the value of the streetId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
+     * Gets the streetId
+     * @return Street id
      */
     public Long getStreetId() {
         return streetId;
     }
 
     /**
-     * Sets the value of the streetId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
+     * Sets the streetId
+     * @param streetId Street id
      */
-    public void setStreetId(Long value) {
-        this.streetId = value;
+    public void setStreetId(Long streetId) {
+        this.streetId = streetId;
     }
 
     /**
-     * Gets the value of the streetName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the streetName
+     * @return Street name
      */
     public String getStreetName() {
         return streetName;
     }
 
     /**
-     * Sets the value of the streetName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the streetName
+     * @param streetName Street name
      */
-    public void setStreetName(String value) {
-        this.streetName = value;
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
     }
 
     /**
-     * Gets the value of the streetNo property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the streetNo
+     * @return Street No
      */
     public String getStreetNo() {
         return streetNo;
     }
 
     /**
-     * Sets the value of the streetNo property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the streetNo
+     * @param streetNo Street No
      */
-    public void setStreetNo(String value) {
-        this.streetNo = value;
+    public void setStreetNo(String streetNo) {
+        this.streetNo = streetNo;
     }
 
     /**
-     * Gets the value of the streetType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the streetType
+     * @return Street type
      */
     public String getStreetType() {
         return streetType;
     }
 
     /**
-     * Sets the value of the streetType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the streetType 
+     * @param streetType Street type
      */
-    public void setStreetType(String value) {
-        this.streetType = value;
+    public void setStreetType(String streetType) {
+        this.streetType = streetType;
     }
-
 }
