@@ -80,147 +80,99 @@ public class ParamClientSearch {
     protected String userDefTag;
 
     /**
-     * Gets the value of the clientId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
+     * Gets the client id
+     * @return Client id
      */
     public Long getClientId() {
         return clientId;
     }
 
     /**
-     * Sets the value of the clientId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
+     * Sets the client id
+     * @param clientId Client id
      */
-    public void setClientId(Long value) {
-        this.clientId = value;
+    public void setClientId(Long clientId) {
+        this.clientId = clientId;
     }
 
     /**
-     * Gets the value of the clientName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the client name
+     * @return Client name
      */
     public String getClientName() {
         return clientName;
     }
 
     /**
-     * Sets the value of the clientName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the client name
+     * @param clientName Client name
      */
-    public void setClientName(String value) {
-        this.clientName = value;
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
     }
 
     /**
-     * Gets the value of the objectName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the common object name
+     * @return Common object name
      */
     public String getObjectName() {
         return objectName;
     }
 
     /**
-     * Sets the value of the objectName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the common object name
+     * @param objectName Common object name
      */
-    public void setObjectName(String value) {
-        this.objectName = value;
+    public void setObjectName(String objectName) {
+        this.objectName = objectName;
     }
 
     /**
-     * Gets the value of the phone property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the client phone.
+     * @return Client phone
      */
     public String getPhone() {
         return phone;
     }
 
     /**
-     * Sets the value of the phone property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the client phone
+     * @param phone Client phone
      */
-    public void setPhone(String value) {
-        this.phone = value;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     /**
-     * Gets the value of the siteId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
+     * Gets the site id
+     * @return Site id
      */
     public Long getSiteId() {
         return siteId;
     }
 
     /**
-     * Sets the value of the siteId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
+     * Sets the site id
+     * @param siteId Site id
      */
-    public void setSiteId(Long value) {
-        this.siteId = value;
+    public void setSiteId(Long siteId) {
+        this.siteId = siteId;
     }
 
     /**
-     * Gets the value of the userDefTag property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the user def tag
+     * @return User def tag
      */
     public String getUserDefTag() {
         return userDefTag;
     }
 
     /**
-     * Sets the value of the userDefTag property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the user def tag
+     * @param userDefTag User def tag
      */
-    public void setUserDefTag(String value) {
-        this.userDefTag = value;
+    public void setUserDefTag(String userDefTag) {
+        this.userDefTag = userDefTag;
     }
 
 }

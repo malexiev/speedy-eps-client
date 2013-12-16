@@ -25,8 +25,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ *
+ * <p>Instances of this class are returned as a result of Speedy web service queries for common objects
  * 
- * 
+ * @since 1.0.0
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "resultCommonObject", propOrder = {
@@ -37,97 +39,88 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ResultCommonObject {
 
+    /**
+     * Common object address
+     */
     protected String address;
+    
+    /**
+     * Common object ID
+     */
     protected long id;
+    
+    /**
+     * Common object name
+     */
     protected String name;
+    
+    /**
+     * Common object type
+     */
     protected String type;
 
     /**
-     * Gets the value of the address property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the common object address
+     * @return Common object address
      */
     public String getAddress() {
         return address;
     }
 
     /**
-     * Sets the value of the address property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the common object address
+     * @param address Common object address
      */
-    public void setAddress(String value) {
-        this.address = value;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     /**
-     * Gets the value of the id property.
-     * 
+     * Gets the common object id
+     * @return Common object id
      */
     public long getId() {
         return id;
     }
 
     /**
-     * Sets the value of the id property.
-     * 
+     * Sets the common object id
+     * @param id Common object id
      */
-    public void setId(long value) {
-        this.id = value;
+    public void setId(long id) {
+        this.id = id;
     }
 
     /**
-     * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the common object name
+     * @return Common object name
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the common object name
+     * @param name Common object name
      */
-    public void setName(String value) {
-        this.name = value;
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the common object type
+     * @return Common object type
      */
     public String getType() {
         return type;
     }
 
     /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the common object type
+     * @param type Common object type
      */
-    public void setType(String value) {
-        this.type = value;
+    public void setType(String type) {
+        this.type = type;
     }
 
 }

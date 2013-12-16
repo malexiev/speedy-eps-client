@@ -30,6 +30,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Instances of this class are returned as a result of Speedy address search web service methods
+ * 
+ * @since 1.0.0
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -45,165 +48,174 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ResultAddressSearch {
 
+	/**
+     * Specifies if the address is actual now
+     */
     protected boolean actual;
+    
+    /**
+     * Internal/debug info
+     */
     protected int additionalAddressProcessing;
+    
+    /**
+     * GIS coordinates type
+     */
     protected int coordType;
+    
+    /**
+     * GIS coordinates - X
+     */
     protected double coordX;
+    
+    /**
+     * GIS coordinates - Y
+     */
     protected double coordY;
+    
+    /**
+     * Distance to site's center in kilometers (straight line)
+     */
     protected Double distanceToSiteCenter;
+    
+    /**
+     * Microregion ID
+     */
     protected Long microregionId;
+    
+    /**
+     * Text description of the address found
+     */
     protected String text;
 
     /**
-     * Gets the value of the actual property.
-     * 
+     * Gets the actual flag value
+     * Specifies whether the address is actual now
+     * @return Actual flag value
      */
     public boolean isActual() {
         return actual;
     }
 
     /**
-     * Sets the value of the actual property.
-     * 
+     * Sets the actual flag value
+     * @param actual Actual flag value
      */
-    public void setActual(boolean value) {
-        this.actual = value;
+    public void setActual(boolean actual) {
+        this.actual = actual;
     }
 
     /**
-     * Gets the value of the additionalAddressProcessing property.
-     * 
+     * Gets the additional address processing code.
+     * Internal/debug info
+     * @return Additional address processing code
      */
     public int getAdditionalAddressProcessing() {
         return additionalAddressProcessing;
     }
 
     /**
-     * Sets the value of the additionalAddressProcessing property.
-     * 
+     * Sets the additional address processing code
+     * @param additionalAddressProcessing Additional address processing code
      */
-    public void setAdditionalAddressProcessing(int value) {
-        this.additionalAddressProcessing = value;
+    public void setAdditionalAddressProcessing(int additionalAddressProcessing) {
+        this.additionalAddressProcessing = additionalAddressProcessing;
     }
 
     /**
-     * Gets the value of the coordType property.
-     * 
+     * Gets the GIS coordinates type
+     * @return GIS coodrdinates type
      */
     public int getCoordType() {
         return coordType;
     }
 
     /**
-     * Sets the value of the coordType property.
-     * 
+     * Sets the GIS coordinates type
+     * @param coordType GIS coodrdinates type
      */
-    public void setCoordType(int value) {
-        this.coordType = value;
+    public void setCoordType(int coordType) {
+        this.coordType = coordType;
     }
 
     /**
-     * Gets the value of the coordX property.
-     * 
+     * Gets the GIS X coordinate
+     * @return GIS X coordinate
      */
     public double getCoordX() {
         return coordX;
     }
 
     /**
-     * Sets the value of the coordX property.
-     * 
+     * Sets the GIS X coordinate
+     * @param coordX GIS X coordinate
      */
-    public void setCoordX(double value) {
-        this.coordX = value;
+    public void setCoordX(double coordX) {
+        this.coordX = coordX;
     }
 
     /**
-     * Gets the value of the coordY property.
-     * 
+     * Gets the GIS Y coordinate
+     * @return GIS Y coordinate
      */
     public double getCoordY() {
         return coordY;
     }
 
     /**
-     * Sets the value of the coordY property.
-     * 
+     * Sets the GIS Y coordinate
+     * @param coordY GIS Y coordinate
      */
-    public void setCoordY(double value) {
-        this.coordY = value;
+    public void setCoordY(double coordY) {
+        this.coordY = coordY;
     }
 
     /**
-     * Gets the value of the distanceToSiteCenter property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Double }
-     *     
+     * Gets the distance to site center in km
+     * @return Distance to site center in km
      */
     public Double getDistanceToSiteCenter() {
         return distanceToSiteCenter;
     }
 
     /**
-     * Sets the value of the distanceToSiteCenter property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Double }
-     *     
+     * Sets the distance to site center in km
+     * @param distanceToSiteCenter Distance to site center in km
      */
-    public void setDistanceToSiteCenter(Double value) {
-        this.distanceToSiteCenter = value;
+    public void setDistanceToSiteCenter(Double distanceToSiteCenter) {
+        this.distanceToSiteCenter = distanceToSiteCenter;
     }
 
     /**
-     * Gets the value of the microregionId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
+     * Gets the microregion id
+     * @return Microregion id
      */
     public Long getMicroregionId() {
         return microregionId;
     }
 
     /**
-     * Sets the value of the microregionId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
+     * Sets the microregion id
+     * @param microregionId Microregion id
      */
-    public void setMicroregionId(Long value) {
-        this.microregionId = value;
+    public void setMicroregionId(Long microregionId) {
+        this.microregionId = microregionId;
     }
 
     /**
-     * Gets the value of the text property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the text description of the address found
+     * @return Text description of the address found
      */
     public String getText() {
         return text;
     }
 
     /**
-     * Sets the value of the text property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the text description of the address found
+     * @param text Text description of the address found
      */
-    public void setText(String value) {
-        this.text = value;
+    public void setText(String text) {
+        this.text = text;
     }
 
 }

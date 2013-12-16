@@ -91,7 +91,10 @@ public class ParamPDF {
     protected int type;
 
     /**
-     * Gets the value of the additionalBarcodes property.
+     * Gets the additionalBarcodes.
+     * Only allowed for type 25. A list of additional (second) barcodes to be printed on the bottom of each label in the PDF document.
+     * Note that the additional barcodes take some extra space so the label height for type 25 is greater than the label height for type 20.
+     * Each element in the list corresponds to the element of 'ids' with the same index (position).
      * 
      * <p>
      * This accessor method returns a reference to the live list,
@@ -120,31 +123,28 @@ public class ParamPDF {
     }
 
     /**
-     * Gets the value of the additionalBarcodesFormat property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the additional barcodes format
+     * @return Additional barcodes format
      */
     public String getAdditionalBarcodesFormat() {
         return additionalBarcodesFormat;
     }
 
     /**
-     * Sets the value of the additionalBarcodesFormat property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the additional barcodes format.
+     * Only allowed for type 25.
+     * Specifies the barcode format to be used for additionalBarcodes.
+     * Accepts the following values: 'CODE128', 'EAN13', 'EAN8', 'UPC-A', 'UPC-E'
+     * @param additionalBarcodesFormat Additional barcodes format
      */
-    public void setAdditionalBarcodesFormat(String value) {
-        this.additionalBarcodesFormat = value;
+    public void setAdditionalBarcodesFormat(String additionalBarcodesFormat) {
+        this.additionalBarcodesFormat = additionalBarcodesFormat;
     }
 
     /**
-     * Gets the value of the ids property.
+     * Gets the list of IDs.
+     * For type 10 only the BOL number is needed.
+     * For types 20 and 25 one or more parcel IDs are expected (parcels must be of a single BOL).
      * 
      * <p>
      * This accessor method returns a reference to the live list,
@@ -173,59 +173,56 @@ public class ParamPDF {
     }
 
     /**
-     * Gets the value of the includeAutoPrintJS property.
-     * 
+     * Gets the includeAutoPrintJS flag value - indicates if embedded 
+     * JavaScript code for direct printing to be generated (works for Adobe Acrobat Reader only).
+     * @return Include auto-print JS flag value 
      */
     public boolean isIncludeAutoPrintJS() {
         return includeAutoPrintJS;
     }
 
     /**
-     * Sets the value of the includeAutoPrintJS property.
-     * 
+     * Sets the includeAutoPrintJS flag value.
+     * Specifies if embedded JavaScript code for direct printing to be generated (works for Adobe Acrobat Reader only).
+     * @param includeAutoPrintJS Include auto-print JS flag value 
      */
     public void setIncludeAutoPrintJS(boolean value) {
         this.includeAutoPrintJS = value;
     }
 
     /**
-     * Gets the value of the printerName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the printer name 
+     * Only applicable if includeAutoPrintJS = true. 
+     * @return Printer name
      */
     public String getPrinterName() {
         return printerName;
     }
 
     /**
-     * Sets the value of the printerName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the printer name
+     * If empty, the default printer is to be used.
+     * Only applicable if includeAutoPrintJS = true. 
+     * @param printerName Printer name to be used for printing
      */
-    public void setPrinterName(String value) {
-        this.printerName = value;
+    public void setPrinterName(String printerName) {
+        this.printerName = printerName;
     }
 
     /**
-     * Gets the value of the type property.
-     * 
+     * Gets the document type (10 - BOL; 20 - labels; 25 - labels with additional barcode)
+     * @return Document type
      */
     public int getType() {
         return type;
     }
 
     /**
-     * Sets the value of the type property.
-     * 
+     * Sets the document type (10 - BOL; 20 - labels; 25 - labels with additional barcode)
+     * @param type Document type
      */
-    public void setType(int value) {
-        this.type = value;
+    public void setType(int type) {
+        this.type = type;
     }
 
 }

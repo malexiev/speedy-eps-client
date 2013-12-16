@@ -27,6 +27,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Instances of this class are returned as a result of create order web service calls
+ * 
+ * @since 1.0.0
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -36,28 +39,35 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ResultOrderPickingInfo {
 
+	/**
+     * BOL number
+     */
     protected long billOfLading;
+    
+    /**
+     * A list of validation errors (empty list means there is no problem with this BOL)
+     */
     @XmlElement(nillable = true)
     protected List<String> errorDescriptions;
 
     /**
-     * Gets the value of the billOfLading property.
-     * 
+     * Gets the BOL number
+     * @return BOL number
      */
     public long getBillOfLading() {
         return billOfLading;
     }
 
     /**
-     * Sets the value of the billOfLading property.
-     * 
+     * Sets the BOL number
+     * @param billOfLading BOL number
      */
-    public void setBillOfLading(long value) {
-        this.billOfLading = value;
+    public void setBillOfLading(long billOfLading) {
+        this.billOfLading = billOfLading;
     }
 
     /**
-     * Gets the value of the errorDescriptions property.
+     * Gets the list of validation errors (empty list means there is no problem with this BOL)
      * 
      * <p>
      * This accessor method returns a reference to the live list,

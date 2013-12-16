@@ -24,7 +24,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Instances of this class are returned as a result of create picking Speedy web service calls
  * 
+ * @since 1.0.0
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "resultParcelInfo", propOrder = {
@@ -33,39 +35,46 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ResultParcelInfo {
 
+	/**
+     * Parcel ID. First parcel's ID is always the same as the BOL number.
+     */
     protected long parcelId;
+    
+    /**
+     * Parcel's sequence number (1, 2, 3, ...)
+     */
     protected int seqNo;
 
     /**
-     * Gets the value of the parcelId property.
-     * 
+     * Gets the parcel id
+     * @return Parcel id
      */
     public long getParcelId() {
         return parcelId;
     }
 
     /**
-     * Sets the value of the parcelId property.
-     * 
+     * Sets the parcel id
+     * @param parcelId Parcel id
      */
-    public void setParcelId(long value) {
-        this.parcelId = value;
+    public void setParcelId(long parcelId) {
+        this.parcelId = parcelId;
     }
 
     /**
-     * Gets the value of the seqNo property.
-     * 
+     * Gets the parcel's sequence number (1, 2, 3, ...)
+     * @return Parcel's sequence number
      */
     public int getSeqNo() {
         return seqNo;
     }
 
     /**
-     * Sets the value of the seqNo property.
-     * 
+     * Sets the parcel's sequence number
+     * @param seqNo Parcel's sequence number
      */
-    public void setSeqNo(int value) {
-        this.seqNo = value;
+    public void setSeqNo(int seqNo) {
+        this.seqNo = seqNo;
     }
 
 }

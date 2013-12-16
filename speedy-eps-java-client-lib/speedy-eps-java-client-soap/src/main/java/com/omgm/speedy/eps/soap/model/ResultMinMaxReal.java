@@ -24,7 +24,10 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Instances of this class are returned as a result of services for allowed float ranges of certain parameters
+ * (f.e. getWightInterval)
  * 
+ * @since 1.0.0
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "resultMinMaxReal", propOrder = {
@@ -33,39 +36,46 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ResultMinMaxReal {
 
+	/**
+     * Max value
+     */
     protected double maxValue;
+    
+    /**
+     * Min value
+     */
     protected double minValue;
 
     /**
-     * Gets the value of the maxValue property.
-     * 
+     * Gets the max value
+     * @return Max value
      */
     public double getMaxValue() {
         return maxValue;
     }
 
     /**
-     * Sets the value of the maxValue property.
-     * 
+     * Sets the max value
+     * @param maxValue Max value
      */
-    public void setMaxValue(double value) {
-        this.maxValue = value;
+    public void setMaxValue(double maxValue) {
+        this.maxValue = maxValue;
     }
 
     /**
-     * Gets the value of the minValue property.
-     * 
+     * Gets the min value
+     * @return Min value
      */
     public double getMinValue() {
         return minValue;
     }
 
     /**
-     * Sets the value of the minValue property.
-     * 
+     * Sets the min value
+     * @param minValue Min value
      */
-    public void setMinValue(double value) {
-        this.minValue = value;
+    public void setMinValue(double minValue) {
+        this.minValue = minValue;
     }
 
 }

@@ -25,7 +25,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Instances of this class are returned as a result of calculation Speedy web service requestst for multiple services
  * 
+ * @since 1.0.0
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "resultCalculationMS", propOrder = {
@@ -35,72 +37,67 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ResultCalculationMS {
 
+	/**
+     * Validation error during calculation attempt
+     */
     protected String errorDescription;
+    
+    /**
+     * The result of calculation (in case no error has occurred)
+     */
     protected ResultCalculation resultInfo;
+    
+    /**
+     * Courier service type id
+     */
     protected long serviceTypeId;
 
     /**
-     * Gets the value of the errorDescription property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the validation error during calculation attempt
+     * @return Validation error during calculation attempt
      */
     public String getErrorDescription() {
         return errorDescription;
     }
 
     /**
-     * Sets the value of the errorDescription property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the validation error during calculation attempt
+     * @param errorDescription Validation error during calculation attempt
      */
-    public void setErrorDescription(String value) {
-        this.errorDescription = value;
+    public void setErrorDescription(String errorDescription) {
+        this.errorDescription = errorDescription;
     }
 
     /**
-     * Gets the value of the resultInfo property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ResultCalculation }
-     *     
+     * Gets the result of calculation (in case no error has occurred)
+     * @return The result of calculation
      */
     public ResultCalculation getResultInfo() {
         return resultInfo;
     }
 
     /**
-     * Sets the value of the resultInfo property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ResultCalculation }
-     *     
+     * Sets the result of calculation (in case no error has occurred)
+     * @param resultInfo The result of calculation
      */
-    public void setResultInfo(ResultCalculation value) {
-        this.resultInfo = value;
+    public void setResultInfo(ResultCalculation resultInfo) {
+        this.resultInfo = resultInfo;
     }
 
     /**
-     * Gets the value of the serviceTypeId property.
-     * 
+     * Gets the courier service type id
+     * @return Courier service type id
      */
     public long getServiceTypeId() {
         return serviceTypeId;
     }
 
     /**
-     * Sets the value of the serviceTypeId property.
-     * 
+     * Sets the courier service type id
+     * @param serviceTypeId Courier service type id
      */
-    public void setServiceTypeId(long value) {
-        this.serviceTypeId = value;
+    public void setServiceTypeId(long serviceTypeId) {
+        this.serviceTypeId = serviceTypeId;
     }
 
 }

@@ -43,7 +43,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Instance of this class are returned as a results of calculation
  * 
+ * @since 1.0.0
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "resultAmounts", propOrder = {
@@ -71,362 +73,445 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ResultAmounts {
 
+    /**
+     * The "Cash on delivery" amount to be paid to the sender
+     */
     protected double codBase;
+    
+    /**
+     * The price of the "Cash on delivery" complementary service
+     */
     protected double codPremium;
+    
+    /**
+     * The PERCENTAGE of additional discount
+     */
     protected double discPcntAdditional;
+    
+    /**
+     * The PERCENTAGE of fixed discount
+     */
     protected double discPcntFixed;
+    
+    /**
+     * The PERCENTAGE of the "to be called" complementary service
+     */
     protected double discPcntToBeCalled;
+    
+    /**
+     * The PERCENTAGE of the "brought to office" complementary service
+     */
     protected double discPcntToOffice;
+    
+    /**
+     * (NEGATIVE value) Additional discount
+     */
     protected double discountAdditional;
+    
+    /**
+     * (NEGATIVE value) Fixed discount value
+     */
     protected double discountFixed;
+    
+    /**
+     * (NEGATIVE value) Discount for the "To be called" complementary service
+     */
     protected double discountToBeCalled;
+
+    /**
+     * (NEGATIVE value) Discount for shipments delivered to a Speedy office by the sender
+     */
     protected double discountToOffice;
+
+    /**
+     * The amount of the "Fixed time for delivery" complementary service
+     */
     protected double fixedTimeDelivery;
+    
+    /**
+     * Fuel surcharge
+     */
     protected double fuelSurcharge;
+    
+    /**
+     * The real value of the shipment
+     */
     protected double insuranceBase;
+    
+    /**
+     * The insurance premium (i.e. the price of the "Insurance" complementary service)
+     */
     protected double insurancePremium;
+    
+    /**
+     * Island surcharge (international shipments)
+     */
     protected double islandSurcharge;
+    
+    /**
+     * The net price (of the courier service only; w/o discounts, complementary services, VAT etc.)
+     */
     protected double net;
+    
+    /**
+     * Packings value
+     */
     protected double packings;
+    
+    /**
+     * The PERCENTAGE of fuel surcharge
+     */
     protected double pcntFuelSurcharge;
+    
+    /**
+     * The total amount
+     */
     protected double total;
+    
+    /**
+     * The amount of the "Additional charges for loading/unloading operations" complementary service
+     */
     protected double tro;
+    
+    /**
+     * VAT (Value added tax)
+     */
     protected double vat;
 
     /**
-     * Gets the value of the codBase property.
-     * 
+     * Gets the "Cash on delivery" amount to be paid to the sender
+     * @return The "Cash on delivery" amount to be paid to the sender
      */
     public double getCodBase() {
         return codBase;
     }
 
     /**
-     * Sets the value of the codBase property.
-     * 
+     * Sets the "Cash on delivery" amount to be paid to the sender
+     * @param codBase The "Cash on delivery" amount to be paid to the sender
      */
-    public void setCodBase(double value) {
-        this.codBase = value;
+    public void setCodBase(double codBase) {
+        this.codBase = codBase;
     }
 
     /**
-     * Gets the value of the codPremium property.
-     * 
+     * Gets the price of the "Cash on delivery" complementary service
+     * @return The price of the "Cash on delivery" complementary service
      */
     public double getCodPremium() {
         return codPremium;
     }
 
     /**
-     * Sets the value of the codPremium property.
-     * 
+     * Sets the price of the "Cash on delivery" complementary service
+     * @param codPremium The price of the "Cash on delivery" complementary service
      */
-    public void setCodPremium(double value) {
-        this.codPremium = value;
+    public void setCodPremium(double codPremium) {
+        this.codPremium = codPremium;
     }
 
     /**
-     * Gets the value of the discPcntAdditional property.
-     * 
+     * Gets The PERCENTAGE of additional discount
+     * @return The PERCENTAGE of additional discount
      */
     public double getDiscPcntAdditional() {
         return discPcntAdditional;
     }
 
     /**
-     * Sets the value of the discPcntAdditional property.
-     * 
+     * Sets the PERCENTAGE of additional discount
+     * @param discPcntAdditional The PERCENTAGE of additional discount
      */
-    public void setDiscPcntAdditional(double value) {
-        this.discPcntAdditional = value;
+    public void setDiscPcntAdditional(double discPcntAdditional) {
+        this.discPcntAdditional = discPcntAdditional;
     }
 
     /**
-     * Gets the value of the discPcntFixed property.
-     * 
+     * Gets the PERCENTAGE of fixed discount
+     * @return The PERCENTAGE of fixed discount
      */
     public double getDiscPcntFixed() {
         return discPcntFixed;
     }
 
     /**
-     * Sets the value of the discPcntFixed property.
-     * 
+     * Sets the PERCENTAGE of fixed discount
+     * @param discPcntFixed The PERCENTAGE of fixed discount
      */
-    public void setDiscPcntFixed(double value) {
-        this.discPcntFixed = value;
+    public void setDiscPcntFixed(double discPcntFixed) {
+        this.discPcntFixed = discPcntFixed;
     }
 
     /**
-     * Gets the value of the discPcntToBeCalled property.
-     * 
+     * Gets the PERCENTAGE of the "to be called" complementary service
+     * @return The PERCENTAGE of the "to be called" complementary service
      */
     public double getDiscPcntToBeCalled() {
         return discPcntToBeCalled;
     }
 
     /**
-     * Sets the value of the discPcntToBeCalled property.
-     * 
+     * Sets the PERCENTAGE of the "to be called" complementary service
+     * @param discPcntToBeCalled The PERCENTAGE of the "to be called" complementary service
      */
-    public void setDiscPcntToBeCalled(double value) {
-        this.discPcntToBeCalled = value;
+    public void setDiscPcntToBeCalled(double discPcntToBeCalled) {
+        this.discPcntToBeCalled = discPcntToBeCalled;
     }
 
     /**
-     * Gets the value of the discPcntToOffice property.
-     * 
+     * Gets the PERCENTAGE of the "brought to office" complementary service
+     * @return The PERCENTAGE of the "brought to office" complementary service
      */
     public double getDiscPcntToOffice() {
         return discPcntToOffice;
     }
 
     /**
-     * Sets the value of the discPcntToOffice property.
-     * 
+     * Sets the PERCENTAGE of the "brought to office" complementary service
+     * @param discPcntToOffice The PERCENTAGE of the "brought to office" complementary service
      */
-    public void setDiscPcntToOffice(double value) {
-        this.discPcntToOffice = value;
+    public void setDiscPcntToOffice(double discPcntToOffice) {
+        this.discPcntToOffice = discPcntToOffice;
     }
 
     /**
-     * Gets the value of the discountAdditional property.
-     * 
+     * Gets the additional discount (NEGATIVE value) 
+     * @return Additional discount (NEGATIVE value) 
      */
     public double getDiscountAdditional() {
         return discountAdditional;
     }
 
     /**
-     * Sets the value of the discountAdditional property.
-     * 
+     * Sets the additional discount (NEGATIVE value) 
+     * @param discountAdditional Additional discount (NEGATIVE value) 
      */
-    public void setDiscountAdditional(double value) {
-        this.discountAdditional = value;
+    public void setDiscountAdditional(double discountAdditional) {
+        this.discountAdditional = discountAdditional;
     }
 
     /**
-     * Gets the value of the discountFixed property.
-     * 
+     * Gets the fixed discount value (NEGATIVE value)
+     * @return Fixed discount value (NEGATIVE value)
      */
     public double getDiscountFixed() {
         return discountFixed;
     }
 
     /**
-     * Sets the value of the discountFixed property.
-     * 
+     * Sets the fixed discount value (NEGATIVE value)
+     * @param discountFixed Fixed discount value (NEGATIVE value)
      */
-    public void setDiscountFixed(double value) {
-        this.discountFixed = value;
+    public void setDiscountFixed(double discountFixed) {
+        this.discountFixed = discountFixed;
     }
 
     /**
-     * Gets the value of the discountToBeCalled property.
-     * 
+     * Gets discount for the "To be called" complementary service (NEGATIVE value)
+     * @return Discount for the "To be called" complementary service (NEGATIVE value)
      */
     public double getDiscountToBeCalled() {
         return discountToBeCalled;
     }
 
     /**
-     * Sets the value of the discountToBeCalled property.
-     * 
+     * Sets the discount for the "To be called" complementary service (NEGATIVE value)
+     * @param discountToBeCalled Discount for the "To be called" complementary service (NEGATIVE value)
      */
-    public void setDiscountToBeCalled(double value) {
-        this.discountToBeCalled = value;
+    public void setDiscountToBeCalled(double discountToBeCalled) {
+        this.discountToBeCalled = discountToBeCalled;
     }
 
     /**
-     * Gets the value of the discountToOffice property.
-     * 
+     * Gets discount for shipments delivered to a Speedy office by the sender (NEGATIVE value)
+     * @return Discount for shipments delivered to a Speedy office by the sender (NEGATIVE value)
      */
     public double getDiscountToOffice() {
         return discountToOffice;
     }
 
     /**
-     * Sets the value of the discountToOffice property.
-     * 
+     * Sets the discount for shipments delivered to a Speedy office by the sender (NEGATIVE value)
+     * @param discountToOffice Discount for shipments delivered to a Speedy office by the sender (NEGATIVE value)
      */
-    public void setDiscountToOffice(double value) {
-        this.discountToOffice = value;
+    public void setDiscountToOffice(double discountToOffice) {
+        this.discountToOffice = discountToOffice;
     }
 
     /**
-     * Gets the value of the fixedTimeDelivery property.
-     * 
+     * Gets the amount of the "Fixed time for delivery" complementary service
+     * @return The amount of the "Fixed time for delivery" complementary service
      */
     public double getFixedTimeDelivery() {
         return fixedTimeDelivery;
     }
 
     /**
-     * Sets the value of the fixedTimeDelivery property.
-     * 
+     * Sets the amount of the "Fixed time for delivery" complementary service
+     * @param fixedTimeDelivery The amount of the "Fixed time for delivery" complementary service
      */
-    public void setFixedTimeDelivery(double value) {
-        this.fixedTimeDelivery = value;
+    public void setFixedTimeDelivery(double fixedTimeDelivery) {
+        this.fixedTimeDelivery = fixedTimeDelivery;
     }
 
     /**
-     * Gets the value of the fuelSurcharge property.
-     * 
+     * Gets fuel surcharge
+     * @return Fuel surcharge
      */
     public double getFuelSurcharge() {
         return fuelSurcharge;
     }
 
     /**
-     * Sets the value of the fuelSurcharge property.
-     * 
+     * Sets the fuel surcharge
+     * @param fuelSurcharge Fuel surcharge
      */
-    public void setFuelSurcharge(double value) {
-        this.fuelSurcharge = value;
+    public void setFuelSurcharge(double fuelSurcharge) {
+        this.fuelSurcharge = fuelSurcharge;
     }
 
     /**
-     * Gets the value of the insuranceBase property.
-     * 
+     * Gets the real value of the shipment
+     * @return The real value of the shipment
      */
     public double getInsuranceBase() {
         return insuranceBase;
     }
 
     /**
-     * Sets the value of the insuranceBase property.
-     * 
+     * Sets the real value of the shipment
+     * @param insuranceBase The real value of the shipment
      */
-    public void setInsuranceBase(double value) {
-        this.insuranceBase = value;
+    public void setInsuranceBase(double insuranceBase) {
+        this.insuranceBase = insuranceBase;
     }
 
     /**
-     * Gets the value of the insurancePremium property.
-     * 
+     * Gets the insurance premium (i.e. the price of the "Insurance" complementary service)
+     * @return The insurance premium (i.e. the price of the "Insurance" complementary service)
      */
     public double getInsurancePremium() {
         return insurancePremium;
     }
 
     /**
-     * Sets the value of the insurancePremium property.
-     * 
+     * Sets the insurance premium (i.e. the price of the "Insurance" complementary service)
+     * @param insurancePremium The insurance premium (i.e. the price of the "Insurance" complementary service)
      */
-    public void setInsurancePremium(double value) {
-        this.insurancePremium = value;
+    public void setInsurancePremium(double insurancePremium) {
+        this.insurancePremium = insurancePremium;
     }
 
     /**
-     * Gets the value of the islandSurcharge property.
-     * 
+     * Gets the island surcharge (international shipments)
+     * @return Island surcharge (international shipments)
      */
     public double getIslandSurcharge() {
         return islandSurcharge;
     }
 
     /**
-     * Sets the value of the islandSurcharge property.
-     * 
+     * Sets the Island surcharge (international shipments)
+     * @param islandSurcharge Island surcharge (international shipments)
      */
-    public void setIslandSurcharge(double value) {
-        this.islandSurcharge = value;
+    public void setIslandSurcharge(double islandSurcharge) {
+        this.islandSurcharge = islandSurcharge;
     }
 
     /**
-     * Gets the value of the net property.
-     * 
+     * Gets the net price (of the courier service only; w/o discounts, complementary services, VAT etc.)
+     * @return The net price (of the courier service only; w/o discounts, complementary services, VAT etc.)
      */
     public double getNet() {
         return net;
     }
 
     /**
-     * Sets the value of the net property.
-     * 
+     * Sets the net price (of the courier service only; w/o discounts, complementary services, VAT etc.)
+     * @param net The net price (of the courier service only; w/o discounts, complementary services, VAT etc.)
      */
-    public void setNet(double value) {
-        this.net = value;
+    public void setNet(double net) {
+        this.net = net;
     }
 
     /**
-     * Gets the value of the packings property.
-     * 
+     * Gets the packings value
+     * @return Packings value
      */
     public double getPackings() {
         return packings;
     }
 
     /**
-     * Sets the value of the packings property.
-     * 
+     * Sets the packings value
+     * @param packings Packings value
      */
-    public void setPackings(double value) {
-        this.packings = value;
+    public void setPackings(double packings) {
+        this.packings = packings;
     }
 
     /**
-     * Gets the value of the pcntFuelSurcharge property.
-     * 
+     * Gets the PERCENTAGE of fuel surcharge
+     * @return The PERCENTAGE of fuel surcharge
      */
     public double getPcntFuelSurcharge() {
         return pcntFuelSurcharge;
     }
 
     /**
-     * Sets the value of the pcntFuelSurcharge property.
-     * 
+     * Sets the PERCENTAGE of fuel surcharge
+     * @param pcntFuelSurcharge The PERCENTAGE of fuel surcharge
      */
-    public void setPcntFuelSurcharge(double value) {
-        this.pcntFuelSurcharge = value;
+    public void setPcntFuelSurcharge(double pcntFuelSurcharge) {
+        this.pcntFuelSurcharge = pcntFuelSurcharge;
     }
 
     /**
-     * Gets the value of the total property.
-     * 
+     * Gets the total amount
+     * @return The total amount
      */
     public double getTotal() {
         return total;
     }
 
     /**
-     * Sets the value of the total property.
-     * 
+     * Sets the total amount
+     * @param total The total amount
      */
-    public void setTotal(double value) {
-        this.total = value;
+    public void setTotal(double total) {
+        this.total = total;
     }
 
     /**
-     * Gets the value of the tro property.
-     * 
+     * Gets the amount of the "Additional charges for loading/unloading operations" complementary service
+     * @param The amount of the "Additional charges for loading/unloading operations" complementary service
      */
     public double getTro() {
         return tro;
     }
 
     /**
-     * Sets the value of the tro property.
-     * 
+     * Sets the amount of the "Additional charges for loading/unloading operations" complementary service
+     * @param tro The amount of the "Additional charges for loading/unloading operations" complementary service
      */
-    public void setTro(double value) {
-        this.tro = value;
+    public void setTro(double tro) {
+        this.tro = tro;
     }
 
     /**
-     * Gets the value of the vat property.
-     * 
+     * Gets the VAT (Value added tax)
+     * @return VAT (Value added tax)
      */
     public double getVat() {
         return vat;
     }
 
     /**
-     * Sets the value of the vat property.
-     * 
+     * Sets the VAT (Value added tax)
+     * @param vat VAT (Value added tax)
      */
-    public void setVat(double value) {
-        this.vat = value;
+    public void setVat(double vat) {
+        this.vat = vat;
     }
 
 }

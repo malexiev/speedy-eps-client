@@ -50,6 +50,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Insyances if this class are returned in response of Speedy web service method address calls
+ * 
+ * @since 1.0.0
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -85,697 +88,593 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ValueAddress {
 
+	 /**
+     * Address note
+     */
     protected String addressNote;
+    
+    /**
+     * Appartment No
+     */
     protected String apartmentNo;
+    
+    /**
+     * Block No
+     */
     protected String blockNo;
+    
+    /**
+     * Common object ID
+     */
     protected Long commonObjectId;
+    
+    /**
+     * Common object name
+     */
     protected String commonObjectName;
+    
+    /**
+     * GIS coordinates type
+     */
     protected Integer coordTypeId;
+    
+    /**
+     * GIS coordinate - X
+     */
     protected Double coordX;
+    
+    /**
+     * GIS coordinate - Y
+     */
     protected Double coordY;
+    
+    /**
+     * Country ID (ISO)
+     */
     protected Long countryId;
+    
+    /**
+     * Unified classifier id
+     */
     protected String eknm;
+    
+    /**
+     * Entrance No
+     */
     protected String entranceNo;
+    
+    /**
+     * Floor No
+     */
     protected String floorNo;
+    
+    /**
+     * Flag for full nomenclature
+     */
     protected boolean fullNomenclature;
+    
+    /**
+     * Municpality name
+     */
     protected String municipalityName;
+    
+    /**
+     * Post code
+     */
     protected String postCode;
+    
+    /**
+     * Quarter ID
+     */
     protected Long quarterId;
+    
+    /**
+     * Quarter name
+     */
     protected String quarterName;
+    
+    /**
+     * Quarter type
+     */
     protected String quarterType;
+    
+    /**
+     * Region name
+     */
     protected String regionName;
+    
+    /**
+     * Site details
+     */
     protected String siteDetails;
+    
+    /**
+     * Site ID
+     */
     protected Long siteId;
+    
+    /**
+     * Site name
+     */
     protected String siteName;
+    
+    /**
+     * Site type
+     */
     protected String siteType;
+    
+    /**
+     * State id
+     */
     protected String stateId;
+    
+    /**
+     * Street ID
+     */
     protected Long streetId;
+    
+    /**
+     * Street name
+     */
     protected String streetName;
+    
+    /**
+     * Street No
+     */
     protected String streetNo;
+    
+    /**
+     * Street type
+     */
     protected String streetType;
 
     /**
-     * Gets the value of the addressNote property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the address note
+     * @return Address note
      */
     public String getAddressNote() {
         return addressNote;
     }
 
     /**
-     * Sets the value of the addressNote property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the address note
+     * @param addressNote Address note
      */
-    public void setAddressNote(String value) {
-        this.addressNote = value;
+    public void setAddressNote(String addressNote) {
+        this.addressNote = addressNote;
     }
 
     /**
-     * Gets the value of the apartmentNo property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the apartment No
+     * @return Apartment No
      */
     public String getApartmentNo() {
         return apartmentNo;
     }
 
     /**
-     * Sets the value of the apartmentNo property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the apartment No
+     * @param apartmentNo Apartment No
      */
-    public void setApartmentNo(String value) {
-        this.apartmentNo = value;
+    public void setApartmentNo(String apartmentNo) {
+        this.apartmentNo = apartmentNo;
     }
 
     /**
-     * Gets the value of the blockNo property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the block No
+     * @return Block No
      */
     public String getBlockNo() {
         return blockNo;
     }
 
     /**
-     * Sets the value of the blockNo property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the block No
+     * @param blockNo Block No
      */
-    public void setBlockNo(String value) {
-        this.blockNo = value;
+    public void setBlockNo(String blockNo) {
+        this.blockNo = blockNo;
     }
 
     /**
-     * Gets the value of the commonObjectId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
+     * Gets the common object id
+     * @return Common object id
      */
     public Long getCommonObjectId() {
         return commonObjectId;
     }
 
     /**
-     * Sets the value of the commonObjectId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
+     * Sets the common object id
+     * @param commonObjectId Common object id
      */
-    public void setCommonObjectId(Long value) {
-        this.commonObjectId = value;
+    public void setCommonObjectId(Long commonObjectId) {
+        this.commonObjectId = commonObjectId;
     }
 
     /**
-     * Gets the value of the commonObjectName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the common object name
+     * @return Common object name
      */
     public String getCommonObjectName() {
         return commonObjectName;
     }
 
     /**
-     * Sets the value of the commonObjectName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the common object name
+     * @param commonObjectName Common object name
      */
-    public void setCommonObjectName(String value) {
-        this.commonObjectName = value;
+    public void setCommonObjectName(String commonObjectName) {
+        this.commonObjectName = commonObjectName;
     }
 
     /**
-     * Gets the value of the coordTypeId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
+     * Gets the GPS coordinate type id
+     * @return GPS coordinate type id
      */
     public Integer getCoordTypeId() {
         return coordTypeId;
     }
 
     /**
-     * Sets the value of the coordTypeId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
+     * Sets the GPS coordinate type id
+     * @param coordTypeId GPS coordinate type id
      */
-    public void setCoordTypeId(Integer value) {
-        this.coordTypeId = value;
+    public void setCoordTypeId(Integer coordTypeId) {
+        this.coordTypeId = coordTypeId;
     }
 
     /**
-     * Gets the value of the coordX property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Double }
-     *     
+     * Gets the GPS X coordinate
+     * @return GPS X coordinate
      */
     public Double getCoordX() {
         return coordX;
     }
 
     /**
-     * Sets the value of the coordX property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Double }
-     *     
+     * Sets the GPS X coordinate
+     * @param coordX GPS X coordinate
      */
-    public void setCoordX(Double value) {
-        this.coordX = value;
+    public void setCoordX(Double coordX) {
+        this.coordX = coordX;
     }
 
     /**
-     * Gets the value of the coordY property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Double }
-     *     
+     * Gets the GPS Y coordinate
+     * @return GPS Y coordinate
      */
     public Double getCoordY() {
         return coordY;
     }
 
     /**
-     * Sets the value of the coordY property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Double }
-     *     
+     * Sets the GPS Y coordinate
+     * @param coordY GPS Y coordinate
      */
-    public void setCoordY(Double value) {
-        this.coordY = value;
+    public void setCoordY(Double coordY) {
+        this.coordY = coordY;
     }
 
     /**
-     * Gets the value of the countryId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
+     * Gets the country id
+     * @return Country id
      */
     public Long getCountryId() {
         return countryId;
     }
 
     /**
-     * Sets the value of the countryId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
+     * Sets the country id
+     * @param countryId Country id
      */
-    public void setCountryId(Long value) {
-        this.countryId = value;
+    public void setCountryId(Long countryId) {
+        this.countryId = countryId;
     }
 
     /**
-     * Gets the value of the eknm property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the national unified classifier id
+     * @return National unified classifier id
      */
     public String getEknm() {
         return eknm;
     }
 
     /**
-     * Sets the value of the eknm property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the national unified classifier id
+     * @param eknm National unified classifier id
      */
-    public void setEknm(String value) {
-        this.eknm = value;
+    public void setEknm(String eknm) {
+        this.eknm = eknm;
     }
 
     /**
-     * Gets the value of the entranceNo property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the entrance No
+     * @return Entrance No
      */
     public String getEntranceNo() {
         return entranceNo;
     }
 
     /**
-     * Sets the value of the entranceNo property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the entrance No
+     * @param entranceNo Entrance No
      */
-    public void setEntranceNo(String value) {
-        this.entranceNo = value;
+    public void setEntranceNo(String entranceNo) {
+        this.entranceNo = entranceNo;
     }
 
     /**
-     * Gets the value of the floorNo property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the floor No
+     * @return Floor No
      */
     public String getFloorNo() {
         return floorNo;
     }
 
     /**
-     * Sets the value of the floorNo property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the floor No
+     * @param floorNo Floor No
      */
-    public void setFloorNo(String value) {
-        this.floorNo = value;
+    public void setFloorNo(String floorNo) {
+        this.floorNo = floorNo;
     }
 
     /**
-     * Gets the value of the fullNomenclature property.
-     * 
+     * Gets the full nomenclature flag value
+     * @return Full nomenclature flag value
      */
     public boolean isFullNomenclature() {
         return fullNomenclature;
     }
 
     /**
-     * Sets the value of the fullNomenclature property.
-     * 
+     * Sets the full nomenclature flag value
+     * @param fullNomenclature Full nomenclature flag value
      */
-    public void setFullNomenclature(boolean value) {
-        this.fullNomenclature = value;
+    public void setFullNomenclature(boolean fullNomenclature) {
+        this.fullNomenclature = fullNomenclature;
     }
 
     /**
-     * Gets the value of the municipalityName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the municipality name
+     * @return Municipality name
      */
     public String getMunicipalityName() {
         return municipalityName;
     }
 
     /**
-     * Sets the value of the municipalityName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the municipality name
+     * @param municipalityName Municipality name
      */
-    public void setMunicipalityName(String value) {
-        this.municipalityName = value;
+    public void setMunicipalityName(String municipalityName) {
+        this.municipalityName = municipalityName;
     }
 
     /**
-     * Gets the value of the postCode property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the post code
+     * @return Post code
      */
     public String getPostCode() {
         return postCode;
     }
 
     /**
-     * Sets the value of the postCode property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the post code
+     * @param postCode Post code
      */
-    public void setPostCode(String value) {
-        this.postCode = value;
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
     }
 
     /**
-     * Gets the value of the quarterId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
+     * Gets the quarter id
+     * @return Quarter id
      */
     public Long getQuarterId() {
         return quarterId;
     }
 
     /**
-     * Sets the value of the quarterId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
+     * Sets the quarter id
+     * @param quarterId Quarter id
      */
-    public void setQuarterId(Long value) {
-        this.quarterId = value;
+    public void setQuarterId(Long quarterId) {
+        this.quarterId = quarterId;
     }
 
     /**
-     * Gets the value of the quarterName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the quarter name
+     * @return Quarter name
      */
     public String getQuarterName() {
         return quarterName;
     }
 
     /**
-     * Sets the value of the quarterName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the quarter name
+     * @param quarterName Quarter name
      */
-    public void setQuarterName(String value) {
-        this.quarterName = value;
+    public void setQuarterName(String quarterName) {
+        this.quarterName = quarterName;
     }
 
     /**
-     * Gets the value of the quarterType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the quarter type
+     * @return Quarter type
      */
     public String getQuarterType() {
         return quarterType;
     }
 
     /**
-     * Sets the value of the quarterType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the quarter type
+     * @param quarterType Quarter type
      */
-    public void setQuarterType(String value) {
-        this.quarterType = value;
+    public void setQuarterType(String quarterType) {
+        this.quarterType = quarterType;
     }
 
     /**
-     * Gets the value of the regionName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the region name
+     * @return Region name
      */
     public String getRegionName() {
         return regionName;
     }
 
     /**
-     * Sets the value of the regionName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the region name
+     * @param regionName Region name
      */
-    public void setRegionName(String value) {
-        this.regionName = value;
+    public void setRegionName(String regionName) {
+        this.regionName = regionName;
     }
 
     /**
-     * Gets the value of the siteDetails property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the site details
+     * @return Site details
      */
     public String getSiteDetails() {
         return siteDetails;
     }
 
     /**
-     * Sets the value of the siteDetails property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the site details
+     * @param siteDetails Site details
      */
-    public void setSiteDetails(String value) {
-        this.siteDetails = value;
+    public void setSiteDetails(String siteDetails) {
+        this.siteDetails = siteDetails;
     }
 
     /**
-     * Gets the value of the siteId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
+     * Gets the site id
+     * @return Site id
      */
     public Long getSiteId() {
         return siteId;
     }
 
     /**
-     * Sets the value of the siteId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
+     * Sets the site id
+     * @param siteId Site id
      */
-    public void setSiteId(Long value) {
-        this.siteId = value;
+    public void setSiteId(Long siteId) {
+        this.siteId = siteId;
     }
 
     /**
-     * Gets the value of the siteName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the site name
+     * @return Site name
      */
     public String getSiteName() {
         return siteName;
     }
 
     /**
-     * Sets the value of the siteName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the site name
+     * @param siteName Site name
      */
-    public void setSiteName(String value) {
-        this.siteName = value;
+    public void setSiteName(String siteName) {
+        this.siteName = siteName;
     }
 
     /**
-     * Gets the value of the siteType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the site type
+     * @return Site type
      */
     public String getSiteType() {
         return siteType;
     }
 
     /**
-     * Sets the value of the siteType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the site type
+     * @param siteType Site type
      */
-    public void setSiteType(String value) {
-        this.siteType = value;
+    public void setSiteType(String siteType) {
+        this.siteType = siteType;
     }
 
     /**
-     * Gets the value of the stateId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the state id
+     * @return State id
      */
     public String getStateId() {
         return stateId;
     }
 
     /**
-     * Sets the value of the stateId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the state id
+     * @param stateId State id
      */
-    public void setStateId(String value) {
-        this.stateId = value;
+    public void setStateId(String stateId) {
+        this.stateId = stateId;
     }
 
     /**
-     * Gets the value of the streetId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
+     * Gets the street id
+     * @return Street id
      */
     public Long getStreetId() {
         return streetId;
     }
 
     /**
-     * Sets the value of the streetId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
+     * Sets the street id
+     * @param streetId Street id
      */
-    public void setStreetId(Long value) {
-        this.streetId = value;
+    public void setStreetId(Long streetId) {
+        this.streetId = streetId;
     }
 
     /**
-     * Gets the value of the streetName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the street name
+     * @return Street name
      */
     public String getStreetName() {
         return streetName;
     }
 
     /**
-     * Sets the value of the streetName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the street name
+     * @param streetName Street name
      */
-    public void setStreetName(String value) {
-        this.streetName = value;
+    public void setStreetName(String streetName) {
+        this.streetName = streetName;
     }
 
     /**
-     * Gets the value of the streetNo property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the street No
+     * @return Street No
      */
     public String getStreetNo() {
         return streetNo;
     }
 
     /**
-     * Sets the value of the streetNo property.
+     * Sets the street No
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param streetNo Street No
      */
-    public void setStreetNo(String value) {
-        this.streetNo = value;
+    public void setStreetNo(String streetNo) {
+        this.streetNo = streetNo;
     }
 
     /**
-     * Gets the value of the streetType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the street type
+     * @return Street type
      */
     public String getStreetType() {
         return streetType;
     }
 
     /**
-     * Sets the value of the streetType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the street type
+     * @param streetType Street type
      */
-    public void setStreetType(String value) {
-        this.streetType = value;
+    public void setStreetType(String streetType) {
+        this.streetType = streetType;
     }
 
 }

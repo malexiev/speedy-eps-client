@@ -31,6 +31,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Instances of this class are returned as a result of Speedy web service calls for services
+ * 
+ * @since 1.0.0
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -49,197 +52,172 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ResultCourierService {
 
+    /**
+     * Specifies if the complementary service "Return documents" is banned, allowed or required
+     */
     protected ComplementaryServiceAllowance allowanceBackDocumentsRequest;
+    
+    /**
+     * Specifies if the complementary service "Return receipt" is banned, allowed or required
+     */
     protected ComplementaryServiceAllowance allowanceBackReceiptRequest;
+    
+    /**
+     * Specifies if the complementary service "COD" is banned, allowed or required
+     */
     protected ComplementaryServiceAllowance allowanceCashOnDelivery;
+    
+    /**
+     * Specifies if the complementary service "Fixed time for delivery" is banned, allowed or required
+     */
     protected ComplementaryServiceAllowance allowanceFixedTimeDelivery;
+    
+    /**
+     * Specifies if the complementary service "Insurance" is banned, allowed or required
+     */
     protected ComplementaryServiceAllowance allowanceInsurance;
+    
+    /**
+     * Specifies if the complementary service "To be called" is banned, allowed or required
+     */
     protected ComplementaryServiceAllowance allowanceToBeCalled;
+    
+    /**
+     * Courier service name
+     */
     protected String name;
+    
+    /**
+     * Courier service type ID
+     */
     protected long typeId;
 
     /**
-     * Gets the value of the allowanceBackDocumentsRequest property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ComplementaryServiceAllowance }
-     *     
+     * Gets the complementary service "Return documents" allowance
+     * @return Complementary service "Return documents" allowance
      */
     public ComplementaryServiceAllowance getAllowanceBackDocumentsRequest() {
         return allowanceBackDocumentsRequest;
     }
 
     /**
-     * Sets the value of the allowanceBackDocumentsRequest property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ComplementaryServiceAllowance }
-     *     
+     * Sets the complementary service "Return documents" allowance
+     * @param allowanceBackDocumentsRequest Complementary service "Return documents" allowance
      */
-    public void setAllowanceBackDocumentsRequest(ComplementaryServiceAllowance value) {
-        this.allowanceBackDocumentsRequest = value;
+    public void setAllowanceBackDocumentsRequest(ComplementaryServiceAllowance allowanceBackDocumentsRequest) {
+        this.allowanceBackDocumentsRequest = allowanceBackDocumentsRequest;
     }
 
     /**
-     * Gets the value of the allowanceBackReceiptRequest property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ComplementaryServiceAllowance }
-     *     
+     * Gets the complementary service "Return receipt" allowance
+     * @return Complementary service "Return receipt" allowance
      */
     public ComplementaryServiceAllowance getAllowanceBackReceiptRequest() {
         return allowanceBackReceiptRequest;
     }
 
     /**
-     * Sets the value of the allowanceBackReceiptRequest property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ComplementaryServiceAllowance }
-     *     
+     * Sets the complementary service "Return receipt" allowance
+     * @param allowanceBackReceiptRequest Complementary service "Return receipt" allowance
      */
-    public void setAllowanceBackReceiptRequest(ComplementaryServiceAllowance value) {
-        this.allowanceBackReceiptRequest = value;
+    public void setAllowanceBackReceiptRequest(ComplementaryServiceAllowance allowanceBackReceiptRequest) {
+        this.allowanceBackReceiptRequest = allowanceBackReceiptRequest;
     }
 
     /**
-     * Gets the value of the allowanceCashOnDelivery property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ComplementaryServiceAllowance }
-     *     
+     * Gets the complementary service "COD" allowance
+     * @return Complementary service "COD" allowance
      */
     public ComplementaryServiceAllowance getAllowanceCashOnDelivery() {
         return allowanceCashOnDelivery;
     }
 
     /**
-     * Sets the value of the allowanceCashOnDelivery property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ComplementaryServiceAllowance }
-     *     
+     * Sets the complementary service "COD" allowance
+     * @param allowanceCashOnDelivery Complementary service "COD" allowance
      */
-    public void setAllowanceCashOnDelivery(ComplementaryServiceAllowance value) {
-        this.allowanceCashOnDelivery = value;
+    public void setAllowanceCashOnDelivery(ComplementaryServiceAllowance allowanceCashOnDelivery) {
+        this.allowanceCashOnDelivery = allowanceCashOnDelivery;
     }
 
     /**
-     * Gets the value of the allowanceFixedTimeDelivery property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ComplementaryServiceAllowance }
-     *     
+     * Gets the complementary service "Fixed time for delivery" allowance
+     * @return Complementary service "Fixed time for delivery" allowance
      */
     public ComplementaryServiceAllowance getAllowanceFixedTimeDelivery() {
         return allowanceFixedTimeDelivery;
     }
 
     /**
-     * Sets the value of the allowanceFixedTimeDelivery property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ComplementaryServiceAllowance }
-     *     
+     * Sets the complementary service "Fixed time for delivery" allowance
+     * @param allowanceFixedTimeDelivery Complementary service "Fixed time for delivery" allowance
      */
-    public void setAllowanceFixedTimeDelivery(ComplementaryServiceAllowance value) {
-        this.allowanceFixedTimeDelivery = value;
+    public void setAllowanceFixedTimeDelivery(ComplementaryServiceAllowance allowanceFixedTimeDelivery) {
+        this.allowanceFixedTimeDelivery = allowanceFixedTimeDelivery;
     }
 
     /**
-     * Gets the value of the allowanceInsurance property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ComplementaryServiceAllowance }
-     *     
+     * Gets the complementary service "Insurance" allowance
+     * @return Complementary service "Insurance" allowance
      */
     public ComplementaryServiceAllowance getAllowanceInsurance() {
         return allowanceInsurance;
     }
 
     /**
-     * Sets the value of the allowanceInsurance property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ComplementaryServiceAllowance }
-     *     
+     * Sets the complementary service "Insurance" allowance
+     * @param allowanceInsurance Complementary service "Insurance" allowance
      */
-    public void setAllowanceInsurance(ComplementaryServiceAllowance value) {
-        this.allowanceInsurance = value;
+    public void setAllowanceInsurance(ComplementaryServiceAllowance allowanceInsurance) {
+        this.allowanceInsurance = allowanceInsurance;
     }
 
     /**
-     * Gets the value of the allowanceToBeCalled property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ComplementaryServiceAllowance }
-     *     
+     * Gets the complementary service "To be called" allowance
+     * @return Complementary service "To be called" allowance
      */
     public ComplementaryServiceAllowance getAllowanceToBeCalled() {
         return allowanceToBeCalled;
     }
 
     /**
-     * Sets the value of the allowanceToBeCalled property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ComplementaryServiceAllowance }
-     *     
+     * Sets the complementary service "To be called" allowance
+     * @param allowanceToBeCalled Complementary service "To be called" allowance
      */
-    public void setAllowanceToBeCalled(ComplementaryServiceAllowance value) {
-        this.allowanceToBeCalled = value;
+    public void setAllowanceToBeCalled(ComplementaryServiceAllowance allowanceToBeCalled) {
+        this.allowanceToBeCalled = allowanceToBeCalled;
     }
 
     /**
-     * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the courier service name
+     * @return Courier service name
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the courier service name
+     * @param name Courier service name
      */
-    public void setName(String value) {
-        this.name = value;
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
-     * Gets the value of the typeId property.
-     * 
+     * Gets courier service type ID
+     * @return Courier service type ID
      */
     public long getTypeId() {
         return typeId;
     }
 
     /**
-     * Sets the value of the typeId property.
-     * 
+     * Sets the courier service type ID
+     * @param typeId Courier service type ID
      */
-    public void setTypeId(long value) {
-        this.typeId = value;
+    public void setTypeId(long typeId) {
+        this.typeId = typeId;
     }
 
 }

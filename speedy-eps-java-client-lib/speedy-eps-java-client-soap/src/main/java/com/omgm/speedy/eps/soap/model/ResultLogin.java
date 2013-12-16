@@ -24,6 +24,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Instances of this class are returned as a result of login Speedy web service method calls
+ * 
+ * @since 1.0.0
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -33,47 +36,46 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ResultLogin {
 
+	/**
+     * The logged client's ID (in Speedy's nomenclature).
+     */
     protected long clientId;
+    
+    /**
+     * The session ID to be used as a parameter in subsequent method calls.
+     */
     protected String sessionId;
 
     /**
-     * Gets the value of the clientId property.
-     * 
+     * Gets logged client's id (in Speedy's nomenclature)
+     * @return Logged client's id
      */
     public long getClientId() {
         return clientId;
     }
 
     /**
-     * Sets the value of the clientId property.
-     * 
+     * Sets the logged client's id (in Speedy's nomenclature)
+     * @param clientId Logged client's id
      */
-    public void setClientId(long value) {
-        this.clientId = value;
+    public void setClientId(long clientId) {
+        this.clientId = clientId;
     }
 
     /**
-     * Gets the value of the sessionId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the session id to be used as a parameter in subsequent method calls
+     * @return Session id to be used as a parameter in subsequent method calls
      */
     public String getSessionId() {
         return sessionId;
     }
 
     /**
-     * Sets the value of the sessionId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the session id to be used as a parameter in subsequent method calls
+     * @param sessionId Session id to be used as a parameter in subsequent method calls
      */
-    public void setSessionId(String value) {
-        this.sessionId = value;
+    public void setSessionId(String sessionId) {
+        this.sessionId = sessionId;
     }
 
 }

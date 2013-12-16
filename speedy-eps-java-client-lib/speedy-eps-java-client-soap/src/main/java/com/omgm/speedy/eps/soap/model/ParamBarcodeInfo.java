@@ -49,7 +49,7 @@ public class ParamBarcodeInfo {
     protected String barcodeValue;
 
     /**
-     * Gets the barcodeLabel
+     * Gets the barcode label
      * @return Barcode label
      */
     public String getBarcodeLabel() {
@@ -57,7 +57,8 @@ public class ParamBarcodeInfo {
     }
 
     /**
-     * Sets the barcodeLabel
+     * Sets the barcode label.
+     * For barcode formats other than 'CODE128' it must contain digits only
      * @param barcodeLabel Barcode label
      */
     public void setBarcodeLabel(String barcodeLabel) {
@@ -65,7 +66,7 @@ public class ParamBarcodeInfo {
     }
 
     /**
-     * Gets the barcodeValue
+     * Gets the barcode value
      * @return Barcode value
      */
     public String getBarcodeValue() {
@@ -73,7 +74,9 @@ public class ParamBarcodeInfo {
     }
 
     /**
-     * Sets the barcodeValue
+     * Sets the barcode value.
+     * It is printed just below the barcode image.
+     * For barcode formats other than 'CODE128' barcode label must be equal to barcode value
      * @param barcodeValue Barcode value
      */
     public void setBarcodeValue(String barcodeValue) {

@@ -649,6 +649,34 @@ public class EPSFacade {
 	/**
 	 * This method is used to update BOL.
 	 * Only allowed if BOL was created with pendingShipmentDescription = true.
+	 * <p>
+     * In some special cases the client might be unable to provide a complete description of their shipments 
+     * at the time of BOL creation. By setting pendingShipmentDescription flag to true users can create a 
+     * BOL which is only partially described. Only the most important data (regarding logistics) is required: 
+     * sender's data, receiver's site, courier service etc. 
+     * This information makes it possible for Speedy to deliver the shipment to its destination-office. 
+     * After the user provides the rest of the data about the shipment 
+     * (via the updateBillOfLading method), the shipment will become ready for delivery.
+     * <p>
+     * The fields which are not considered as 'required' at the creation stage still follow the standard 
+     * validation rules. By 'not required' we mean that their value can be modified later. 
+     * For example if the user wants to fill in the field 'contents' at a later stage, 
+     * he/she can set the initial value to 'STILL UNKNOWN', 'WILL BE SET LATER' or something like that.
+     * Only the following fields are required when creating a BOL:
+     * <ul> 
+     *   <li>takingDate</li>
+     *   <li>serviceTypeId</li>
+     *   <li>parcelsCount</li>
+     *   <li>weightDeclared</li>
+     *   <li>documents</li>
+     *   <li>deferredDeliveryWorkDays</li>
+     *   <li>sender</li>
+     *   <li>receiver(only siteId); if officeToBeCalledId is set, then siteId must be null/0</li>
+     * </ul>
+     * After the creation of the BOL these fields are considered immutable.
+     * The value of officeToBeCalledId cannot be changed during the update, except for the case when the old value was null/0 and the new value is of an office which is located in the same receiver site.
+     * The payerType must be 0 (sender) or 2 (third party).
+     * The result of createBillOfLading has zeroes in all amount fields. 
 	 * @param paramPicking Data for the shipment (BOL)
 	 * @throws ServerException Thrown in case communication with server has failed
 	 * @return ResultBOL
@@ -665,6 +693,18 @@ public class EPSFacade {
 	/**
 	 * This method is used to add parcel to an existing BOL
 	 * (only allowed if BOL was created with pendingParcelsDescription = true).
+     * <p>
+     * When BOL is created with pendingParcelsDescription set to true then users are allowed 
+     * to add more parcels to the BOL (via the addParcel method) until the BOL creation is finalized 
+     * (using the finalizeBillOfLadingCreation method).
+     * If BOL is partially open, the result of createBillOfLading will have zeroes in all amount fields. 
+     * This is because at that stage the price is not final yet. 
+     * The real (final) price will be returned when finalizeBillOfLadingCreation is called 
+     * (except for the special case when the BOL has also been created with pendingShipmentDescription = true 
+     * and it is still not updated via the updateBillOfLading method).
+     * When PDF for partial BOL is being created, some fields are left blank since the corresponding values 
+     * might be still unknown or not final (parcels count, weight, price).
+     * Partial Bills of Lading cannot be ordered until their creating is finalized. 
 	 * @param paramParcel Parcel data
 	 * @throws ServerException Thrown in case communication with server has failed
 	 * @return Signed 64-bit parcel's ID

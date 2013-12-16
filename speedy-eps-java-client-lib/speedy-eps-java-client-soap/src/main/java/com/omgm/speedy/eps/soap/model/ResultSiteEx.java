@@ -24,6 +24,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Instances of this class are returned as a result of sites speedy web service requests
+ * 
+ * @since 1.0.0
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -33,47 +36,46 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ResultSiteEx {
 
+	/**
+     * Specifies if there is an exact match
+     */
     protected boolean exactMatch;
+    
+    /**
+     * Site data
+     */
     protected ResultSite site;
 
     /**
-     * Gets the value of the exactMatch property.
-     * 
+     * Gets the exact match flag value
+     * @return Exact match flag value
      */
     public boolean isExactMatch() {
         return exactMatch;
     }
 
     /**
-     * Sets the value of the exactMatch property.
-     * 
+     * Sets the exact match flag value
+     * @param exactMatch Exact match flag value
      */
-    public void setExactMatch(boolean value) {
-        this.exactMatch = value;
+    public void setExactMatch(boolean exactMatch) {
+        this.exactMatch = exactMatch;
     }
 
     /**
-     * Gets the value of the site property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ResultSite }
-     *     
+     * Gets the site details
+     * @return Site details
      */
     public ResultSite getSite() {
         return site;
     }
 
     /**
-     * Sets the value of the site property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ResultSite }
-     *     
+     * Sets the site details
+     * @param site Site details
      */
-    public void setSite(ResultSite value) {
-        this.site = value;
+    public void setSite(ResultSite site) {
+        this.site = site;
     }
 
 }

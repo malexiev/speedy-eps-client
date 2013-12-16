@@ -29,6 +29,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Instances of this class are returned as a result of sites speedy web service requests
+ * 
+ * @since 1.0.0
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -43,172 +46,153 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ResultSite {
 
+    /**
+     * Site address nomenclature.
+     * Specifies if speedy have (or have not) address nomenclature (streets, quarters etc.) for this site
+     */
     protected AddrNomen addrNomen;
+    
+    /**
+     * Site ID
+     */
     protected long id;
+    
+    /**
+     * Site municipality name
+     */
     protected String municipality;
+    
+    /**
+     * Site name
+     */
     protected String name;
+    
+    /**
+     * Site post code
+     */
     protected String postCode;
+    
+    /**
+     * Site region name
+     */
     protected String region;
+    
+    /**
+     * Site type
+     */
     protected String type;
 
     /**
-     * Gets the value of the addrNomen property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link AddrNomen }
-     *     
+     * Gets the address nomenclature type.
+     * Specifies if speedy have (or have not) address nomenclature (streets, quarters etc.) for this site
+     * @return Address nomenclature type
      */
     public AddrNomen getAddrNomen() {
         return addrNomen;
     }
 
     /**
-     * Sets the value of the addrNomen property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link AddrNomen }
-     *     
+     * Sets the address nomenclature type
+     * @param addrNomen Address nomenclature type
      */
-    public void setAddrNomen(AddrNomen value) {
-        this.addrNomen = value;
+    public void setAddrNomen(AddrNomen addrNomen) {
+        this.addrNomen = addrNomen;
     }
 
     /**
-     * Gets the value of the id property.
-     * 
+     * Gets the site id
+     * @return Site id
      */
     public long getId() {
         return id;
     }
 
     /**
-     * Sets the value of the id property.
-     * 
+     * Sets the site id
+     * @param id Site id
      */
-    public void setId(long value) {
-        this.id = value;
+    public void setId(long id) {
+        this.id = id;
     }
 
     /**
-     * Gets the value of the municipality property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the municipality name
+     * @return Municipality name
      */
     public String getMunicipality() {
         return municipality;
     }
 
     /**
-     * Sets the value of the municipality property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the municipality name
+     * @param municipality Municipality name
      */
-    public void setMunicipality(String value) {
-        this.municipality = value;
+    public void setMunicipality(String municipality) {
+        this.municipality = municipality;
     }
 
     /**
-     * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the site name
+     * @return Site name
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the site name
+     * @param name Site name
      */
-    public void setName(String value) {
-        this.name = value;
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
-     * Gets the value of the postCode property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the site post code
+     * @return Site post code
      */
     public String getPostCode() {
         return postCode;
     }
 
     /**
-     * Sets the value of the postCode property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the site post code
+     * @param postCode Site post code
      */
-    public void setPostCode(String value) {
-        this.postCode = value;
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
     }
 
     /**
-     * Gets the value of the region property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the site region name
+     * @return Site region name
      */
     public String getRegion() {
         return region;
     }
 
     /**
-     * Sets the value of the region property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the site region name
+     * @param region Site region name
      */
-    public void setRegion(String value) {
-        this.region = value;
+    public void setRegion(String region) {
+        this.region = region;
     }
 
     /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the site type
+     * @return Site type
      */
     public String getType() {
         return type;
     }
 
     /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the site type
+     * @param type Site type
      */
-    public void setType(String value) {
-        this.type = value;
+    public void setType(String type) {
+        this.type = type;
     }
 
 }

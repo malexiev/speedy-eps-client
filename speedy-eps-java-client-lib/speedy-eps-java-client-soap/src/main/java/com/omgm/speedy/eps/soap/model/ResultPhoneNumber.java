@@ -24,6 +24,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Instances of this class are returned as part of client data in Speedy web service method calls
+ * 
+ * @since 1.0.0
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -33,55 +36,46 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ResultPhoneNumber {
 
+	/**
+     * An extension number
+     */
     protected String internal;
+    
+    /**
+     * Phone number (example: "0888123456", "+35932261020" etc.)
+     */
     protected String number;
 
     /**
-     * Gets the value of the internal property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the extension number
+     * @return Extension number
      */
     public String getInternal() {
         return internal;
     }
 
     /**
-     * Sets the value of the internal property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the extension number
+     * @param internal Extension number
      */
-    public void setInternal(String value) {
-        this.internal = value;
+    public void setInternal(String internal) {
+        this.internal = internal;
     }
 
     /**
-     * Gets the value of the number property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the phone number
+     * @return Phone number
      */
     public String getNumber() {
         return number;
     }
 
     /**
-     * Sets the value of the number property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the phone number
+     * @param number Phone number
      */
-    public void setNumber(String value) {
-        this.number = value;
+    public void setNumber(String number) {
+        this.number = number;
     }
 
 }

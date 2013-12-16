@@ -28,7 +28,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Instances of this class are returned as a result of Speedy caclulcation web service methods
  * 
+ * @since 1.0.0
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "resultCalculation", propOrder = {
@@ -39,99 +41,92 @@ import javax.xml.datatype.XMLGregorianCalendar;
 })
 public class ResultCalculation {
 
+	/**
+     * Shipment's price (structure with values that form the price)
+     */
     protected ResultAmounts amounts;
+    
+    /**
+     * Deadline for delivery
+     */
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar deadlineDelivery;
+    
+    /**
+     * Specifies if the discounts are potentially partial (the final discounts might be bigger depending on the other participants' contracts).
+     */
     protected boolean partialDiscount;
+    
+    /**
+     * The pick-up date
+     */
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar takingDate;
 
     /**
-     * Gets the value of the amounts property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ResultAmounts }
-     *     
+     * Gets the amounts calculated
+     * @return Amounts calculated
      */
     public ResultAmounts getAmounts() {
         return amounts;
     }
 
     /**
-     * Sets the value of the amounts property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ResultAmounts }
-     *     
+     * Sets the amounts calculated
+     * @param amounts Amounts calculated
      */
-    public void setAmounts(ResultAmounts value) {
-        this.amounts = value;
+    public void setAmounts(ResultAmounts amounts) {
+        this.amounts = amounts;
     }
 
     /**
-     * Gets the value of the deadlineDelivery property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     * Gets the deadline for delivery
+     * @return Deadline for delivery
      */
     public XMLGregorianCalendar getDeadlineDelivery() {
         return deadlineDelivery;
     }
 
     /**
-     * Sets the value of the deadlineDelivery property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     * Sets the deadline for delivery
+     * @param deadlineDelivery Deadline for delivery
      */
-    public void setDeadlineDelivery(XMLGregorianCalendar value) {
-        this.deadlineDelivery = value;
+    public void setDeadlineDelivery(XMLGregorianCalendar deadlineDelivery) {
+        this.deadlineDelivery = deadlineDelivery;
     }
 
     /**
-     * Gets the value of the partialDiscount property.
-     * 
+     * Gets the partial discount flag value.
+     * Specifies if the discounts are potentially partial 
+     * (the final discounts might be bigger depending on the other participants' contracts).
+     * @return Partial discount flag value
      */
     public boolean isPartialDiscount() {
         return partialDiscount;
     }
 
     /**
-     * Sets the value of the partialDiscount property.
-     * 
+     * Sets the partial discount flag value
+     * @param partialDiscount Partial discount flag value
      */
-    public void setPartialDiscount(boolean value) {
-        this.partialDiscount = value;
+    public void setPartialDiscount(boolean partialDiscount) {
+        this.partialDiscount = partialDiscount;
     }
 
     /**
-     * Gets the value of the takingDate property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     * Gets the pick-up date
+     * @return The pick-up date
      */
     public XMLGregorianCalendar getTakingDate() {
         return takingDate;
     }
 
     /**
-     * Sets the value of the takingDate property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     * Sets the pick-up date
+     * @param takingDate The pick-up date
      */
-    public void setTakingDate(XMLGregorianCalendar value) {
-        this.takingDate = value;
+    public void setTakingDate(XMLGregorianCalendar takingDate) {
+        this.takingDate = takingDate;
     }
 
 }

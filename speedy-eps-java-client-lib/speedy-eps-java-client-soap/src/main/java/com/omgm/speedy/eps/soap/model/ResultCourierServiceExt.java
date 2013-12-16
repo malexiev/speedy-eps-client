@@ -25,7 +25,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Instances of this class are returned as a result of Speedy web service calls for services allowed between sites
  * 
+ * @since 1.0.0
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "resultCourierServiceExt", propOrder = {
@@ -35,31 +37,26 @@ public class ResultCourierServiceExt
     extends ResultCourierService
 {
 
+	/**
+     * The deadline for shipment delivery
+     */
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar deliveryDeadline;
 
     /**
-     * Gets the value of the deliveryDeadline property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     * Gets the deadline for shipment delivery
+     * @return Deadline for shipment delivery
      */
     public XMLGregorianCalendar getDeliveryDeadline() {
         return deliveryDeadline;
     }
 
     /**
-     * Sets the value of the deliveryDeadline property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     * Sets the deadline for shipment delivery
+     * @param deliveryDeadline Deadline for shipment delivery
      */
-    public void setDeliveryDeadline(XMLGregorianCalendar value) {
-        this.deliveryDeadline = value;
+    public void setDeliveryDeadline(XMLGregorianCalendar deliveryDeadline) {
+        this.deliveryDeadline = deliveryDeadline;
     }
 
 }

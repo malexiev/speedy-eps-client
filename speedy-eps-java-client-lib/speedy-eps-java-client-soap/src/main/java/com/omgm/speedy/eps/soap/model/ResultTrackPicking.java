@@ -31,7 +31,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Instances of this class are returned as a result of track picking web service calls
  * 
+ * @since 1.0.0
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "resultTrackPicking", propOrder = {
@@ -45,173 +47,152 @@ import javax.xml.datatype.XMLGregorianCalendar;
 })
 public class ResultTrackPicking {
 
+	/**
+     * The name of the person who received the shipment
+     */
     protected String consignee;
+    
+    /**
+     * Date and time
+     */
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar moment;
+    
+    /**
+     * Operation code
+     */
     protected int operationCode;
+    
+    /**
+     * Additional note/comment
+     */
     protected String operationComment;
+    
+    /**
+     * Text description of the operation
+     */
     protected String operationDescription;
+    
+    /**
+     * Site name
+     */
     protected String siteName;
+    
+    /**
+     * Site type
+     */
     protected String siteType;
 
     /**
-     * Gets the value of the consignee property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the name of the person who received the shipment
+     * @return The name of the person who received the shipment
      */
     public String getConsignee() {
         return consignee;
     }
 
     /**
-     * Sets the value of the consignee property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the name of the person who received the shipment
+     * @param consignee The name of the person who received the shipment
      */
-    public void setConsignee(String value) {
-        this.consignee = value;
+    public void setConsignee(String consignee) {
+        this.consignee = consignee;
     }
 
     /**
-     * Gets the value of the moment property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     * Gets the datetime of event
+     * @return Datetime of event
      */
     public XMLGregorianCalendar getMoment() {
         return moment;
     }
 
     /**
-     * Sets the value of the moment property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     * Sets the datetime of event
+     * @param moment Datetime of event
      */
-    public void setMoment(XMLGregorianCalendar value) {
-        this.moment = value;
+    public void setMoment(XMLGregorianCalendar moment) {
+        this.moment = moment;
     }
 
     /**
-     * Gets the value of the operationCode property.
-     * 
+     * Gets the operation code
+     * @return Operation code
      */
     public int getOperationCode() {
         return operationCode;
     }
 
     /**
-     * Sets the value of the operationCode property.
-     * 
+     * Sets the operation code
+     * @param operationCode Operation code
      */
-    public void setOperationCode(int value) {
-        this.operationCode = value;
+    public void setOperationCode(int operationCode) {
+        this.operationCode = operationCode;
     }
 
     /**
-     * Gets the value of the operationComment property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the operation comment
+     * @return Operation comment
      */
     public String getOperationComment() {
         return operationComment;
     }
 
     /**
-     * Sets the value of the operationComment property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the operation comment
+     * @param operationComment Operation comment
      */
-    public void setOperationComment(String value) {
-        this.operationComment = value;
+    public void setOperationComment(String operationComment) {
+        this.operationComment = operationComment;
     }
 
     /**
-     * Gets the value of the operationDescription property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the operation description
+     * @return Operation description
      */
     public String getOperationDescription() {
         return operationDescription;
     }
 
     /**
-     * Sets the value of the operationDescription property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the operation description
+     * @param operationDescription Operation description
      */
-    public void setOperationDescription(String value) {
-        this.operationDescription = value;
+    public void setOperationDescription(String operationDescription) {
+        this.operationDescription = operationDescription;
     }
 
     /**
-     * Gets the value of the siteName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the site name
+     * @return Site name
      */
     public String getSiteName() {
         return siteName;
     }
 
     /**
-     * Sets the value of the siteName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the site name
+     * @param siteName Site name
      */
-    public void setSiteName(String value) {
-        this.siteName = value;
+    public void setSiteName(String siteName) {
+        this.siteName = siteName;
     }
 
     /**
-     * Gets the value of the siteType property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the site type
+     * @return Site type
      */
     public String getSiteType() {
         return siteType;
     }
 
     /**
-     * Sets the value of the siteType property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the site type
+     * @param siteType Site type
      */
-    public void setSiteType(String value) {
-        this.siteType = value;
+    public void setSiteType(String siteType) {
+        this.siteType = siteType;
     }
 
 }

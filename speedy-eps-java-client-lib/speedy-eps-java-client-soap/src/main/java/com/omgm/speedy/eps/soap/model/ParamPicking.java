@@ -366,380 +366,300 @@ public class ParamPicking {
      * willBringToOfficeId is automatically set with default value configured for caller user profile. 
      * The default willBringToOfficeId value could be managed using profile configuration page in client's Speedy web site. 
      * MANDATORY: NO
-     * @since 1.3
+     * @since 1.3.0
      */
     protected Long willBringToOfficeId;
 
     /**
-     * Gets the value of the amountCodBase property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Double }
-     *     
+     * Gets the Cash-on-Delivery (COD) amount
+     * @return Cash-on-Delivery (COD) amount
      */
     public Double getAmountCodBase() {
         return amountCodBase;
     }
 
     /**
-     * Sets the value of the amountCodBase property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Double }
-     *     
+     * Sets the Cash-on-Delivery (COD) amount.
+     * The value is limited depending on user's permissions and Speedy's current policy
+     * @param amountCodBase Cash-on-Delivery (COD) amount
      */
-    public void setAmountCodBase(Double value) {
-        this.amountCodBase = value;
+    public void setAmountCodBase(Double amountCodBase) {
+        this.amountCodBase = amountCodBase;
     }
 
     /**
-     * Gets the value of the amountInsuranceBase property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Double }
-     *     
+     * Gets shipment insurance value
+     * @return Shipment insurance value
      */
     public Double getAmountInsuranceBase() {
         return amountInsuranceBase;
     }
 
     /**
-     * Sets the value of the amountInsuranceBase property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Double }
-     *     
+     * Sets the shipment insurance value (if the shipment is insured).
+     * The value is limited depending on user's permissions and Speedy's current policy
+     * @param amountInsuranceBase Shipment insurance value
      */
-    public void setAmountInsuranceBase(Double value) {
-        this.amountInsuranceBase = value;
+    public void setAmountInsuranceBase(Double amountInsuranceBase) {
+        this.amountInsuranceBase = amountInsuranceBase;
     }
 
     /**
-     * Gets the value of the backDocumentsRequest property.
-     * 
+     * Gets the flag whether the shipment has a "request for return documents"
+     * @return The flag whether shipment has a "request for return documents"
      */
     public boolean isBackDocumentsRequest() {
         return backDocumentsRequest;
     }
 
     /**
-     * Sets the value of the backDocumentsRequest property.
-     * 
+     * Sets the flag whether the shipment has a "request for return documents"
+     * @param backDocumentsRequest The flag whether shipment has a "request for return documents"
      */
-    public void setBackDocumentsRequest(boolean value) {
-        this.backDocumentsRequest = value;
+    public void setBackDocumentsRequest(boolean backDocumentsRequest) {
+        this.backDocumentsRequest = backDocumentsRequest;
     }
 
     /**
-     * Gets the value of the backReceiptRequest property.
-     * 
+     * Gets the flag whether the shipment has a "request for return receipt"
+     * @return The flag whether the shipment has a "request for return receipt"
      */
     public boolean isBackReceiptRequest() {
         return backReceiptRequest;
     }
 
     /**
-     * Sets the value of the backReceiptRequest property.
-     * 
+     * Sets the flag whether the shipment has a "request for return receipt"
+     * @param backReceiptRequest The flag whether the shipment has a "request for return receipt"
      */
-    public void setBackReceiptRequest(boolean value) {
-        this.backReceiptRequest = value;
+    public void setBackReceiptRequest(boolean backReceiptRequest) {
+        this.backReceiptRequest = backReceiptRequest;
     }
 
     /**
-     * Gets the value of the billOfLading property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
+     * Gets BOL number
+     * @return BOL number
      */
     public Long getBillOfLading() {
         return billOfLading;
     }
 
     /**
-     * Sets the value of the billOfLading property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
+     * Sets BOL number
+     * @param billOfLading BOL number
      */
-    public void setBillOfLading(Long value) {
-        this.billOfLading = value;
+    public void setBillOfLading(Long billOfLading) {
+        this.billOfLading = billOfLading;
     }
 
     /**
-     * Gets the value of the clientSystemId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
+     * Gets client system id - An optional value used to identify user's client software.
+     * @return Client system id
      */
     public Long getClientSystemId() {
         return clientSystemId;
     }
 
     /**
-     * Sets the value of the clientSystemId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
+     * Sets client system id.
+     * An optional value used to identify user's client software.
+     * Please verify the allowed values with Speedy's IT Department.
+     * @param clientSystemId Client system id
      */
-    public void setClientSystemId(Long value) {
-        this.clientSystemId = value;
+    public void setClientSystemId(Long clientSystemId) {
+        this.clientSystemId = clientSystemId;
     }
 
     /**
-     * Gets the value of the contents property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the contents
+     * @return Contents
      */
     public String getContents() {
         return contents;
     }
 
     /**
-     * Sets the value of the contents property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the contents.
+     * Max text size - 50 symbols
+     * @param contents Contents
      */
-    public void setContents(String value) {
-        this.contents = value;
+    public void setContents(String contents) {
+        this.contents = contents;
     }
 
     /**
-     * Gets the value of the deferredDeliveryWorkDays property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
+     * Gets the deferred delivery work days.
+     * @return Deferred delivery work days
      */
     public Integer getDeferredDeliveryWorkDays() {
         return deferredDeliveryWorkDays;
     }
 
     /**
-     * Sets the value of the deferredDeliveryWorkDays property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
+     * Sets the deferred delivery work days.
+     * In some rare cases users might prefer the delivery to be deferred by a day or two.
+     * This parameter allows users to specify by how many (working) days they would like to postpone the shipment delivery.
+     * Max 2 days
+     * @param deferredDeliveryWorkDays Deferred delivery work days
      */
-    public void setDeferredDeliveryWorkDays(Integer value) {
-        this.deferredDeliveryWorkDays = value;
+    public void setDeferredDeliveryWorkDays(Integer deferredDeliveryWorkDays) {
+        this.deferredDeliveryWorkDays = deferredDeliveryWorkDays;
     }
 
     /**
-     * Gets the value of the discCalc property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link FixedDiscountCardId }
-     *     
+     * Gets card/coupon/voucher number for fixed discount
+     * @return Card/Coupon/Voucher number for fixed discount
      */
     public FixedDiscountCardId getDiscCalc() {
         return discCalc;
     }
 
     /**
-     * Sets the value of the discCalc property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link FixedDiscountCardId }
-     *     
+     * Sets the card/coupon/voucher number for fixed discount
+     * @param discCalc Card/Coupon/Voucher number for fixed discount
      */
-    public void setDiscCalc(FixedDiscountCardId value) {
-        this.discCalc = value;
+    public void setDiscCalc(FixedDiscountCardId discCalc) {
+        this.discCalc = discCalc;
     }
 
     /**
-     * Gets the value of the documents property.
-     * 
+     * Gets documents flag value - whether the shipment consists of documents
+     * @return documents flag
      */
     public boolean isDocuments() {
         return documents;
     }
 
     /**
-     * Sets the value of the documents property.
-     * 
+     * Sets the documents flag value.
+     * Specifies whether the shipment consists of documents
+     * @param documents documents flag value
      */
-    public void setDocuments(boolean value) {
-        this.documents = value;
+    public void setDocuments(boolean documents) {
+        this.documents = documents;
     }
 
     /**
-     * Gets the value of the fixedTimeDelivery property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Short }
-     *     
+     * Gets the fixed time for delivery ("HHmm" format, i.e., the number "1315" means "13:15", "830" means "8:30" etc.)
+     * @return Fixed time for delivery
      */
     public Short getFixedTimeDelivery() {
         return fixedTimeDelivery;
     }
 
     /**
-     * Sets the value of the fixedTimeDelivery property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Short }
-     *     
+     * Sets the fixed time for delivery ("HHmm" format, i.e., the number "1315" means "13:15", "830" means "8:30" etc.)
+     * Depending on the courier service, this property could be required, allowed or banned.
+     * @param fixedTimeDelivery Fixed time for delivery
      */
-    public void setFixedTimeDelivery(Short value) {
-        this.fixedTimeDelivery = value;
+    public void setFixedTimeDelivery(Short fixedTimeDelivery) {
+        this.fixedTimeDelivery = fixedTimeDelivery;
     }
 
     /**
-     * Gets the value of the fragile property.
-     * 
+     * Gets fragile flag value - whether the shipment is fragile
+     * @return Fragile flag value
      */
     public boolean isFragile() {
         return fragile;
     }
 
     /**
-     * Sets the value of the fragile property.
-     * 
+     * Sets fragile flag value.
+     * Specifies whether the shipment is fragile - necessary when the price of insurance is being calculated.
+     * @param fragile Fragile flag value
      */
-    public void setFragile(boolean value) {
-        this.fragile = value;
+    public void setFragile(boolean fragile) {
+        this.fragile = fragile;
     }
 
     /**
-     * Gets the value of the noteClient property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets client's note.
+     * @return Client's note
      */
     public String getNoteClient() {
         return noteClient;
     }
 
     /**
-     * Sets the value of the noteClient property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the client's note
+     * @param noteClient Client's note
      */
-    public void setNoteClient(String value) {
-        this.noteClient = value;
+    public void setNoteClient(String noteClient) {
+        this.noteClient = noteClient;
     }
 
     /**
-     * Gets the value of the officeToBeCalledId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
+     * Gets the id of an office, where receiver is about to take the shipment from
+     * @return Office-to-be-called id (office, where receiver is about to take the shipment)
      */
     public Long getOfficeToBeCalledId() {
         return officeToBeCalledId;
     }
 
     /**
-     * Sets the value of the officeToBeCalledId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
+     * Sets the id of an office, where receiver is about to take the shipment from
+     * (Office-to-be-called id)
+     * @param officeToBeCalledId Office-to-be-called id (office, where receiver is about to take the shipment)
      */
-    public void setOfficeToBeCalledId(Long value) {
-        this.officeToBeCalledId = value;
+    public void setOfficeToBeCalledId(Long officeToBeCalledId) {
+        this.officeToBeCalledId = officeToBeCalledId;
     }
 
     /**
-     * Gets the value of the packId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
+     * Gets packing ID (number)
+     * @return Packing ID (number)
      */
     public Long getPackId() {
         return packId;
     }
 
     /**
-     * Sets the value of the packId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
+     * Sets the packing ID (number)
+     * @param packId Packing ID (number)
      */
-    public void setPackId(Long value) {
-        this.packId = value;
+    public void setPackId(Long packId) {
+        this.packId = packId;
     }
 
     /**
-     * Gets the value of the packing property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the packing
+     * @return Packing
      */
     public String getPacking() {
         return packing;
     }
 
     /**
-     * Sets the value of the packing property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the packing
+     * @param packing Packing
      */
-    public void setPacking(String value) {
-        this.packing = value;
+    public void setPacking(String packing) {
+        this.packing = packing;
     }
 
     /**
-     * Gets the value of the palletized property.
-     * 
+     * Gets the palletized flag value
+     * @return palletized flag value
      */
     public boolean isPalletized() {
         return palletized;
     }
 
     /**
-     * Sets the value of the palletized property.
-     * 
+     * Sets the palletized flag value.
+     * Specifies whether the shipment is palletized
+     * @param palletized The palletized flag value
      */
-    public void setPalletized(boolean value) {
-        this.palletized = value;
+    public void setPalletized(boolean palletized) {
+        this.palletized = palletized;
     }
 
     /**
-     * Gets the value of the parcels property.
+     * Gets the list of parcels.
+     * Data for parcels with explicit/fixed IDs (from the second one onward)
+     * The list has maximum lenght 998.
+     * Total parcels are 999 including bill of lading as parcel with sequence number 1
      * 
      * <p>
      * This accessor method returns a reference to the live list,
@@ -768,467 +688,405 @@ public class ParamPicking {
     }
 
     /**
-     * Gets the value of the parcelsCount property.
-     * 
+     * Gets parcels count
+     * @return Parcels count
      */
     public int getParcelsCount() {
         return parcelsCount;
     }
 
     /**
-     * Sets the value of the parcelsCount property.
-     * 
+     * Sets the parcels count.
+     * Maximum value is 999.
+     * @param Parcels count
      */
     public void setParcelsCount(int value) {
         this.parcelsCount = value;
     }
 
     /**
-     * Gets the value of the payCodToThirdParty property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
+     * Gets the flag value whether the COD is to be paid to a third party
+     * @return The flag value whether the COD is to be paid to a third party
      */
     public Boolean isPayCodToThirdParty() {
         return payCodToThirdParty;
     }
 
     /**
-     * Sets the value of the payCodToThirdParty property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
+     * Sets the flag value whether the COD is to be paid to a third party.
+     * Allowed only if the shipment has payerType = 2 (third party).
+     * @param payCodToThirdParty The flag value whether the COD is to be paid to a third party
      */
-    public void setPayCodToThirdParty(Boolean value) {
-        this.payCodToThirdParty = value;
+    public void setPayCodToThirdParty(Boolean payCodToThirdParty) {
+        this.payCodToThirdParty = payCodToThirdParty;
     }
 
     /**
-     * Gets the value of the payerRefId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
+     * Gets payer id
+     * @return Payer id
      */
     public Long getPayerRefId() {
         return payerRefId;
     }
 
     /**
-     * Sets the value of the payerRefId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
+     * Sets the payer id.
+     * Must be set when payer is "third party". 
+     * @param payerRefId Payer id
      */
-    public void setPayerRefId(Long value) {
-        this.payerRefId = value;
+    public void setPayerRefId(Long payerRefId) {
+        this.payerRefId = payerRefId;
     }
 
     /**
-     * Gets the value of the payerRefInsuranceId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
+     * Gets insurance payer id
+     * @return Insurance payer id
      */
     public Long getPayerRefInsuranceId() {
         return payerRefInsuranceId;
     }
 
     /**
-     * Sets the value of the payerRefInsuranceId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
+     * Sets the insurance payer id.
+     * Must be set when shipment has insurance (i.e. amountInsuranceBase > 0) and it is payed by a "third party".
+     * @param payerRefInsuranceId Insurance payer id
      */
-    public void setPayerRefInsuranceId(Long value) {
-        this.payerRefInsuranceId = value;
+    public void setPayerRefInsuranceId(Long payerRefInsuranceId) {
+        this.payerRefInsuranceId = payerRefInsuranceId;
     }
 
     /**
-     * Gets the value of the payerType property.
-     * 
+     * Gets payer type.
+     * @return Payer type
      */
     public int getPayerType() {
         return payerType;
     }
 
     /**
-     * Sets the value of the payerType property.
-     * 
+     * Sets the payer type (0=sender, 1=receiver or 2=third party)
+     * @param payerType Payer type
      */
-    public void setPayerType(int value) {
-        this.payerType = value;
+    public void setPayerType(int payerType) {
+        this.payerType = payerType;
     }
 
     /**
-     * Gets the value of the payerTypeInsurance property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
+     * Gets insurance payer type (0=sender, 1=reciever or 2=third party)
+     * @return Insurance payer type
      */
     public Integer getPayerTypeInsurance() {
         return payerTypeInsurance;
     }
 
     /**
-     * Sets the value of the payerTypeInsurance property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
+     * Sets the insurance payer type (0=sender, 1=reciever or 2=third party)
+     * Must be set when shipment is insured (i.e. amountInsuranceBase > 0).
+     * @param payerTypeInsurance Insurance payer type
      */
-    public void setPayerTypeInsurance(Integer value) {
-        this.payerTypeInsurance = value;
+    public void setPayerTypeInsurance(Integer payerTypeInsurance) {
+        this.payerTypeInsurance = payerTypeInsurance;
     }
 
     /**
-     * Gets the value of the pendingParcelsDescription property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
+     * Gets pending parcels description flag value.
+     * @return Pending parcels description flag value
      */
     public Boolean isPendingParcelsDescription() {
         return pendingParcelsDescription;
     }
 
     /**
-     * Sets the value of the pendingParcelsDescription property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
+     * Sets the pending parcels description flag value.
+     * Specifies if the service/system should allow parcels to be added to the shipment at a later stage.
+     * <p>
+     * When BOL is created with this parameter set to true then users are allowed to add more parcels to the BOL 
+     * (via the addParcel method) until the BOL creation is finalized 
+     * (using the finalizeBillOfLadingCreation method).
+     * If BOL is partially open, the result of createBillOfLading will have zeroes in all amount fields. 
+     * This is because at that stage the price is not final yet. 
+     * The real (final) price will be returned when finalizeBillOfLadingCreation is called 
+     * (except for the special case when the BOL has also been created with pendingShipmentDescription = true 
+     * and it is still not updated via the updateBillOfLading method).
+     * When PDF for partial BOL is being created, some fields are left blank since the corresponding values 
+     * might be still unknown or not final (parcels count, weight, price).
+     * Partial Bills of Lading cannot be ordered until their creating is finalized. 
+     * @param pendingParcelsDescription Pending parcels description flag value.
      */
-    public void setPendingParcelsDescription(Boolean value) {
-        this.pendingParcelsDescription = value;
+    public void setPendingParcelsDescription(Boolean pendingParcelsDescription) {
+        this.pendingParcelsDescription = pendingParcelsDescription;
     }
 
     /**
-     * Gets the value of the pendingShipmentDescription property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
+     * Gets the pending shipment description flag value
+     * @return The pending shipment description flag value
      */
     public Boolean isPendingShipmentDescription() {
         return pendingShipmentDescription;
     }
 
     /**
-     * Sets the value of the pendingShipmentDescription property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
+     * Sets the pending shipment description flag value.
+     * Specifies if the service/system should allow BOL's modification at a later stage.
+     * <p>
+     * In some special cases the client might be unable to provide a complete description of their shipments 
+     * at the time of BOL creation. By setting this flag to true users can create a BOL which is only 
+     * partially described. Only the most important data (regarding logistics) is required: 
+     * sender's data, receiver's site, courier service etc. 
+     * This information makes it possible for Speedy to deliver the shipment to its destination-office. 
+     * After the user provides the rest of the data about the shipment 
+     * (via the updateBillOfLading method), the shipment will become ready for delivery.
+     * <p>
+     * The fields which are not considered as 'required' at the creation stage still follow the standard 
+     * validation rules. By 'not required' we mean that their value can be modified later. 
+     * For example if the user wants to fill in the field 'contents' at a later stage, 
+     * he/she can set the initial value to 'STILL UNKNOWN', 'WILL BE SET LATER' or something like that.
+     * Only the following fields are required when creating a BOL:
+     * <ul> 
+     *   <li>takingDate</li>
+     *   <li>serviceTypeId</li>
+     *   <li>parcelsCount</li>
+     *   <li>weightDeclared</li>
+     *   <li>documents</li>
+     *   <li>deferredDeliveryWorkDays</li>
+     *   <li>sender</li>
+     *   <li>receiver(only siteId); if officeToBeCalledId is set, then siteId must be null/0</li>
+     * </ul>
+     * After the creation of the BOL these fields are considered immutable.
+     * The value of officeToBeCalledId cannot be changed during the update, except for the case when the old value was null/0 and the new value is of an office which is located in the same receiver site.
+     * The payerType must be 0 (sender) or 2 (third party).
+     * The result of createBillOfLading has zeroes in all amount fields. 
+     * @param pendingShipmentDescription The pending shipment description flag value
      */
-    public void setPendingShipmentDescription(Boolean value) {
-        this.pendingShipmentDescription = value;
+    public void setPendingShipmentDescription(Boolean pendingShipmentDescription) {
+        this.pendingShipmentDescription = pendingShipmentDescription;
     }
 
     /**
-     * Gets the value of the receiver property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ParamClientData }
-     *     
+     * Gets receiver details
+     * @return Receiver details
      */
     public ParamClientData getReceiver() {
         return receiver;
     }
 
     /**
-     * Sets the value of the receiver property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ParamClientData }
-     *     
+     * Sets receiver details
+     * @param receiver Receiver details
      */
-    public void setReceiver(ParamClientData value) {
-        this.receiver = value;
+    public void setReceiver(ParamClientData receiver) {
+        this.receiver = receiver;
     }
 
     /**
-     * Gets the value of the ref1 property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the ref1 value - an optional reference code.
+     * @return ref1 value
      */
     public String getRef1() {
         return ref1;
     }
 
     /**
-     * Sets the value of the ref1 property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the ref1 value - an optional reference code.
+     * Maximum 30 symbols.
+     * @param ref1 ref1 value
      */
-    public void setRef1(String value) {
-        this.ref1 = value;
+    public void setRef1(String ref1) {
+        this.ref1 = ref1;
     }
 
     /**
-     * Gets the value of the ref2 property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the ref2 value - an optional reference code.
+     * @return ref2 value     
      */
     public String getRef2() {
         return ref2;
     }
 
     /**
-     * Sets the value of the ref2 property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the ref2 value - an optional reference code.
+     * Maximum 30 symbols.
+     * @param ref2 ref2 value    
      */
-    public void setRef2(String value) {
-        this.ref2 = value;
+    public void setRef2(String ref2) {
+        this.ref2 = ref2;
     }
 
     /**
-     * Gets the value of the retMoneyTransferReqAmount property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Double }
-     *     
+     * Gets the value of money transfer request amount to return
+     * @return Money transfer request amount to return
      */
     public Double getRetMoneyTransferReqAmount() {
         return retMoneyTransferReqAmount;
     }
 
     /**
-     * Sets the value of the retMoneyTransferReqAmount property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Double }
-     *     
+     * Sets the money-transfer request amount to return
+     * The value is limited depending on user's permissions and Speedy's current policy
+     * @param retMoneyTransferReqAmount Money transfer request amount to return
      */
-    public void setRetMoneyTransferReqAmount(Double value) {
-        this.retMoneyTransferReqAmount = value;
+    public void setRetMoneyTransferReqAmount(Double retMoneyTransferReqAmount) {
+        this.retMoneyTransferReqAmount = retMoneyTransferReqAmount;
     }
 
     /**
-     * Gets the value of the retToClientId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
+     * Gets the id of the client who is to receive the return receipt and/or the return documents.
+     * @return Id of the client who is to receive the return receipt and/or the return documents.
      */
     public Long getRetToClientId() {
         return retToClientId;
     }
 
     /**
-     * Sets the value of the retToClientId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
+     * Sets the id of the client who is to receive the return receipt and/or the return documents.
+     * If payer is "third party" then this client has to be payer's contract member.
+     * Otherwise the client has to be sender's contract member.
+     * @param retToClientId Id of the client who is to receive the return receipt and/or the return documents.
      */
-    public void setRetToClientId(Long value) {
-        this.retToClientId = value;
+    public void setRetToClientId(Long retToClientId) {
+        this.retToClientId = retToClientId;
     }
 
     /**
-     * Gets the value of the sender property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ParamClientData }
-     *     
+     * Gets the sender details
+     * @return Sender details
      */
     public ParamClientData getSender() {
         return sender;
     }
 
     /**
-     * Sets the value of the sender property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ParamClientData }
-     *     
+     * Sets the sender details
+     * @param sender Sender details
      */
-    public void setSender(ParamClientData value) {
-        this.sender = value;
+    public void setSender(ParamClientData sender) {
+        this.sender = sender;
     }
 
     /**
-     * Gets the value of the serviceTypeId property.
-     * 
+     * Gets courier service type id
+     * @return Courier service type id 
      */
     public long getServiceTypeId() {
         return serviceTypeId;
     }
 
     /**
-     * Sets the value of the serviceTypeId property.
-     * 
+     * Sets the courier service type is
+     * @param serviceTypeId Courier service type id
      */
-    public void setServiceTypeId(long value) {
-        this.serviceTypeId = value;
+    public void setServiceTypeId(long serviceTypeId) {
+        this.serviceTypeId = serviceTypeId;
     }
 
     /**
-     * Gets the value of the size property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Size }
-     *     
+     * Gets the size of shipment
+     * @return Size of shipment
      */
     public Size getSize() {
         return size;
     }
 
     /**
-     * Sets the value of the size property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Size }
-     *     
+     * Sets the size of shipment
+     * @param size Size of shipment
      */
-    public void setSize(Size value) {
-        this.size = value;
+    public void setSize(Size size) {
+        this.size = size;
     }
 
     /**
-     * Gets the value of the skipAutomaticParcelsCreation property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
+     * Gets the skip automatic parcels creation flag value
+     * @return The skip automatic parcels creation flag value
      */
     public Boolean isSkipAutomaticParcelsCreation() {
         return skipAutomaticParcelsCreation;
     }
 
     /**
-     * Sets the value of the skipAutomaticParcelsCreation property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
+     * Sets the skip automatic parcels creation flag value.
+     * When parcelsCount > 1 and no explicit data has been set in the parcels property during the creation,
+     * then parcels will be created automatically by default.
+     * This parameter allows users to control this behaviour.
+     * @param skipAutomaticParcelsCreation The skip automatic parcels creation flag value
      */
-    public void setSkipAutomaticParcelsCreation(Boolean value) {
-        this.skipAutomaticParcelsCreation = value;
+    public void setSkipAutomaticParcelsCreation(Boolean skipAutomaticParcelsCreation) {
+        this.skipAutomaticParcelsCreation = skipAutomaticParcelsCreation;
     }
 
     /**
-     * Gets the value of the takingDate property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     * Gets the date for shipment pick-up (the "time" component is ignored)
+     * @return The date for shipment pick-up
      */
     public XMLGregorianCalendar getTakingDate() {
         return takingDate;
     }
 
     /**
-     * Sets the value of the takingDate property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     * Sets the date for shipment pick-up (the "time" component is ignored).
+     * Default value is "today".
+     * @param takingDate The date for shipment pick-up
      */
-    public void setTakingDate(XMLGregorianCalendar value) {
-        this.takingDate = value;
+    public void setTakingDate(XMLGregorianCalendar takingDate) {
+        this.takingDate = takingDate;
     }
 
     /**
-     * Gets the value of the weightDeclared property.
-     * 
+     * Gets the declared weight in kg
+     * @return Declared weight in kg
      */
     public double getWeightDeclared() {
         return weightDeclared;
     }
 
     /**
-     * Sets the value of the weightDeclared property.
-     * 
+     * Sets the declared weight in kg (the greater of "volume" and "real" weight values).
+     * Maximum value is 100.00
+     * @param Declared weight in kg
      */
     public void setWeightDeclared(double value) {
         this.weightDeclared = value;
     }
 
     /**
-     * Gets the value of the willBringToOffice property.
-     * 
+     * Gets the will-bring-to-office flag value - indicates whether the sender intends to deliver 
+     * the shipment to a Speedy office by him/herself instead of ordering a visit by courier
+     * @return The will-bring-to-office flag value.
      */
     public boolean isWillBringToOffice() {
         return willBringToOffice;
     }
 
     /**
-     * Sets the value of the willBringToOffice property.
-     * 
+     * Sets the will-bring-to-office flag value.
+     * Specifies if the sender intends to deliver the shipment to a Speedy office by him/herself 
+     * instead of ordering a visit by courier
+     * @param willBringToOffice The will-bring-to-office flag value.
      */
-    public void setWillBringToOffice(boolean value) {
-        this.willBringToOffice = value;
+    public void setWillBringToOffice(boolean willBringToOffice) {
+        this.willBringToOffice = willBringToOffice;
     }
 
     /**
-     * Gets the value of the willBringToOfficeId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
+     * Gets the specific Speedy office, where the sender intends to deliver the shipment by him/herself. 
+     * @return The will-bring-to-office office id
+     * @since 1.3.0
      */
     public Long getWillBringToOfficeId() {
         return willBringToOfficeId;
     }
 
     /**
-     * Sets the value of the willBringToOfficeId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
+     * Sets the specific Speedy office, where the sender intends to deliver the shipment by him/herself. 
+     * If willBringToOfficeId is provided, willBringToOffice flag is considered "true", regardless the value provided. 
+     * If willBringToOfficeId is not provied (0 or null) and willBringToOffice flag is "true", 
+     * willBringToOfficeId is automatically set with default value configured for caller user profile. 
+     * The default willBringToOfficeId value could be managed using profile configuration page in client's Speedy web site.
+     * @param willBringToOfficeId The will-bring-to-office office id
+     * @since 1.3.0
      */
-    public void setWillBringToOfficeId(Long value) {
-        this.willBringToOfficeId = value;
+    public void setWillBringToOfficeId(Long willBringToOfficeId) {
+        this.willBringToOfficeId = willBringToOfficeId;
     }
 
 }

@@ -60,119 +60,95 @@ public class ParamParcel {
     protected Long parcelId;
     
     /**
-     * Real weight (kg)
+     * Parcel size
      * MANDATORY: YES
      */
     protected Size size;
     
     /**
-     * Parcel size
+     * Real weight (kg)
      * MANDATORY: NO
      */
     protected double weight;
 
     /**
-     * Gets the value of the billOfLading property.
-     * 
+     * Gets the BOL to which the parcel is to be added
+     * @return The BOL to which the parcel is to be added
      */
     public long getBillOfLading() {
         return billOfLading;
     }
 
     /**
-     * Sets the value of the billOfLading property.
-     * 
+     * Sets the BOL to which the parcel is to be added
+     * @param billOfLading The BOL to which the parcel is to be added
      */
-    public void setBillOfLading(long value) {
-        this.billOfLading = value;
+    public void setBillOfLading(long billOfLading) {
+        this.billOfLading = billOfLading;
     }
 
     /**
-     * Gets the value of the packId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
+     * Gets the packing ID.
+     * @return Packing ID
      */
     public Long getPackId() {
         return packId;
     }
 
     /**
-     * Sets the value of the packId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
+     * Sets the packing ID
+     * @param packId Packing ID
      */
-    public void setPackId(Long value) {
-        this.packId = value;
+    public void setPackId(Long packId) {
+        this.packId = packId;
     }
 
     /**
-     * Gets the value of the parcelId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
+     * Gets parcel id.
+     * @return Parcel id
      */
     public Long getParcelId() {
         return parcelId;
     }
 
     /**
-     * Sets the value of the parcelId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
+     * Sets the parcel id (if empty, the server will generate one)
+     * @param parcelId Parcel id
      */
-    public void setParcelId(Long value) {
-        this.parcelId = value;
+    public void setParcelId(Long parcelId) {
+        this.parcelId = parcelId;
     }
 
     /**
-     * Gets the value of the size property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Size }
-     *     
+     * Gets the parcel size
+     * @return Parcel size
      */
     public Size getSize() {
         return size;
     }
 
     /**
-     * Sets the value of the size property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Size }
-     *     
+     * Sets the parcel size
+     * @param size Parcel size
      */
-    public void setSize(Size value) {
-        this.size = value;
+    public void setSize(Size size) {
+        this.size = size;
     }
 
     /**
-     * Gets the value of the weight property.
-     * 
+     * Gets the real weight (kg)
+     * @return Real weight in kg
      */
     public double getWeight() {
         return weight;
     }
 
     /**
-     * Sets the value of the weight property.
-     * 
+     * Sets the real weight in kg
+     * @param weight Real weight (kg)
      */
-    public void setWeight(double value) {
-        this.weight = value;
+    public void setWeight(double weight) {
+        this.weight = weight;
     }
 
 }

@@ -26,6 +26,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Instances of this class are returned as a result of Speedy web service queries for quarters
+ * 
+ * @since 1.0.0
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -37,97 +40,88 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ResultQuarter {
 
+	/**
+     * Actual name (in case "name" is an old name)
+     */
     protected String actualName;
+    
+    /**
+     * Quarter ID
+     */
     protected long id;
+    
+    /**
+     * Quarter name
+     */
     protected String name;
+    
+    /**
+     * Quarter type
+     */
     protected String type;
 
     /**
-     * Gets the value of the actualName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the actual name (in case "name" is an old name)
+     * @return Actual name
      */
     public String getActualName() {
         return actualName;
     }
 
     /**
-     * Sets the value of the actualName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the actual name (in case "name" is an old name)
+     * @param value Actual name
      */
     public void setActualName(String value) {
         this.actualName = value;
     }
 
     /**
-     * Gets the value of the id property.
-     * 
+     * Gets the quarter id
+     * @return Quarter id
      */
     public long getId() {
         return id;
     }
 
     /**
-     * Sets the value of the id property.
-     * 
+     * Sets the quarter id
+     * @param id Quarter id
      */
-    public void setId(long value) {
-        this.id = value;
+    public void setId(long id) {
+        this.id = id;
     }
 
     /**
-     * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the quarter name
+     * @return Quarter name
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the quarter name
+     * @param name Quarter name
      */
-    public void setName(String value) {
-        this.name = value;
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the quarter type
+     * @return Quarter type
      */
     public String getType() {
         return type;
     }
 
     /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the quarter type
+     * @param type Quarter type
      */
-    public void setType(String value) {
-        this.type = value;
+    public void setType(String type) {
+        this.type = type;
     }
 
 }

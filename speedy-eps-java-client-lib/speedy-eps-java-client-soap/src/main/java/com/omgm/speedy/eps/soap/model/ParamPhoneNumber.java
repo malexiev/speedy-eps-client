@@ -50,48 +50,34 @@ public class ParamPhoneNumber {
     protected String number;
 
     /**
-     * Gets the value of the internal property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the extension number
+     * @return The extension number
      */
     public String getInternal() {
         return internal;
     }
 
     /**
-     * Sets the value of the internal property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the extension number.
+     * Max size is 10 symbols.
+     * @param internal The extension number
      */
-    public void setInternal(String value) {
-        this.internal = value;
+    public void setInternal(String internal) {
+        this.internal = internal;
     }
 
     /**
-     * Gets the value of the number property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the phone number
+     * @return Phone number
      */
     public String getNumber() {
         return number;
     }
 
     /**
-     * Sets the value of the number property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the phone number (example: "0888123456", "+35932261020" etc.).
+     * Max size is 20 symbols.
+     * @param value Phone number
      */
     public void setNumber(String value) {
         this.number = value;

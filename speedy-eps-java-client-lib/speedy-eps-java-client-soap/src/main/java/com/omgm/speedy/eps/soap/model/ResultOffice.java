@@ -30,6 +30,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Instances of this class are returned as a result of Speedy web service queries for offices
+ * 
+ * @since 1.0.0
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -45,197 +48,176 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ResultOffice {
 
+    /**
+     * Office address
+     */
     protected ValueAddress address;
+    
+    /**
+     * Office ID
+     */
     protected long id;
+    
+    /**
+     * Office name
+     */
     protected String name;
+    
+    /**
+     * Serving site ID
+     */
     protected Long siteId;
+    
+    /**
+     * Working time for FULL working days - FROM
+     */
     protected Short workingTimeFrom;
+    
+    /**
+     * Working time for HALF working days - FROM
+     */
     protected Short workingTimeHalfFrom;
+    
+    /**
+     *Working time for HALF working days - TO
+     */
     protected Short workingTimeHalfTo;
+
+    /**
+     * Working time for FULL working days - TO
+     */
     protected Short workingTimeTo;
 
     /**
-     * Gets the value of the address property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ValueAddress }
-     *     
+     * Gets the office address
+     * @return Office address
      */
     public ValueAddress getAddress() {
         return address;
     }
 
     /**
-     * Sets the value of the address property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ValueAddress }
-     *     
+     * Sets the office address
+     * @param address Office address
      */
-    public void setAddress(ValueAddress value) {
-        this.address = value;
+    public void setAddress(ValueAddress address) {
+        this.address = address;
     }
 
     /**
-     * Gets the value of the id property.
-     * 
+     * Gets the office id
+     * @return Office id
      */
     public long getId() {
         return id;
     }
 
     /**
-     * Sets the value of the id property.
-     * 
+     * Sets the office id
+     * @param id Office id
      */
-    public void setId(long value) {
-        this.id = value;
+    public void setId(long id) {
+        this.id = id;
     }
 
     /**
-     * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the office name
+     * @return Office name
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the office name
+     * @param name Office name
      */
-    public void setName(String value) {
-        this.name = value;
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
-     * Gets the value of the siteId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
+     * Gets the serving site id
+     * @return Serving site id
      */
     public Long getSiteId() {
         return siteId;
     }
 
     /**
-     * Sets the value of the siteId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
+     * Sets the serving site id
+     * @param siteId Serving site id
      */
-    public void setSiteId(Long value) {
-        this.siteId = value;
+    public void setSiteId(Long siteId) {
+        this.siteId = siteId;
     }
 
     /**
-     * Gets the value of the workingTimeFrom property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Short }
-     *     
+     * Gets the office start working time of normal working day.
+     * Format is "HHmm"
+     * @return Office start working time of normal working day
      */
     public Short getWorkingTimeFrom() {
         return workingTimeFrom;
     }
 
     /**
-     * Sets the value of the workingTimeFrom property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Short }
-     *     
+     * Sets the office start working time of normal working day
+     * @param workingTimeFrom Office start working time of normal working day
      */
-    public void setWorkingTimeFrom(Short value) {
-        this.workingTimeFrom = value;
+    public void setWorkingTimeFrom(Short workingTimeFrom) {
+        this.workingTimeFrom = workingTimeFrom;
     }
 
     /**
-     * Gets the value of the workingTimeHalfFrom property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Short }
-     *     
+     * Gets the office start working time of half-working day.
+     * Format is "HHmm"
+     * @return Office start working time of half-working day
      */
     public Short getWorkingTimeHalfFrom() {
         return workingTimeHalfFrom;
     }
 
     /**
-     * Sets the value of the workingTimeHalfFrom property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Short }
-     *     
+     * Sets the office start working time of half-working day
+     * @param workingTimeHalfFrom Office start working time of half-working day
      */
-    public void setWorkingTimeHalfFrom(Short value) {
-        this.workingTimeHalfFrom = value;
+    public void setWorkingTimeHalfFrom(Short workingTimeHalfFrom) {
+        this.workingTimeHalfFrom = workingTimeHalfFrom;
     }
 
     /**
-     * Gets the value of the workingTimeHalfTo property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Short }
-     *     
+     * Gets the office end working time of half-working day.
+     * Format is "HHmm"
+     * @return Office end working time of half-working day
      */
     public Short getWorkingTimeHalfTo() {
         return workingTimeHalfTo;
     }
 
     /**
-     * Sets the value of the workingTimeHalfTo property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Short }
-     *     
+     * Sets the office end working time of half-working day
+     * @param workingTimeHalfTo Office end working time of half-working day
      */
-    public void setWorkingTimeHalfTo(Short value) {
-        this.workingTimeHalfTo = value;
+    public void setWorkingTimeHalfTo(Short workingTimeHalfTo) {
+        this.workingTimeHalfTo = workingTimeHalfTo;
     }
 
     /**
-     * Gets the value of the workingTimeTo property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Short }
-     *     
+     * Gets the office end working time of normal working day.
+     * Format is "HHmm"
+     * @return Office end working time of normal working day
      */
     public Short getWorkingTimeTo() {
         return workingTimeTo;
     }
 
     /**
-     * Sets the value of the workingTimeTo property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Short }
-     *     
+     * Sets the office end working time of normal working day
+     * @param workingTimeTo Office end working time of normal working day
      */
-    public void setWorkingTimeTo(Short value) {
-        this.workingTimeTo = value;
+    public void setWorkingTimeTo(Short workingTimeTo) {
+        this.workingTimeTo = workingTimeTo;
     }
 
 }

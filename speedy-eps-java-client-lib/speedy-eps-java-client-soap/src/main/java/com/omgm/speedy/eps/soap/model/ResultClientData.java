@@ -31,6 +31,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Instances of this class are returned as a result of Speedy web service method calls for client data
+ * 
+ * @since 1.0.0
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -44,128 +47,119 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ResultClientData {
 
+	/**
+     * Address
+     */
     protected ResultAddress address;
+    
+    /**
+     * Client ID
+     */
     protected long clientId;
+    
+    /**
+     * Contact name
+     */
     protected String contactName;
+    
+    /**
+     * Company department/office
+     */
     protected String objectName;
+    
+    /**
+     * Name of the client (company or private person)
+     */
     protected String partnerName;
+    
+    /**
+     * Phone numbers
+     */
     @XmlElement(nillable = true)
     protected List<ResultPhoneNumber> phones;
 
     /**
-     * Gets the value of the address property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ResultAddress }
-     *     
+     * Gets the client address
+     * @return Client address
      */
     public ResultAddress getAddress() {
         return address;
     }
 
     /**
-     * Sets the value of the address property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ResultAddress }
-     *     
+     * Sets the client address
+     * @param address Client address
      */
-    public void setAddress(ResultAddress value) {
-        this.address = value;
+    public void setAddress(ResultAddress address) {
+        this.address = address;
     }
 
     /**
-     * Gets the value of the clientId property.
-     * 
+     * Gets the client id
+     * @return Client id
      */
     public long getClientId() {
         return clientId;
     }
 
     /**
-     * Sets the value of the clientId property.
-     * 
+     * Sets the Client id
+     * @param clientId Client id
      */
-    public void setClientId(long value) {
-        this.clientId = value;
+    public void setClientId(long clientId) {
+        this.clientId = clientId;
     }
 
     /**
-     * Gets the value of the contactName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the contact name 
+     * @return Contact name 
      */
     public String getContactName() {
         return contactName;
     }
 
     /**
-     * Sets the value of the contactName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the contact name 
+     * @param contactName Contact name 
      */
-    public void setContactName(String value) {
-        this.contactName = value;
+    public void setContactName(String contactName) {
+        this.contactName = contactName;
     }
 
     /**
-     * Gets the value of the objectName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the company department/office
+     * @return Company department/office
      */
     public String getObjectName() {
         return objectName;
     }
 
     /**
-     * Sets the value of the objectName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the company department/office
+     * @param objectName Company department/office
      */
-    public void setObjectName(String value) {
-        this.objectName = value;
+    public void setObjectName(String objectName) {
+        this.objectName = objectName;
     }
 
     /**
-     * Gets the value of the partnerName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the name of the client (company or private person)
+     * @return The name of the client (company or private person)
      */
     public String getPartnerName() {
         return partnerName;
     }
 
     /**
-     * Sets the value of the partnerName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the name of the client (company or private person)
+     * @param partnerName Name of the client (company or private person)
      */
-    public void setPartnerName(String value) {
-        this.partnerName = value;
+    public void setPartnerName(String partnerName) {
+        this.partnerName = partnerName;
     }
 
     /**
-     * Gets the value of the phones property.
+     * Gets the list of client phone numbers.
      * 
      * <p>
      * This accessor method returns a reference to the live list,

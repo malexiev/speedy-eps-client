@@ -3,7 +3,6 @@ package com.omgm.speedy.eps.soap.model;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -17,7 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="id_specialDeliveryId" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="specialDeliveryId" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="specialDeliveryPrice" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
  *         &lt;element name="specialDeliveryText" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
@@ -26,83 +25,81 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Instances of this class are returned as a result of services for special delivery requirements
+ * 
  * @since 2.1.0 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "resultSpecialDeliveryRequirement", propOrder = {
-    "idSpecialDeliveryId",
+    "specialDeliveryId",
     "specialDeliveryPrice",
     "specialDeliveryText"
 })
 public class ResultSpecialDeliveryRequirement {
 
-    @XmlElement(name = "id_specialDeliveryId")
-    protected int idSpecialDeliveryId;
+	/**
+     * A special delivery ID
+     * @var integer 64-bit
+     */
+    protected int specialDeliveryId;
+    
+    /**
+     * A special delivery price
+     */
     protected Double specialDeliveryPrice;
+    
+    /**
+     * A special delivery description
+     */
     protected String specialDeliveryText;
 
     /**
-     * Gets the value of the idSpecialDeliveryId property.
-     * 
+     * Gets the special delivery id
+     * @return Special delivery id
      */
-    public int getIdSpecialDeliveryId() {
-        return idSpecialDeliveryId;
+    public int getSpecialDeliveryId() {
+        return specialDeliveryId;
     }
 
     /**
-     * Sets the value of the idSpecialDeliveryId property.
-     * 
+     * Sets the special delivery id
+     * @param specialDeliveryId Special delivery id
      */
-    public void setIdSpecialDeliveryId(int value) {
-        this.idSpecialDeliveryId = value;
+    public void setSpecialDeliveryId(int specialDeliveryId) {
+        this.specialDeliveryId = specialDeliveryId;
     }
 
     /**
-     * Gets the value of the specialDeliveryPrice property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Double }
-     *     
+     * Gets the special delivery price
+     * @return Special delivery price
      */
     public Double getSpecialDeliveryPrice() {
         return specialDeliveryPrice;
     }
 
     /**
-     * Sets the value of the specialDeliveryPrice property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Double }
-     *     
+     * Sets the special delivery price
+     * @param value Special delivery price
      */
     public void setSpecialDeliveryPrice(Double value) {
         this.specialDeliveryPrice = value;
     }
 
     /**
-     * Gets the value of the specialDeliveryText property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the special delivery text
+     * @return Special delivery text
      */
     public String getSpecialDeliveryText() {
         return specialDeliveryText;
     }
 
     /**
-     * Sets the value of the specialDeliveryText property.
+     * Sets the special delivery text
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * @param specialDeliveryText Special delivery text
      */
-    public void setSpecialDeliveryText(String value) {
-        this.specialDeliveryText = value;
+    public void setSpecialDeliveryText(String specialDeliveryText) {
+        this.specialDeliveryText = specialDeliveryText;
     }
 
 }

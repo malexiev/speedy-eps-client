@@ -38,7 +38,7 @@ import javax.xml.bind.annotation.XmlType;
 public class ParamParcelInfo {
 
 	/**
-     * Parcel's serial number (2, 3, ...)
+     * Parcel's pack id
      * MANDATORY: YES
      */
     protected Long packId;
@@ -50,62 +50,55 @@ public class ParamParcelInfo {
     protected long parcelId;
     
     /**
-     * Parcel's serial number (2, 3, ...)
+     * Parcel's sequence number (2, 3, ...)
      * MANDATORY: YES
      */
     protected int seqNo;
 
     /**
-     * Gets the value of the packId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
+     * Gets the parcel's pack id
+     * @return Parcel's pack id
      */
     public Long getPackId() {
         return packId;
     }
 
     /**
-     * Sets the value of the packId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
+     * Sets the parcel's pack id
+     * @param packId Parcel's pack id
      */
-    public void setPackId(Long value) {
-        this.packId = value;
+    public void setPackId(Long packId) {
+        this.packId = packId;
     }
 
     /**
-     * Gets the value of the parcelId property.
-     * 
+     * Gets the parcel id
+     * @return Parcel id
      */
     public long getParcelId() {
         return parcelId;
     }
 
     /**
-     * Sets the value of the parcelId property.
-     * 
+     * Sets the parcelId
+     * @param parcelId Parcel id
      */
-    public void setParcelId(long value) {
-        this.parcelId = value;
+    public void setParcelId(long parcelId) {
+        this.parcelId = parcelId;
     }
 
     /**
-     * Gets the value of the seqNo property.
-     * 
+     * Gets the parcel's sequence number
+     * @return Parcel's sequence number
      */
     public int getSeqNo() {
         return seqNo;
     }
 
     /**
-     * Sets the value of the seqNo property.
-     * 
+     * Sets the parcel's serial number (2, 3, ...)
+     * Parcel with number 1 is the default parcel for BOL
+     * @return Parcel's serial number
      */
     public void setSeqNo(int value) {
         this.seqNo = value;

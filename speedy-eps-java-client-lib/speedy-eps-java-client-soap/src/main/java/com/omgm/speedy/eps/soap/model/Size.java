@@ -25,7 +25,9 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Instances of this class are used in parameter classes to specify picking size dimensions
  * 
+ * @since 1.0.0
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "size", propOrder = {
@@ -35,80 +37,73 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class Size {
 
+	/**
+     * Depth(cm). Maximum value is 9999
+     * MANDATORY: NO
+     */
     protected Integer depth;
+    
+    /**
+     * Height (cm). Maximum value is 9999
+     * MANDATORY: NO
+     */
     protected Integer height;
+    
+    /**
+     * Width (cm). Maximum value is 9999
+     * MANDATORY: NO
+     */
     protected Integer width;
 
     /**
-     * Gets the value of the depth property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
+     * Gets the depth (cm)
+     * @return The depth in cm
      */
     public Integer getDepth() {
         return depth;
     }
 
     /**
-     * Sets the value of the depth property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
+     * Sets the depth (cm).
+     * Maximum value is 9999
+     * @param depth Depth in cm
      */
-    public void setDepth(Integer value) {
-        this.depth = value;
+    public void setDepth(Integer depth) {
+        this.depth = depth;
     }
 
     /**
-     * Gets the value of the height property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
+     * Gets the height (cm)
+     * @return The height in cm
      */
     public Integer getHeight() {
         return height;
     }
 
     /**
-     * Sets the value of the height property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
+     * Sets the height (cm).
+     * Maximum value is 9999
+     * @param height Height in cm    
      */
-    public void setHeight(Integer value) {
-        this.height = value;
+    public void setHeight(Integer height) {
+        this.height = height;
     }
 
     /**
-     * Gets the value of the width property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
+     * Gets the width (cm)
+     * @return The width in cm
      */
     public Integer getWidth() {
         return width;
     }
 
     /**
-     * Sets the value of the width property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
+     * Sets the width (cm).
+     * Maximum value is 9999
+     * @param width Width in cm    
      */
-    public void setWidth(Integer value) {
-        this.width = value;
+    public void setWidth(Integer width) {
+        this.width = width;
     }
 
 }

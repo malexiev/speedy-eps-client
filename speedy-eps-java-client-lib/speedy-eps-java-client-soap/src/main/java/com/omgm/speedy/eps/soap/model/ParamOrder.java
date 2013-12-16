@@ -100,7 +100,9 @@ public class ParamOrder {
     protected Short workingEndTime;
 
     /**
-     * Gets the value of the billOfLadingsList property.
+     * Gets the bill of ladings list.
+     * List of BOL numbers.
+     * Must be set when billOfLadingsToIncludeType = 10.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
@@ -129,139 +131,110 @@ public class ParamOrder {
     }
 
     /**
-     * Gets the value of the billOfLadingsToIncludeType property.
-     * 
+     * Gets the code for the set of bill of ladings to order
+     * @return Code for the set of bill of ladings to order
      */
     public int getBillOfLadingsToIncludeType() {
         return billOfLadingsToIncludeType;
     }
 
     /**
-     * Sets the value of the billOfLadingsToIncludeType property.
-     * 
+     * Sets the billOfLadingsToIncludeType.
+     * Specifies the set of shipments/BOLs to be ordered:
+     * •[10] Explicit numbers (in billOfLadingsList)
+     * •[20] All not-ordered-yet BOLs created by the logged client
+     * •[30] All not-ordered-yet BOLs created by the logged client or members of his/her contract (taking into account user's permissions)
+     * @param billOfLadingsToIncludeType Code for the set of bill of ladings to order
      */
-    public void setBillOfLadingsToIncludeType(int value) {
-        this.billOfLadingsToIncludeType = value;
+    public void setBillOfLadingsToIncludeType(int billOfLadingsToIncludeType) {
+        this.billOfLadingsToIncludeType = billOfLadingsToIncludeType;
     }
 
     /**
-     * Gets the value of the contactName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the contact name.
+     * @return Contact name
      */
     public String getContactName() {
         return contactName;
     }
 
     /**
-     * Sets the value of the contactName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the contact name.
+     * Limited to 60 symbols
+     * @param contactName Contact name
      */
-    public void setContactName(String value) {
-        this.contactName = value;
+    public void setContactName(String contactName) {
+        this.contactName = contactName;
     }
 
     /**
-     * Gets the value of the phoneNumber property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ParamPhoneNumber }
-     *     
+     * Gets the phone number
+     * @return Phone number
      */
     public ParamPhoneNumber getPhoneNumber() {
         return phoneNumber;
     }
 
     /**
-     * Sets the value of the phoneNumber property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ParamPhoneNumber }
-     *     
+     * Sets the phone number
+     * @param phoneNumber Phone number
      */
-    public void setPhoneNumber(ParamPhoneNumber value) {
-        this.phoneNumber = value;
+    public void setPhoneNumber(ParamPhoneNumber phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     /**
-     * Gets the value of the pickupDate property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     * Gets the pickup date
+     * @return The date for shipments pick-up (the "time" component is ignored).
      */
     public XMLGregorianCalendar getPickupDate() {
         return pickupDate;
     }
 
     /**
-     * Sets the value of the pickupDate property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     * Sets the pickup date.
+     * The date for shipments pick-up (the "time" component is ignored). The default value is "today".
+     * @param pickupDate Pickup date
      */
-    public void setPickupDate(XMLGregorianCalendar value) {
-        this.pickupDate = value;
+    public void setPickupDate(XMLGregorianCalendar pickupDate) {
+        this.pickupDate = pickupDate;
     }
 
     /**
-     * Gets the value of the readinessTime property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Short }
-     *     
+     * Gets the readiness time - when all the shipments/parcels will be ready for pickup.
+     * Format is "HHmm"
+     * @return When all the shipments/parcels will be ready for pickup.
      */
     public Short getReadinessTime() {
         return readinessTime;
     }
 
     /**
-     * Sets the value of the readinessTime property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Short }
-     *     
+     * Sets the readiness time.
+     * Specifies when all the shipments/parcels will be ready for pickup. The default value is "now".
+     * Must be set if pickupDate > today
+     * Format is "HHmm".
+     * @param readinessTime The time the shipments/parcels will be ready for pickup
      */
-    public void setReadinessTime(Short value) {
-        this.readinessTime = value;
+    public void setReadinessTime(Short readinessTime) {
+        this.readinessTime = readinessTime;
     }
 
     /**
-     * Gets the value of the workingEndTime property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Short }
-     *     
+     * Gets the sender's working time end
+     * @return The sender's working time end
      */
     public Short getWorkingEndTime() {
         return workingEndTime;
     }
 
     /**
-     * Sets the value of the workingEndTime property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Short }
-     *     
+     * Sets the sender's working time end.
+     * Format is "HHmm"
+     * @param workingEndTime
      */
-    public void setWorkingEndTime(Short value) {
-        this.workingEndTime = value;
+    public void setWorkingEndTime(Short workingEndTime) {
+        this.workingEndTime = workingEndTime;
     }
 
 }

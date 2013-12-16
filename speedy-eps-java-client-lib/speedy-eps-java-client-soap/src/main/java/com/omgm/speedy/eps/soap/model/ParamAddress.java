@@ -166,23 +166,24 @@ public class ParamAddress {
     protected String streetType;
 
     /**
-     * Gets addressNote
-     * @return address note
+     * Gets address note
+     * @return Address note
      */
     public String getAddressNote() {
         return addressNote;
     }
 
     /**
-     * Sets addressNote
-     * @param addressNote Address note
+     * Sets address note.
+     * Max size is 200 symbols
+     * @param addressNote Address note  
      */
     public void setAddressNote(String addressNote) {
         this.addressNote = addressNote;
     }
 
     /**
-     * Gets the apartmentNo.
+     * Gets the apartment No
      * @return Appartment No
      *     
      */
@@ -191,7 +192,8 @@ public class ParamAddress {
     }
 
     /**
-     * Sets the apartmentNo
+     * Sets the apartment No.
+     * Max size is 10 symbols
      * @param apartmentNo Appartment No
      */
     public void setApartmentNo(String apartmentNo) {
@@ -199,7 +201,7 @@ public class ParamAddress {
     }
 
     /**
-     * Gets the blockNo
+     * Gets the block No
      * @return Block No
      */
     public String getBlockNo() {
@@ -207,15 +209,16 @@ public class ParamAddress {
     }
 
     /**
-     * Sets the blockNo
-     * @param blockNo Block No
+     * Sets the block No.
+     * Max size is 32 symbols
+     * @param blockNo Block No 
      */
     public void setBlockNo(String blockNo) {
         this.blockNo = blockNo;
     }
 
     /**
-     * Gets the commonObjectId
+     * Gets the common object id
      * @return Common object id
      */
     public Long getCommonObjectId() {
@@ -223,7 +226,7 @@ public class ParamAddress {
     }
 
     /**
-     * Sets the commonObjectId
+     * Sets the common object id
      * @param commonObjectId Common object id
      */
     public void setCommonObjectId(Long commonObjectId) {
@@ -247,7 +250,7 @@ public class ParamAddress {
     }
 
     /**
-     * Gets the GPS coordY.
+     * Gets the GPS coordY
      * @return GPS coord Y
      */
     public Double getCoordY() {
@@ -255,7 +258,7 @@ public class ParamAddress {
     }
 
     /**
-     * Sets the value of the coordY property.
+     * Sets the GPS coordY
      * @param coordY GPS coord Y
      */
     public void setCoordY(Double coordY) {
@@ -263,7 +266,7 @@ public class ParamAddress {
     }
 
     /**
-     * Gets the entranceNo
+     * Gets the entrance No
      * @return Entrance No
      */
     public String getEntranceNo() {
@@ -271,7 +274,8 @@ public class ParamAddress {
     }
 
     /**
-     * Sets the entranceNo.
+     * Sets the entrance No.
+     * Max size is 10 symbols
      * @param entranceNo Entrance No
      */
     public void setEntranceNo(String entranceNo) {
@@ -279,7 +283,7 @@ public class ParamAddress {
     }
 
     /**
-     * Gets the floorNo.
+     * Gets the floor No
      * @return Floor No
      */
     public String getFloorNo() {
@@ -287,7 +291,8 @@ public class ParamAddress {
     }
 
     /**
-     * Sets the floorNo.
+     * Sets the floor No.
+     * Max size is 10 symbols
      * @param floorNo Floor No
      */
     public void setFloorNo(String floorNo) {
@@ -295,7 +300,7 @@ public class ParamAddress {
     }
 
     /**
-     * Gets the quarterId
+     * Gets the quarter id
      * @return Quarter id
      */
     public Long getQuarterId() {
@@ -303,7 +308,7 @@ public class ParamAddress {
     }
 
     /**
-     * Sets the quarterId
+     * Sets the quarter id
      * @param quarterId Quarter id
      */
     public void setQuarterId(Long quarterId) {
@@ -311,7 +316,7 @@ public class ParamAddress {
     }
 
     /**
-     * Gets quarterName
+     * Gets quarter name
      * @return Quarter name
      */
     public String getQuarterName() {
@@ -319,15 +324,16 @@ public class ParamAddress {
     }
 
     /**
-     * Sets the quarterName
-     * @param quarterName
+     * Sets the quarter name.
+     * Max size is 50 symbols
+     * @param quarterName Quarter name
      */
     public void setQuarterName(String quarterName) {
         this.quarterName = quarterName;
     }
 
     /**
-     * Gets the quarterType
+     * Gets the quarter type
      * @return Quarter type
      */
     public String getQuarterType() {
@@ -335,7 +341,8 @@ public class ParamAddress {
     }
 
     /**
-     * Sets the quarterType
+     * Sets the quarter type.
+     * Max size is 15 symbols
      * @param quarterType Quarter type
      */
     public void setQuarterType(String quarterType) {
@@ -343,7 +350,7 @@ public class ParamAddress {
     }
 
     /**
-     * Gets the siteId.
+     * Gets the site id
      * @return Site id
      */
     public long getSiteId() {
@@ -351,7 +358,7 @@ public class ParamAddress {
     }
 
     /**
-     * Sets the siteId
+     * Sets the site id
      * @param siteId site id
      */
     public void setSiteId(long siteId) {
@@ -359,7 +366,7 @@ public class ParamAddress {
     }
 
     /**
-     * Gets the streetId
+     * Gets the street id
      * @return Street id
      */
     public Long getStreetId() {
@@ -367,7 +374,7 @@ public class ParamAddress {
     }
 
     /**
-     * Sets the streetId
+     * Sets the street id
      * @param streetId Street id
      */
     public void setStreetId(Long streetId) {
@@ -375,7 +382,7 @@ public class ParamAddress {
     }
 
     /**
-     * Gets the streetName
+     * Gets the street name
      * @return Street name
      */
     public String getStreetName() {
@@ -383,7 +390,8 @@ public class ParamAddress {
     }
 
     /**
-     * Sets the streetName
+     * Sets the street name.
+     * Max size is 50 symbols
      * @param streetName Street name
      */
     public void setStreetName(String streetName) {
@@ -391,7 +399,7 @@ public class ParamAddress {
     }
 
     /**
-     * Gets the streetNo
+     * Gets the street No
      * @return Street No
      */
     public String getStreetNo() {
@@ -399,7 +407,7 @@ public class ParamAddress {
     }
 
     /**
-     * Sets the streetNo
+     * Sets the street No
      * @param streetNo Street No
      */
     public void setStreetNo(String streetNo) {
@@ -407,7 +415,7 @@ public class ParamAddress {
     }
 
     /**
-     * Gets the streetType
+     * Gets the street yype
      * @return Street type
      */
     public String getStreetType() {
@@ -415,7 +423,8 @@ public class ParamAddress {
     }
 
     /**
-     * Sets the streetType 
+     * Sets the street type.
+     * Max size is 15 symbols
      * @param streetType Street type
      */
     public void setStreetType(String streetType) {

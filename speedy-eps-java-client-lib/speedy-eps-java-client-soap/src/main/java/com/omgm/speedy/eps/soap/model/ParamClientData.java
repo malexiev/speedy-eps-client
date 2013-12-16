@@ -101,151 +101,114 @@ public class ParamClientData {
     protected List<ParamPhoneNumber> phones;
 
     /**
-     * Gets the value of the address property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ParamAddress }
-     *     
+     * Gets the client address 
+     * @return Client address
      */
     public ParamAddress getAddress() {
         return address;
     }
 
     /**
-     * Sets the value of the address property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ParamAddress }
-     *     
+     * Sets the client address
+     * @param address Client address
      */
-    public void setAddress(ParamAddress value) {
-        this.address = value;
+    public void setAddress(ParamAddress address) {
+        this.address = address;
     }
 
     /**
-     * Gets the value of the clientId property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Long }
-     *     
+     * Gets the clientId - client/partner ID
+     * @return Client/Partner id
      */
     public Long getClientId() {
         return clientId;
     }
 
     /**
-     * Sets the value of the clientId property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Long }
-     *     
+     * Sets the clientId - client/partner ID
+     * @param clientId Client/Partner id
      */
-    public void setClientId(Long value) {
-        this.clientId = value;
+    public void setClientId(Long clientId) {
+        this.clientId = clientId;
     }
 
     /**
-     * Gets the value of the contactName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the contact name
+     * @return Conctact name
      */
     public String getContactName() {
         return contactName;
     }
 
     /**
-     * Sets the value of the contactName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the contact name.
+     * Maximum size is 60 symbols
+     * @param contactName Contact name
      */
-    public void setContactName(String value) {
-        this.contactName = value;
+    public void setContactName(String contactName) {
+        this.contactName = contactName;
     }
 
     /**
-     * Gets the value of the email property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the client email
+     * @return Client email
      */
     public String getEmail() {
         return email;
     }
 
     /**
-     * Sets the value of the email property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the client email.
+     * Maximum size is 256 symbols
+     * @param email Client email
      */
-    public void setEmail(String value) {
-        this.email = value;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     /**
-     * Gets the value of the objectName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the object name - company department/office
+     * @return Company department/office name
      */
     public String getObjectName() {
         return objectName;
     }
 
     /**
-     * Sets the value of the objectName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the object name - company department/office.
+     * Maximum size is 60 symbols.
+     * Requres clientId to be set
+     * @param objectName Company department/office name
      */
-    public void setObjectName(String value) {
-        this.objectName = value;
+    public void setObjectName(String objectName) {
+        this.objectName = objectName;
     }
 
     /**
-     * Gets the value of the partnerName property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the partner name -  name of the client (company or private person)
+     * @return Name of the client (company or private person)
      */
     public String getPartnerName() {
         return partnerName;
     }
 
     /**
-     * Sets the value of the partnerName property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the partner name - name of the client (company or private person).
+     * Maximum size is 60 symbols.
+     * Must be set, when clientId is null
+     * @param partnerName Name of the client (company or private person)
      */
-    public void setPartnerName(String value) {
-        this.partnerName = value;
+    public void setPartnerName(String partnerName) {
+        this.partnerName = partnerName;
     }
 
     /**
-     * Gets the value of the phones property.
+     * Gets the phone numbers list.
+     * This list contains maximum 3 phone numbers.
+     * Sender's phone number is always required.
+     * Receiver's phone number is required if the shipment is to be delivered on a half-working day or
+     * the shipment needs to be delivered the day it has been picked up.
+     * ("Required" means at least one valid phone number must be set.)
      * 
      * <p>
      * This accessor method returns a reference to the live list,
@@ -263,7 +226,7 @@ public class ParamClientData {
      * <p>
      * Objects of the following type(s) are allowed in the list
      * {@link ParamPhoneNumber }
-     * 
+     * @return List if phone numbers
      * 
      */
     public List<ParamPhoneNumber> getPhones() {

@@ -69,91 +69,68 @@ public class ParamSearchByRefNum {
     protected int searchInField;
 
     /**
-     * Gets the value of the dateFrom property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     * Gets the pick-up date - from
+     * @return Pick-up date - from
      */
     public XMLGregorianCalendar getDateFrom() {
         return dateFrom;
     }
 
     /**
-     * Sets the value of the dateFrom property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     * Sets the pick-up date - from
+     * @param dateFrom Pick-up date - from
      */
-    public void setDateFrom(XMLGregorianCalendar value) {
-        this.dateFrom = value;
+    public void setDateFrom(XMLGregorianCalendar dateFrom) {
+        this.dateFrom = dateFrom;
     }
 
     /**
-     * Gets the value of the dateTo property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     * Gets the pick-up date - to
+     * @return Pick-up date - to
      */
     public XMLGregorianCalendar getDateTo() {
         return dateTo;
     }
 
     /**
-     * Sets the value of the dateTo property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     * Sets the pick-up date - to
+     * @param dateTo Pick-up date - to
      */
-    public void setDateTo(XMLGregorianCalendar value) {
-        this.dateTo = value;
+    public void setDateTo(XMLGregorianCalendar dateTo) {
+        this.dateTo = dateTo;
     }
 
     /**
-     * Gets the value of the referenceNumber property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the reference code to be searched (exact match, case sensitive)
+     * @return The reference code to be searched
      */
     public String getReferenceNumber() {
         return referenceNumber;
     }
 
     /**
-     * Sets the value of the referenceNumber property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the reference code to be searched (exact match, case sensitive)
+     * @param referenceNumber The reference code to be searched
      */
-    public void setReferenceNumber(String value) {
-        this.referenceNumber = value;
+    public void setReferenceNumber(String referenceNumber) {
+        this.referenceNumber = referenceNumber;
     }
 
     /**
-     * Gets the value of the searchInField property.
-     * 
+     * Gets the searchInField code - 0 means [Ref1 or Ref2], 1 means [Ref1], 2 means [Ref2]
+     * @return searchInField code
      */
     public int getSearchInField() {
         return searchInField;
     }
 
     /**
-     * Sets the value of the searchInField property.
-     * 
+     * Sets the searchInField code.
+     * Specifies where to search: 0 means [Ref1 or Ref2], 1 means [Ref1], 2 means [Ref2]
+     * @param searchInField Field search code
      */
-    public void setSearchInField(int value) {
-        this.searchInField = value;
+    public void setSearchInField(int searchInField) {
+        this.searchInField = searchInField;
     }
 
 }

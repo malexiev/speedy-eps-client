@@ -72,123 +72,83 @@ public class ParamFilterSite {
     protected String type;
 
     /**
-     * Gets the value of the municipality property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the site municipality name
+     * @return Site municipality name
      */
     public String getMunicipality() {
         return municipality;
     }
 
     /**
-     * Sets the value of the municipality property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the site municipality name
+     * @param municipality Site municipality name
      */
-    public void setMunicipality(String value) {
-        this.municipality = value;
+    public void setMunicipality(String municipality) {
+        this.municipality = municipality;
     }
 
     /**
-     * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the site name
+     * @return Site name
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the site name
+     * @param name Site name
      */
-    public void setName(String value) {
-        this.name = value;
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
-     * Gets the value of the postCode property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the post code
+     * @return Post code
      */
     public String getPostCode() {
         return postCode;
     }
 
     /**
-     * Sets the value of the postCode property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the post code
+     * @param postCode Post code
      */
-    public void setPostCode(String value) {
-        this.postCode = value;
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
     }
 
     /**
-     * Gets the value of the region property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the site region name
+     * @return Site region name
      */
     public String getRegion() {
         return region;
     }
 
     /**
-     * Sets the value of the region property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the site region name
+     * @param region Site region name
      */
-    public void setRegion(String value) {
-        this.region = value;
+    public void setRegion(String region) {
+        this.region = region;
     }
 
     /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the site type
+     * @return Site type
      */
     public String getType() {
         return type;
     }
 
     /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the site type
+     * @param type Site type
      */
-    public void setType(String value) {
-        this.type = value;
+    public void setType(String type) {
+        this.type = type;
     }
 
 }

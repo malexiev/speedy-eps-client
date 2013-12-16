@@ -30,6 +30,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Instances of this class are returned as a result of create picking speedy web service calls
+ * 
+ * @since 1.0.0
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -40,62 +43,57 @@ import javax.xml.datatype.XMLGregorianCalendar;
 })
 public class ResultBOL {
 
+	/**
+     * Amounts
+     */
     protected ResultAmounts amounts;
+    
+    /**
+     * Deadline for delivery
+     */
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar deadlineDelivery;
+    
+    /**
+     * List of parcels data
+     */
     @XmlElement(nillable = true)
     protected List<ResultParcelInfo> generatedParcels;
 
     /**
-     * Gets the value of the amounts property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ResultAmounts }
-     *     
+     * Gets the amounts calculated
+     * @return Amounts calculated
      */
     public ResultAmounts getAmounts() {
         return amounts;
     }
 
     /**
-     * Sets the value of the amounts property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ResultAmounts }
-     *     
+     * Sets the amounts calculated
+     * @param amounts Amounts calculated
      */
-    public void setAmounts(ResultAmounts value) {
-        this.amounts = value;
+    public void setAmounts(ResultAmounts amounts) {
+        this.amounts = amounts;
     }
 
     /**
-     * Gets the value of the deadlineDelivery property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     * Gets the deadline for delivery
+     * @return Deadline for delivery
      */
     public XMLGregorianCalendar getDeadlineDelivery() {
         return deadlineDelivery;
     }
 
     /**
-     * Sets the value of the deadlineDelivery property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
+     * Sets the deadline for delivery
+     * @param deadlineDelivery Deadline for delivery
      */
-    public void setDeadlineDelivery(XMLGregorianCalendar value) {
-        this.deadlineDelivery = value;
+    public void setDeadlineDelivery(XMLGregorianCalendar deadlineDelivery) {
+        this.deadlineDelivery = deadlineDelivery;
     }
 
     /**
-     * Gets the value of the generatedParcels property.
+     * Gets the list of parcels data
      * 
      * <p>
      * This accessor method returns a reference to the live list,
