@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.omg-m.speedy.eps</groupId>
 	<artifactId>speedy-eps-php-client-soap</artifactId>
-	<version>2.2.0-SNAPSHOT</version>
+	<version>2.2.0</version>
 	<packaging>pom</packaging>
 	<description>Speedy EPS SOAP php client library, examples and recommendations</description>
 	<url>https://code.google.com/p/speedy-eps-client/</url>
