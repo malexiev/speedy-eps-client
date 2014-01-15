@@ -8,6 +8,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 import com.omgm.speedy.eps.soap.model.AddrNomen;
 import com.omgm.speedy.eps.soap.model.EPSProvider;
+import com.omgm.speedy.eps.soap.model.ParamAddress;
 import com.omgm.speedy.eps.soap.model.ParamAddressSearch;
 import com.omgm.speedy.eps.soap.model.ParamCalculation;
 import com.omgm.speedy.eps.soap.model.ParamClientSearch;
@@ -29,6 +30,7 @@ import com.omgm.speedy.eps.soap.model.ResultCourierServiceExt;
 import com.omgm.speedy.eps.soap.model.ResultLogin;
 import com.omgm.speedy.eps.soap.model.ResultMinMaxReal;
 import com.omgm.speedy.eps.soap.model.ResultOffice;
+import com.omgm.speedy.eps.soap.model.ResultOfficeEx;
 import com.omgm.speedy.eps.soap.model.ResultOrderPickingInfo;
 import com.omgm.speedy.eps.soap.model.ResultParcelInfo;
 import com.omgm.speedy.eps.soap.model.ResultQuarter;
@@ -877,6 +879,59 @@ public class EPSFacade {
     throws ServerException {
     	try {
 			return m_eps.listSpecialDeliveryRequirements(getResultLogin(true).getSessionId());
+		} catch (Exception ex) {
+			throw new ServerException(ex);
+		}
+    }
+    
+    /**
+     * Validates address and returns validation result
+     *   - validationMode = 0 (default) - Extended validation w/o GIS info (address uniqueness is not verified);
+     *   - validationMode = 1 (NOT IMPLEMENTED YET - reserved for future implementation) Extended validation with GIS info (address uniqueness is verified);
+     *   - validationMode = 2 - basic validation (the same as address validation in createBillOfLading)
+     * @param address Address to validate
+     * @param validationMode Validation mode code
+     * @throws ServerException Thrown in case communication with server has failed.
+     * @return boolean Validation result flag
+     * @since 2.2.0
+     */
+    public boolean validateAddress(ParamAddress address, Integer validationMode) 
+    	throws ServerException {
+    	try {
+			return m_eps.validateAddress(getResultLogin(true).getSessionId(), address, validationMode);
+		} catch (Exception ex) {
+			throw new ServerException(ex);
+		}
+    }
+    
+    /**
+     * Returns all client objects ( including logged user's ) having the same contract as logged client's contract.
+     * @throws ServerException Thrown in case communication with server has failed
+     * @return List of ResultClientData
+     * @since 2.2.0
+    */
+    public List<ResultClientData> listContractClients() 
+    	throws ServerException {
+    	try {
+			return m_eps.listContractClients(getResultLogin(true).getSessionId());
+		} catch (Exception ex) {
+			throw new ServerException(ex);
+		}
+    }
+    
+    /**
+     * Returns a list of Speedy offices matching the search criteria
+     * The list is limited to 10 records.
+     * @since 2.2.0
+     * @param name Office name (or part of it);
+     * @param siteId Signed 64-bit Site ID
+     * @throws ServerException Thrown in case communication with server has failed
+     * @return array ResultOfficeEx List of offices
+     */
+    public List<ResultOfficeEx> listOfficesEx(String name, Long siteId) 
+    	throws ServerException {
+    	try {
+			return m_eps.listOfficesEx(getResultLogin(true).getSessionId(), name, siteId);
 		} catch (Exception ex) {
 			throw new ServerException(ex);
 		}

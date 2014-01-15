@@ -4,6 +4,11 @@ Java Speedy Web Service client library version @@VERSION
 
 CHANGE LOG
 ----------
+* Version 2.2.0
+  - New method "listContractClients" is available
+  - New method "validateAddress" is available
+  - New method "listOfficeEx" is available
+  
 * Version 2.1.0
   - New method "listSpecialDeliveryRequirements()" is available
   - New property email is added in ParamClientData class

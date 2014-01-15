@@ -898,4 +898,79 @@ public interface EPSProvider {
         String sessionId)
         throws InvalidSessionException_Exception
     ;
+    
+    /**
+     * 
+     * @param address
+     * @param sessionId
+     * @param validationMode
+     * @return
+     *     returns boolean
+     * @throws PickingValidationException_Exception
+     * @throws InvalidSessionException_Exception
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "validateAddress", targetNamespace = "http://ver01.eps.speedy.sirma.com/", className = "com.omgm.speedy.eps.soap.model.ValidateAddress")
+    @ResponseWrapper(localName = "validateAddressResponse", targetNamespace = "http://ver01.eps.speedy.sirma.com/", className = "com.omgm.speedy.eps.soap.model.ValidateAddressResponse")
+    @Action(input = "http://ver01.eps.speedy.sirma.com/EPSProvider/validateAddressRequest", output = "http://ver01.eps.speedy.sirma.com/EPSProvider/validateAddressResponse", fault = {
+        @FaultAction(className = InvalidSessionException_Exception.class, value = "http://ver01.eps.speedy.sirma.com/EPSProvider/validateAddress/Fault/InvalidSessionException"),
+        @FaultAction(className = PickingValidationException_Exception.class, value = "http://ver01.eps.speedy.sirma.com/EPSProvider/validateAddress/Fault/PickingValidationException")
+    })
+    public boolean validateAddress(
+        @WebParam(name = "sessionId", targetNamespace = "")
+        String sessionId,
+        @WebParam(name = "address", targetNamespace = "")
+        ParamAddress address,
+        @WebParam(name = "validationMode", targetNamespace = "")
+        Integer validationMode)
+        throws InvalidSessionException_Exception, PickingValidationException_Exception
+    ;
+    
+    /**
+     * 
+     * @param sessionId
+     * @return
+     *     returns java.util.List<com.omgm.speedy.eps.soap.model.ResultClientData>
+     * @throws InvalidSessionException_Exception
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "listContractClients", targetNamespace = "http://ver01.eps.speedy.sirma.com/", className = "com.omgm.speedy.eps.soap.model.ListContractClients")
+    @ResponseWrapper(localName = "listContractClientsResponse", targetNamespace = "http://ver01.eps.speedy.sirma.com/", className = "com.omgm.speedy.eps.soap.model.ListContractClientsResponse")
+    @Action(input = "http://ver01.eps.speedy.sirma.com/EPSProvider/listContractClientsRequest", output = "http://ver01.eps.speedy.sirma.com/EPSProvider/listContractClientsResponse", fault = {
+        @FaultAction(className = InvalidSessionException_Exception.class, value = "http://ver01.eps.speedy.sirma.com/EPSProvider/listContractClients/Fault/InvalidSessionException")
+    })
+    public List<ResultClientData> listContractClients(
+        @WebParam(name = "sessionId", targetNamespace = "")
+        String sessionId)
+        throws InvalidSessionException_Exception
+    ;
+    
+    /**
+     * 
+     * @param siteId
+     * @param sessionId
+     * @param name
+     * @return
+     *     returns java.util.List<com.omgm.speedy.eps.soap.model.ResultOfficeEx>
+     * @throws InvalidSessionException_Exception
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "listOfficesEx", targetNamespace = "http://ver01.eps.speedy.sirma.com/", className = "com.omgm.speedy.eps.soap.model.ListOfficesEx")
+    @ResponseWrapper(localName = "listOfficesExResponse", targetNamespace = "http://ver01.eps.speedy.sirma.com/", className = "com.omgm.speedy.eps.soap.model.ListOfficesExResponse")
+    @Action(input = "http://ver01.eps.speedy.sirma.com/EPSProvider/listOfficesExRequest", output = "http://ver01.eps.speedy.sirma.com/EPSProvider/listOfficesExResponse", fault = {
+        @FaultAction(className = InvalidSessionException_Exception.class, value = "http://ver01.eps.speedy.sirma.com/EPSProvider/listOfficesEx/Fault/InvalidSessionException")
+    })
+    public List<ResultOfficeEx> listOfficesEx(
+        @WebParam(name = "sessionId", targetNamespace = "")
+        String sessionId,
+        @WebParam(name = "name", targetNamespace = "")
+        String name,
+        @WebParam(name = "siteId", targetNamespace = "")
+        Long siteId)
+        throws InvalidSessionException_Exception
+    ;
+
 }
