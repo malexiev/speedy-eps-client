@@ -11,6 +11,7 @@ require_once 'ResultStreet.class.php';
 require_once 'ResultQuarter.class.php';
 require_once 'ResultCommonObject.class.php';
 require_once 'ResultOffice.class.php';
+require_once 'ResultOfficeEx.class.php';
 require_once 'ResultClientData.class.php';
 require_once 'ResultAddressSearch.class.php';
 require_once 'ResultCalculation.class.php';
@@ -504,5 +505,41 @@ interface EPSInterface {
      * @since 2.1.0
      */
     public function listSpecialDeliveryRequirements($sessionId);
+    
+    /**
+     * Validates address and returns validation result
+     *   - validationMode = 0 (default) - Extended validation w/o GIS info (address uniqueness is not verified);
+     *   - validationMode = 1 (NOT IMPLEMENTED YET - reserved for future implementation) Extended validation with GIS info (address uniqueness is verified);
+     *   - validationMode = 2 - basic validation (the same as address validation in createBillOfLading)
+     * @param string $sessionId
+     * @param ParamAddress $address
+     * @param integer $validationMode signed 32 bit
+     * @throws ServerException Thrown in case communication with server has failed
+     * @throws PickingValidationException Thrown in case address validation has failed
+     * @return boolean Validation result flag
+     * @since 2.2.0
+     */
+    public function validateAddress($sessionId, $address, $validationMode);
+    
+    /**
+     * Returns all client objects ( including logged user's ) having the same contract as logged client's contract.
+     * @param string $sessionId
+     * @throws ServerException Thrown in case communication with server has failed
+     * @return List of ResultClientData 
+     * @since 2.2.0
+     */
+    public function listContractClients($sessionId);
+    
+    /**
+     * Returns a list of Speedy offices matching the search criteria
+     * The list is limited to 10 records.
+     * @since 2.2.0
+     * @param string $sessionId
+     * @param string $name Office name (or part of it);
+     * @param integer $siteId Signed 64-bit Site ID
+     * @throws ServerException Thrown in case communication with server has failed
+     * @return array ResultOfficeEx List of offices
+     */
+    public function listOfficesEx($sessionId, $name, $siteId);
 }
 ?>
