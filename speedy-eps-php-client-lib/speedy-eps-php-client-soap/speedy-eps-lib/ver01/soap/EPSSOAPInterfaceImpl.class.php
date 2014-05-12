@@ -124,12 +124,13 @@ class EPSSOAPInterfaceImpl extends SoapClient implements EPSInterface {
     /**
      * @see EPSInterface::listSites()
      */
-    public function listSites($sessionId, $type, $name) {
+    public function listSites($sessionId, $type, $name, $language) {
         try {
             $listSitesStdObject = new stdClass();
             $listSitesStdObject->sessionId = $sessionId;
             $listSitesStdObject->type      = $type;
             $listSitesStdObject->name      = $name;
+            $listSitesStdObject->language  = $language;
             $response = parent::listSites($listSitesStdObject);
             $arrListSites = array();
             if (isset($response->return)) {
@@ -151,11 +152,13 @@ class EPSSOAPInterfaceImpl extends SoapClient implements EPSInterface {
     /**
      * @see EPSInterface::listSites()
      */
-    public function listSitesEx($sessionId, $paramFilterSite) {
+    public function listSitesEx($sessionId, $paramFilterSite, $language) {
         try {
             $listSitesExStdObject = new stdClass();
             $listSitesExStdObject->sessionId = $sessionId;
             $listSitesExStdObject->filter    = $paramFilterSite->toStdClass();
+            $listSitesExStdObject->language  = $language;
+            
             $response = parent::listSitesEx($listSitesExStdObject);
             $arrListSitesEx = array();
             if (isset($response->return)) {
@@ -221,10 +224,11 @@ class EPSSOAPInterfaceImpl extends SoapClient implements EPSInterface {
     /**
      * @see EPSInterface::listAllSites()
      */
-    public function listAllSites($sessionId) {
+    public function listAllSites($sessionId, $language) {
         try {
             $listAllSitesStdObject = new stdClass();
             $listAllSitesStdObject->sessionId = $sessionId;
+            $listAllSitesStdObject->language  = $language;
             $response = parent::listAllSites($listAllSitesStdObject);
             $arrListAllSites = array();
             if (isset($response->return)) {
@@ -292,10 +296,12 @@ class EPSSOAPInterfaceImpl extends SoapClient implements EPSInterface {
     /**
      * @see EPSInterface::listStreetTypes()
      */
-    public function listStreetTypes($sessionId) {
+    public function listStreetTypes($sessionId, $language) {
         try {
             $listStreetTypesStdObject = new stdClass();
             $listStreetTypesStdObject->sessionId = $sessionId;
+            $listStreetTypesStdObject->language  = $language;
+            
             $response = parent::listStreetTypes($listStreetTypesStdObject);
             $arrListStreetTypes = array();
             if (isset($response->return)) {
@@ -317,10 +323,12 @@ class EPSSOAPInterfaceImpl extends SoapClient implements EPSInterface {
     /**
      * @see EPSInterface::listQuarterTypes()
      */
-    public function listQuarterTypes($sessionId) {
+    public function listQuarterTypes($sessionId, $language) {
         try {
             $listQuarterTypesStdObject = new stdClass();
             $listQuarterTypesStdObject->sessionId = $sessionId;
+            $listQuarterTypesStdObject->language  = $language;
+            
             $response = parent::listQuarterTypes($listQuarterTypesStdObject);
             $arrListQuarterTypes = array();
             if (isset($response->return)) {
@@ -342,12 +350,14 @@ class EPSSOAPInterfaceImpl extends SoapClient implements EPSInterface {
     /**
      * @see EPSInterface::listStreets()
      */
-    public function listStreets($sessionId, $name, $siteId) {
+    public function listStreets($sessionId, $name, $siteId, $language) {
         try {
             $listStreetsStdObject = new stdClass();
             $listStreetsStdObject->sessionId = $sessionId;
             $listStreetsStdObject->name      = $name;
             $listStreetsStdObject->siteId    = $siteId;
+            $listStreetsStdObject->language  = $language;
+            
             $response = parent::listStreets($listStreetsStdObject);
             $arrlistStreets = array();
             if (isset($response->return)) {
@@ -369,12 +379,14 @@ class EPSSOAPInterfaceImpl extends SoapClient implements EPSInterface {
     /**
      * @see EPSInterface::listQuarters()
      */
-    public function listQuarters($sessionId, $name, $siteId) {
+    public function listQuarters($sessionId, $name, $siteId, $language) {
         try {
             $listQuartersStdObject = new stdClass();
             $listQuartersStdObject->sessionId = $sessionId;
             $listQuartersStdObject->name      = $name;
             $listQuartersStdObject->siteId    = $siteId;
+            $listQuartersStdObject->language  = $language;
+            
             $response = parent::listQuarters($listQuartersStdObject);
             $arrListQuarters = array();
             if (isset($response->return)) {
@@ -1004,13 +1016,13 @@ class EPSSOAPInterfaceImpl extends SoapClient implements EPSInterface {
         } catch (SoapFault $sf) {
             throw new ServerException($sf);
         }
-       }
+    }
        
-       /**
-        * @see EPSInterface::validateAddress()
-        */
-       public function validateAddress($sessionId, $address, $validationMode) {
-       	try {
+    /**
+     * @see EPSInterface::validateAddress()
+     */
+    public function validateAddress($sessionId, $address, $validationMode) {
+		try {
        		$validateAddressStdObject = new stdClass();
        		$validateAddressStdObject->sessionId = $sessionId;
        		$validateAddressStdObject->address   = $address->toStdClass();
@@ -1020,13 +1032,13 @@ class EPSSOAPInterfaceImpl extends SoapClient implements EPSInterface {
        	} catch (SoapFault $sf) {
        		throw new ServerException($sf);
        	}
-       }
+    }
        
-       /**
-        * @see EPSInterface::listContractClients()
-        */
-       public function listContractClients($sessionId) {
-       	try {
+	/**
+	 * @see EPSInterface::listContractClients()
+	 */
+	public function listContractClients($sessionId) {
+		try {
        		$listContractClientsStdObject = new stdClass();
        		$listContractClientsStdObject->sessionId = $sessionId;
        		$response = parent::listContractClients($listContractClientsStdObject);
@@ -1046,13 +1058,13 @@ class EPSSOAPInterfaceImpl extends SoapClient implements EPSInterface {
        	} catch (SoapFault $sf) {
        		throw new ServerException($sf);
        	}
-       }
+	}
        
-       /**
-        * @see EPSInterface::listOfficesEx()
-        */
-       public function listOfficesEx($sessionId, $name, $siteId) {
-       	try {
+	/**
+	 * @see EPSInterface::listOfficesEx()
+	 */
+	public function listOfficesEx($sessionId, $name, $siteId) {
+		try {
        		$listOfficesExStdObject = new stdClass();
        		$listOfficesExStdObject->sessionId = $sessionId;
        		$listOfficesExStdObject->name      = $name;
@@ -1073,6 +1085,92 @@ class EPSSOAPInterfaceImpl extends SoapClient implements EPSInterface {
        	} catch (SoapFault $sf) {
        		throw new ServerException($sf);
        	}
-       }
+	}
+	
+	/**
+	 * @see EPSInterface::deserializeAddress()
+	 */
+	public function deserializeAddress($sessionId, $address) {
+		try {
+       		$deserializeAddressStdObject = new stdClass();
+       		$deserializeAddressStdObject->sessionId = $sessionId;
+       		$deserializeAddressStdObject->address   = $address;
+       		$response = parent::deserializeAddress($deserializeAddressStdObject);
+       		if (isset($response->return)) {
+       			$paramAddress = new ParamAddress($response->return);
+       		} else {
+       			$paramAddress = null;
+       		}
+       		return $paramAddress;
+       	} catch (SoapFault $sf) {
+       		throw new ServerException($sf);
+       	}
+	}
+	
+	/**
+	 * @see EPSInterface::serializeAddress()
+	 */
+	public function serializeAddress($sessionId, $address) {
+		try {
+       		$serializeAddressStdObject = new stdClass();
+       		$serializeAddressStdObject->sessionId = $sessionId;
+       		$serializeAddressStdObject->address   = $address->toStdClass();
+       		$response = parent::serializeAddress($serializeAddressStdObject);
+       		if (isset($response->return)) {
+       			$serializedAddress = $response->return;
+       		} else {
+       			$serializedAddress = null;
+       		}
+       		return $serializedAddress;
+       	} catch (SoapFault $sf) {
+       		throw new ServerException($sf);
+       	}
+	}
+	
+	/**
+	 * @see EPSInterface::makeAddressString()
+	 */
+	public function makeAddressString($sessionId, $address) {
+		try {
+       		$makeAddressStringStdObject = new stdClass();
+       		$makeAddressStringStdObject->sessionId = $sessionId;
+       		$makeAddressStringStdObject->address   = $address->toStdClass();;
+       		$response = parent::makeAddressString($makeAddressStringStdObject);
+       		if (isset($response->return)) {
+       			$resultAddressString = new ResultAddressString($response->return);
+       		} else {
+       			$resultAddressString = null;
+       		}
+       		return $resultAddressString;
+       	} catch (SoapFault $sf) {
+       		throw new ServerException($sf);
+       	}
+	}
+	
+	/**
+	 * @see EPSInterface::getAdditionalUserParams()
+	 */
+	public function getAdditionalUserParams($sessionId, $date) {
+		try {
+       		$getAdditionalUserParamsStdObject = new stdClass();
+       		$getAdditionalUserParamsStdObject->sessionId = $sessionId;
+       		$getAdditionalUserParamsStdObject->date      = $date;
+       		$response = parent::getAdditionalUserParams($getAdditionalUserParamsStdObject);
+       		$arrListAdditionalUserParams = array();
+       		if (isset($response->return)) {
+       			$arrStdListAdditionalUserParams = $response->return;
+       			if (is_array($arrStdListAdditionalUserParams)) {
+       				for($i = 0; $i < count($arrStdListAdditionalUserParams); $i++) {
+       					$arrListAdditionalUserParams[$i] = $arrStdListAdditionalUserParams[$i];
+       				}
+       			} else {
+       				$arrListAdditionalUserParams[0] = $arrStdListAdditionalUserParams;
+       			}
+       		}
+       		return $arrListAdditionalUserParams;
+       	} catch (SoapFault $sf) {
+       		throw new ServerException($sf);
+       	}
+	}	
 }
 ?>

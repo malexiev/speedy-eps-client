@@ -1,6 +1,7 @@
 <?php
 
 require_once 'ServerException.class.php';
+require_once 'ResultAddressString.class.php';
 require_once 'ResultLogin.class.php';
 require_once 'ResultSite.class.php';
 require_once 'ResultSiteEx.class.php';
@@ -23,6 +24,7 @@ require_once 'ResultTrackPickingEx.class.php';
 require_once 'ResultSpecialDeliveryRequirement.class.php';
 require_once 'ParamCalculation.class.php';
 require_once 'ParamFilterSite.class.php';
+require_once 'ParamAddress.class.php';
 require_once 'ParamAddressSearch.class.php';
 require_once 'ParamLanguage.class.php';
 require_once 'ParamPicking.class.php';
@@ -87,10 +89,11 @@ interface EPSInterface {
      * @param string $sessionId
      * @param string $type
      * @param string $name
+     * @param ParamLanguage $paramLanguage
      * @throws ServerException Thrown in case communication with server has failed
      * @return array List of ResultSite instances
     */
-    public function listSites($sessionId, $type, $name);
+    public function listSites($sessionId, $type, $name, $paramLanguage);
 
     /**
      * Returns a list of sites. The method aims to find the closest matches.
@@ -98,10 +101,11 @@ interface EPSInterface {
      * @since 1.0
      * @param string $sessionId
      * @param ParamFilterSite $paramFilterSite
+     * @param ParamLanguage $language
      * @throws ServerException Thrown in case communication with server has failed
      * @return array List of ResultSiteEx instances
     */
-    public function listSitesEx($sessionId, $paramFilterSite);
+    public function listSitesEx($sessionId, $paramFilterSite, $language);
 
     /**
      * Returns the min/max weight allowed for the given shipment parameters
@@ -142,10 +146,11 @@ interface EPSInterface {
      * The address-related nomenclature data is updated only several times a year.
      * @since 1.0
      * @param string $sessionId
+     * @param ParamLanguage $paramLanguage Language
      * @throws ServerException Thrown in case communication with server has failed
      * @return array List of ResultSite instances
     */
-    public function listAllSites($sessionId);
+    public function listAllSites($sessionId, $paramLanguage);
 
     /**
      * Returns a site by ID
@@ -174,16 +179,17 @@ interface EPSInterface {
      * @throws ServerException Thrown in case communication with server has failed
      * @return array string List of the most common types of streets
     */
-    public function listStreetTypes($sessionId);
+    public function listStreetTypes($sessionId, $language);
 
     /**
      * Returns a list of the most common types of quarters (districts).
      * @since 1.0
      * @param string $sessionId
+     * @param ParamLanguage $language
      * @throws ServerException Thrown in case communication with server has failed
      * @return array string List of the most common types of quarters (districts).
     */
-    public function listQuarterTypes($sessionId);
+    public function listQuarterTypes($sessionId, $language);
 
     /**
      * Returns a list of streets matching the search criteria
@@ -192,10 +198,11 @@ interface EPSInterface {
      * @param string $sessionId
      * @param string $name Street name (or part of it)
      * @param integer $siteId Signed 64-bit Site ID
+     * @param ParamLanguage $language Language
      * @throws ServerException Thrown in case communication with server has failed
      * @return array ResultStreet List of streets
     */
-    public function listStreets($sessionId, $name, $siteId);
+    public function listStreets($sessionId, $name, $siteId, $language);
 
     /**
      * Returns a list of quarters matching the search criteria
@@ -204,10 +211,11 @@ interface EPSInterface {
      * @param string $sessionId
      * @param string $name Quarter name (or part of it)
      * @param integer $siteId Signed 64-bit Site ID
+     * @param ParamLanguage $language Language
      * @throws ServerException Thrown in case communication with server has failed
      * @return array ResultQuarter List of streets
     */
-    public function listQuarters($sessionId, $name, $siteId);
+    public function listQuarters($sessionId, $name, $siteId, $language);
 
     /**
      * Returns a list of common objects matching the search criteria.
@@ -541,5 +549,41 @@ interface EPSInterface {
      * @return array ResultOfficeEx List of offices
      */
     public function listOfficesEx($sessionId, $name, $siteId);
+    
+    /**
+     * Returns deserialized address from serialized string address
+     * @param string $sessionId 
+     * @param string $address Serialized address
+     * @return ParamAddress Deserliazed address
+     * @throws ServerException Thrown in case communication with server has failed
+     * @since 2.3.0
+     */
+    public function deserializeAddress($sessionId, $address);
+    
+    /**
+     * Returns deserialized address from serialized string address
+     * @param string $sessionId
+     * @param ParamAddress $address Address
+     * @return Serialized string address
+     * @throws ServerException Thrown in case communication with server has failed
+     * @since 2.3.0
+     */
+    public function serializeAddress($sessionId, $address);
+    
+    /**
+     * Make address text representations - city address, local address, full address
+     * @param string $sessionId
+     * @param ParamAddress $address Base address
+     * @return ResultAddressString
+     */
+    public function makeAddressString($sessionId, $address);
+    
+    /**
+     * Get list of additional user paramters
+     * @param string $sessionId
+     * @param date $date Effective date. If null is provided then current date is applied
+     * @return array signed 32-bit integers - List of additional user parameters
+     */
+    public function getAdditionalUserParams($sessionId, $date);
 }
 ?>

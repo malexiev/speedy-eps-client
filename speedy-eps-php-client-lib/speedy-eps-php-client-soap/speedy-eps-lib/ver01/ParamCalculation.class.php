@@ -217,6 +217,14 @@ class ParamCalculation {
      * @var integer Signed 32-bit
      */
     private $_payerTypeInsurance;
+    
+    /**
+     * Packings payer type (0=sender, 1=reciever or 2=third party)
+     * MANDATORY: NO. If not set, the payer of the packings' surcharge will be the same as the one indicated by payerType.
+     * @var integer Signed 32-bit
+     * @since 2.3.0
+     */
+    protected $_payerTypePackings;
 
     /**
      * Insurance payer ID. Must be set <=> shipment has insurance (i.e. amountInsuranceBase > 0) and it is payed by a "third party".
@@ -225,6 +233,22 @@ class ParamCalculation {
      * @var integer Signed 64-bit
      */
     private $_payerRefInsuranceId;
+    
+    /**
+     * Packings payer id
+     * MANDATORY: Must be set <=> payerTypePackings is "third party".
+     * @var integer Signed 64-bit
+     * @since 2.3.0
+     */
+    protected $_payerRefPackingsId;
+    
+    /**
+     * Special delivery id
+     * MANDATORY: NO
+     * @var signed 32-bit integer
+     * @since 2.3.0
+     */
+    protected $_specialDeliveryId;
 
     /**
      * Set the date for shipment pick-up (the "time" component is ignored).
@@ -595,6 +619,24 @@ class ParamCalculation {
         return $this->_payerTypeInsurance;
     }
 
+    
+    /**
+     * Set packings payer type (0=sender, 1=reciever or 2=third party).
+     * Must be set <=> shipment is insured (i.e. amountInsuranceBase > 0).
+     * @param integer $payerTypePackings Signed 32-bit
+     */
+    public function setPayerTypePackings($payerTypePackings) {
+    	$this->_payerTypePackings = $payerTypePackings;
+    }
+    
+    /**
+     * Get packings payer type (0=sender, 1=reciever or 2=third party).
+     * @return integer Insurance payer type  - signed 32-bit
+     */
+    public function getPayerTypePackings() {
+    	return $this->_payerTypePackings;
+    }
+    
     /**
      * Set insurance payer ID from Speedy client nomenclature.
      * Must be set <=> shipment has insurance (i.e. amountInsuranceBase > 0) and it is payed by a "third party".
@@ -610,6 +652,38 @@ class ParamCalculation {
      */
     public function getPayerRefInsuranceId() {
         return $this->_payerRefInsuranceId;
+    }
+    
+    /**
+     * Set packings payer ID
+     * @param integer $payerRefPackingsId Signed 64-bit
+     */
+    public function setPayerRefPackingsId($payerRefPackingsId) {
+    	$this->_payerRefPackingsId = $payerRefPackingsId;
+    }
+    
+    /**
+     * Get packings payer ID
+     * @return integer Signed 64-bit
+     */
+    public function getPayerRefPackingsId() {
+    	return $this->_payerRefPackingsId;
+    }
+    
+    /**
+     * Gets the special delivery id
+     * @return signed 32-bit integer special delivery id
+     */
+    public function getSpecialDeliveryId() {
+    	return $this->_specialDeliveryId;
+    }
+    
+    /**
+     * Sets the special delivery id
+     * @param signed 32-bit integer $specialDeliveryId Special delivery id
+     */
+    public function setSpecialDeliveryId($specialDeliveryId) {
+    	$this->_specialDeliveryId = $specialDeliveryId;
     }
 
     /**
@@ -640,7 +714,10 @@ class ParamCalculation {
         $stdClass->payerType                = $this->_payerType;
         $stdClass->payerRefId               = $this->_payerRefId;
         $stdClass->payerTypeInsurance       = $this->_payerTypeInsurance;
+        $stdClass->payerTypePackings        = $this->_payerTypePackings;
         $stdClass->payerRefInsuranceId      = $this->_payerRefInsuranceId;
+        $stdClass->payerRefPackingsId       = $this->_payerRefPackingsId;
+        $stdClass->specialDeliveryId        = $this->_specialDeliveryId;
         return $stdClass;
     }
 }

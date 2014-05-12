@@ -176,6 +176,7 @@ function setSite(item) {
 	setCommonObject(null, false);
 	setAddressNote("", false);
 	setOffice(null, false);
+	clearQuarterAndStreetDetails();
     
 	if (isOffice) {
 		$("#quarterName").autocomplete("disable");
@@ -297,7 +298,7 @@ function setQuarter(item, initAfterFormChangeFlag) {
 		setQuarterType(null, false);
 		setQuarterName(null, false);
 		$( "#quarterActualName" ).val("");
-		clearQuarterDetails();
+		//clearQuarterDetails();
 	} else {
 		setQuarterId(item.id, false);
 		setQuarterType(item.type, false);
@@ -393,7 +394,7 @@ function setStreet(item, initAfterFormChangeFlag) {
 		setStreetType(null, false);
 		setStreetName(null, false);
 		$( "#streetActualName" ).val("");
-		clearStreetDetails();
+		//clearStreetDetails();
 	} else {
 		setStreetId(item.id, false);
 		setStreetType(item.type, false);
@@ -406,15 +407,23 @@ function setStreet(item, initAfterFormChangeFlag) {
 	onStreetChanged();
 }
 
-function clearStreetDetails() {
-	setStreetNo("", false);
-}
+//function clearStreetDetails() {
+//	setStreetNo("", false);
+//}
 
-function clearQuarterDetails() {
+//function clearQuarterDetails() {
+//	setBlock(null, false);
+//	setEntranceNo(null, false);
+//	setFloor(null, false);
+//	setApartmentNo(null, false);
+//}
+
+function clearQuarterAndStreetDetails() {
 	setBlock(null, false);
 	setEntranceNo(null, false);
 	setFloor(null, false);
 	setApartmentNo(null, false);
+	setStreetNo(null, false);
 }
 
 function setGPSCoords(coordX, coordY, coordTypeId, initAfterFormChangeFlag) {
@@ -439,8 +448,9 @@ function setOffice(item, initAfterFormChangeFlag) {
 		$( "#officeFullAddressString" ).val("");
 		setStreet(null, false);
 		setQuarter(null, false);
-		clearStreetDetails();
-		clearQuarterDetails();
+		//clearStreetDetails();
+		//clearQuarterDetails();
+		clearQuarterAndStreetDetails();
 		setCommonObject(null, false);
 		setAddressNote(null, false);
 		setGPSCoords(null, null, null, false);

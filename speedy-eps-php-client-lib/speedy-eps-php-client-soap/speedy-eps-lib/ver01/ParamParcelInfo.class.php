@@ -1,4 +1,7 @@
 <?php
+
+require_once 'Size.class.php';
+
 /**
  * Instances of this class are used as parameters in web service calls for picking calculation and registration
  */
@@ -24,6 +27,20 @@ class ParamParcelInfo {
      * @var integer Signed 64-bit
      */
     private $_packId;
+    
+    /**
+     * Parcel size
+     * MANDATORY: if pallet service is specified
+     * @since 2.3.0
+     */
+    private $_size;
+    
+    /**
+     * Parcel weight
+     * MANDATORY: if pallet service is specified
+     * @since 2.3.0
+     */
+    private $_weight;
 
     /**
      * Set parcel's serial number (2, 3, ...)
@@ -72,6 +89,42 @@ class ParamParcelInfo {
     public function getPackId() {
         return $this->_packId;
     }
+    
+    /**
+     * Gets the parcel's size
+     * @return Parcel's size
+     * @since 2.3.0
+     */
+    public function getSize() {
+    	return $this->_size;
+    }
+    
+    /**
+     * Sets parcel's size
+     * @param Size $size Parcel's size
+     * @since 2.3.0
+     */
+    public function setSize($size) {
+    	 $this->_size = $size;
+    }
+    
+    /**
+     * Gets the parcel's weight
+     * @return Parcel's weight
+     * @since 2.3.0
+     */
+    public function getWeight() {
+    	return $this->_weight;
+    }
+    
+    /**
+     * Sets parcel's weight
+     * @param double $weight Parcel's weight
+     * @since 2.3.0
+     */
+    public function setWeight($weight) {
+    	$this->_weight = $weight;
+    }
 
     /**
      * Return standard class from this class
@@ -82,6 +135,11 @@ class ParamParcelInfo {
         $stdClass->seqNo    = $this->_seqNo;
         $stdClass->parcelId = $this->_parcelId;
         $stdClass->packId   = $this->_packId;
+        $stdClass->size     = $this->_size;
+        if (isset($this->_size)) {
+        	$stdClass->size = $this->_size->toStdClass();
+        }
+        $stdClass->weight   = $this->_weight;
         return $stdClass;
     }
 }

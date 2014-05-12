@@ -129,6 +129,14 @@ class EPSFacade {
         }
         return $this->_resultLogin;
     }
+    
+    /**
+     * Set result login.
+     * @param ResultLogin $resultLogin Previuos session result login
+     */
+    public function setResultLogin($resultLogin) {
+    	$this->_resultLogin = $resultLogin;
+    }
 
     /**
      * Login web service method
@@ -179,13 +187,14 @@ class EPSFacade {
      * @since 1.0
      * @param string $type Type of site
      * @param string $name Site name or part of it
+     * @param ParamLanguage $language BG or EN. If set to null the server defaults to BG (added in 2.3.0)
      * @throws ClientException Thrown in case EPS interface implementation is not set
      * @throws ServerException Thrown in case communication with server has failed
      * @return array List of ResultSite instances
      */
-    public function listSites($type, $name) {
+    public function listSites($type, $name, $language = null) {
         $this->checkStateBeforeCall();
-        return $this->_epsInterfaceImpl->listSites($this->getResultLogin(true)->getSessionId(), $type, $name);
+        return $this->_epsInterfaceImpl->listSites($this->getResultLogin(true)->getSessionId(), $type, $name, $language);
     }
 
     /**
@@ -193,13 +202,14 @@ class EPSFacade {
      * The result is limited to 10 records
      * @since 1.0
      * @param ParamFilterSite $paramFilterSite
+     * @param ParamLanguage $language BG or EN. If set to null the server defaults to BG (added in 2.3.0)
      * @throws ClientException Thrown in case EPS interface implementation is not set
      * @throws ServerException Thrown in case communication with server has failed
      * @return array List of ResultSiteEx instances
      */
-    public function listSitesEx($paramFilterSite) {
+    public function listSitesEx($paramFilterSite, $language = null) {
         $this->checkStateBeforeCall();
-        return $this->_epsInterfaceImpl->listSitesEx($this->getResultLogin(true)->getSessionId(), $paramFilterSite);
+        return $this->_epsInterfaceImpl->listSitesEx($this->getResultLogin(true)->getSessionId(), $paramFilterSite, $language);
     }
 
     /**
@@ -262,15 +272,17 @@ class EPSFacade {
      * Note: This method is relatively slow (because of the size of its response). You shouldn't call it more than several times a day.
      * The methods is designed to provide data which should be locally stored/cached by client apps.
      * The address-related nomenclature data is updated only several times a year.
+     * @param ParamLanguage $language BG or EN. If set to null the server defaults to BG (added in 2.3.0)
      * @since 1.0
      * @throws ClientException Thrown in case EPS interface implementation is not set
      * @throws ServerException Thrown in case communication with server has failed
      * @return array List of ResultSite instances
      */
-    public function listAllSites() {
-        $this->checkStateBeforeCall();
-        return $this->_epsInterfaceImpl->listAllSites($this->getResultLogin(true)->getSessionId());
+    public function listAllSites($language = null) {
+    	$this->checkStateBeforeCall();
+    	return $this->_epsInterfaceImpl->listAllSites($this->getResultLogin(true)->getSessionId(), $language);
     }
+    
 
     /**
      * Returns a site by ID
@@ -301,25 +313,27 @@ class EPSFacade {
     /**
      * Returns a list of the most common types of streets.
      * @since 1.0
+     * @param ParamLanguage $language BG or EN. If set to null the server defaults to BG (added in 2.3.0)
      * @throws ClientException Thrown in case EPS interface implementation is not set
      * @throws ServerException Thrown in case communication with server has failed
      * @return array string List of the most common types of streets
      */
-    public function listStreetTypes() {
+    public function listStreetTypes($language = null) {
         $this->checkStateBeforeCall();
-        return $this->_epsInterfaceImpl->listStreetTypes($this->getResultLogin(true)->getSessionId());
+        return $this->_epsInterfaceImpl->listStreetTypes($this->getResultLogin(true)->getSessionId(), $language);
     }
 
     /**
      * Returns a list of the most common types of quarters (districts).
      * @since 1.0
+     * @param ParamLanguage $language BG or EN. If set to null the server defaults to BG (added in 2.3.0)
      * @throws ClientException Thrown in case EPS interface implementation is not set
      * @throws ServerException Thrown in case communication with server has failed
      * @return array string List of the most common types of quarters (districts).
      */
-    public function listQuarterTypes() {
+    public function listQuarterTypes($language = null) {
         $this->checkStateBeforeCall();
-        return $this->_epsInterfaceImpl->listQuarterTypes($this->getResultLogin(true)->getSessionId());
+        return $this->_epsInterfaceImpl->listQuarterTypes($this->getResultLogin(true)->getSessionId(), $language);
     }
 
     /**
@@ -328,13 +342,14 @@ class EPSFacade {
      * @since 1.0
      * @param string $name Street name (or part of it)
      * @param integer $siteId Signed 64-bit Site ID
+     * @param ParamLanguage $language BG or EN. If set to null the server defaults to BG (added in 2.3.0)
      * @throws ClientException Thrown in case EPS interface implementation is not set
      * @throws ServerException Thrown in case communication with server has failed
      * @return array ResultStreet List of streets
      */
-    public function listStreets($name, $siteId) {
+    public function listStreets($name, $siteId, $language = null) {
         $this->checkStateBeforeCall();
-        return $this->_epsInterfaceImpl->listStreets($this->getResultLogin(true)->getSessionId(), $name, $siteId);
+        return $this->_epsInterfaceImpl->listStreets($this->getResultLogin(true)->getSessionId(), $name, $siteId, $language);
     }
 
     /**
@@ -343,13 +358,14 @@ class EPSFacade {
      * @since 1.0
      * @param string $name Quarter name (or part of it)
      * @param integer $siteId Signed 64-bit Site ID
+     * @param ParamLanguage $language BG or EN. If set to null the server defaults to BG (added in 2.3.0)
      * @throws ClientException Thrown in case EPS interface implementation is not set
      * @throws ServerException Thrown in case communication with server has failed
      * @return array ResultQuarter List of quarters
      */
-    public function listQuarters($name, $siteId) {
+    public function listQuarters($name, $siteId, $language = null) {
         $this->checkStateBeforeCall();
-        return $this->_epsInterfaceImpl->listQuarters($this->getResultLogin(true)->getSessionId(), $name, $siteId);
+        return $this->_epsInterfaceImpl->listQuarters($this->getResultLogin(true)->getSessionId(), $name, $siteId, $language);
     }
 
     /**
@@ -737,6 +753,7 @@ class EPSFacade {
      * @param ParamAddress $address
      * @param integer $validationMode signed 32 bit
      * @throws ServerException Thrown in case communication with server has failed
+     * @throws ClientException Thrown in case EPS interface implementation is not set
      * @throws PickingValidationException Thrown in case address validation has failed
      * @return boolean Validation result flag
      * @since 2.2.0
@@ -749,6 +766,7 @@ class EPSFacade {
     /**
      * Returns all client objects ( including logged user's ) having the same contract as logged client's contract.
      * @throws ServerException Thrown in case communication with server has failed
+     * @throws ClientException Thrown in case EPS interface implementation is not set
      * @return List of ResultClientData
      * @since 2.2.0
     */
@@ -764,11 +782,62 @@ class EPSFacade {
      * @param string $name Office name (or part of it);
      * @param integer $siteId Signed 64-bit Site ID
      * @throws ServerException Thrown in case communication with server has failed
+     * @throws ClientException Thrown in case EPS interface implementation is not set
      * @return array ResultOfficeEx List of offices
      */
     public function listOfficesEx($name, $siteId) {
     	$this->checkStateBeforeCall();
     	return $this->_epsInterfaceImpl->listOfficesEx($this->getResultLogin(true)->getSessionId(), $name, $siteId);
+    }
+    
+    /**
+     * Returns deserialized address from serialized string address
+     * @param string $address Serialized address
+     * @return ParamAddress Deserliazed address
+     * @throws ServerException Thrown in case communication with server has failed
+     * @throws ClientException Thrown in case EPS interface implementation is not set
+     * @since 2.3.0
+     */
+    public function deserializeAddress($address) {
+    	$this->checkStateBeforeCall();
+    	return $this->_epsInterfaceImpl->deserializeAddress($this->getResultLogin(true)->getSessionId(), $address);
+    }
+    
+    /**
+     * Returns deserialized address from serialized string address
+     * @param ParamAddress $address Address
+     * @return Serialized string address
+     * @throws ServerException Thrown in case communication with server has failed
+     * @throws ClientException Thrown in case EPS interface implementation is not set
+     * @since 2.3.0
+    */
+    public function serializeAddress($address) {
+    	$this->checkStateBeforeCall();
+    	return $this->_epsInterfaceImpl->serializeAddress($this->getResultLogin(true)->getSessionId(), $address);
+    }
+    
+    /**
+     * Make address text representations - city address, local address, full address
+     * @param ParamAddress $address Base address
+     * @throws ServerException Thrown in case communication with server has failed
+     * @throws ClientException Thrown in case EPS interface implementation is not set
+     * @return ResultAddressString
+    */
+    public function makeAddressString($address) {
+    	$this->checkStateBeforeCall();
+    	return $this->_epsInterfaceImpl->makeAddressString($this->getResultLogin(true)->getSessionId(), $address);
+    }
+    
+    /**
+     * Get list of additional user parameters
+     * @param date $date Effective date. If null is provided then current date is applied
+     * @return array signed 32-bit integers - List of additional user parameters
+     * @throws ClientException Thrown in case EPS interface implementation is not set
+     * @throws ServerException Thrown in case communication with server has failed
+    */
+    public function getAdditionalUserParams($date) {
+    	$this->checkStateBeforeCall();
+    	return $this->_epsInterfaceImpl->getAdditionalUserParams($this->getResultLogin(true)->getSessionId(), $date);
     }
 }
 ?>

@@ -121,6 +121,41 @@ class ParamAddress {
      * @var double Signed 64-bit
      */
     private $_coordY;
+    
+    /**
+     * Serialized address
+     * MANDATORY: NO
+     * @var string
+     * @since 2.3.0
+     */
+    protected $_serializedAddress;
+    
+    /**
+     * Constructs new instance of ParamAddress
+     * @param stdClass $stdClassParamAddress
+     */
+    function __construct($stdClassParamAddress = null) {
+    	
+    	if ($stdClassParamAddress != null) {
+	    	$this->_siteId            = isset($stdClassParamAddress->siteId)            ? $stdClassParamAddress->siteId            : null;
+	    	$this->_streetName        = isset($stdClassParamAddress->streetName)        ? $stdClassParamAddress->streetName        : null;
+	    	$this->_streetType        = isset($stdClassParamAddress->streetType)        ? $stdClassParamAddress->streetType        : null;
+	    	$this->_streetId          = isset($stdClassParamAddress->streetId)          ? $stdClassParamAddress->streetId          : null;
+	    	$this->_quarterName       = isset($stdClassParamAddress->quarterName)       ? $stdClassParamAddress->quarterName       : null;
+	    	$this->_quarterType       = isset($stdClassParamAddress->quarterType)       ? $stdClassParamAddress->quarterType       : null;
+	    	$this->_quarterId         = isset($stdClassParamAddress->quarterId)         ? $stdClassParamAddress->quarterId         : null;
+	    	$this->_streetNo          = isset($stdClassParamAddress->streetNo)          ? $stdClassParamAddress->streetNo          : null;
+	    	$this->_blockNo           = isset($stdClassParamAddress->blockNo)           ? $stdClassParamAddress->blockNo           : null;
+	    	$this->_entranceNo        = isset($stdClassParamAddress->entranceNo)        ? $stdClassParamAddress->entranceNo        : null;
+	    	$this->_floorNo           = isset($stdClassParamAddress->floorNo)           ? $stdClassParamAddress->floorNo           : null;
+	    	$this->_apartmentNo       = isset($stdClassParamAddress->apartmentNo)       ? $stdClassParamAddress->apartmentNo       : null;
+	    	$this->_addressNote       = isset($stdClassParamAddress->addressNote)       ? $stdClassParamAddress->addressNote       : null;
+	    	$this->_commonObjectId    = isset($stdClassParamAddress->commonObjectId)    ? $stdClassParamAddress->commonObjectId    : null;
+	    	$this->_coordX            = isset($stdClassParamAddress->coordX)            ? $stdClassParamAddress->coordX            : null;
+	    	$this->_coordY            = isset($stdClassParamAddress->coordY)            ? $stdClassParamAddress->coordY            : null;
+	    	$this->_serializedAddress = isset($stdClassParamAddress->serializedAddress) ? $stdClassParamAddress->serializedAddress : null;
+    	}
+    }
 
     /**
      * Set site ID
@@ -378,28 +413,46 @@ class ParamAddress {
         return $this->_coordY;
     }
 
+    
+    /**
+     * Set JSON serialized address
+     * @param string $serializedAddress JSON serialized address
+     */
+    public function setSerializedAddress($serializedAddress) {
+    	$this->_serializedAddress = $serializedAddress;
+    }
+    
+    /**
+     * Get JSON serialized address
+     * @return string JSON serialized address
+     */
+    public function getSerializedAddress() {
+    	return $this->_serializedAddress;
+    }
+    
     /**
      * Return standard class from this class
      * @return stdClass
      */
     public function toStdClass() {
         $stdClass = new stdClass();
-        $stdClass->siteId         = $this->_siteId;
-        $stdClass->streetName     = $this->_streetName;
-        $stdClass->streetType     = $this->_streetType;
-        $stdClass->streetId       = $this->_streetId;
-        $stdClass->quarterName    = $this->_quarterName;
-        $stdClass->quarterType    = $this->_quarterType;
-        $stdClass->quarterId      = $this->_quarterId;
-        $stdClass->streetNo       = $this->_streetNo;
-        $stdClass->blockNo        = $this->_blockNo;
-        $stdClass->entranceNo     = $this->_entranceNo;
-        $stdClass->floorNo        = $this->_floorNo;
-        $stdClass->apartmentNo    = $this->_apartmentNo;
-        $stdClass->addressNote    = $this->_addressNote;
-        $stdClass->commonObjectId = $this->_commonObjectId;
-        $stdClass->coordX         = $this->_coordX;
-        $stdClass->coordY         = $this->_coordY;
+        $stdClass->siteId            = $this->_siteId;
+        $stdClass->streetName        = $this->_streetName;
+        $stdClass->streetType        = $this->_streetType;
+        $stdClass->streetId          = $this->_streetId;
+        $stdClass->quarterName       = $this->_quarterName;
+        $stdClass->quarterType       = $this->_quarterType;
+        $stdClass->quarterId         = $this->_quarterId;
+        $stdClass->streetNo          = $this->_streetNo;
+        $stdClass->blockNo           = $this->_blockNo;
+        $stdClass->entranceNo        = $this->_entranceNo;
+        $stdClass->floorNo           = $this->_floorNo;
+        $stdClass->apartmentNo       = $this->_apartmentNo;
+        $stdClass->addressNote       = $this->_addressNote;
+        $stdClass->commonObjectId    = $this->_commonObjectId;
+        $stdClass->coordX            = $this->_coordX;
+        $stdClass->coordY            = $this->_coordY;
+        $stdClass->serializedAddress = $this->_serializedAddress;
         return $stdClass;
     }
 }
