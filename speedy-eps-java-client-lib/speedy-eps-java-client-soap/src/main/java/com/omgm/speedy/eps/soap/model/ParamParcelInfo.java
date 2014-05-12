@@ -19,13 +19,13 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="packId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="parcelId" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *         &lt;element name="seqNo" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="size" type="{http://ver01.eps.speedy.sirma.com/}size" minOccurs="0"/>
+ *         &lt;element name="weight" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * <p>Instances of this class are used as parameters in web service calls for picking calculation and registration
  * 
  *  @since 1.0.0
  */
@@ -33,7 +33,9 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "paramParcelInfo", propOrder = {
     "packId",
     "parcelId",
-    "seqNo"
+    "seqNo",
+    "size",
+    "weight"
 })
 public class ParamParcelInfo {
 
@@ -54,6 +56,20 @@ public class ParamParcelInfo {
      * MANDATORY: YES
      */
     protected int seqNo;
+    
+    /**
+     * Parcel size
+     * MANDATORY: if pallet service is specified
+     * @since 2.3.0
+     */
+    protected Size size;
+    
+    /**
+     * Parcel weight
+     * MANDATORY: if pallet service is specified
+     * @since 2.3.0
+     */
+    protected Double weight;
 
     /**
      * Gets the parcel's pack id
@@ -104,4 +120,39 @@ public class ParamParcelInfo {
         this.seqNo = value;
     }
 
+    /**
+     * Gets the parcel's size
+     * @return Parcel's size
+     * @since 2.3.0
+     */
+    public Size getSize() {
+        return size;
+    }
+
+    /**
+     * Sets parcel's size
+     * @param size Parcel's size
+     * @since 2.3.0
+     */
+    public void setSize(Size size) {
+        this.size = size;
+    }
+    
+    /**
+     * Gets the parcel's weight
+     * @return Parcel's weight
+     * @since 2.3.0
+     */
+    public Double getWeight() {
+        return weight;
+    }
+
+    /**
+     * Sets parcel's weight
+     * @param weight Parcel's weight
+     * @since 2.3.0
+     */
+    public void setWeight(Double weight) {
+        this.weight = weight;
+    }
 }

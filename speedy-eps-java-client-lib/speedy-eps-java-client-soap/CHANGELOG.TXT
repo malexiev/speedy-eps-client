@@ -4,6 +4,16 @@ Java Speedy Web Service client library version @@VERSION
 
 CHANGE LOG
 ----------
+* Version 2.3.0
+  - New method getAdditionalUserParams is available
+  - New fields payerTypePackings, payerRefPackingsId added in ParamPicking and ParamCalculation
+  - New structure ParamPackings added and new field packings added in ParamPicking. The field and the structure are for internal use only at the moment
+  - Flag retThirdPartyPayer added in ParamPicking
+  - New structure ParamOptionsBeforePayment added to specify options before payment and field optionsBeforePayment added in ParamPicking
+  - Add size and weight properties in ParamParcelInfo
+  - listSites, listSitesEx, listAllSites, listQuarters, listStreets, listQuarterTypes, listStreetTypes have language parameter
+  - New methods serializeAddress, deserializeAddress, makeAddressString and ParamAddress extended with serializedAddress field
+
 * Version 2.2.0
   - New method "listContractClients" is available
   - New method "validateAddress" is available

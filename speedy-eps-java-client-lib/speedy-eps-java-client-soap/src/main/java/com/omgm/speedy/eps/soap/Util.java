@@ -356,9 +356,13 @@ public class Util {
 	 */
 	public static String toString(String sIndent, ResultCalculationMS resultCalculationMS) {
 		StringBuilder sb = new StringBuilder(sIndent).append("[ResultCalculationMS] {");
-		sb.append("\n").append(sIndent).append("  resultInfo       : ").append(toString(sIndent.concat("  "), resultCalculationMS.getResultInfo()));
-		sb.append("\n").append(sIndent).append("  errorDescription : ").append(resultCalculationMS.getErrorDescription());
-		sb.append("\n").append(sIndent).append("  serviceTypeId    : ").append(resultCalculationMS.getServiceTypeId());
+		if (resultCalculationMS == null) {
+			sb.append("null");
+		} else {
+			sb.append("\n").append(sIndent).append("  resultInfo       : ").append(toString(sIndent.concat("  "), resultCalculationMS.getResultInfo()));
+			sb.append("\n").append(sIndent).append("  errorDescription : ").append(resultCalculationMS.getErrorDescription());
+			sb.append("\n").append(sIndent).append("  serviceTypeId    : ").append(resultCalculationMS.getServiceTypeId());
+		}
 		return sb.append("\n").append(sIndent).append("}").toString();
 	}
 	
@@ -379,9 +383,13 @@ public class Util {
 	 */
 	private static String toString(String sIndent, ResultCalculation resultCalculation) {
 		StringBuilder sb = new StringBuilder(sIndent).append("[ResultCalculation] {");
-		sb.append("\n").append(sIndent).append("  amounts          : ").append(toString(sIndent.concat("  "), resultCalculation.getAmounts()));
-		sb.append("\n").append(sIndent).append("  deadlineDelivery : ").append(resultCalculation.getDeadlineDelivery());
-		sb.append("\n").append(sIndent).append("  takingDate       : ").append(resultCalculation.getTakingDate());
+		if (resultCalculation == null) {
+			sb.append("null");
+		} else {
+			sb.append("\n").append(sIndent).append("  amounts          : ").append(toString(sIndent.concat("  "), resultCalculation.getAmounts()));
+			sb.append("\n").append(sIndent).append("  deadlineDelivery : ").append(resultCalculation.getDeadlineDelivery());
+			sb.append("\n").append(sIndent).append("  takingDate       : ").append(resultCalculation.getTakingDate());
+		}
 		return sb.append("\n").append(sIndent).append("}").toString();
 	}
 	

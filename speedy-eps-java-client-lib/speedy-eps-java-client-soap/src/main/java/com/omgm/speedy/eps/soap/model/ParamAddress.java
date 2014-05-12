@@ -27,6 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="quarterId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="quarterName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="quarterType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="serializedAddress" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="siteId" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *         &lt;element name="streetId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="streetName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -37,6 +38,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
+ * 
  * 
  * <p>Instances of this class are used as parameters on web service method calls for picking calculation and registration
  *
@@ -61,6 +63,7 @@ import javax.xml.bind.annotation.XmlType;
     "quarterId",
     "quarterName",
     "quarterType",
+    "serializedAddress",
     "siteId",
     "streetId",
     "streetName",
@@ -164,6 +167,13 @@ public class ParamAddress {
      * MANDATORY: NO
      */
     protected String streetType;
+    
+    /**
+     * Serialized address
+     * MANDATORY: NO
+     * @since 2.3.0
+     */
+    protected String serializedAddress;
 
     /**
      * Gets address note
@@ -415,7 +425,7 @@ public class ParamAddress {
     }
 
     /**
-     * Gets the street yype
+     * Gets the street type
      * @return Street type
      */
     public String getStreetType() {
@@ -429,5 +439,22 @@ public class ParamAddress {
      */
     public void setStreetType(String streetType) {
         this.streetType = streetType;
+    }
+    
+    /**
+     * Get serialized address
+     * @return Serialized address
+     */
+    public String getSerializedAddress() {
+        return serializedAddress;
+    }
+
+    /**
+     * Set serialized address
+     * If not null and not empty other fields are ignored. The address is built from this string
+     * @param serializedAddress Serialized address
+     */
+    public void setSerializedAddress(String serializedAddress) {
+        this.serializedAddress = serializedAddress;
     }
 }

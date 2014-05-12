@@ -19,6 +19,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="sessionId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="language" type="{http://ver01.eps.speedy.sirma.com/}paramLanguage" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -31,13 +32,15 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "listSites", propOrder = {
     "sessionId",
     "type",
-    "name"
+    "name",
+    "language"
 })
 public class ListSites {
 
     protected String sessionId;
     protected String type;
     protected String name;
+    protected ParamLanguage language;
 
     /**
      * Gets the value of the sessionId property.
@@ -110,5 +113,28 @@ public class ListSites {
     public void setName(String value) {
         this.name = value;
     }
+    
+    /**
+     * Gets the value of the language property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ParamLanguage }
+     *     
+     */
+    public ParamLanguage getLanguage() {
+        return language;
+    }
 
+    /**
+     * Sets the value of the language property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ParamLanguage }
+     *     
+     */
+    public void setLanguage(ParamLanguage value) {
+        this.language = value;
+    }
 }

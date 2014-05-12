@@ -20,6 +20,7 @@ import com.omgm.speedy.eps.soap.model.ParamParcel;
 import com.omgm.speedy.eps.soap.model.ParamPicking;
 import com.omgm.speedy.eps.soap.model.ParamSearchByRefNum;
 import com.omgm.speedy.eps.soap.model.ResultAddressSearch;
+import com.omgm.speedy.eps.soap.model.ResultAddressString;
 import com.omgm.speedy.eps.soap.model.ResultBOL;
 import com.omgm.speedy.eps.soap.model.ResultCalculation;
 import com.omgm.speedy.eps.soap.model.ResultCalculationMS;
@@ -210,8 +211,23 @@ public class EPSFacade {
 	 */
 	public List<ResultSite> listSites(String sType, String sName) 
 	throws ServerException {
+		return listSites(sType, sName, null);
+	}
+	
+	/**
+	 * Returns a list of sites matching the search criteria.
+	 * The result is limited to 10 records
+	 * @param sType Type of site
+	 * @param sName Site name or part of it
+	 * @param paramLanguage Language
+	 * @throws ServerException Thrown in case communication with server has failed
+	 * @return List of ResultSite instances
+	 * @since 2.3.0
+	 */
+	public List<ResultSite> listSites(String sType, String sName, ParamLanguage paramLanguage) 
+	throws ServerException {
 		try {
-			return m_eps.listSites(getResultLogin(true).getSessionId(), sType, sName);
+			return m_eps.listSites(getResultLogin(true).getSessionId(), sType, sName, paramLanguage);
 		} catch (Exception ex) {
 			throw new ServerException(ex);
 		}
@@ -220,14 +236,28 @@ public class EPSFacade {
 	/**
 	 * Returns a list of sites. The method aims to find the closest matches.
 	 * The result is limited to 10 records
-	 * @param ParamFilterSite Parameters to filter site request
+	 * @param paramFilterSite Parameters to filter site request
 	 * @throws ServerException Thrown in case communication with server has failed
 	 * @return List of ResultSite instances
 	 */
 	public List<ResultSiteEx> listSitesEx(ParamFilterSite paramFilterSite) 
 	throws ServerException {
+		return listSitesEx(paramFilterSite, null);
+	}
+	
+	/**
+	 * Returns a list of sites. The method aims to find the closest matches.
+	 * The result is limited to 10 records
+	 * @param paramFilterSite Parameters to filter site request
+	 * @param paramLanguage Language
+	 * @throws ServerException Thrown in case communication with server has failed
+	 * @return List of ResultSite instances
+	 * @since 2.3.0
+	 */
+	public List<ResultSiteEx> listSitesEx(ParamFilterSite paramFilterSite, ParamLanguage paramLanguage) 
+	throws ServerException {
 		try {
-			return m_eps.listSitesEx(getResultLogin(true).getSessionId(), paramFilterSite);
+			return m_eps.listSitesEx(getResultLogin(true).getSessionId(), paramFilterSite, paramLanguage);
 		} catch (Exception ex) {
 			throw new ServerException(ex);
 		}
@@ -304,8 +334,23 @@ public class EPSFacade {
 	 */
 	public List<ResultSite> listAllSites() 
 	throws ServerException {
+		return listAllSites(null);
+	}
+	
+	/**
+	 * Returns a list of all sites.
+	 * Note: This method is relatively slow (because of the size of its response). You shouldn't call it more than several times a day.
+	 * The methods is designed to provide data which should be locally stored/cached by client apps.
+	 * The address-related nomenclature data is updated only several times a year.
+	 * @param paramLanguage Language
+	 * @throws ServerException Thrown in case communication with server has failed
+	 * @return List of ResultSite instances
+	 * @since 2.3.0
+	 */
+	public List<ResultSite> listAllSites(ParamLanguage paramLanguage) 
+	throws ServerException {
 		try {
-			return m_eps.listAllSites(getResultLogin(true).getSessionId());
+			return m_eps.listAllSites(getResultLogin(true).getSessionId(), paramLanguage);
 		} catch (Exception ex) {
 			throw new ServerException(ex);
 		}
@@ -348,8 +393,19 @@ public class EPSFacade {
 	 */
 	public List<String> listStreetTypes() 
 	throws ServerException {
+		return listStreetTypes(null);
+	}
+	
+	/**
+	 * Returns a list of the most common types of streets.
+	 * @param paramLanguage Language
+	 * @throws ServerException Thrown in case communication with server has failed
+	 * @return List of the most common types of streets
+	 */
+	public List<String> listStreetTypes(ParamLanguage paramLanguage) 
+	throws ServerException {
 		try {
-			return m_eps.listStreetTypes(getResultLogin(true).getSessionId());
+			return m_eps.listStreetTypes(getResultLogin(true).getSessionId(), paramLanguage);
 		} catch (Exception ex) {
 			throw new ServerException(ex);
 		}
@@ -362,8 +418,20 @@ public class EPSFacade {
 	*/
 	public List<String> listQuarterTypes() 
 	throws ServerException {
+		return listQuarterTypes(null);
+	}
+	
+	/**
+	 * Returns a list of the most common types of quarters (districts).
+	 * @param paramLanguage Language
+	 * @throws ServerException Thrown in case communication with server has failed
+	 * @return List of the most common types of quarters (districts).
+	 * @since 2.3.0
+	*/
+	public List<String> listQuarterTypes(ParamLanguage paramLanguage) 
+	throws ServerException {
 		try {
-			return m_eps.listQuarterTypes(getResultLogin(true).getSessionId());
+			return m_eps.listQuarterTypes(getResultLogin(true).getSessionId(), paramLanguage);
 		} catch (Exception ex) {
 			throw new ServerException(ex);
 		}
@@ -379,8 +447,23 @@ public class EPSFacade {
 	 */
 	public List<ResultStreet> listStreets(String sName, long lSiteId)
 	throws ServerException {
+		return listStreets(sName, lSiteId, null);
+	}
+	
+	/**
+	 * Returns a list of streets matching the search criteria
+	 * The list is limited to 10 records.
+	 * @param sName Street name (or part of it)
+	 * @param lSiteId Signed 64-bit Site ID
+	 * @param paramLanguage Language
+	 * @throws ServerException Thrown in case communication with server has failed
+	 * @return ResultStreet List of streets
+	 * @since 2.3.0
+	 */
+	public List<ResultStreet> listStreets(String sName, long lSiteId, ParamLanguage paramLanguage)
+	throws ServerException {
 		try {
-			return m_eps.listStreets(getResultLogin(true).getSessionId(), sName, lSiteId);
+			return m_eps.listStreets(getResultLogin(true).getSessionId(), sName, lSiteId, paramLanguage);
 		} catch (Exception ex) {
 			throw new ServerException(ex);
 		}
@@ -396,8 +479,23 @@ public class EPSFacade {
 	 */
 	public List<ResultQuarter> listQuarters(String sName, long lSiteId) 
 	throws ServerException {
+		return listQuarters(sName, lSiteId, null);
+	}
+	
+	/**
+	 * Returns a list of quarters matching the search criteria
+	 * The list is limited to 10 records.
+	 * @param sName Quarter name (or part of it)
+	 * @param lSiteId Signed 64-bit Site ID
+	 * @param paramLanguage Language
+	 * @throws ServerException Thrown in case communication with server has failed
+	 * @return List of ResultQuarter
+	 * @since 2.3.0
+	 */
+	public List<ResultQuarter> listQuarters(String sName, long lSiteId, ParamLanguage paramLanguage) 
+	throws ServerException {
 		try {
-			return m_eps.listQuarters(getResultLogin(true).getSessionId(), sName, lSiteId);
+			return m_eps.listQuarters(getResultLogin(true).getSessionId(), sName, lSiteId, paramLanguage);
 		} catch (Exception ex) {
 			throw new ServerException(ex);
 		}
@@ -932,6 +1030,69 @@ public class EPSFacade {
     	throws ServerException {
     	try {
 			return m_eps.listOfficesEx(getResultLogin(true).getSessionId(), name, siteId);
+		} catch (Exception ex) {
+			throw new ServerException(ex);
+		}
+    }
+    
+    /**
+     * Make address text representations - city address, local address, full address
+     * @param address Base address
+     * @return ResultAddressString structure with address strings
+     * @throws ServerException Thrown in case communication with server has failed
+     * @since 2.3.0
+     */
+    public ResultAddressString makeAddressString(ParamAddress address)
+    	throws ServerException {
+    	try {
+			return m_eps.makeAddressString(getResultLogin(true).getSessionId(), address);
+		} catch (Exception ex) {
+			throw new ServerException(ex);
+		}
+    }
+    
+    /**
+     * Serialize address in text
+     * @param address Base address
+     * @return Serialized address
+     * @throws ServerException Thrown in case communication with server has failed
+     * @since 2.3.0
+     */
+    public String serializeAddress(ParamAddress address)
+    	throws ServerException {
+    	try {
+			return m_eps.serializeAddress(getResultLogin(true).getSessionId(), address);
+		} catch (Exception ex) {
+			throw new ServerException(ex);
+		}
+    }
+    
+    /**
+     * Deserialize address from serialized address string (with method serializeAddress)
+     * @param address Serialized address
+     * @return Deserialized paramAddress
+     * @throws ServerException Thrown in case communication with server has failed
+     * @since 2.3.0
+     */
+    public ParamAddress deserializeAddress(String address)
+    	throws ServerException {
+    	try {
+			return m_eps.deserializeAddress(getResultLogin(true).getSessionId(), address);
+		} catch (Exception ex) {
+			throw new ServerException(ex);
+		}
+    }
+    
+    /**
+     * Get additional user parameters
+     * @param dtDate The effective date of user parameters. If null - current date is applied
+     * @return List of user parameters
+     * @throws ServerException Thrown in case communication with server has failed
+     * @since 2.3.0
+     */
+    public List<Integer> getAdditionalUserParams(Date dtDate) throws ServerException {
+    	try {
+			return m_eps.getAdditionalUserParams(getResultLogin(true).getSessionId(), Util.toXMLGregorianCalendar(dtDate));
 		} catch (Exception ex) {
 			throw new ServerException(ex);
 		}

@@ -1,8 +1,12 @@
 
 package com.omgm.speedy.eps.soap.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -27,17 +31,21 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="fixedTimeDelivery" type="{http://www.w3.org/2001/XMLSchema}short" minOccurs="0"/>
  *         &lt;element name="fragile" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *         &lt;element name="palletized" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+ *         &lt;element name="parcels" type="{http://ver01.eps.speedy.sirma.com/}paramParcelInfo" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="parcelsCount" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="payCodToThirdParty" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="payerRefId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="payerRefInsuranceId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="payerRefPackingsId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>         
  *         &lt;element name="payerType" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="payerTypeInsurance" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="payerTypePackings" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>         
  *         &lt;element name="receiverId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="receiverSiteId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="senderId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="senderSiteId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="serviceTypeId" type="{http://www.w3.org/2001/XMLSchema}long"/>
+ *         &lt;element name="specialDeliveryId" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="takingDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="toBeCalled" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *         &lt;element name="weightDeclared" type="{http://www.w3.org/2001/XMLSchema}double"/>
@@ -46,8 +54,6 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * <p>This class is used to pass parameters for calculation
  * 
  * @since 1.0.0
  */
@@ -62,17 +68,21 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "fixedTimeDelivery",
     "fragile",
     "palletized",
+    "parcels",
     "parcelsCount",
     "payCodToThirdParty",
     "payerRefId",
     "payerRefInsuranceId",
+    "payerRefPackingsId",
     "payerType",
     "payerTypeInsurance",
+    "payerTypePackings",
     "receiverId",
     "receiverSiteId",
     "senderId",
     "senderSiteId",
     "serviceTypeId",
+    "specialDeliveryId",
     "takingDate",
     "toBeCalled",
     "weightDeclared"
@@ -165,6 +175,13 @@ public class ParamCalculation {
     protected Long payerRefInsuranceId;
     
     /**
+     * Packings payer id
+     * MANDATORY: Must be set <=> payerTypePackings is "third party".
+     * @since 2.3.0
+     */
+    protected Long payerRefPackingsId;
+    
+    /**
      * Payer type (0=sender, 1=receiver or 2=third party)
      * MANDATORY: YES
      */
@@ -176,6 +193,13 @@ public class ParamCalculation {
      * MANDATORY: NO
      */
     protected Integer payerTypeInsurance;
+    
+    /**
+     * Packings payer type (0=sender, 1=reciever or 2=third party)
+     * MANDATORY: N). If not set, the payer of the packings' surcharge will be the same as the one indicated by payerType.
+     * @since 2.3.0
+     */
+    protected Integer payerTypePackings;
     
     /**
      * Receiver's ID.
@@ -230,6 +254,20 @@ public class ParamCalculation {
      * MANDATORY: YES
      */
     protected double weightDeclared;
+    
+    /**
+     * Parcels
+     * @since 2.3.0
+     */
+    @XmlElement(nillable = true)
+    protected List<ParamParcelInfo> parcels;
+    
+    /**
+     * Special delivery id
+     * MANDATORY: NO
+     * @since 2.3.0
+     */
+    protected Integer specialDeliveryId;
 
     /**
      * Gets the Cash-on-Delivery amount
@@ -456,6 +494,24 @@ public class ParamCalculation {
     public void setPayerRefInsuranceId(Long payerRefInsuranceId) {
         this.payerRefInsuranceId = payerRefInsuranceId;
     }
+    
+    /**
+     * Gets the packings payer id
+     * @return Packings payer id
+     * @since 2.3.0
+     */
+    public Long getPayerRefPackingsId() {
+        return payerRefPackingsId;
+    }
+
+    /**
+     * Sets the packings payer id
+     * @param payerRefPackingsId Packings payer id
+     * @since 2.3.0
+     */
+    public void setPayerRefPackingsId(Long payerRefPackingsId) {
+        this.payerRefPackingsId = payerRefPackingsId;
+    }
 
     /**
      * Gets the payer type
@@ -488,6 +544,26 @@ public class ParamCalculation {
      */
     public void setPayerTypeInsurance(Integer payerTypeInsurance) {
         this.payerTypeInsurance = payerTypeInsurance;
+    }
+    
+    /**
+     * Gets the packings payer type (0=sender, 1=reciever or 2=third party).
+     * Null means the same as courier service payer type
+     * @return Packings payer type
+     * @since 2.3.0
+     */
+    public Integer getPayerTypePackings() {
+        return payerTypePackings;
+    }
+
+    /**
+     * Sets the packings payer type (0=sender, 1=reciever or 2=third party).
+     * Null means the same as courier service payer type
+     * @param payerTypePackings Packings payer type
+     * @since 2.3.0
+     */
+    public void setPayerTypePackings(Integer payerTypePackings) {
+        this.payerTypePackings = payerTypePackings;
     }
 
     /**
@@ -625,4 +701,48 @@ public class ParamCalculation {
         this.weightDeclared = weightDeclared;
     }
 
+    /**
+     * Gets the declared weight 
+     * @return Declared weight
+     */
+    public Integer getSpecialDeliveryId() {
+        return specialDeliveryId;
+    }
+
+    /**
+     * Sets the declared weight (the greater of "volume" and "real" weight values).
+     * Max 100.00
+     * @param specialDeliveryId Special delivery id
+     */
+    public void setSpecialDeliveryId(Integer specialDeliveryId) {
+        this.specialDeliveryId = specialDeliveryId;
+    }
+    
+    /**
+     * Gets the value of the parcels property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the parcels property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getParcels().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link ParamParcelInfo }
+     * 
+     */
+    public List<ParamParcelInfo> getParcels() {
+        if (parcels == null) {
+            parcels = new ArrayList<ParamParcelInfo>();
+        }
+        return this.parcels;
+    }
 }

@@ -3,12 +3,14 @@ package com.omgm.speedy.eps.soap.model;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
+
 
 
 /**
@@ -35,27 +37,33 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="fragile" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *         &lt;element name="noteClient" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="officeToBeCalledId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="optionsBeforePayment" type="{http://ver01.eps.speedy.sirma.com/}paramOptionsBeforePayment" minOccurs="0"/>         
  *         &lt;element name="packId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="packing" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="packings" type="{http://ver01.eps.speedy.sirma.com/}paramPackings" maxOccurs="unbounded" minOccurs="0"/>         
  *         &lt;element name="palletized" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *         &lt;element name="parcels" type="{http://ver01.eps.speedy.sirma.com/}paramParcelInfo" maxOccurs="unbounded" minOccurs="0"/>
  *         &lt;element name="parcelsCount" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="payCodToThirdParty" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="payerRefId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="payerRefInsuranceId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="payerRefPackingsId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>         
  *         &lt;element name="payerType" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="payerTypeInsurance" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
+ *         &lt;element name="payerTypePackings" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>         
  *         &lt;element name="pendingParcelsDescription" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="pendingShipmentDescription" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
  *         &lt;element name="receiver" type="{http://ver01.eps.speedy.sirma.com/}paramClientData" minOccurs="0"/>
  *         &lt;element name="ref1" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="ref2" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="retMoneyTransferReqAmount" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         &lt;element name="retThirdPartyPayer" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>         
  *         &lt;element name="retToClientId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="sender" type="{http://ver01.eps.speedy.sirma.com/}paramClientData" minOccurs="0"/>
  *         &lt;element name="serviceTypeId" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *         &lt;element name="size" type="{http://ver01.eps.speedy.sirma.com/}size" minOccurs="0"/>
  *         &lt;element name="skipAutomaticParcelsCreation" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>
+ *         &lt;element name="specialDeliveryId" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="takingDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
  *         &lt;element name="weightDeclared" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *         &lt;element name="willBringToOffice" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
@@ -66,7 +74,7 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * &lt;/complexType>
  * </pre>
  * 
- * <p>Instances of this class are passed as a parameter of Speedy web service calls for calclualation and registration
+ * <p>Instances of this class are passed as a parameter of Speedy web service calls for calculation and registration
  * 
  * @since 1.0.0
  * 
@@ -87,27 +95,33 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "fragile",
     "noteClient",
     "officeToBeCalledId",
+    "optionsBeforePayment",
     "packId",
     "packing",
+    "packings",
     "palletized",
     "parcels",
     "parcelsCount",
     "payCodToThirdParty",
     "payerRefId",
     "payerRefInsuranceId",
+    "payerRefPackingsId",
     "payerType",
     "payerTypeInsurance",
+    "payerTypePackings",
     "pendingParcelsDescription",
     "pendingShipmentDescription",
     "receiver",
     "ref1",
     "ref2",
     "retMoneyTransferReqAmount",
+    "retThirdPartyPayer",
     "retToClientId",
     "sender",
     "serviceTypeId",
     "size",
     "skipAutomaticParcelsCreation",
+    "specialDeliveryId",
     "takingDate",
     "weightDeclared",
     "willBringToOffice",
@@ -205,6 +219,13 @@ public class ParamPicking {
     protected Long officeToBeCalledId;
     
     /**
+     * Options before payment
+     * MANDATORY: NO
+     * @since 2.3.0
+     */
+    protected ParamOptionsBeforePayment optionsBeforePayment;
+    
+    /**
      * Packing ID (number)
      * MANDATORY: NO
      */
@@ -217,6 +238,14 @@ public class ParamPicking {
     protected String packing;
     
     /**
+     * Data for packings. For internal use only
+     * MANDATORY: NO
+     * @since 2.3.0
+     */
+    @XmlElement(nillable = true)
+    protected List<ParamPackings> packings;
+    
+    /**
      * Specifies whether the shipment is palletized
      * MANDATORY: YES
      */
@@ -224,7 +253,7 @@ public class ParamPicking {
     
     /**
      * Data for parcels with explicit/fixed IDs (from the second one onward)
-     * The list has maximum lenght 998
+     * The list has maximum length 998
      * MANDATORY: NO
      */
     @XmlElement(nillable = true)
@@ -253,6 +282,13 @@ public class ParamPicking {
      * MANDATORY: Must be set <=> shipment has insurance (i.e. amountInsuranceBase > 0) and it is payed by a "third party".
      */
     protected Long payerRefInsuranceId;
+    
+    /**
+     * Packings payer ID
+     * MANDATORY: Must be set <=> payerTypePackings is "third party".
+     * @since 2.3.0
+     */
+    protected Long payerRefPackingsId;
 
     /**
      * Payer type (0=sender, 1=receiver or 2=third party)
@@ -265,6 +301,13 @@ public class ParamPicking {
      * MANDATORY: Must be set <=> shipment is insured (i.e. amountInsuranceBase > 0).
      */
     protected Integer payerTypeInsurance;
+    
+    /**
+     * Packings payer type (0=sender, 1=reciever or 2=third party)
+     * MANDATORY: No.If not set, the payer of the packings' surcharge will be the same as the one indicated by payerType.
+     * @since 2.3.0
+     */
+    protected Integer payerTypePackings;
     
     /**
      * Specifies if the service/system should allow parcels to be added to the shipment at a later stage.
@@ -304,6 +347,13 @@ public class ParamPicking {
      * MANDATORY: NO
      */
     protected Double retMoneyTransferReqAmount;
+    
+    /**
+     * Return third party payer flag
+     * MANDATORY: NO
+     * @since 2.3.0
+     */
+    protected Boolean retThirdPartyPayer;
     
     /**
      * ID of the client who is to receive the return receipt and/or the return documents.
@@ -370,6 +420,13 @@ public class ParamPicking {
      */
     protected Long willBringToOfficeId;
 
+    /**
+     * Special delivery id
+     * MANDATORY: NO
+     * @since 2.3.0
+     */
+    protected Integer specialDeliveryId;
+    
     /**
      * Gets the Cash-on-Delivery (COD) amount
      * @return Cash-on-Delivery (COD) amount
@@ -605,6 +662,26 @@ public class ParamPicking {
     public void setOfficeToBeCalledId(Long officeToBeCalledId) {
         this.officeToBeCalledId = officeToBeCalledId;
     }
+    
+    /**
+     * Gets the value of the optionsBeforePayment property.
+     * @return Options before payment
+     * @since 2.3.0
+     */
+    public ParamOptionsBeforePayment getOptionsBeforePayment() {
+        return optionsBeforePayment;
+    }
+
+    /**
+     * Sets the value of the optionsBeforePayment property.
+     * @param paramOptionsBeforePayment Options before payment
+     *  @since 2.3.0
+     */
+    public void setOptionsBeforePayment(ParamOptionsBeforePayment paramOptionsBeforePayment) {
+        this.optionsBeforePayment = paramOptionsBeforePayment;
+    }
+
+
 
     /**
      * Gets packing ID (number)
@@ -636,6 +713,36 @@ public class ParamPicking {
      */
     public void setPacking(String packing) {
         this.packing = packing;
+    }
+
+    /**
+     * Gets the list of packings.
+     * For internal use only.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the packings property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getPackings().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link ParamPackings }
+     * 
+     * @since 2.3.0
+     */
+    public List<ParamPackings> getPackings() {
+        if (packings == null) {
+            packings = new ArrayList<ParamPackings>();
+        }
+        return this.packings;
     }
 
     /**
@@ -754,6 +861,24 @@ public class ParamPicking {
     public void setPayerRefInsuranceId(Long payerRefInsuranceId) {
         this.payerRefInsuranceId = payerRefInsuranceId;
     }
+    
+    /**
+     * Gets the packings payer id
+     * @return Packings payer id
+     * @since 2.3.0
+     */
+    public Long getPayerRefPackingsId() {
+        return payerRefPackingsId;
+    }
+
+    /**
+     * Sets the packings payer id
+     * @param payerRefPackingsId Packings payer id
+     * @since 2.3.0
+     */
+    public void setPayerRefPackingsId(Long payerRefPackingsId) {
+        this.payerRefPackingsId = payerRefPackingsId;
+    }
 
     /**
      * Gets payer type.
@@ -786,6 +911,26 @@ public class ParamPicking {
      */
     public void setPayerTypeInsurance(Integer payerTypeInsurance) {
         this.payerTypeInsurance = payerTypeInsurance;
+    }
+    
+    /**
+     * Gets the packings payer type (0=sender, 1=reciever or 2=third party).
+     * Null means the same as courier service payer type
+     * @return Packings payer type
+     * @since 2.3.0
+     */
+    public Integer getPayerTypePackings() {
+        return payerTypePackings;
+    }
+
+    /**
+     * Sets the packings payer type (0=sender, 1=reciever or 2=third party).
+     * Null means the same as courier service payer type
+     * @param payerTypePackings Packings payer type
+     * @since 2.3.0
+     */
+    public void setPayerTypePackings(Integer payerTypePackings) {
+        this.payerTypePackings = payerTypePackings;
     }
 
     /**
@@ -927,6 +1072,24 @@ public class ParamPicking {
      */
     public void setRetMoneyTransferReqAmount(Double retMoneyTransferReqAmount) {
         this.retMoneyTransferReqAmount = retMoneyTransferReqAmount;
+    }
+    
+    /**
+     * Gets return picking third party payer flag 
+     * @return Return picking third party payer flag
+     * @since 2.3.0
+     */
+    public Boolean isRetThirdPartyPayer() {
+        return retThirdPartyPayer;
+    }
+
+    /**
+     * Sets return picking third party payer flag 
+     * @param retThirdPartyPayer Return picking third party payer flag
+     * @since 2.3.0
+     */
+    public void setRetThirdPartyPayer(Boolean retThirdPartyPayer) {
+        this.retThirdPartyPayer = retThirdPartyPayer;
     }
 
     /**
@@ -1089,4 +1252,19 @@ public class ParamPicking {
         this.willBringToOfficeId = willBringToOfficeId;
     }
 
+    /**
+     * Gets the special delivery id
+     * @return Special delivery id
+     */
+    public Integer getSpecialDeliveryId() {
+        return specialDeliveryId;
+    }
+
+    /**
+     * Sets the Sets the special delivery id
+     * @param specialDeliveryId Special delivery id
+     */
+    public void setSpecialDeliveryId(Integer specialDeliveryId) {
+        this.specialDeliveryId = specialDeliveryId;
+    }
 }
