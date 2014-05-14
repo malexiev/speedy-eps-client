@@ -408,12 +408,13 @@ class EPSSOAPInterfaceImpl extends SoapClient implements EPSInterface {
     /**
      * @see EPSInterface::listCommonObjects()
      */
-    public function listCommonObjects($sessionId, $name, $siteId) {
+    public function listCommonObjects($sessionId, $name, $siteId, $language) {
         try {
             $listCommonObjectsStdObject = new stdClass();
             $listCommonObjectsStdObject->sessionId = $sessionId;
             $listCommonObjectsStdObject->name      = $name;
             $listCommonObjectsStdObject->siteId    = $siteId;
+            $listCommonObjectsStdObject->language  = $language;
             $response = parent::listCommonObjects($listCommonObjectsStdObject);
             $arrListCommonObjects = array();
             if (isset($response->return)) {
@@ -435,12 +436,13 @@ class EPSSOAPInterfaceImpl extends SoapClient implements EPSInterface {
     /**
      * @see EPSInterface::listBlocks()
      */
-    public function listBlocks($sessionId, $name, $siteId) {
+    public function listBlocks($sessionId, $name, $siteId, $language) {
         try {
             $listBlocksStdObject = new stdClass();
             $listBlocksStdObject->sessionId = $sessionId;
             $listBlocksStdObject->name      = $name;
             $listBlocksStdObject->siteId    = $siteId;
+            $listBlocksStdObject->language  = $language;
             $response = parent::listBlocks($listBlocksStdObject);
             $arrListBlocks = array();
             if (isset($response->return)) {
@@ -1063,12 +1065,13 @@ class EPSSOAPInterfaceImpl extends SoapClient implements EPSInterface {
 	/**
 	 * @see EPSInterface::listOfficesEx()
 	 */
-	public function listOfficesEx($sessionId, $name, $siteId) {
+	public function listOfficesEx($sessionId, $name, $siteId, $language) {
 		try {
        		$listOfficesExStdObject = new stdClass();
        		$listOfficesExStdObject->sessionId = $sessionId;
        		$listOfficesExStdObject->name      = $name;
        		$listOfficesExStdObject->siteId    = $siteId;
+       		$listOfficesExStdObject->language  = $language;
        		$response = parent::listOfficesEx($listOfficesExStdObject);
        		$arrListOfficesEx = array();
        		if (isset($response->return)) {

@@ -374,13 +374,14 @@ class EPSFacade {
      * @since 1.0
      * @param string $name Common object name (or part of it)
      * @param integer $siteId Signed 64-bit Site ID
+     * @param ParamLanguage $language BG or EN. If set to null the server defaults to BG (added in 2.3.0)
      * @throws ClientException Thrown in case EPS interface implementation is not set
      * @throws ServerException Thrown in case communication with server has failed
      * @return array ResultCommonObject List of common objects
      */
-    public function listCommonObjects($name, $siteId) {
+    public function listCommonObjects($name, $siteId, $language = null) {
         $this->checkStateBeforeCall();
-        return $this->_epsInterfaceImpl->listCommonObjects($this->getResultLogin(true)->getSessionId(), $name, $siteId);
+        return $this->_epsInterfaceImpl->listCommonObjects($this->getResultLogin(true)->getSessionId(), $name, $siteId, $language);
     }
 
     /**
@@ -389,13 +390,14 @@ class EPSFacade {
      * @since 1.0
      * @param string $name Block name (or part of it)
      * @param integer $siteId Signed 64-bit Site ID
+     * @param ParamLanguage $language BG or EN. If set to null the server defaults to BG (added in 2.3.0)
      * @throws ClientException Thrown in case EPS interface implementation is not set
      * @throws ServerException Thrown in case communication with server has failed
      * @return array string List of blocks
      */
-    public function listBlocks($name, $siteId) {
+    public function listBlocks($name, $siteId, $language = null) {
         $this->checkStateBeforeCall();
-        return $this->_epsInterfaceImpl->listBlocks($this->getResultLogin(true)->getSessionId(), $name, $siteId);
+        return $this->_epsInterfaceImpl->listBlocks($this->getResultLogin(true)->getSessionId(), $name, $siteId, $language);
     }
 
     /**
@@ -781,13 +783,14 @@ class EPSFacade {
      * @since 2.2.0
      * @param string $name Office name (or part of it);
      * @param integer $siteId Signed 64-bit Site ID
+     * @param ParamLanguage $language BG or EN. If set to null the server defaults to BG (added in 2.3.0)
      * @throws ServerException Thrown in case communication with server has failed
      * @throws ClientException Thrown in case EPS interface implementation is not set
      * @return array ResultOfficeEx List of offices
      */
-    public function listOfficesEx($name, $siteId) {
+    public function listOfficesEx($name, $siteId, $language = null) {
     	$this->checkStateBeforeCall();
-    	return $this->_epsInterfaceImpl->listOfficesEx($this->getResultLogin(true)->getSessionId(), $name, $siteId);
+    	return $this->_epsInterfaceImpl->listOfficesEx($this->getResultLogin(true)->getSessionId(), $name, $siteId, $language);
     }
     
     /**

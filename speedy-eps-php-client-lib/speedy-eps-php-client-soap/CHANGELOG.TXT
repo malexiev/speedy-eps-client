@@ -4,6 +4,9 @@ PHP Speedy Web Service client library @@VERSION
 
 CHANGE LOG
 ----------
+* Version 2.4.0
+  - listOfficesEx, listBlocks, listCommonObjects have "language" parameter added
+
 * Version 2.3.0
   - New method getAdditionalUserParams is available
   - New fields payerTypePackings, payerRefPackingsId added in ParamPicking and ParamCalculation

@@ -224,10 +224,11 @@ interface EPSInterface {
      * @param string $sessionId
      * @param string $name Common object name (or part of it)
      * @param integer $siteId Signed 64-bit Site ID
+     * @param ParamLanguage $language Language
      * @throws ServerException Thrown in case communication with server has failed
      * @return array ResultCommonObject List of common objects
     */
-    public function listCommonObjects($sessionId, $name, $siteId);
+    public function listCommonObjects($sessionId, $name, $siteId, $language);
 
     /**
      * Returns a list of blocks matching the search criteria.
@@ -236,10 +237,11 @@ interface EPSInterface {
      * @param string $sessionId
      * @param string $name Block name (or part of it)
      * @param integer $siteId Signed 64-bit Site ID
+     * @param ParamLanguage $language Language
      * @throws ServerException Thrown in case communication with server has failed
      * @return array string List of blocks
     */
-    public function listBlocks($sessionId, $name, $siteId);
+    public function listBlocks($sessionId, $name, $siteId, $language);
 
     /**
      * Returns a list of Speedy offices matching the search criteria
@@ -545,10 +547,11 @@ interface EPSInterface {
      * @param string $sessionId
      * @param string $name Office name (or part of it);
      * @param integer $siteId Signed 64-bit Site ID
+     * @param ParamLanguage $language Language
      * @throws ServerException Thrown in case communication with server has failed
      * @return array ResultOfficeEx List of offices
      */
-    public function listOfficesEx($sessionId, $name, $siteId);
+    public function listOfficesEx($sessionId, $name, $siteId, $language);
     
     /**
      * Returns deserialized address from serialized string address
