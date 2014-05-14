@@ -511,8 +511,23 @@ public class EPSFacade {
 	 */
 	public List<ResultCommonObject> listCommonObjects(String sName, long lSiteId) 
 	throws ServerException {
+		return listCommonObjects(sName, lSiteId, null);
+	}
+	
+	/**
+	 * Returns a list of common objects matching the search criteria.
+	 * The list is limited to 10 records.
+	 * @param sName Common object name (or part of it)
+	 * @param lSiteId Signed 64-bit Site ID
+	 * @param language Language
+	 * @throws ServerException Thrown in case communication with server has failed
+	 * @return List of ResultCommonObject
+	 * @since 2.4.0
+	 */
+	public List<ResultCommonObject> listCommonObjects(String sName, long lSiteId, ParamLanguage language) 
+	throws ServerException {
 		try {
-			return m_eps.listCommonObjects(getResultLogin(true).getSessionId(), sName, lSiteId);
+			return m_eps.listCommonObjects(getResultLogin(true).getSessionId(), sName, lSiteId, language);
 		} catch (Exception ex) {
 			throw new ServerException(ex);
 		}
@@ -528,8 +543,23 @@ public class EPSFacade {
 	*/
 	public List<String> listBlocks(String sName, long lSiteId) 
 	throws ServerException {
+		return listBlocks(sName, lSiteId, null);
+	}
+	
+	/**
+	 * Returns a list of blocks matching the search criteria.
+	 * The list is limited to 10 records.
+	 * @param sName Block name (or part of it)
+	 * @param lSiteId Signed 64-bit Site ID
+	 * @param language Language
+	 * @throws ServerException Thrown in case communication with server has failed
+	 * @return List of blocks
+	 * @since 2.4.0
+	*/
+	public List<String> listBlocks(String sName, long lSiteId, ParamLanguage language) 
+	throws ServerException {
 		try {
-			return m_eps.listBlocks(getResultLogin(true).getSessionId(), sName, lSiteId);
+			return m_eps.listBlocks(getResultLogin(true).getSessionId(), sName, lSiteId, language);
 		} catch (Exception ex) {
 			throw new ServerException(ex);
 		}
@@ -1028,8 +1058,24 @@ public class EPSFacade {
      */
     public List<ResultOfficeEx> listOfficesEx(String name, Long siteId) 
     	throws ServerException {
+    	return listOfficesEx(name, siteId, null);
+    }
+    
+    /**
+     * Returns a list of Speedy offices matching the search criteria
+     * The list is limited to 10 records.
+     * @since 2.2.0
+     * @param name Office name (or part of it);
+     * @param siteId Signed 64-bit Site ID
+     * @param language Language
+     * @throws ServerException Thrown in case communication with server has failed
+     * @return array ResultOfficeEx List of offices
+     * @since 2.4.0
+     */
+    public List<ResultOfficeEx> listOfficesEx(String name, Long siteId, ParamLanguage language) 
+    	throws ServerException {
     	try {
-			return m_eps.listOfficesEx(getResultLogin(true).getSessionId(), name, siteId);
+			return m_eps.listOfficesEx(getResultLogin(true).getSessionId(), name, siteId, language);
 		} catch (Exception ex) {
 			throw new ServerException(ex);
 		}

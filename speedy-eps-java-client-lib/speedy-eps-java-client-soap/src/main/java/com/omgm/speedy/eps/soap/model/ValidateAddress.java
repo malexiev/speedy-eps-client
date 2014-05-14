@@ -7,19 +7,18 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for listCommonObjects complex type.
+ * <p>Java class for validateAddress complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="listCommonObjects">
+ * &lt;complexType name="validateAddress">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="sessionId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="siteId" type="{http://www.w3.org/2001/XMLSchema}long"/>
- *         &lt;element name="language" type="{http://ver01.eps.speedy.sirma.com/}paramLanguage" minOccurs="0"/>
+ *         &lt;element name="address" type="{http://ver01.eps.speedy.sirma.com/}paramAddress" minOccurs="0"/>
+ *         &lt;element name="validationMode" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,18 +28,16 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "listCommonObjects", propOrder = {
+@XmlType(name = "validateAddress", propOrder = {
     "sessionId",
-    "name",
-    "siteId",
-    "language"
+    "address",
+    "validationMode"
 })
-public class ListCommonObjects {
+public class ValidateAddress {
 
     protected String sessionId;
-    protected String name;
-    protected long siteId;
-    protected ParamLanguage language;
+    protected ParamAddress address;
+    protected Integer validationMode;
 
     /**
      * Gets the value of the sessionId property.
@@ -67,67 +64,51 @@ public class ListCommonObjects {
     }
 
     /**
-     * Gets the value of the name property.
+     * Gets the value of the address property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link ParamAddress }
      *     
      */
-    public String getName() {
-        return name;
+    public ParamAddress getAddress() {
+        return address;
     }
 
     /**
-     * Sets the value of the name property.
+     * Sets the value of the address property.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link ParamAddress }
      *     
      */
-    public void setName(String value) {
-        this.name = value;
+    public void setAddress(ParamAddress value) {
+        this.address = value;
     }
 
     /**
-     * Gets the value of the siteId property.
-     * 
-     */
-    public long getSiteId() {
-        return siteId;
-    }
-
-    /**
-     * Sets the value of the siteId property.
-     * 
-     */
-    public void setSiteId(long value) {
-        this.siteId = value;
-    }
-
-    /**
-     * Gets the value of the language property.
+     * Gets the value of the validationMode property.
      * 
      * @return
      *     possible object is
-     *     {@link ParamLanguage }
+     *     {@link Integer }
      *     
      */
-    public ParamLanguage getLanguage() {
-        return language;
+    public Integer getValidationMode() {
+        return validationMode;
     }
 
     /**
-     * Sets the value of the language property.
+     * Sets the value of the validationMode property.
      * 
      * @param value
      *     allowed object is
-     *     {@link ParamLanguage }
+     *     {@link Integer }
      *     
      */
-    public void setLanguage(ParamLanguage value) {
-        this.language = value;
+    public void setValidationMode(Integer value) {
+        this.validationMode = value;
     }
 
 }

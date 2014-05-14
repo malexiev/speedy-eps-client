@@ -21,6 +21,7 @@ import com.omgm.speedy.eps.soap.model.ParamAddress;
 import com.omgm.speedy.eps.soap.model.ParamClientData;
 import com.omgm.speedy.eps.soap.model.ParamPhoneNumber;
 import com.omgm.speedy.eps.soap.model.ResultAddress;
+import com.omgm.speedy.eps.soap.model.ResultAddressEx;
 import com.omgm.speedy.eps.soap.model.ResultAmounts;
 import com.omgm.speedy.eps.soap.model.ResultCalculation;
 import com.omgm.speedy.eps.soap.model.ResultCalculationMS;
@@ -254,6 +255,15 @@ public class Util {
 	
 	/**
 	 * Dump method to print well-formatted address
+	 * @param resultAddressEx Address
+	 * @return Well-formatted string to print
+	 */
+	public static String toString(ResultAddressEx resultAddressEx) {
+		return toString("", resultAddressEx);
+	}
+	
+	/**
+	 * Dump method to print well-formatted address
 	 * @param sIndent  Indentation in new line
 	 * @param resultAddress Address
 	 * @return Well-formatted string to print
@@ -263,7 +273,7 @@ public class Util {
 		sb.append("\n").append(sIndent).append("  municipalityName : ").append(resultAddress.getMunicipalityName());
 		sb.append("\n").append(sIndent).append("  regionName       : ").append(resultAddress.getRegionName());
 		sb.append("\n").append(sIndent).append("  siteId           : ").append(resultAddress.getSiteId());
-		sb.append("\n").append(sIndent).append("  siteType         :  ").append(resultAddress.getSiteType());
+		sb.append("\n").append(sIndent).append("  siteType         : ").append(resultAddress.getSiteType());
 		sb.append("\n").append(sIndent).append("  siteName         : ").append(resultAddress.getSiteName());
 		sb.append("\n").append(sIndent).append("  quarterId        : ").append(resultAddress.getQuarterId());
 		sb.append("\n").append(sIndent).append("  quarterType      : ").append(resultAddress.getQuarterType());
@@ -280,6 +290,43 @@ public class Util {
 		sb.append("\n").append(sIndent).append("  commonObjectName : ").append(resultAddress.getCommonObjectName());
 		sb.append("\n").append(sIndent).append("  postCode         : ").append(resultAddress.getPostCode());
 		sb.append("\n").append(sIndent).append("  addressNote      : ").append(resultAddress.getAddressNote());
+		return sb.append("\n").append(sIndent).append("}").toString();
+	}
+	
+	/**
+	 * Dump method to print well-formatted address
+	 * @param sIndent  Indentation in new line
+	 * @param resultAddress Address
+	 * @return Well-formatted string to print
+	 */
+	public static String toString(String sIndent, ResultAddressEx resultAddressEx) {
+		StringBuilder sb = new StringBuilder("[ResultAddress] {");
+		if (resultAddressEx.getResultSite() != null) {
+			sb.append("\n").append(sIndent).append("  municipalityName : ").append(resultAddressEx.getResultSite().getMunicipality());
+			sb.append("\n").append(sIndent).append("  regionName       : ").append(resultAddressEx.getResultSite().getRegion());
+			sb.append("\n").append(sIndent).append("  siteId           : ").append(resultAddressEx.getResultSite().getId());
+			sb.append("\n").append(sIndent).append("  siteType         : ").append(resultAddressEx.getResultSite().getType());
+			sb.append("\n").append(sIndent).append("  siteName         : ").append(resultAddressEx.getResultSite().getName());
+		}
+		sb.append("\n").append(sIndent).append("  quarterId        : ").append(resultAddressEx.getQuarterId());
+		sb.append("\n").append(sIndent).append("  quarterType      : ").append(resultAddressEx.getQuarterType());
+		sb.append("\n").append(sIndent).append("  quarterName      : ").append(resultAddressEx.getQuarterName());
+		sb.append("\n").append(sIndent).append("  blockNo          : ").append(resultAddressEx.getBlockNo());
+		sb.append("\n").append(sIndent).append("  streetId         : ").append(resultAddressEx.getStreetId());
+		sb.append("\n").append(sIndent).append("  streetType       : ").append(resultAddressEx.getStreetType());
+		sb.append("\n").append(sIndent).append("  streetName       : ").append(resultAddressEx.getStreetName());
+		sb.append("\n").append(sIndent).append("  streetNo         : ").append(resultAddressEx.getStreetNo());
+		sb.append("\n").append(sIndent).append("  entranceNo       : ").append(resultAddressEx.getEntranceNo());
+		sb.append("\n").append(sIndent).append("  floorNo          : ").append(resultAddressEx.getFloorNo());
+		sb.append("\n").append(sIndent).append("  apartmentNo      : ").append(resultAddressEx.getApartmentNo());
+		sb.append("\n").append(sIndent).append("  commonObjectId   : ").append(resultAddressEx.getCommonObjectId());
+		sb.append("\n").append(sIndent).append("  commonObjectName : ").append(resultAddressEx.getCommonObjectName());
+		sb.append("\n").append(sIndent).append("  postCode         : ").append(resultAddressEx.getPostCode());
+		sb.append("\n").append(sIndent).append("  addressNote      : ").append(resultAddressEx.getAddressNote());
+		sb.append("\n").append(sIndent).append("  fullAddressString: ").append(resultAddressEx.getFullAddressString());
+		sb.append("\n").append(sIndent).append("  coordTypeId      : ").append(resultAddressEx.getCoordTypeId());
+		sb.append("\n").append(sIndent).append("  coordX           : ").append(resultAddressEx.getCoordX());
+		sb.append("\n").append(sIndent).append("  coordY           : ").append(resultAddressEx.getCoordY());
 		return sb.append("\n").append(sIndent).append("}").toString();
 	}
 	

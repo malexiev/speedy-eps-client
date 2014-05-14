@@ -7,18 +7,18 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for listCommonObjects complex type.
+ * <p>Java class for listOfficesEx complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="listCommonObjects">
+ * &lt;complexType name="listOfficesEx">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="sessionId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="siteId" type="{http://www.w3.org/2001/XMLSchema}long"/>
+ *         &lt;element name="siteId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="language" type="{http://ver01.eps.speedy.sirma.com/}paramLanguage" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -29,17 +29,17 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "listCommonObjects", propOrder = {
+@XmlType(name = "listOfficesEx", propOrder = {
     "sessionId",
     "name",
     "siteId",
     "language"
 })
-public class ListCommonObjects {
+public class ListOfficesEx {
 
     protected String sessionId;
     protected String name;
-    protected long siteId;
+    protected Long siteId;
     protected ParamLanguage language;
 
     /**
@@ -93,16 +93,24 @@ public class ListCommonObjects {
     /**
      * Gets the value of the siteId property.
      * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
      */
-    public long getSiteId() {
+    public Long getSiteId() {
         return siteId;
     }
 
     /**
      * Sets the value of the siteId property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
      */
-    public void setSiteId(long value) {
+    public void setSiteId(Long value) {
         this.siteId = value;
     }
 

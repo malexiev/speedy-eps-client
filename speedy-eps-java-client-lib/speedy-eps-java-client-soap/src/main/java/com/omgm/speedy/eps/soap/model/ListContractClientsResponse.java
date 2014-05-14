@@ -10,16 +10,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for listBlocksResponse complex type.
+ * <p>Java class for listContractClientsResponse complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="listBlocksResponse">
+ * &lt;complexType name="listContractClientsResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="return" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="return" type="{http://ver01.eps.speedy.sirma.com/}resultClientData" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -29,13 +29,13 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "listBlocksResponse", propOrder = {
+@XmlType(name = "listContractClientsResponse", propOrder = {
     "_return"
 })
-public class ListBlocksResponse {
+public class ListContractClientsResponse {
 
     @XmlElement(name = "return")
-    protected List<String> _return;
+    protected List<ResultClientData> _return;
 
     /**
      * Gets the value of the return property.
@@ -55,13 +55,13 @@ public class ListBlocksResponse {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link String }
+     * {@link ResultClientData }
      * 
      * 
      */
-    public List<String> getReturn() {
+    public List<ResultClientData> getReturn() {
         if (_return == null) {
-            _return = new ArrayList<String>();
+            _return = new ArrayList<ResultClientData>();
         }
         return this._return;
     }

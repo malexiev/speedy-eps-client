@@ -377,7 +377,9 @@ public interface EPSProvider {
         @WebParam(name = "name", targetNamespace = "")
         String name,
         @WebParam(name = "siteId", targetNamespace = "")
-        long siteId)
+        long siteId,
+        @WebParam(name = "language", targetNamespace = "")
+        ParamLanguage language)
         throws InvalidSessionException_Exception
     ;
 
@@ -400,7 +402,9 @@ public interface EPSProvider {
         @WebParam(name = "name", targetNamespace = "")
         String name,
         @WebParam(name = "siteId", targetNamespace = "")
-        long siteId)
+        long siteId,
+        @WebParam(name = "language", targetNamespace = "")
+        ParamLanguage language)
         throws InvalidSessionException_Exception
     ;
 
@@ -983,7 +987,9 @@ public interface EPSProvider {
         @WebParam(name = "name", targetNamespace = "")
         String name,
         @WebParam(name = "siteId", targetNamespace = "")
-        Long siteId)
+        Long siteId,
+        @WebParam(name = "language", targetNamespace = "")
+        ParamLanguage language)
         throws InvalidSessionException_Exception
     ;
 
