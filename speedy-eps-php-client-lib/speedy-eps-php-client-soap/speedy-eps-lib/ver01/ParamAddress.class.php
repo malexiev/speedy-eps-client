@@ -129,6 +129,54 @@ class ParamAddress {
      * @since 2.3.0
      */
     protected $_serializedAddress;
+
+    /**
+     * Country id. Defaults to Bulgaria if not specified
+     * MANDATORY: NO
+     * @var integer Signed 64-bit
+     * @since 2.5.0
+     */
+    private $_countryId;
+    
+    /**
+     * Address line 1
+     * MANDATORY: YES In case the country is not Bulgaria, otherwise NO
+     * @var string
+     * @since 2.5.0
+     */
+    private $_frnAddressLine1;
+    
+    /**
+     * Address line 2
+     * MANDATORY: NO
+     * @var string
+     * @since 2.5.0
+     */
+    private $_frnAddressLine2;
+    
+    /**
+     * Post code
+     * MANDATORY: According to internal nomenclature support for country
+     * @var string
+     * @since 2.5.0
+     */
+    private $_postCode;
+    
+    /**
+     * Site name
+     * MANDATORY: NO
+     * @var string
+     * @since 2.5.0
+     */
+    private $_siteName;
+    
+    /**
+     * State id
+     * MANDATORY:   According to internal nomenclature support for country
+     * @var string
+     * @since 2.5.0
+     */
+    private $_stateId;
     
     /**
      * Constructs new instance of ParamAddress
@@ -154,6 +202,12 @@ class ParamAddress {
 	    	$this->_coordX            = isset($stdClassParamAddress->coordX)            ? $stdClassParamAddress->coordX            : null;
 	    	$this->_coordY            = isset($stdClassParamAddress->coordY)            ? $stdClassParamAddress->coordY            : null;
 	    	$this->_serializedAddress = isset($stdClassParamAddress->serializedAddress) ? $stdClassParamAddress->serializedAddress : null;
+	    	$this->_countryId         = isset($stdClassParamAddress->countryId)         ? $stdClassParamAddress->countryId         : null;
+	    	$this->_frnAddressLine1   = isset($stdClassParamAddress->frnAddressLine1)   ? $stdClassParamAddress->frnAddressLine1   : null;
+	    	$this->_frnAddressLine2   = isset($stdClassParamAddress->frnAddressLine2)   ? $stdClassParamAddress->frnAddressLine2   : null;
+	    	$this->_postCode          = isset($stdClassParamAddress->postCode)          ? $stdClassParamAddress->postCode          : null;
+	    	$this->_siteName          = isset($stdClassParamAddress->siteName)          ? $stdClassParamAddress->siteName          : null;
+	    	$this->_stateId           = isset($stdClassParamAddress->stateId)           ? $stdClassParamAddress->stateId           : null;
     	}
     }
 
@@ -431,6 +485,102 @@ class ParamAddress {
     }
     
     /**
+     * Set country id
+     * @param integer signed 64-bit $countryId Country id
+     */
+    public function setCountryId($countryId) {
+        $this->_countryId = $countryId;
+    }
+    
+    /**
+     * Get country id
+     * @return integer signed 64-bit country id
+     */
+    public function getCountryId() {
+        return $this->_countryId;
+    }
+
+    /**
+     * Set foreign address line 1
+     * @param string $frnAddressLine1 Foreign address line 1
+     */
+    public function setFrnAddressLine1($frnAddressLine1) {
+        $this->_frnAddressLine1 = $frnAddressLine1;
+    }
+    
+    /**
+     * Get foreign address line 1
+     * @return string Foreign address line 1
+     */
+    public function getFrnAddressLine1() {
+        return $this->_frnAddressLine1;
+    }
+    
+    /**
+     * Set foreign address line 2
+     * @param string $frnAddressLine2 Foreign address line 2
+     */
+    public function setFrnAddressLine2($frnAddressLine2) {
+        $this->_frnAddressLine2 = $frnAddressLine2;
+    }
+    
+    /**
+     * Get foreign address line 2
+     * @return string Foreign address line 2
+     */
+    public function getFrnAddressLine2() {
+        return $this->_frnAddressLine2;
+    }
+
+    /**
+     * Set post code
+     * @param string $postCode Post code
+     */
+    public function setPostCode($postCode) {
+        $this->_postCode = $postCode;
+    }
+    
+    /**
+     * Get post code
+     * @return string Post code
+     */
+    public function getPostCode() {
+        return $this->_postCode;
+    }
+    
+    /**
+     * Set site name
+     * @param string $siteName Site name
+     */
+    public function setSiteName($siteName) {
+        $this->_siteName = $siteName;
+    }
+    
+    /**
+     * Get site name
+     * @return string Site name
+     */
+    public function getSiteName() {
+        return $this->_siteName;
+    }
+    
+    /**
+     * Set state id
+     * @param string $stateId State id
+     */
+    public function setStateId($stateId) {
+        $this->_stateId = $stateId;
+    }
+    
+    /**
+     * Get state id
+     * @return string State id
+     */
+    public function getStateId() {
+        return $this->_stateId;
+    }
+    
+    /**
      * Return standard class from this class
      * @return stdClass
      */
@@ -453,6 +603,12 @@ class ParamAddress {
         $stdClass->coordX            = $this->_coordX;
         $stdClass->coordY            = $this->_coordY;
         $stdClass->serializedAddress = $this->_serializedAddress;
+        $stdClass->countryId         = $this->_countryId;
+        $stdClass->frnAddressLine1   = $this->_frnAddressLine1;
+        $stdClass->frnAddressLine2   = $this->_frnAddressLine2;
+        $stdClass->postCode          = $this->_postCode;
+        $stdClass->siteName          = $this->_siteName;
+        $stdClass->stateId           = $this->_stateId;
         return $stdClass;
     }
 }

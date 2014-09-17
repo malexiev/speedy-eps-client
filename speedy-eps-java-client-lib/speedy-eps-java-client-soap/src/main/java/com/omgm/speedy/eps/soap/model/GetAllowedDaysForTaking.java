@@ -22,7 +22,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="serviceTypeId" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *         &lt;element name="senderSiteId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="senderOfficeId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
- *         &lt;element name="minDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         &lt;element name="minDate" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>\
+ *         &lt;element name="senderCountryId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>         
+ *         &lt;element name="senderPostCode" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>         
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -37,7 +39,9 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "serviceTypeId",
     "senderSiteId",
     "senderOfficeId",
-    "minDate"
+    "minDate",
+    "senderCountryId",
+    "senderPostCode"
 })
 public class GetAllowedDaysForTaking {
 
@@ -47,6 +51,8 @@ public class GetAllowedDaysForTaking {
     protected Long senderOfficeId;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar minDate;
+    protected Long senderCountryId;
+    protected String senderPostCode;
 
     /**
      * Gets the value of the sessionId property.
@@ -160,4 +166,51 @@ public class GetAllowedDaysForTaking {
         this.minDate = value;
     }
 
+    /**
+     * Gets the value of the senderCountryId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getSenderCountryId() {
+        return senderCountryId;
+    }
+
+    /**
+     * Sets the value of the senderCountryId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setSenderCountryId(Long value) {
+        this.senderCountryId = value;
+    }
+    
+    /**
+     * Gets the value of the senderPostCode property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public String getSenderPostCode() {
+        return senderPostCode;
+    }
+
+    /**
+     * Sets the value of the senderPostCode property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setSenderPostCode(String value) {
+        this.senderPostCode = value;
+    }
 }

@@ -37,6 +37,9 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="total" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *         &lt;element name="tro" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *         &lt;element name="vat" type="{http://www.w3.org/2001/XMLSchema}double"/>
+ *         &lt;element name="discPcntRetShipment" type="{http://www.w3.org/2001/XMLSchema}double"/>
+ *         &lt;element name="discountRetShipment" type="{http://www.w3.org/2001/XMLSchema}double"/>
+ *         &lt;element name="specialDelivery" type="{http://www.w3.org/2001/XMLSchema}double"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -69,7 +72,10 @@ import javax.xml.bind.annotation.XmlType;
     "pcntFuelSurcharge",
     "total",
     "tro",
-    "vat"
+    "vat",
+    "discPcntRetShipment",
+    "discountRetShipment",
+    "specialDelivery"
 })
 public class ResultAmounts {
 
@@ -177,6 +183,24 @@ public class ResultAmounts {
      * VAT (Value added tax)
      */
     protected double vat;
+    
+    /**
+     * The PERCENTAGE of the "return shipment" service
+     * @since 2.5.0 
+     */
+    protected double discPcntRetShipment;
+    
+    /**
+     * The amount of "return shipment" discount
+     * @since 2.5.0
+     */
+    protected double discountRetShipment;
+    
+    /**
+     * The amount of "special delivery" surcharge
+     * @since 2.5.0
+     */
+    protected double specialDelivery;
 
     /**
      * Gets the "Cash on delivery" amount to be paid to the sender
@@ -514,4 +538,57 @@ public class ResultAmounts {
         this.vat = vat;
     }
 
+    /**
+     * Gets the percentage for return shipment discount
+     * @return Percentage for return shipment discount
+     * @since 2.5.0
+     */
+    public double getDiscPcntRetShipment() {
+        return discPcntRetShipment;
+    }
+
+    /**
+     * Sets percentage for return shipment discount
+     * @param discPcntRetShipment Percentage for return shipment discount
+     * @since 2.5.0
+     */
+    public void setDiscPcntRetShipment(double discPcntRetShipment) {
+        this.discPcntRetShipment = discPcntRetShipment;
+    }
+
+    /**
+     * Gets the amount of discount for return shipment
+     * @return Discount for return shipment
+     * @since 2.5.0
+     */
+    public double getDiscountRetShipment() {
+        return discountRetShipment;
+    }
+
+    /**
+     * Sets the discount for return shipment
+     * @param discountRetShipment Discount for return shipment
+     * @since 2.5.0
+     */
+    public void setDiscountRetShipment(double discountRetShipment) {
+        this.discountRetShipment = discountRetShipment;
+    }
+
+    /**
+     * Gets special delivery surcharge
+     * @return Special delivery surcharge
+     * @since 2.5.0
+     */
+    public double getSpecialDelivery() {
+        return specialDelivery;
+    }
+
+    /**
+     * Sets special delivery surcharge
+     * @param specialDelivery Special delivery surcharge
+     * @since 2.5.0
+     */
+    public void setSpecialDelivery(double specialDelivery) {
+        this.specialDelivery = specialDelivery;
+    }
 }

@@ -70,6 +70,7 @@ public interface EPSProvider {
      * 
      * @param sessionId
      * @param date
+     * @param language
      * @return
      *     returns java.util.List<com.omgm.speedy.eps.soap.model.ResultCourierService>
      * @throws InvalidSessionException_Exception
@@ -82,7 +83,9 @@ public interface EPSProvider {
         @WebParam(name = "sessionId", targetNamespace = "")
         String sessionId,
         @WebParam(name = "date", targetNamespace = "")
-        XMLGregorianCalendar date)
+        XMLGregorianCalendar date,
+        @WebParam(name = "language", targetNamespace = "")
+        ParamLanguage language)
         throws InvalidSessionException_Exception
     ;
 
@@ -92,6 +95,11 @@ public interface EPSProvider {
      * @param sessionId
      * @param receiverSiteId
      * @param date
+     * @param senderCountryId
+     * @param senderPostCode
+     * @param receiverCountryId
+     * @param receiverPostCode
+     * @param language
      * @return
      *     returns java.util.List<com.omgm.speedy.eps.soap.model.ResultCourierServiceExt>
      * @throws InvalidSessionException_Exception
@@ -106,9 +114,20 @@ public interface EPSProvider {
         @WebParam(name = "date", targetNamespace = "")
         XMLGregorianCalendar date,
         @WebParam(name = "senderSiteId", targetNamespace = "")
-        long senderSiteId,
+        Long senderSiteId,
         @WebParam(name = "receiverSiteId", targetNamespace = "")
-        long receiverSiteId)
+        Long receiverSiteId,
+        @WebParam(name = "senderCountryId", targetNamespace = "")
+        Long senderCountryId,
+        @WebParam(name = "senderPostCode", targetNamespace = "")
+        String senderPostCode,
+        @WebParam(name = "receiverCountryId", targetNamespace = "")
+        Long receiverCountryId,
+        @WebParam(name = "receiverPostCode", targetNamespace = "")
+        String receiverPostCode,
+        @WebParam(name = "language", targetNamespace = "")
+        ParamLanguage language
+        )
         throws InvalidSessionException_Exception
     ;
 
@@ -120,6 +139,10 @@ public interface EPSProvider {
      * @param receiverSiteId
      * @param serviceTypeId
      * @param date
+     * @param senderCountryId
+     * @param senderPostCode
+     * @param receiverCountryId
+     * @param receiverPostCode
      * @return
      *     returns com.omgm.speedy.eps.soap.model.ResultMinMaxReal
      * @throws InvalidSessionException_Exception
@@ -134,13 +157,21 @@ public interface EPSProvider {
         @WebParam(name = "serviceTypeId", targetNamespace = "")
         long serviceTypeId,
         @WebParam(name = "senderSiteId", targetNamespace = "")
-        long senderSiteId,
+        Long senderSiteId,
         @WebParam(name = "receiverSiteId", targetNamespace = "")
-        long receiverSiteId,
+        Long receiverSiteId,
         @WebParam(name = "date", targetNamespace = "")
         XMLGregorianCalendar date,
         @WebParam(name = "documents", targetNamespace = "")
-        boolean documents)
+        boolean documents,
+        @WebParam(name = "senderCountryId", targetNamespace = "")
+        Long senderCountryId,
+        @WebParam(name = "senderPostCode", targetNamespace = "")
+        String senderPostCode,
+        @WebParam(name = "receiverCountryId", targetNamespace = "")
+        Long receiverCountryId,
+        @WebParam(name = "receiverPostCode", targetNamespace = "")
+        String receiverPostCode)
         throws InvalidSessionException_Exception
     ;
 
@@ -160,13 +191,17 @@ public interface EPSProvider {
         @WebParam(name = "sessionId", targetNamespace = "")
         String sessionId,
         @WebParam(name = "nomenType", targetNamespace = "")
-        int nomenType)
+        int nomenType,
+        @WebParam(name = "countryId", targetNamespace = "")
+        Long countryId)
         throws InvalidSessionException_Exception
     ;
 
     /**
      * 
      * @param sessionId
+     * @param language
+     * @param countryId
      * @return
      *     returns java.util.List<com.omgm.speedy.eps.soap.model.ResultSite>
      * @throws InvalidSessionException_Exception
@@ -179,7 +214,9 @@ public interface EPSProvider {
         @WebParam(name = "sessionId", targetNamespace = "")
         String sessionId,
         @WebParam(name = "language", targetNamespace = "")
-        ParamLanguage language)
+        ParamLanguage language,
+        @WebParam(name = "countryId", targetNamespace = "")
+        Long countryId)
         throws InvalidSessionException_Exception
     ;
 
@@ -726,6 +763,7 @@ public interface EPSProvider {
      * @param sessionId
      * @param serviceTypeId
      * @param minDate
+     * @param senderCountryId
      * @return
      *     returns java.util.List<javax.xml.datatype.XMLGregorianCalendar>
      * @throws InvalidSessionException_Exception
@@ -744,7 +782,12 @@ public interface EPSProvider {
         @WebParam(name = "senderOfficeId", targetNamespace = "")
         Long senderOfficeId,
         @WebParam(name = "minDate", targetNamespace = "")
-        XMLGregorianCalendar minDate)
+        XMLGregorianCalendar minDate,
+        @WebParam(name = "senderCountryId", targetNamespace = "")
+        Long senderCountryId,
+        @WebParam(name = "senderPostCode", targetNamespace = "")
+        String senderPostCode
+        )
         throws InvalidSessionException_Exception
     ;
 
@@ -1089,6 +1132,133 @@ public interface EPSProvider {
         String sessionId,
         @WebParam(name = "date", targetNamespace = "")
         XMLGregorianCalendar date)
+        throws InvalidSessionException_Exception
+    ;
+    
+    /**
+     * 
+     * @param sessionId
+     * @param name
+     * @param language
+     * @return
+     *     returns java.util.List<com.omgm.speedy.eps.soap.model.ResultCountry>
+     * @throws InvalidSessionException_Exception
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "listCountries", targetNamespace = "http://ver01.eps.speedy.sirma.com/", className = "com.omgm.speedy.eps.soap.model.ListCountries")
+    @ResponseWrapper(localName = "listCountriesResponse", targetNamespace = "http://ver01.eps.speedy.sirma.com/", className = "com.omgm.speedy.eps.soap.model.ListCountriesResponse")
+    @Action(input = "http://ver01.eps.speedy.sirma.com/EPSProvider/listCountriesRequest", output = "http://ver01.eps.speedy.sirma.com/EPSProvider/listCountriesResponse", fault = {
+        @FaultAction(className = InvalidSessionException_Exception.class, value = "http://ver01.eps.speedy.sirma.com/EPSProvider/listCountries/Fault/InvalidSessionException")
+    })
+    public List<ResultCountry> listCountries(
+        @WebParam(name = "sessionId", targetNamespace = "")
+        String sessionId,
+        @WebParam(name = "name", targetNamespace = "")
+        String name,
+        @WebParam(name = "language", targetNamespace = "")
+        ParamLanguage language)
+        throws InvalidSessionException_Exception
+    ;
+    
+    /**
+     * 
+     * @param sessionId
+     * @param language
+     * @param filter
+     * @return
+     *     returns java.util.List<com.omgm.speedy.eps.soap.model.ResultCountry>
+     * @throws InvalidSessionException_Exception
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "listCountriesEx", targetNamespace = "http://ver01.eps.speedy.sirma.com/", className = "com.omgm.speedy.eps.soap.model.ListCountriesEx")
+    @ResponseWrapper(localName = "listCountriesExResponse", targetNamespace = "http://ver01.eps.speedy.sirma.com/", className = "com.omgm.speedy.eps.soap.model.ListCountriesExResponse")
+    @Action(input = "http://ver01.eps.speedy.sirma.com/EPSProvider/listCountriesExRequest", output = "http://ver01.eps.speedy.sirma.com/EPSProvider/listCountriesExResponse", fault = {
+        @FaultAction(className = InvalidSessionException_Exception.class, value = "http://ver01.eps.speedy.sirma.com/EPSProvider/listCountriesEx/Fault/InvalidSessionException")
+    })
+    public List<ResultCountry> listCountriesEx(
+        @WebParam(name = "sessionId", targetNamespace = "")
+        String sessionId,
+        @WebParam(name = "filter", targetNamespace = "")
+        ParamFilterCountry filter,
+        @WebParam(name = "language", targetNamespace = "")
+        ParamLanguage language)
+        throws InvalidSessionException_Exception
+    ;
+    
+    /**
+     * 
+     * @param countryId
+     * @param sessionId
+     * @param name
+     * @return
+     *     returns java.util.List<com.omgm.speedy.eps.soap.model.ResultState>
+     * @throws InvalidSessionException_Exception
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "listStates", targetNamespace = "http://ver01.eps.speedy.sirma.com/", className = "com.omgm.speedy.eps.soap.model.ListStates")
+    @ResponseWrapper(localName = "listStatesResponse", targetNamespace = "http://ver01.eps.speedy.sirma.com/", className = "com.omgm.speedy.eps.soap.model.ListStatesResponse")
+    @Action(input = "http://ver01.eps.speedy.sirma.com/EPSProvider/listStatesRequest", output = "http://ver01.eps.speedy.sirma.com/EPSProvider/listStatesResponse", fault = {
+        @FaultAction(className = InvalidSessionException_Exception.class, value = "http://ver01.eps.speedy.sirma.com/EPSProvider/listStates/Fault/InvalidSessionException")
+    })
+    public List<ResultState> listStates(
+        @WebParam(name = "sessionId", targetNamespace = "")
+        String sessionId,
+        @WebParam(name = "countryId", targetNamespace = "")
+        long countryId,
+        @WebParam(name = "name", targetNamespace = "")
+        String name)
+        throws InvalidSessionException_Exception
+    ;
+
+    /**
+     * 
+     * @param sessionId
+     * @param stateId
+     * @return
+     *     returns com.omgm.speedy.eps.soap.model.ResultState
+     * @throws InvalidSessionException_Exception
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getStateById", targetNamespace = "http://ver01.eps.speedy.sirma.com/", className = "com.omgm.speedy.eps.soap.model.GetStateById")
+    @ResponseWrapper(localName = "getStateByIdResponse", targetNamespace = "http://ver01.eps.speedy.sirma.com/", className = "com.omgm.speedy.eps.soap.model.GetStateByIdResponse")
+    @Action(input = "http://ver01.eps.speedy.sirma.com/EPSProvider/getStateByIdRequest", output = "http://ver01.eps.speedy.sirma.com/EPSProvider/getStateByIdResponse", fault = {
+        @FaultAction(className = InvalidSessionException_Exception.class, value = "http://ver01.eps.speedy.sirma.com/EPSProvider/getStateById/Fault/InvalidSessionException")
+    })
+    public ResultState getStateById(
+        @WebParam(name = "sessionId", targetNamespace = "")
+        String sessionId,
+        @WebParam(name = "stateId", targetNamespace = "")
+        String stateId)
+        throws InvalidSessionException_Exception
+    ;
+
+    /**
+     * 
+     * @param countryId
+     * @param sessionId
+     * @param postCode
+     * @return
+     *     returns boolean
+     * @throws InvalidSessionException_Exception
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "validatePostCode", targetNamespace = "http://ver01.eps.speedy.sirma.com/", className = "com.omgm.speedy.eps.soap.model.ValidatePostCode")
+    @ResponseWrapper(localName = "validatePostCodeResponse", targetNamespace = "http://ver01.eps.speedy.sirma.com/", className = "com.omgm.speedy.eps.soap.model.ValidatePostCodeResponse")
+    @Action(input = "http://ver01.eps.speedy.sirma.com/EPSProvider/validatePostCodeRequest", output = "http://ver01.eps.speedy.sirma.com/EPSProvider/validatePostCodeResponse", fault = {
+        @FaultAction(className = InvalidSessionException_Exception.class, value = "http://ver01.eps.speedy.sirma.com/EPSProvider/validatePostCode/Fault/InvalidSessionException")
+    })
+    public boolean validatePostCode(
+        @WebParam(name = "sessionId", targetNamespace = "")
+        String sessionId,
+        @WebParam(name = "countryId", targetNamespace = "")
+        long countryId,
+        @WebParam(name = "postCode", targetNamespace = "")
+        String postCode)
         throws InvalidSessionException_Exception
     ;
 }

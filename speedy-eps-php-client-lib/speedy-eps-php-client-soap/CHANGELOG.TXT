@@ -4,6 +4,33 @@ PHP Speedy Web Service client library @@VERSION
 
 CHANGE LOG
 ----------
+* Version 2.5.0
+  - New field foreignParcelNumber added in ParamParcel and ParamParcelInfo
+  - New structure ParamReturnServiceRequest is introduced to order return service requests
+  - New structure ParamReturnShipmentRequest is introduced to order return shipment requests
+  - New structure ParamFilterCountry is introduced to search and filter countries
+  - New structure ResultCountry is introduced for country search request responses
+  - New structure ResultState is introduced for state search request responses
+  - New fields "siteName", "postCode", "countryId", "stateId", "frnAddressLine1", "frnAddressLine2" are added in structure ParamAddress
+  - New fields "senderCountryId", "senderPostCode", "receiverCountryId", "receiverPostCode" are added in structure ParamCalculation
+  - New fields "countryId" and "searchString" are added in structure ParamFilterSite
+  - New fields "retShipmentRequest" of type ParamReturnShipmentRequest and "retServicesRequest" of type List<ParamReturnServiceRequest> is added in structure ParamPicking
+  - New fields "countryId", "stateId", "frnAddressLine1" and "frnAddressLine2" are added in structure ResultAddress
+  - New fields "countryId", "stateId", "frnAddressLine1" and "frnAddressLine2" are added in structure ResultAddressEx
+  - New fields "discPcntRetShipment", "discountRetShipment", "specialDelivery" are added in structure ResultAmounts
+  - New field  "countryId" is added in structure ResultSite
+  - New argument "language" is added in method listServices
+  - New arguments "senderCountryId", "senderPostCode", "receiverCountryId", "receiverPostCode", "language" are added in method listServicesForSites
+  - New arguments "senderCountryId", "senderPostCode", "receiverCountryId", "receiverPostCode" are added in method getWeightInterval
+  - New argument "countryId" is added for method getAddressNomenclature
+  - Method listSites is deprecated in favor of listSitesEx()
+  - New arguments "senderCountryId" and "senderPostCode" are added in method getAllowedDaysForTaking
+  - New method listCountries is introduced to search for supported countries
+  - New method listCountriesEx is introduced to search for supported countries using filter
+  - New method listStates is introduced to search for supported country states
+  - New method getStateById is introduced to get country state by id
+  - New method validatePostCode is introduced to verify post code is valid for country 
+
 * Version 2.4.0
   - Methods listOfficesEx, listBlocks, listCommonObjects have "language" parameter added
 

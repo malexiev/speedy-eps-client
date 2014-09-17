@@ -39,10 +39,14 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="payerRefPackingsId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>         
  *         &lt;element name="payerType" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *         &lt;element name="payerTypeInsurance" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
- *         &lt;element name="payerTypePackings" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>         
+ *         &lt;element name="payerTypePackings" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/> 
+ *         &lt;element name="receiverCountryId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="receiverId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="receiverPostCode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="receiverSiteId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="senderCountryId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="senderId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="senderPostCode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="senderSiteId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="serviceTypeId" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *         &lt;element name="specialDeliveryId" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
@@ -77,9 +81,13 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "payerType",
     "payerTypeInsurance",
     "payerTypePackings",
+    "receiverCountryId",
     "receiverId",
+    "receiverPostCode",
     "receiverSiteId",
+    "senderCountryId",
     "senderId",
+    "senderPostCode",
     "senderSiteId",
     "serviceTypeId",
     "specialDeliveryId",
@@ -196,10 +204,17 @@ public class ParamCalculation {
     
     /**
      * Packings payer type (0=sender, 1=reciever or 2=third party)
-     * MANDATORY: N). If not set, the payer of the packings' surcharge will be the same as the one indicated by payerType.
+     * MANDATORY: NO. If not set, the payer of the packings' surcharge will be the same as the one indicated by payerType.
      * @since 2.3.0
      */
     protected Integer payerTypePackings;
+    
+    /**
+     * Receiver country id
+     * MANDATORY: NO
+     * @since 2.5.0
+     */
+    protected Long receiverCountryId;
     
     /**
      * Receiver's ID.
@@ -209,6 +224,13 @@ public class ParamCalculation {
     protected Long receiverId;
     
     /**
+     * Receiver post code
+     * MANDATORY: NO
+     * @since 2.5.0
+     */
+    protected String receiverPostCode;
+    
+    /**
      * Receiver's site ID
      * Either receiverId or receiverSiteId must be set
      * MANDATORY: NO
@@ -216,11 +238,25 @@ public class ParamCalculation {
     protected Long receiverSiteId;
     
     /**
+     * Sender country id
+     * MANDATORY: NO
+     * @since 2.5.0
+     */
+    protected Long senderCountryId;
+    
+    /**
      * Sender's ID.
      * Either senderId or senderSiteId must be set
      * MANDATORY: NO
      */
     protected Long senderId;
+    
+    /**
+     * Sender post code
+     * MANDATORY: NO
+     * @since 2.5.0
+     */
+    protected String senderPostCode;
     
     /**
      * Sender's site ID.
@@ -565,6 +601,24 @@ public class ParamCalculation {
     public void setPayerTypePackings(Integer payerTypePackings) {
         this.payerTypePackings = payerTypePackings;
     }
+    
+    /**
+     * Set receiver country id
+     * @param receiverCountryId Receiver country id
+     * @since 2.5.0
+     */
+    public void setReceiverCountryId(Long receiverCountryId) {
+    	this.receiverCountryId = receiverCountryId;
+    }
+    
+    /**
+     * Get receiver country id
+     * @return Receiver country id
+     * @since 2.5.0
+     */
+    public Long getReceiverCountryId() {
+    	return receiverCountryId;
+    }
 
     /**
      * Gets the receiver id
@@ -581,6 +635,24 @@ public class ParamCalculation {
      */
     public void setReceiverId(Long receiverId) {
         this.receiverId = receiverId;
+    }
+    
+    /**
+     * Get receiver post code
+     * @return Receiver post code
+     * @since 2.5.0
+     */
+    public String getReceiverPostCode() {
+    	return receiverPostCode;
+    }
+    
+    /**
+     * Set receiver post code
+     * @param receiverPostCode Receiver post code
+     * @since 2.5.0
+     */
+    public void setReceiverPostCode(String receiverPostCode) {
+    	this.receiverPostCode = receiverPostCode;
     }
 
     /**
@@ -600,6 +672,24 @@ public class ParamCalculation {
         this.receiverSiteId = receiverSiteId;
     }
 
+    /**
+     * Set sender country id
+     * @param senderCountryId Sender country id
+     * @since 2.5.0
+     */
+    public void setSenderCountryId(Long senderCountryId) {
+    	this.senderCountryId = senderCountryId;
+    }
+    
+    /**
+     * Get sender country id
+     * @return Sender country id
+     * @since 2.5.0
+     */
+    public Long getSenderCountryId() {
+    	return senderCountryId;
+    }
+    
     /**
      * Gets the sender's id.
      * @return Sneder's id
@@ -623,6 +713,24 @@ public class ParamCalculation {
      */
     public Long getSenderSiteId() {
         return senderSiteId;
+    }
+    
+    /**
+     * Get sender post code
+     * @return Sender post code
+     * @since 2.5.0
+     */
+    public String getSenderPostCode() {
+    	return senderPostCode;
+    }
+    
+    /**
+     * Set sender post code
+     * @param senderPostCode Sender post code
+     * @since 2.5.0
+     */
+    public void setSenderPostCode(String senderPostCode) {
+    	this.senderPostCode = senderPostCode;
     }
 
     /**

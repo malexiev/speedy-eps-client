@@ -20,8 +20,13 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *       &lt;sequence>
  *         &lt;element name="sessionId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="date" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
- *         &lt;element name="senderSiteId" type="{http://www.w3.org/2001/XMLSchema}long"/>
- *         &lt;element name="receiverSiteId" type="{http://www.w3.org/2001/XMLSchema}long"/>
+ *         &lt;element name="senderSiteId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="receiverSiteId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="senderCountryId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="senderPostCode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="receiverCountryId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="receiverPostCode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="language" type="{http://ver01.eps.speedy.sirma.com/}paramLanguage" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,15 +40,25 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "sessionId",
     "date",
     "senderSiteId",
-    "receiverSiteId"
+    "receiverSiteId",
+    "senderCountryId",
+    "senderPostCode",
+    "receiverCountryId",
+    "receiverPostCode",
+    "language"
 })
 public class ListServicesForSites {
 
     protected String sessionId;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar date;
-    protected long senderSiteId;
-    protected long receiverSiteId;
+    protected Long senderSiteId;
+    protected Long receiverSiteId;
+    protected Long senderCountryId;
+    protected String senderPostCode;
+    protected Long receiverCountryId;
+    protected String receiverPostCode;
+    protected ParamLanguage language;
 
     /**
      * Gets the value of the sessionId property.
@@ -97,7 +112,7 @@ public class ListServicesForSites {
      * Gets the value of the senderSiteId property.
      * 
      */
-    public long getSenderSiteId() {
+    public Long getSenderSiteId() {
         return senderSiteId;
     }
 
@@ -105,7 +120,7 @@ public class ListServicesForSites {
      * Sets the value of the senderSiteId property.
      * 
      */
-    public void setSenderSiteId(long value) {
+    public void setSenderSiteId(Long value) {
         this.senderSiteId = value;
     }
 
@@ -113,7 +128,7 @@ public class ListServicesForSites {
      * Gets the value of the receiverSiteId property.
      * 
      */
-    public long getReceiverSiteId() {
+    public Long getReceiverSiteId() {
         return receiverSiteId;
     }
 
@@ -121,8 +136,127 @@ public class ListServicesForSites {
      * Sets the value of the receiverSiteId property.
      * 
      */
-    public void setReceiverSiteId(long value) {
+    public void setReceiverSiteId(Long value) {
         this.receiverSiteId = value;
     }
 
+    /**
+     * Gets the value of the senderCountryId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getSenderCountryId() {
+        return senderCountryId;
+    }
+
+    /**
+     * Sets the value of the senderCountryId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setSenderCountryId(Long value) {
+        this.senderCountryId = value;
+    }
+
+    /**
+     * Gets the value of the senderPostCode property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSenderPostCode() {
+        return senderPostCode;
+    }
+
+    /**
+     * Sets the value of the senderPostCode property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSenderPostCode(String value) {
+        this.senderPostCode = value;
+    }
+
+    /**
+     * Gets the value of the receiverCountryId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getReceiverCountryId() {
+        return receiverCountryId;
+    }
+
+    /**
+     * Sets the value of the receiverCountryId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setReceiverCountryId(Long value) {
+        this.receiverCountryId = value;
+    }
+
+    /**
+     * Gets the value of the receiverPostCode property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getReceiverPostCode() {
+        return receiverPostCode;
+    }
+
+    /**
+     * Sets the value of the receiverPostCode property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setReceiverPostCode(String value) {
+        this.receiverPostCode = value;
+    }
+    
+    /**
+     * Gets the value of the language property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link ParamLanguage }
+     *     
+     */
+    public ParamLanguage getLanguage() {
+        return language;
+    }
+
+    /**
+     * Sets the value of the language property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link ParamLanguage }
+     *     
+     */
+    public void setLanguage(ParamLanguage value) {
+        this.language = value;
+    }
 }

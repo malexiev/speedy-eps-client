@@ -41,7 +41,15 @@ class ParamParcelInfo {
      * @since 2.3.0
      */
     private $_weight;
-
+    
+    /**
+     * Foreign parcel number
+     * MANDATORY: NO
+     * @var string
+     * @since 2.5.0
+     */
+    private $_foreignParcelNumber;
+    
     /**
      * Set parcel's serial number (2, 3, ...)
      * @param integer $seqNo Signed 32-bit
@@ -125,6 +133,22 @@ class ParamParcelInfo {
     public function setWeight($weight) {
     	$this->_weight = $weight;
     }
+    
+    /**
+     * Set foreign parcel number
+     * @param string $foreignParcelNumber
+     */
+    public function setForeignParcelNumber($foreignParcelNumber) {
+    	$this->_foreignParcelNumber = $foreignParcelNumber;
+    }
+    
+    /**
+     * Get foreign parcel number
+     * @return string
+     */
+    public function getForeignParcelNumber() {
+    	return $this->_foreignParcelNumber;
+    }
 
     /**
      * Return standard class from this class
@@ -140,6 +164,7 @@ class ParamParcelInfo {
         	$stdClass->size = $this->_size->toStdClass();
         }
         $stdClass->weight   = $this->_weight;
+        $stdClass->foreignParcelNumber = $this->_foreignParcelNumber;
         return $stdClass;
     }
 }

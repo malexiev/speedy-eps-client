@@ -22,13 +22,19 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="commonObjectId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="coordX" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
  *         &lt;element name="coordY" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         &lt;element name="countryId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="entranceNo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="floorNo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="frnAddressLine1" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="frnAddressLine2" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="postCode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="quarterId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="quarterName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="quarterType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="serializedAddress" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="siteId" type="{http://www.w3.org/2001/XMLSchema}long"/>
+ *         &lt;element name="siteName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>     
+ *         &lt;element name="stateId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="streetId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="streetName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="streetNo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
@@ -58,13 +64,19 @@ import javax.xml.bind.annotation.XmlType;
     "commonObjectId",
     "coordX",
     "coordY",
+    "countryId",
     "entranceNo",
     "floorNo",
+    "frnAddressLine1",
+    "frnAddressLine2",
+    "postCode",
     "quarterId",
     "quarterName",
     "quarterType",
     "serializedAddress",
     "siteId",
+    "siteName",
+    "stateId",
     "streetId",
     "streetName",
     "streetNo",
@@ -109,6 +121,13 @@ public class ParamAddress {
     protected Double coordY;
     
     /**
+     * Country id
+     * MANDATORY: NO
+     * @since 2.5.0
+     */
+    protected Long countryId;
+    
+    /**
      * Entrance No. Max size is 10 symbols.
      * MANDATORY: NO
      */    
@@ -119,6 +138,28 @@ public class ParamAddress {
      * MANDATORY: NO
      */
     protected String floorNo;
+    
+    /**
+     * Foreign address line 1
+     * MANDATORY: In case foreign address is specified
+     * @since 2.5.0
+     */
+    protected String frnAddressLine1;
+    
+    /**
+     * Foreign address line 2
+     * MANDATORY: NO
+     * @since 2.5.0
+     */
+    protected String frnAddressLine2;
+    
+    /**
+     * Post code
+     * MANDATORY: According to internal rules for country
+     * @since 2.5.0
+     */
+    protected String postCode;
+
     
     /**
      * Quarter ID
@@ -140,9 +181,23 @@ public class ParamAddress {
     
     /**
      * Site ID
-     * MANDATORY: YES
+     * MANDATORY: For Bulgarian addresses only
      */
     protected long siteId;
+    
+    /**
+     * Site name
+     * MANDATORY: For foreign addresses
+     * @since 2.5.0
+     */
+    protected String siteName;
+    
+    /**
+     * State id
+     * MANDATORY: According to internal rules for country
+     * @since 2.5.0
+     */
+    protected String stateId;
     
     /**
      * Street ID
@@ -274,6 +329,24 @@ public class ParamAddress {
     public void setCoordY(Double coordY) {
         this.coordY = coordY;
     }
+    
+    /**
+     * Get country id
+     * @return Country id
+     * @since 2.5.0
+     */
+    public Long getCountryId() {
+    	return countryId;
+    }
+    
+    /**
+     * Set country id
+     * @param countryId Country id
+     * @since 2.5.0
+     */
+    public void setCountryId(Long countryId) {
+    	this.countryId = countryId;
+    }
 
     /**
      * Gets the entrance No
@@ -307,6 +380,60 @@ public class ParamAddress {
      */
     public void setFloorNo(String floorNo) {
         this.floorNo = floorNo;
+    }
+    
+    /**
+     * Get foreign address line 1
+     * @return Foreign address line 1
+     * @since 2.5.0
+     */
+    public String getFrnAddressLine1() {
+    	return frnAddressLine1;
+    }
+    
+    /**
+     * Set foreign address line 1
+     * @param frnAddressLine1 Foreign address line 1
+     * @since 2.5.0
+     */
+    public void setFrnAddressLine1(String frnAddressLine1) {
+    	this.frnAddressLine1 = frnAddressLine1;
+    }
+    
+    /**
+     * Get foreign address line 2
+     * @return Foreign address line 2
+     * @since 2.5.0
+     */
+    public String getFrnAddressLine2() {
+    	return frnAddressLine2;
+    }
+    
+    /**
+     * Set foreign address line 2
+     * @param frnAddressLine2 Foreign address line 2
+     * @since 2.5.0
+     */
+    public void setFrnAddressLine2(String frnAddressLine2) {
+    	this.frnAddressLine2 = frnAddressLine2;
+    }
+    
+    /**
+     * Get foreign address line 2
+     * @return Foreign address line 2
+     * @since 2.5.0
+     */
+    public String getPostCode() {
+    	return postCode;
+    }
+    
+    /**
+     * Set post code
+     * @param postCode Post code
+     * @since 2.5.0
+     */
+    public void setPostCode(String postCode) {
+    	this.postCode = postCode;
     }
 
     /**
@@ -375,6 +502,42 @@ public class ParamAddress {
         this.siteId = siteId;
     }
 
+    /**
+     * Gets the site name
+     * @return Site name
+     * @since 2.5.0
+     */
+    public String getSiteName() {
+        return siteName;
+    }
+
+    /**
+     * Sets the site name
+     * @param siteName Site name
+     * @since 2.5.0
+     */
+    public void setSiteName(String siteName) {
+        this.siteName = siteName;
+    }
+
+    /**
+     * Gets the state id
+     * @return State id
+     * @since 2.5.0
+     */
+    public String getStateId() {
+        return stateId;
+    }
+
+    /**
+     * Sets the state id
+     * @param stateId State id
+     * @since 2.5.0
+     */
+    public void setStateId(String stateId) {
+        this.stateId = stateId;
+    }
+    
     /**
      * Gets the street id
      * @return Street id

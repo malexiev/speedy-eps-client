@@ -224,8 +224,8 @@ class ParamCalculation {
      * @var integer Signed 32-bit
      * @since 2.3.0
      */
-    protected $_payerTypePackings;
-
+    private $_payerTypePackings;
+    
     /**
      * Insurance payer ID. Must be set <=> shipment has insurance (i.e. amountInsuranceBase > 0) and it is payed by a "third party".
      * MANDATORY: NO
@@ -249,6 +249,38 @@ class ParamCalculation {
      * @since 2.3.0
      */
     protected $_specialDeliveryId;
+
+    /**
+     * Receiver's country ID
+     * MANDATORY: NO. Defaults to Bulgaria when not specified
+     * @var integer Signed 64-bit
+     * @since 2.5.0
+     */
+    private $_receiverCountryId;
+
+    /**
+     * Receiver's post code
+     * MANDATORY: According to internal nomenclature support
+     * @var string
+     * @since 2.5.0
+     */
+    private $_receiverPostCode;
+    
+    /**
+     * Sender's country ID
+     * MANDATORY: NO. Defaults to Bulgaria when not specified
+     * @var integer Signed 64-bit
+     * @since 2.5.0
+     */
+    private $_senderCountryId;
+    
+    /**
+     * Sender's post code
+     * MANDATORY: According to internal nomenclature support
+     * @var string
+     * @since 2.5.0
+     */
+    private $_senderPostCode;
 
     /**
      * Set the date for shipment pick-up (the "time" component is ignored).
@@ -685,6 +717,70 @@ class ParamCalculation {
     public function setSpecialDeliveryId($specialDeliveryId) {
     	$this->_specialDeliveryId = $specialDeliveryId;
     }
+    
+    /**
+     * Set the receiver country id
+     * @param integer signed 64-bit $receiverCountryId
+     */
+    public function setReceiverCountryId($receiverCountryId) {
+        $this->_receiverCountryId = $receiverCountryId;
+    }
+
+    /**
+     * Get receiver country id.
+     * @return integer signed 64-bit Receiver country id
+     */
+    public function getReceiverCountryId() {
+        return $this->_receiverCountryId;
+    }
+    
+    /**
+     * Set the receiver post code
+     * @param string $receiverPostCode
+     */
+    public function setReceiverPostCode($receiverPostCode) {
+        $this->_receiverPostCode = $receiverPostCode;
+    }
+
+    /**
+     * Get receiver post code
+     * @return string Receiver post code
+     */
+    public function getReceiverPostCode() {
+        return $this->_receiverPostCode;
+    }
+    
+    /**
+     * Set the sender country id
+     * @param integer signed 64-bit $senderCountryId
+     */
+    public function setSenderCountryId($senderCountryId) {
+        $this->_senderCountryId = $senderCountryId;
+    }
+
+    /**
+     * Get sender country id.
+     * @return integer signed 64-bit Sender country id
+     */
+    public function getSenderCountryId() {
+        return $this->_senderCountryId;
+    }
+    
+    /**
+     * Set the sender post code
+     * @param string $senderPostCode
+     */
+    public function setSenderPostCode($senderPostCode) {
+        $this->_senderPostCode = $senderPostCode;
+    }
+
+    /**
+     * Get sender post code
+     * @return string Sender post code
+     */
+    public function getSenderPostCode() {
+        return $this->_senderPostCode;
+    }
 
     /**
      * Return standard class from this class
@@ -718,6 +814,10 @@ class ParamCalculation {
         $stdClass->payerRefInsuranceId      = $this->_payerRefInsuranceId;
         $stdClass->payerRefPackingsId       = $this->_payerRefPackingsId;
         $stdClass->specialDeliveryId        = $this->_specialDeliveryId;
+        $stdClass->receiverCountryId        = $this->_receiverCountryId;
+        $stdClass->receiverPostCode         = $this->_receiverPostCode;
+        $stdClass->senderCountryId          = $this->_senderCountryId;
+        $stdClass->senderPostCode           = $this->_senderPostCode;
         return $stdClass;
     }
 }

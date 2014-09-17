@@ -17,6 +17,7 @@ import javax.xml.bind.annotation.XmlType;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="billOfLading" type="{http://www.w3.org/2001/XMLSchema}long"/>
+ *         &lt;element name="foreignParcelNumber" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="packId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="parcelId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="size" type="{http://ver01.eps.speedy.sirma.com/}size" minOccurs="0"/>
@@ -34,6 +35,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "paramParcel", propOrder = {
     "billOfLading",
+    "foreignParcelNumber",
     "packId",
     "parcelId",
     "size",
@@ -70,6 +72,13 @@ public class ParamParcel {
      * MANDATORY: NO
      */
     protected double weight;
+    
+    /**
+     * Foreign parcel number
+     * MANDATORY: NO
+     * @since 2.5.0
+     */
+    protected String foreignParcelNumber;
 
     /**
      * Gets the BOL to which the parcel is to be added
@@ -151,4 +160,21 @@ public class ParamParcel {
         this.weight = weight;
     }
 
+    /**
+     * Get foreign parcel number
+     * @return Foreign parcel number
+     * @since 2.5.0
+     */
+ 	public String getForeignParcelNumber() {
+ 		return foreignParcelNumber;
+ 	}
+ 		
+ 	/**
+ 	 * Set foreign parcel number
+ 	 * @param foreignParcelNumber Foreign parcel number
+ 	 * @since 2.5.0
+ 	 */
+ 	public void setForeignParcelNumber(String foreignParcelNumber) {
+ 		this.foreignParcelNumber = foreignParcelNumber;
+ 	}
 }

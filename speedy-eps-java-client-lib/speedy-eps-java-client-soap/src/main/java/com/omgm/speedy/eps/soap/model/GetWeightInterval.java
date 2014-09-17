@@ -20,10 +20,14 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *       &lt;sequence>
  *         &lt;element name="sessionId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="serviceTypeId" type="{http://www.w3.org/2001/XMLSchema}long"/>
- *         &lt;element name="senderSiteId" type="{http://www.w3.org/2001/XMLSchema}long"/>
- *         &lt;element name="receiverSiteId" type="{http://www.w3.org/2001/XMLSchema}long"/>
+ *         &lt;element name="senderSiteId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="receiverSiteId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="date" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
- *         &lt;element name="documents" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
+ *         &lt;element name="documents" type="{http://www.w3.org/2001/XMLSchema}boolean"/>\
+ *         &lt;element name="senderCountryId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="senderPostCode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="receiverCountryId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="receiverPostCode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -39,18 +43,25 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "senderSiteId",
     "receiverSiteId",
     "date",
-    "documents"
+    "documents",
+    "senderCountryId",
+    "senderPostCode",
+    "receiverCountryId",
+    "receiverPostCode"
 })
 public class GetWeightInterval {
 
     protected String sessionId;
     protected long serviceTypeId;
-    protected long senderSiteId;
-    protected long receiverSiteId;
+    protected Long senderSiteId;
+    protected Long receiverSiteId;
     @XmlSchemaType(name = "dateTime")
     protected XMLGregorianCalendar date;
     protected boolean documents;
-
+    protected Long senderCountryId;
+    protected String senderPostCode;
+    protected Long receiverCountryId;
+    protected String receiverPostCode;
     /**
      * Gets the value of the sessionId property.
      * 
@@ -95,7 +106,7 @@ public class GetWeightInterval {
      * Gets the value of the senderSiteId property.
      * 
      */
-    public long getSenderSiteId() {
+    public Long getSenderSiteId() {
         return senderSiteId;
     }
 
@@ -103,7 +114,7 @@ public class GetWeightInterval {
      * Sets the value of the senderSiteId property.
      * 
      */
-    public void setSenderSiteId(long value) {
+    public void setSenderSiteId(Long value) {
         this.senderSiteId = value;
     }
 
@@ -111,7 +122,7 @@ public class GetWeightInterval {
      * Gets the value of the receiverSiteId property.
      * 
      */
-    public long getReceiverSiteId() {
+    public Long getReceiverSiteId() {
         return receiverSiteId;
     }
 
@@ -119,7 +130,7 @@ public class GetWeightInterval {
      * Sets the value of the receiverSiteId property.
      * 
      */
-    public void setReceiverSiteId(long value) {
+    public void setReceiverSiteId(Long value) {
         this.receiverSiteId = value;
     }
 
@@ -163,4 +174,99 @@ public class GetWeightInterval {
         this.documents = value;
     }
 
+    /**
+     * Gets the value of the senderCountryId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getSenderCountryId() {
+        return senderCountryId;
+    }
+
+    /**
+     * Sets the value of the senderCountryId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setSenderCountryId(Long value) {
+        this.senderCountryId = value;
+    }
+
+    /**
+     * Gets the value of the senderPostCode property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getSenderPostCode() {
+        return senderPostCode;
+    }
+
+    /**
+     * Sets the value of the senderPostCode property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setSenderPostCode(String value) {
+        this.senderPostCode = value;
+    }
+
+    /**
+     * Gets the value of the receiverCountryId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
+     */
+    public Long getReceiverCountryId() {
+        return receiverCountryId;
+    }
+
+    /**
+     * Sets the value of the receiverCountryId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
+     */
+    public void setReceiverCountryId(Long value) {
+        this.receiverCountryId = value;
+    }
+
+    /**
+     * Gets the value of the receiverPostCode property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getReceiverPostCode() {
+        return receiverPostCode;
+    }
+
+    /**
+     * Sets the value of the receiverPostCode property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setReceiverPostCode(String value) {
+        this.receiverPostCode = value;
+    }
 }

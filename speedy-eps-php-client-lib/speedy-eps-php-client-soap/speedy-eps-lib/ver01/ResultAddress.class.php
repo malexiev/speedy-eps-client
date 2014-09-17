@@ -123,6 +123,34 @@ class ResultAddress {
      * @var string
      */
     private $_commonObjectName;
+    
+    /**
+     * Country id
+     * @var integer signed 64-bit
+     * @since 2.5.0
+     */
+    private $_countryId;
+    
+    /**
+     * Foreign address line 1
+     * @var string
+     * @since 2.5.0
+     */
+    private $_frnAddressLine1;
+    
+    /**
+     * Foreign address line 2
+     * @var string
+     * @since 2.5.0
+     */
+    private $_frnAddressLine2;
+    
+    /**
+     * State id
+     * @var string
+     * @since 2.5.0
+     */
+    private $_stateId;
 
     /**
      * Constructs new instance of ResultAddress
@@ -149,6 +177,10 @@ class ResultAddress {
         $this->_addressNote      = isset($stdClassResultAddress->addressNote)      ? $stdClassResultAddress->addressNote      : null;
         $this->_commonObjectId   = isset($stdClassResultAddress->commonObjectId)   ? $stdClassResultAddress->commonObjectId   : null;
         $this->_commonObjectName = isset($stdClassResultAddress->commonObjectName) ? $stdClassResultAddress->commonObjectName : null;
+        $this->_countryId        = isset($stdClassResultAddress->countryId)        ? $stdClassResultAddress->countryId        : null;
+        $this->_frnAddressLine1  = isset($stdClassResultAddress->frnAddressLine1)  ? $stdClassResultAddress->frnAddressLine1  : null;
+        $this->_frnAddressLine2  = isset($stdClassResultAddress->frnAddressLine2)  ? $stdClassResultAddress->frnAddressLine2  : null;
+        $this->_stateId          = isset($stdClassResultAddress->stateId)          ? $stdClassResultAddress->stateId          : null;
     }
 
     /**
@@ -297,7 +329,7 @@ class ResultAddress {
 
     /**
      * Get common object ID
-     * @return integer Signed 64-bit
+     * @return integer Signed 64-bit Common object id
      */
     public function getCommonObjectId() {
         return $this->_commonObjectId;
@@ -305,10 +337,42 @@ class ResultAddress {
 
     /**
      * Get common object name
-     * @return string
+     * @return string Common object name
      */
     public function getCommonObjectName() {
         return $this->_commonObjectName;
+    }
+    
+    /**
+     * Get country id
+     * @return string Country id
+     */
+    public function getCountryId() {
+        return $this->_countryId;
+    }
+    
+    /**
+     * Get foreign address line 1
+     * @return string Foreign address line 1
+     */
+    public function getFrnAddressLine1() {
+        return $this->_frnAddressLine1;
+    }
+    
+    /**
+     * Get foreign address line 2
+     * @return string Foreign address line 2
+     */
+    public function getFrnAddressLine2() {
+        return $this->_frnAddressLine2;
+    }
+    
+    /**
+     * Get state id
+     * @return string State id
+     */
+    public function getStateId() {
+        return $this->_stateId;
     }
 }
 ?>

@@ -148,33 +148,60 @@ class ResultAmounts {
      * @var double Signed 64-bit double
      */
     private $_pcntFuelSurcharge;
+    
+    /**
+     * The PERCENTAGE of return shipment discount
+     * @access private
+     * @var double Signed 64-bit double
+     * @since 2.5.0
+     */
+    private $_discPcntRetShipment;
+    
+    /**
+     * The amount of return shipment discount
+     * @access private
+     * @var double Signed 64-bit double
+     * @since 2.5.0
+     */
+    private $_discountRetShipment;
+    
+    /**
+     * The amount of special delivery discount
+     * @access private
+     * @var double Signed 64-bit double
+     * @since 2.5.0
+     */
+    private $_specialDelivery;
 
     /**
      * Constructs new instance of ResultAmounts from stdClass
      * @param stdClass $stdClassResultAmounts
      */
     function __construct($stdClassResultAmounts) {
-        $this->_insuranceBase      = isset($stdClassResultAmounts->insuranceBase)      ? $stdClassResultAmounts->insuranceBase      : null;
-        $this->_insurancePremium   = isset($stdClassResultAmounts->insurancePremium)   ? $stdClassResultAmounts->insurancePremium   : null;
-        $this->_net                = isset($stdClassResultAmounts->net)                ? $stdClassResultAmounts->net                : null;
-        $this->_discountFixed      = isset($stdClassResultAmounts->discountFixed)      ? $stdClassResultAmounts->discountFixed      : null;
-        $this->_discountToOffice   = isset($stdClassResultAmounts->discountToOffice)   ? $stdClassResultAmounts->discountToOffice   : null;
-        $this->_discountToBeCalled = isset($stdClassResultAmounts->discountToBeCalled) ? $stdClassResultAmounts->discountToBeCalled : null;
-        $this->_discountAdditional = isset($stdClassResultAmounts->discountAdditional) ? $stdClassResultAmounts->discountAdditional : null;
-        $this->_packings           = isset($stdClassResultAmounts->packings)           ? $stdClassResultAmounts->packings           : null;
-        $this->_tro                = isset($stdClassResultAmounts->tro)                ? $stdClassResultAmounts->tro                : null;
-        $this->_fixedTimeDelivery  = isset($stdClassResultAmounts->fixedTimeDelivery)  ? $stdClassResultAmounts->fixedTimeDelivery  : null;
-        $this->_fuelSurcharge      = isset($stdClassResultAmounts->fuelSurcharge)      ? $stdClassResultAmounts->fuelSurcharge      : null;
-        $this->_islandSurcharge    = isset($stdClassResultAmounts->islandSurcharge)    ? $stdClassResultAmounts->islandSurcharge    : null;
-        $this->_codBase            = isset($stdClassResultAmounts->codBase)            ? $stdClassResultAmounts->codBase            : null;
-        $this->_codPremium         = isset($stdClassResultAmounts->codPremium)         ? $stdClassResultAmounts->codPremium         : null;
-        $this->_vat                = isset($stdClassResultAmounts->vat)                ? $stdClassResultAmounts->vat                : null;
-        $this->_total              = isset($stdClassResultAmounts->total)              ? $stdClassResultAmounts->total              : null;
-        $this->_discPcntFixed      = isset($stdClassResultAmounts->discPcntFixed)      ? $stdClassResultAmounts->discPcntFixed      : null;
-        $this->_discPcntToOffice   = isset($stdClassResultAmounts->discPcntToOffice)   ? $stdClassResultAmounts->discPcntToOffice   : null;
-        $this->_discPcntToBeCalled = isset($stdClassResultAmounts->discPcntToBeCalled) ? $stdClassResultAmounts->discPcntToBeCalled : null;
-        $this->_discPcntAdditional = isset($stdClassResultAmounts->discPcntAdditional) ? $stdClassResultAmounts->discPcntAdditional : null;
-        $this->_pcntFuelSurcharge  = isset($stdClassResultAmounts->pcntFuelSurcharge)  ? $stdClassResultAmounts->pcntFuelSurcharge  : null;
+        $this->_insuranceBase       = isset($stdClassResultAmounts->insuranceBase)       ? $stdClassResultAmounts->insuranceBase       : null;
+        $this->_insurancePremium    = isset($stdClassResultAmounts->insurancePremium)    ? $stdClassResultAmounts->insurancePremium    : null;
+        $this->_net                 = isset($stdClassResultAmounts->net)                 ? $stdClassResultAmounts->net                 : null;
+        $this->_discountFixed       = isset($stdClassResultAmounts->discountFixed)       ? $stdClassResultAmounts->discountFixed       : null;
+        $this->_discountToOffice    = isset($stdClassResultAmounts->discountToOffice)    ? $stdClassResultAmounts->discountToOffice    : null;
+        $this->_discountToBeCalled  = isset($stdClassResultAmounts->discountToBeCalled)  ? $stdClassResultAmounts->discountToBeCalled  : null;
+        $this->_discountAdditional  = isset($stdClassResultAmounts->discountAdditional)  ? $stdClassResultAmounts->discountAdditional  : null;
+        $this->_packings            = isset($stdClassResultAmounts->packings)            ? $stdClassResultAmounts->packings            : null;
+        $this->_tro                 = isset($stdClassResultAmounts->tro)                 ? $stdClassResultAmounts->tro                 : null;
+        $this->_fixedTimeDelivery   = isset($stdClassResultAmounts->fixedTimeDelivery)   ? $stdClassResultAmounts->fixedTimeDelivery   : null;
+        $this->_fuelSurcharge       = isset($stdClassResultAmounts->fuelSurcharge)       ? $stdClassResultAmounts->fuelSurcharge       : null;
+        $this->_islandSurcharge     = isset($stdClassResultAmounts->islandSurcharge)     ? $stdClassResultAmounts->islandSurcharge     : null;
+        $this->_codBase             = isset($stdClassResultAmounts->codBase)             ? $stdClassResultAmounts->codBase             : null;
+        $this->_codPremium          = isset($stdClassResultAmounts->codPremium)          ? $stdClassResultAmounts->codPremium          : null;
+        $this->_vat                 = isset($stdClassResultAmounts->vat)                 ? $stdClassResultAmounts->vat                 : null;
+        $this->_total               = isset($stdClassResultAmounts->total)               ? $stdClassResultAmounts->total               : null;
+        $this->_discPcntFixed       = isset($stdClassResultAmounts->discPcntFixed)       ? $stdClassResultAmounts->discPcntFixed       : null;
+        $this->_discPcntToOffice    = isset($stdClassResultAmounts->discPcntToOffice)    ? $stdClassResultAmounts->discPcntToOffice    : null;
+        $this->_discPcntToBeCalled  = isset($stdClassResultAmounts->discPcntToBeCalled)  ? $stdClassResultAmounts->discPcntToBeCalled  : null;
+        $this->_discPcntAdditional  = isset($stdClassResultAmounts->discPcntAdditional)  ? $stdClassResultAmounts->discPcntAdditional  : null;
+        $this->_pcntFuelSurcharge   = isset($stdClassResultAmounts->pcntFuelSurcharge)   ? $stdClassResultAmounts->pcntFuelSurcharge   : null;
+        $this->_discPcntRetShipment = isset($stdClassResultAmounts->discPcntRetShipment) ? $stdClassResultAmounts->discPcntRetShipment : null;
+        $this->_discountRetShipment = isset($stdClassResultAmounts->discountRetShipment) ? $stdClassResultAmounts->discountRetShipment : null;
+        $this->_specialDelivery     = isset($stdClassResultAmounts->specialDelivery)     ? $stdClassResultAmounts->specialDelivery     : null;
     }
 
     /**
@@ -512,5 +539,53 @@ class ResultAmounts {
     public function getPcntFuelSurcharge() {
         return $this->_pcntFuelSurcharge;
     }
+    
+    /**
+     * Set PERCENTAGE of return shipment surcharge
+     * @param double $discPcntRetShipment Signed 64-bit double value
+     */
+    public function setDiscPcntRetShipment($discPcntRetShipment) {
+        $this->_discPcntRetShipment = $discPcntRetShipment;
+    }
+
+    /**
+     * Get PERCENTAGE of return shipment surcharge
+     * @return double Signed 64-bit double value
+     */
+    public function getDiscPcntRetShipment() {
+        return $this->_discPcntRetShipment;
+    }
+    
+    /**
+     * Set return shipment discount amount
+     * @param double $total Signed 64-bit double value
+     */
+    public function setDiscountRetShipment($discountRetShipment) {
+        $this->_discountRetShipment = $discountRetShipment;
+    }
+
+    /**
+     * Get return shipment discount amount
+     * @return double Signed 64-bit double value
+     */
+    public function getDiscountRetShipment() {
+        return $this->_discountRetShipment;
+    }
+ 
+    /**
+     * Set special delivery surcharge amount
+     * @param double $specialDelivery Signed 64-bit double value
+     */
+    public function setSpecialDelivery($specialDelivery) {
+        $this->_specialDelivery = $specialDelivery;
+    }
+
+    /**
+     * Get special delivery surcharge amount
+     * @return double Signed 64-bit double value
+     */
+    public function getSpecialDelivery() {
+        return $this->_specialDelivery;
+    }   
 }
 ?>

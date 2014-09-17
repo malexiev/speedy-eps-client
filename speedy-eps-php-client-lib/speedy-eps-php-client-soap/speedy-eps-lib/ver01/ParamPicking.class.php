@@ -6,6 +6,8 @@ require_once 'FixedDiscountCardId.class.php';
 require_once 'ParamParcelInfo.class.php';
 require_once 'ParamOptionsBeforePayment.class.php';
 require_once 'ParamPackings.class.php';
+require_once 'ParamReturnServiceRequest.class.php';
+require_once 'ParamReturnShipmentRequest.class.php';
 
 /**
  * Instances of this class are passed as a parameter of Speedy web service calls for calclualation and registration
@@ -352,6 +354,22 @@ class ParamPicking {
      * @var boolean
      */
     private $_pendingShipmentDescription;
+    
+    /**
+     * Return service request
+     * MANDATORY: NO
+     * @var array of ParamReturnServiceRequest
+     * since 2.5.0
+     */
+    private $_retServicesRequest;
+    
+    /**
+     * Return shipment request
+     * MANDATORY: NO
+     * @var ParamReturnShipmentRequest
+     * since 2.5.0
+     */
+    private $_retShipmentRequest;
 
     /**
      * Set BOL number
@@ -1078,6 +1096,38 @@ class ParamPicking {
     public function isPendingShipmentDescription() {
         return $this->_pendingShipmentDescription;
     }
+    
+    /**
+     * Get return service request list
+     * @return array of ParamReturnServiceRequest
+     */
+    public function getRetServicesRequest() {
+        return $this->_retServicesRequest;
+    }
+    
+    /**
+     * Set return service request list
+     * @param array of ParamReturnServiceRequest
+     */
+    public function setRetServicesRequest($retServicesRequest) {
+        $this->_retServicesRequest = $retServicesRequest;
+    }
+    
+    /**
+     * Get return service request list
+     * @return ParamReturnShipmentRequest
+     */
+    public function getRetShipmentRequest() {
+        return $this->_retShipmentRequest;
+    }
+    
+    /**
+     * Set return shipment request
+     * @param ParamReturnShipmentRequest $retShipmentRequest
+     */
+    public function setRetShipmentRequest($retShipmentRequest) {
+        $this->_retShipmentRequest = $retShipmentRequest;
+    }
 
     /**
      * Return standard class from this class
@@ -1163,6 +1213,20 @@ class ParamPicking {
         $stdClass->skipAutomaticParcelsCreation = $this->_skipAutomaticParcelsCreation;
         $stdClass->pendingParcelsDescription    = $this->_pendingParcelsDescription;
         $stdClass->pendingShipmentDescription   = $this->_pendingShipmentDescription;
+        $arrStdClassParamReturnServiceRequest = array();
+        if (isset($this->_retServicesRequest)) {
+            if (is_array($this->_retServicesRequest)) {
+                for($i = 0; $i < count($this->_retServicesRequest); $i++) {
+                    $arrStdClassParamReturnServiceRequest[$i] = $this->_retServicesRequest[$i]->toStdClass();
+                }
+            } else {
+                $arrStdClassParamReturnServiceRequest[0] = $this->_retServicesRequest->toStdClass();
+            }
+        }
+        $stdClass->retServicesRequest           = $arrStdClassParamReturnServiceRequest;
+        if (isset($this->_retShipmentRequest)) {
+            $stdClass->retShipmentRequest       = $this->_retShipmentRequest->toStdClass();
+        }
         return $stdClass;
     }
 }

@@ -36,6 +36,10 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="streetName" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="streetNo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="streetType" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="countryId" type="{http://www.w3.org/2001/XMLSchema}long"/>         
+ *         &lt;element name="frnAddressLine1" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="frnAddressLine2" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="stateId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>         
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -43,7 +47,7 @@ import javax.xml.bind.annotation.XmlType;
  * </pre>
  * 
  * <p>Instances of this class are returned as a result of web service method calls for addresses. 
- * The structure is exetended with full address represenation and GPS coordinates
+ * The structure is extended with full address representation and GPS coordinates
  * 
  * @since 2.2.0
  */
@@ -68,7 +72,11 @@ import javax.xml.bind.annotation.XmlType;
     "streetId",
     "streetName",
     "streetNo",
-    "streetType"
+    "streetType",
+    "countryId",
+    "frnAddressLine1",
+    "frnAddressLine2",
+    "stateId"
 })
 public class ResultAddressEx {
 
@@ -113,6 +121,12 @@ public class ResultAddressEx {
     protected Double coordY;
     
     /**
+     * Country id
+     * @since 2.5.0
+     */
+    protected long countryId;
+    
+    /**
      * Entrance number
      */
     protected String entranceNo;
@@ -121,6 +135,18 @@ public class ResultAddressEx {
      * Floor number
      */
     protected String floorNo;
+    
+    /**
+     * Foreign address line 1
+     * @since 2.5.0
+     */
+    protected String frnAddressLine1;
+    
+    /**
+     * Foreign address line 2
+     * @since 2.5.0
+     */
+    protected String frnAddressLine2;
     
     /**
      * Full address text, suitable for UI 
@@ -151,6 +177,12 @@ public class ResultAddressEx {
      * Address site structure
      */
     protected ResultSite resultSite;
+    
+    /**
+     * State id
+     * @since 2.5.0
+     */
+    protected String stateId;
     
     /**
      * Street identifier in Speedy address nomenclature
@@ -299,6 +331,24 @@ public class ResultAddressEx {
     public void setCoordY(Double coordY) {
         this.coordY = coordY;
     }
+    
+    /**
+     * Get country id
+     * @return Country id
+     * @since 2.5.0
+     */
+    public long getCountryId() {
+    	return countryId;
+    }
+    
+    /**
+     * Set country id
+     * @param countryId Country id
+     * @since 2.5.0
+     */
+    public void setCountryId(long countryId) {
+    	this.countryId = countryId;
+    }
 
     /**
      * Gets the entrance No
@@ -330,6 +380,42 @@ public class ResultAddressEx {
      */
     public void setFloorNo(String floorNo) {
         this.floorNo = floorNo;
+    }
+    
+    /**
+     * Gets foreign address line 1
+     * @return Foreign address line 1
+     * @since 2.5.0
+     */
+    public String getFrnAddressLine1() {
+        return frnAddressLine1;
+    }
+
+    /**
+     * Sets foreign address line 1
+     * @param frnAddressLine1 Foreign address line 1
+     * @since 2.5.0
+     */
+    public void setFrnAddressLine1(String frnAddressLine1) {
+        this.frnAddressLine1 = frnAddressLine1;
+    }
+    
+    /**
+     * Gets foreign address line 2
+     * @return Foreign address line 2
+     * @since 2.5.0
+     */
+    public String getFrnAddressLine2() {
+        return frnAddressLine2;
+    }
+
+    /**
+     * Sets foreign address line 2
+     * @param frnAddressLine1 Foreign address line 2
+     * @since 2.5.0
+     */
+    public void setFrnAddressLine2(String frnAddressLine2) {
+        this.frnAddressLine2 = frnAddressLine2;
     }
 
     /**
@@ -428,6 +514,24 @@ public class ResultAddressEx {
         this.resultSite = resultSite;
     }
 
+    /**
+     * Gets the state id
+     * @return state id
+     * @since 2.5.0
+     */
+    public String getStateId() {
+        return stateId;
+    }
+
+    /**
+     * Sets the state id
+     * @param stateId Street id
+     * @since 2.5.0
+     */
+    public void setStateId(String stateId) {
+        this.stateId = stateId;
+    }
+    
     /**
      * Gets the street identifier in Speedy address nomenclature
      * @return Street identifier

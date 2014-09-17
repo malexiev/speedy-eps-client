@@ -452,9 +452,11 @@ public class Util {
 		sb.append("\n").append(sIndent).append("  codPremium         : ").append(resultAmounts.getCodPremium());
 		sb.append("\n").append(sIndent).append("  discountAdditional : ").append(resultAmounts.getDiscountAdditional());
 		sb.append("\n").append(sIndent).append("  discountFixed      : ").append(resultAmounts.getDiscountFixed());
+		sb.append("\n").append(sIndent).append("  discountRetShipment: ").append(resultAmounts.getDiscountRetShipment());
 		sb.append("\n").append(sIndent).append("  discountToBeCalled : ").append(resultAmounts.getDiscountToBeCalled());
 		sb.append("\n").append(sIndent).append("  discountToOffice   : ").append(resultAmounts.getDiscountToOffice());
 		sb.append("\n").append(sIndent).append("  discPcntAdditional : ").append(resultAmounts.getDiscPcntAdditional());
+		sb.append("\n").append(sIndent).append("  discPcntRetShipment: ").append(resultAmounts.getDiscPcntRetShipment());
 		sb.append("\n").append(sIndent).append("  discPcntFixed      : ").append(resultAmounts.getDiscPcntFixed());
 		sb.append("\n").append(sIndent).append("  discPcntToBeCalled : ").append(resultAmounts.getDiscPcntToBeCalled());
 		sb.append("\n").append(sIndent).append("  discPcntToOffice   : ").append(resultAmounts.getDiscPcntToOffice());
@@ -463,6 +465,7 @@ public class Util {
 		sb.append("\n").append(sIndent).append("  insuranceBase      : ").append(resultAmounts.getInsuranceBase());
 		sb.append("\n").append(sIndent).append("  insurancePremium   : ").append(resultAmounts.getInsurancePremium());
 		sb.append("\n").append(sIndent).append("  islandSurcharge    : ").append(resultAmounts.getIslandSurcharge());
+		sb.append("\n").append(sIndent).append("  specialDelivery    : ").append(resultAmounts.getSpecialDelivery());
 		sb.append("\n").append(sIndent).append("  net                : ").append(resultAmounts.getNet());
 		sb.append("\n").append(sIndent).append("  packings           : ").append(resultAmounts.getPackings());
 		sb.append("\n").append(sIndent).append("  pcntFuelSurcharge  : ").append(resultAmounts.getPcntFuelSurcharge());

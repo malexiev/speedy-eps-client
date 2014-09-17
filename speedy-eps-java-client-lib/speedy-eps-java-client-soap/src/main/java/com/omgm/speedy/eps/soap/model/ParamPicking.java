@@ -57,6 +57,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
  *         &lt;element name="ref1" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="ref2" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="retMoneyTransferReqAmount" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         &lt;element name="retServicesRequest" type="{http://ver01.eps.speedy.sirma.com/}paramReturnServiceRequest"  minOccurs="0"/>
+ *         &lt;element name="retShipmentRequest" type="{http://ver01.eps.speedy.sirma.com/}paramReturnShipmentRequest" minOccurs="0"/>
  *         &lt;element name="retThirdPartyPayer" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>         
  *         &lt;element name="retToClientId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="sender" type="{http://ver01.eps.speedy.sirma.com/}paramClientData" minOccurs="0"/>
@@ -115,6 +117,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "ref1",
     "ref2",
     "retMoneyTransferReqAmount",
+    "retServicesRequest",
+    "retShipmentRequest",
     "retThirdPartyPayer",
     "retToClientId",
     "sender",
@@ -347,6 +351,21 @@ public class ParamPicking {
      * MANDATORY: NO
      */
     protected Double retMoneyTransferReqAmount;
+    
+    /**
+     * Return services request
+     * MANDATORY: NO
+     * @since 2.5.0
+     */
+    @XmlElement(nillable = true)
+    protected List<ParamReturnServiceRequest> retServicesRequest;
+    
+    /**
+     * Return shipment request
+     * MANDATORY: NO
+     * @since 2.5.0
+     */
+    protected ParamReturnShipmentRequest retShipmentRequest;
     
     /**
      * Return third party payer flag
@@ -1072,6 +1091,53 @@ public class ParamPicking {
      */
     public void setRetMoneyTransferReqAmount(Double retMoneyTransferReqAmount) {
         this.retMoneyTransferReqAmount = retMoneyTransferReqAmount;
+    }
+    
+    /**
+     * Gets the value of the retServicesRequest property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the retServicesRequest property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getRetServicesRequest().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link ParamReturnServiceRequest }
+     * 
+     * @since 2.5.0
+     */
+    public List<ParamReturnServiceRequest> getRetServicesRequest() {
+        if (retServicesRequest == null) {
+            retServicesRequest = new ArrayList<ParamReturnServiceRequest>();
+        }
+        return this.retServicesRequest;
+    }
+    
+    /**
+     * Get return shipment request
+     * @return Return shipment request
+     * @since 2.5.0
+     */
+    public ParamReturnShipmentRequest getRetShipmentRequest() {
+    	return retShipmentRequest;
+    }
+    
+    /**
+     * Set return shipment request
+     * @param retShipmentRequest Return shipment request
+     * @since 2.5.0
+     */
+    public void setRetShipmentRequest(ParamReturnShipmentRequest retShipmentRequest) {
+    	this.retShipmentRequest = retShipmentRequest;
     }
     
     /**

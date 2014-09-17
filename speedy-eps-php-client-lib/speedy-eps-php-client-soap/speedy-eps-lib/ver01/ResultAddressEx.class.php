@@ -128,6 +128,34 @@ class ResultAddressEx {
     private $_fullAddressString;
 
     /**
+     * Country id
+     * @var integer signed 64-bit
+     * @since 2.5.0
+     */
+    private $_countryId;
+    
+    /**
+     * Foreign address line 1
+     * @var string
+     * @since 2.5.0
+     */
+    private $_frnAddressLine1;
+    
+    /**
+     * Foreign address line 2
+     * @var string
+     * @since 2.5.0
+     */
+    private $_frnAddressLine2;
+    
+    /**
+     * State id
+     * @var string
+     * @since 2.5.0
+     */
+    private $_stateId;
+
+    /**
      * Constructs new instance of ResultAddressEx
      * @param stdClass $stdClassResultAddressEx
      */
@@ -152,7 +180,10 @@ class ResultAddressEx {
         $this->_commonObjectId    = isset($stdClassResultAddressEx->commonObjectId)    ? $stdClassResultAddressEx->commonObjectId             : null;
         $this->_commonObjectName  = isset($stdClassResultAddressEx->commonObjectName)  ? $stdClassResultAddressEx->commonObjectName           : null;
         $this->_fullAddressString = isset($stdClassResultAddressEx->fullAddressString) ? $stdClassResultAddressEx->fullAddressString          : null;
-        
+        $this->_countryId         = isset($stdClassResultAddressEx->countryId)         ? $stdClassResultAddressEx->countryId        : null;
+        $this->_frnAddressLine1   = isset($stdClassResultAddressEx->frnAddressLine1)   ? $stdClassResultAddressEx->frnAddressLine1  : null;
+        $this->_frnAddressLine2   = isset($stdClassResultAddressEx->frnAddressLine2)   ? $stdClassResultAddressEx->frnAddressLine2  : null;
+        $this->_stateId           = isset($stdClassResultAddressEx->stateId)           ? $stdClassResultAddressEx->stateId          : null;
     }
 
     /**
@@ -315,5 +346,36 @@ class ResultAddressEx {
     	return $this->_fullAddressString;
     }
  
+     /**
+     * Get country id
+     * @return string Country id
+     */
+    public function getCountryId() {
+        return $this->_countryId;
+    }
+    
+    /**
+     * Get foreign address line 1
+     * @return string Foreign address line 1
+     */
+    public function getFrnAddressLine1() {
+        return $this->_frnAddressLine1;
+    }
+    
+    /**
+     * Get foreign address line 2
+     * @return string Foreign address line 2
+     */
+    public function getFrnAddressLine2() {
+        return $this->_frnAddressLine2;
+    }
+    
+    /**
+     * Get state id
+     * @return string State id
+     */
+    public function getStateId() {
+        return $this->_stateId;
+    }
 }
 ?>

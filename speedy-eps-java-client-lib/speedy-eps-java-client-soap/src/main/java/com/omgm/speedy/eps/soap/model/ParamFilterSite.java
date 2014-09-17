@@ -16,10 +16,12 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="countryId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="municipality" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="postCode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="region" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="searchString" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -27,20 +29,29 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  * 
- * <p>Instances of this class are used as a parameter to filter Speedy web service site quiery
+ * <p>Instances of this class are used as a parameter to filter Speedy web service site query
  * 
  * @since 1.0.0
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "paramFilterSite", propOrder = {
-    "municipality",
+	"countryId",
+	"municipality",
     "name",
     "postCode",
     "region",
+    "searchString",
     "type"
 })
 public class ParamFilterSite {
 
+	/**
+	 * Country id
+	 * MANDATORY: NO
+	 * @since 2.5.0
+	 */
+	protected Long countryId;
+	
 	/**
      * Site municipality name
      * MANDATORY: NO
@@ -66,11 +77,36 @@ public class ParamFilterSite {
     protected String region;
     
     /**
+     * Search string
+     * MANDATORY: NO
+     * @since 2.5.0
+     */
+    protected String searchString;
+    
+    /**
      * Site type
      * MANDATORY: NO
      */
     protected String type;
 
+    /**
+     * Get country id
+     * @return Country id
+     * @since 2.5.0
+     */
+    public Long getCountryId() {
+    	return countryId;
+    }
+    
+    /**
+     * Set country id
+     * @param countryId Country id
+     * @since 2.5.0
+     */
+    public void setCountryId(Long countryId) {
+    	this.countryId = countryId;
+    }
+    
     /**
      * Gets the site municipality name
      * @return Site municipality name
@@ -133,6 +169,22 @@ public class ParamFilterSite {
      */
     public void setRegion(String region) {
         this.region = region;
+    }
+    
+    /**
+     * Get search string
+     * @return Search string
+     */
+    public String getSearchString() {
+    	return searchString;
+    }
+    
+    /**
+     * Get search string
+     * @param searchString Search string
+     */
+    public void setSearchString(String searchString) {
+    	this.searchString = searchString;
     }
 
     /**

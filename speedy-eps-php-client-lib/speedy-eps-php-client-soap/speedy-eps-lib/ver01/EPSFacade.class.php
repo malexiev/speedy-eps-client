@@ -172,13 +172,14 @@ class EPSFacade {
      * Returns the list of courier services valid on this date
      * @since 1.0
      * @param date $date
+     * @param ParamLanguage $language (added in 2.5.0)
      * @throws ClientException Thrown in case EPS interface implementation is not set
      * @throws ServerException Thrown in case communication with server has failed
      * @return array List of ResultCourierService instances
      */
-    public function listServices($date) {
+    public function listServices($date, $language = null) {
         $this->checkStateBeforeCall();
-        return $this->_epsInterfaceImpl->listServices($this->getResultLogin(true)->getSessionId(), $date);
+        return $this->_epsInterfaceImpl->listServices($this->getResultLogin(true)->getSessionId(), $date, $language);
     }
 
     /**
@@ -215,34 +216,53 @@ class EPSFacade {
     /**
      * Returns the list of courier services valid on this date and sites.
      * @since 1.0
-     * @param date $date
+     * @param string $sessionId
+     * @param datetime $date
      * @param integer $senderSiteId Signed 64-bit integer sender's site ID;
      * @param integer $receiverSiteId Signed 64-bit integer receiver's site ID;
-     * @throws ClientException Thrown in case EPS interface implementation is not set
+     * @param integer $senderCountryId Signed 64-bit integer sender's country ID (added in 2.5.0);
+     * @param string $senderPostCode sender's post code (added in 2.5.0);
+     * @param integer $receiverCountryId Signed 64-bit integer receiver's country ID (added in 2.5.0);
+     * @param string $receiverPostCode receiver's post code (added in 2.5.0);
+     * @param ParamLanguage $language language (added in 2.5.0)
      * @throws ServerException Thrown in case communication with server has failed
      * @return array List of ResultCourierServiceExt instances
-     */
-    public function listServicesForSites($date, $senderSiteId, $receiverSiteId) {
+    */
+    public function listServicesForSites(
+        $date, $senderSiteId, $receiverSiteId, 
+        $senderCountryId = null, $senderPostCode = null, $receiverCountryId = null, $receiverPostCode = null, $language = null
+    ) {
         $this->checkStateBeforeCall();
-        return $this->_epsInterfaceImpl->listServicesForSites($this->getResultLogin(true)->getSessionId(), $date, $senderSiteId, $receiverSiteId);
+        return $this->_epsInterfaceImpl->listServicesForSites(
+            $this->getResultLogin(true)->getSessionId(), $date, $senderSiteId, $receiverSiteId, 
+            $senderCountryId, $senderPostCode, $receiverCountryId, $receiverPostCode, $language
+        );
     }
 
     /**
      * Returns the min/max weight allowed for the given shipment parameters
-     * @since 1.0
+     * @since 2.5.0
      * @param integer $serviceTypeId Signed 64-bit ID of the courier service
      * @param integer $senderSiteId Signed 64-bit Sender's site ID
      * @param integer $receiverSiteId Signed 64-bit Receiver's site ID
      * @param date $date
      * @param boolean $documents Specifies if the shipment consists of documents
+     * @param integer $senderCountryId Signed 64-bit Sender's country ID (added in 2.5.0)
+     * @param string $senderPostCode Sender's post code (added in 2.5.0)
+     * @param integer $receiverCountryId Signed 64-bit Receiver's country ID (added in 2.5.0)
+     * @param string $receiverPostCode Receiver's post code (added in 2.5.0)
      * @throws ClientException Thrown in case EPS interface implementation is not set
      * @throws ServerException Thrown in case communication with server has failed
      * @return ResultMinMaxReal
      */
-    public function getWeightInterval($serviceTypeId, $senderSiteId, $receiverSiteId, $date, $documents) {
+    public function getWeightInterval(
+        $serviceTypeId, $senderSiteId, $receiverSiteId, $date, $documents,
+        $senderCountryId = null, $senderPostCode = null, $receiverCountryId = null, $receiverPostCode = null
+    ) {
         $this->checkStateBeforeCall();
         return $this->_epsInterfaceImpl->getWeightInterval(
-                $this->getResultLogin(true)->getSessionId(), $serviceTypeId, $senderSiteId, $receiverSiteId, $date, $documents
+                $this->getResultLogin(true)->getSessionId(), $serviceTypeId, $senderSiteId, $receiverSiteId, $date, $documents,
+                $senderCountryId, $senderPostCode, $receiverCountryId, $receiverPostCode
         );
     }
 
@@ -251,39 +271,42 @@ class EPSFacade {
      * Column numbers can change in the future so it's recommended to address the data using the column names in the header row.
      * The data for some nomenTypes requires a payed license (additional licensing contract) and permissions (access rights).
      * To obtain such license please contact our IT department or your Speedy key account manager.
+     * Type 1   - returns a list of all countries
+     * Type 50  - returns a list of all states
      * Type 100 - returns a list of all sites.
      * Type 300 - returns a list of all streets (requires a license).
      * Type 400 - returns a list of all quarters (requires a license).
      * Type 500 - returns a list of all common objects (requires a license).
      * Type 700 - returns a list of all block names (requires a license).
-     * @since 1.0
+     * Type 800 - returns a list of all post codes (requires a license).     * @since 1.0
      * @param integer $nomenType Signed 32-bit The type of address nomenclature
+     * @param integer $countryId Signed 64-bit (added in 2.5.0)
      * @throws ClientException Thrown in case EPS interface implementation is not set
      * @throws ServerException Thrown in case communication with server has failed
      * @return string CSV formatted
      */
-    public function getAddressNomenclature($nomenType) {
+    public function getAddressNomenclature($nomenType, $countryId = null) {
         $this->checkStateBeforeCall();
-        return $this->_epsInterfaceImpl->getAddressNomenclature($this->getResultLogin(true)->getSessionId(), $nomenType);
+        return $this->_epsInterfaceImpl->getAddressNomenclature($this->getResultLogin(true)->getSessionId(), $nomenType, $countryId);
     }
-
+    
     /**
      * Returns a list of all sites.
      * Note: This method is relatively slow (because of the size of its response). You shouldn't call it more than several times a day.
      * The methods is designed to provide data which should be locally stored/cached by client apps.
      * The address-related nomenclature data is updated only several times a year.
      * @param ParamLanguage $language BG or EN. If set to null the server defaults to BG (added in 2.3.0)
+     * @param integer $countryId signed 64-bit Country id (added in 2.5.0)
      * @since 1.0
      * @throws ClientException Thrown in case EPS interface implementation is not set
      * @throws ServerException Thrown in case communication with server has failed
      * @return array List of ResultSite instances
      */
-    public function listAllSites($language = null) {
-    	$this->checkStateBeforeCall();
-    	return $this->_epsInterfaceImpl->listAllSites($this->getResultLogin(true)->getSessionId(), $language);
+    public function listAllSites($language = null, $countryId = null) {
+        $this->checkStateBeforeCall();
+        return $this->_epsInterfaceImpl->listAllSites($this->getResultLogin(true)->getSessionId(), $language, $countryId);
     }
     
-
     /**
      * Returns a site by ID
      * @since 1.0
@@ -436,19 +459,24 @@ class EPSFacade {
      * (or the deadline for delivering the shipment to a Speedy office when senderOfficeId is set).
      * (This method could be used for the "takingDate" property of ParamPicking or ParamCalculation.)
      * Note: Either senderSiteId or senderOfficeId should be set, or neither of them. Both parameters having "not null" values is not allowed.
-     * @since 1.0
+     * @since 2.5.0
      * @param integer $serviceTypeId
      * @param integer $senderSiteId Signed 64-bit – Sender's site ID
      * @param integer $senderOfficeId Signed 64-bit – If the sender intends to deliver the shipment to a Speedy office, the office ID could be set as a filter
      * @param date $minDate - When the "time" component is set then this date is to be included in the result list only if the time is not after the working time of Speedy;
+     * @param integer $senderCountryId Signed 64-bit Sender's country id (added in 2.5.0)
+     * @param string $senderPostCode Sender's post code (added in 2.5.0)     
      * @throws ClientException Thrown in case EPS interface implementation is not set
      * @throws ServerException Thrown in case communication with server has failed
      * @return array List of dates
      */
-    public function getAllowedDaysForTaking($serviceTypeId, $senderSiteId, $senderOfficeId, $minDate) {
+    public function getAllowedDaysForTaking(
+        $serviceTypeId, $senderSiteId, $senderOfficeId, $minDate, $senderCountryId = null, $senderPostCode = null
+    ) {
         $this->checkStateBeforeCall();
         return $this->_epsInterfaceImpl->getAllowedDaysForTaking(
-                $this->getResultLogin(true)->getSessionId(), $serviceTypeId, $senderSiteId, $senderOfficeId, $minDate
+                $this->getResultLogin(true)->getSessionId(), $serviceTypeId, $senderSiteId, $senderOfficeId, $minDate,
+                $senderCountryId, $senderPostCode
         );
     }
 
@@ -841,6 +869,78 @@ class EPSFacade {
     public function getAdditionalUserParams($date) {
     	$this->checkStateBeforeCall();
     	return $this->_epsInterfaceImpl->getAdditionalUserParams($this->getResultLogin(true)->getSessionId(), $date);
+    }
+    
+    /**
+     * Returns a list of countries matching the search criteria.
+     * The result is limited to 10 records
+     * @param string $name Country name or part of it
+     * @param ParamLanguage $language Language 
+     * @return array of ResultCountry
+     * @throws ClientException Thrown in case EPS interface implementation is not set
+     * @throws ServerException Thrown in case communication with server has failed
+     * @since 2.5.0
+     */
+    public function listCountries($name, $language = null) {
+        $this->checkStateBeforeCall();
+        return $this->_epsInterfaceImpl->listCountries($this->getResultLogin(true)->getSessionId(), $name, $language);
+    }
+    
+    /**
+     * Returns a list of countries matching the search criteria.
+     * The result is limited to 10 records
+     * @param ParamFilterCountry $filter Country search filter
+     * @param ParamLanguage $language Language 
+     * @return array of ResultCountry
+     * @throws ClientException Thrown in case EPS interface implementation is not set
+     * @throws ServerException Thrown in case communication with server has failed
+     * @since 2.5.0
+     */
+    public function listCountriesEx($filter, $language = null) {
+        $this->checkStateBeforeCall();
+        return $this->_epsInterfaceImpl->listCountriesEx($this->getResultLogin(true)->getSessionId(), $filter, $language);
+    }
+    
+    /**
+     * Returns a list of country states matching the search criteria.
+     * The result is limited to 10 records
+     * @param integer $countryId signed 64-bit Country id
+     * @param string $name Country state name or part of it
+     * @return array of ResultState
+     * @throws ClientException Thrown in case EPS interface implementation is not set
+     * @throws ServerException Thrown in case communication with server has failed
+     * @since 2.5.0
+     */
+    public function listStates($countryId, $name) {
+        $this->checkStateBeforeCall();
+        return $this->_epsInterfaceImpl->listStates($this->getResultLogin(true)->getSessionId(), $countryId, $name);
+    }
+    
+    /**
+     * Returns a country state by id
+     * @param string $stateId Country state id
+     * @return ResultState Country state
+     * @throws ClientException Thrown in case EPS interface implementation is not set
+     * @throws ServerException Thrown in case communication with server has failed
+     * @since 2.5.0
+     */
+    public function getStateById($stateId) {
+        $this->checkStateBeforeCall();
+        return $this->_epsInterfaceImpl->getStateById($this->getResultLogin(true)->getSessionId(), $stateId);
+    }
+    
+    /**
+     * Validates post code
+     * @param integer $countryId signed 64-bit Country id
+     * @param string $postCode Post code
+     * @return True or false regarding the post code validation result
+     * @throws ClientException Thrown in case EPS interface implementation is not set
+     * @throws ServerException Thrown in case communication with server has failed
+     * @since 2.5.0
+     */
+    public function validatePostCode($countryId, $postCode) {
+        $this->checkStateBeforeCall();
+        return $this->_epsInterfaceImpl->validatePostCode($this->getResultLogin(true)->getSessionId(), $countryId, $postCode);
     }
 }
 ?>

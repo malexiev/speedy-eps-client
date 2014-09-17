@@ -12,6 +12,7 @@ import com.omgm.speedy.eps.soap.model.ParamAddress;
 import com.omgm.speedy.eps.soap.model.ParamAddressSearch;
 import com.omgm.speedy.eps.soap.model.ParamCalculation;
 import com.omgm.speedy.eps.soap.model.ParamClientSearch;
+import com.omgm.speedy.eps.soap.model.ParamFilterCountry;
 import com.omgm.speedy.eps.soap.model.ParamFilterSite;
 import com.omgm.speedy.eps.soap.model.ParamLanguage;
 import com.omgm.speedy.eps.soap.model.ParamOrder;
@@ -26,6 +27,7 @@ import com.omgm.speedy.eps.soap.model.ResultCalculation;
 import com.omgm.speedy.eps.soap.model.ResultCalculationMS;
 import com.omgm.speedy.eps.soap.model.ResultClientData;
 import com.omgm.speedy.eps.soap.model.ResultCommonObject;
+import com.omgm.speedy.eps.soap.model.ResultCountry;
 import com.omgm.speedy.eps.soap.model.ResultCourierService;
 import com.omgm.speedy.eps.soap.model.ResultCourierServiceExt;
 import com.omgm.speedy.eps.soap.model.ResultLogin;
@@ -38,6 +40,7 @@ import com.omgm.speedy.eps.soap.model.ResultQuarter;
 import com.omgm.speedy.eps.soap.model.ResultSite;
 import com.omgm.speedy.eps.soap.model.ResultSiteEx;
 import com.omgm.speedy.eps.soap.model.ResultSpecialDeliveryRequirement;
+import com.omgm.speedy.eps.soap.model.ResultState;
 import com.omgm.speedy.eps.soap.model.ResultStreet;
 import com.omgm.speedy.eps.soap.model.ResultTrackPicking;
 import com.omgm.speedy.eps.soap.model.ResultTrackPickingEx;
@@ -195,7 +198,24 @@ public class EPSFacade {
 	public List<ResultCourierService> listServices(Date dtDate) 
 	throws ServerException {
 		try {
-			return m_eps.listServices(getResultLogin(true).getSessionId(), Util.toXMLGregorianCalendar(dtDate));
+			return listServices(dtDate, null);
+		} catch (Exception ex) {
+			throw new ServerException(ex);
+		}
+	}
+	
+	/**
+	 * Returns the list of courier services valid on this date
+	 * @param dtDate Date
+	 * @param language ParamLanguage
+	 * @since 2.5.0
+	 * @throws ServerException Thrown in case communication with server has failed
+	 * @return List of ResultCourierService instances
+	 */
+	public List<ResultCourierService> listServices(Date dtDate, ParamLanguage language) 
+	throws ServerException {
+		try {
+			return m_eps.listServices(getResultLogin(true).getSessionId(), Util.toXMLGregorianCalendar(dtDate), language);
 		} catch (Exception ex) {
 			throw new ServerException(ex);
 		}
@@ -273,12 +293,79 @@ public class EPSFacade {
 	 */
 	public List<ResultCourierServiceExt> listServicesForSites(Date dtDate, long lSenderSiteId, long lReceiverSiteId) 
 	throws ServerException {
+		return listServicesForSites(dtDate, lSenderSiteId, lReceiverSiteId, null, null, null, null, null);
+	}
+
+	/**
+	 * Returns the list of courier services valid on this date and sites.
+	 * @param dtDate Date 
+	 * @param lSenderSiteId Signed 64-bit integer sender's site ID;
+	 * @param lReceiverSiteId Signed 64-bit integer receiver's site ID;
+	 * @param paramLanguage Language parameter
+	 * @throws ServerException Thrown in case communication with server has failed
+	 * @return List of ResultCourierServiceExt instances
+	 * @since 2.5.0
+	 */
+	public List<ResultCourierServiceExt> listServicesForSites(
+			Date dtDate, long lSenderSiteId, long lReceiverSiteId, ParamLanguage language
+	) throws ServerException {
+		return listServicesForSites(dtDate, lSenderSiteId, lReceiverSiteId, null, null, null, null, language);
+	}
+
+
+	/**
+	 * Returns the list of courier services valid on this date and sites.
+	 * @param dtDate Date 
+	 * @param lSenderSiteId Signed 64-bit integer sender's site ID;
+	 * @param lReceiverSiteId Signed 64-bit integer receiver's site ID;
+	 * @param senderCountryId Country id of the sender
+	 * @param senderPostCode Post code of the sender
+	 * @param receiverCountryId Country id of the receiver
+	 * @param receiverPostCode Post code of the receiver
+	 * @param paramLanguage Language parameter
+	 * @throws ServerException Thrown in case communication with server has failed
+	 * @return List of ResultCourierServiceExt instances
+	 * @since 2.5.0
+	 */
+	public List<ResultCourierServiceExt> listServicesForSites(
+			Date dtDate, Long lSenderSiteId, Long lReceiverSiteId,
+			Long senderCountryId, String senderPostCode, Long receiverCountryId, String receiverPostCode
+	) throws ServerException {
+		return listServicesForSites(
+			dtDate, lSenderSiteId, lReceiverSiteId, senderCountryId, senderPostCode, receiverCountryId, receiverPostCode, null
+		);
+	}
+
+	
+	/**
+	 * Returns the list of courier services valid on this date and sites.
+	 * @param dtDate Date 
+	 * @param lSenderSiteId Signed 64-bit integer sender's site ID;
+	 * @param lReceiverSiteId Signed 64-bit integer receiver's site ID;
+	 * @param senderCountryId Country id of the sender
+	 * @param senderPostCode Post code of the sender
+	 * @param receiverCountryId Country id of the receiver
+	 * @param receiverPostCode Post code of the receiver
+	 * @param paramLanguage Language parameter
+	 * @throws ServerException Thrown in case communication with server has failed
+	 * @return List of ResultCourierServiceExt instances
+	 * @since 2.5.0
+	 */
+	public List<ResultCourierServiceExt> listServicesForSites(
+			Date dtDate, Long lSenderSiteId, Long lReceiverSiteId,
+			Long senderCountryId, String senderPostCode, Long receiverCountryId, String receiverPostCode,
+			ParamLanguage paramLanguage
+	) throws ServerException {
 		try {
-			return m_eps.listServicesForSites(getResultLogin(true).getSessionId(), Util.toXMLGregorianCalendar(dtDate), lSenderSiteId, lReceiverSiteId);
+			return m_eps.listServicesForSites(
+					getResultLogin(true).getSessionId(), Util.toXMLGregorianCalendar(dtDate), lSenderSiteId, lReceiverSiteId,
+					senderCountryId, senderPostCode, receiverCountryId, receiverPostCode, paramLanguage
+			);
 		} catch (Exception ex) {
 			throw new ServerException(ex);
 		}
 	}
+
 	
 	/**
 	 * Returns the min/max weight allowed for the given shipment parameters
@@ -292,9 +379,34 @@ public class EPSFacade {
 	 */
 	public ResultMinMaxReal getWeightInterval(long lServiceTypeId, long lSenderSiteId, long lReceiverSiteId, Date dtDate, boolean flagDocuments) 
 	throws ServerException {
+		return getWeightInterval(lServiceTypeId, lSenderSiteId, lReceiverSiteId, dtDate, flagDocuments, null, null, null, null);
+	}
+
+	/**
+	 * Returns the min/max weight allowed for the given shipment parameters
+	 * @param lServiceTypeId Signed 64-bit ID of the courier service
+	 * @param lSenderSiteId Signed 64-bit Sender's site ID
+	 * @param lReceiverSiteId Signed 64-bit Receiver's site ID
+	 * @param dtDate Date
+	 * @param flagDocuments Specifies if the shipment consists of documents
+	 * @param senderCountryId Country id of the sender
+	 * @param senderPostCode Post code of the sender
+	 * @param receiverCountryId Country id of the receiver
+	 * @param receiverPostCode Post code of the receiver
+	 * @throws ServerException Thrown in case communication with server has failed
+	 * @return ResultMinMaxReal
+	 * @since 2.5.0
+	 */
+	public ResultMinMaxReal getWeightInterval(
+			long lServiceTypeId, Long lSenderSiteId, Long lReceiverSiteId, Date dtDate, boolean flagDocuments,
+			Long senderCountryId, String senderPostCode, Long receiverCountryId, String receiverPostCode
+	) 
+	throws ServerException {
 		try {
 			return m_eps.getWeightInterval(
-					getResultLogin(true).getSessionId(), lServiceTypeId, lSenderSiteId, lReceiverSiteId, Util.toXMLGregorianCalendar(dtDate), flagDocuments
+					getResultLogin(true).getSessionId(), lServiceTypeId, lSenderSiteId, lReceiverSiteId, 
+					Util.toXMLGregorianCalendar(dtDate), flagDocuments,
+					senderCountryId, senderPostCode, receiverCountryId, receiverPostCode
 			);
 		} catch (Exception ex) {
 			throw new ServerException(ex);
@@ -318,7 +430,34 @@ public class EPSFacade {
 	public String getAddressNomenclature(int nNomenType) 
 	throws ServerException {
 		try {
-			return m_eps.getAddressNomenclature(getResultLogin(true).getSessionId(), nNomenType);
+			return getAddressNomenclature(nNomenType, null);
+		} catch (Exception ex) {
+			throw new ServerException(ex);
+		}
+	}
+	
+	/**
+	 * Returns CSV-formatted data (depending on the nomenType value).
+	 * Column numbers can change in the future so it's recommended to address the data using the column names in the header row.
+	 * The data for some nomenTypes requires a payed license (additional licensing contract) and permissions (access rights).
+	 * To obtain such license please contact our IT department or your Speedy key account manager.
+	 * Type 1   - returns a list of all countries
+     * Type 50  - returns a list of all states
+     * Type 100 - returns a list of all sites.
+     * Type 300 - returns a list of all streets (requires a license).
+     * Type 400 - returns a list of all quarters (requires a license).
+     * Type 500 - returns a list of all common objects (requires a license).
+     * Type 700 - returns a list of all block names (requires a license).
+     * Type 800 - returns a list of all post codes (requires a license).	 * @param nNomenType Signed 32-bit The type of address nomenclature
+	 * @param countryId Signed 64-bit Country id
+	 * @throws ServerException Thrown in case communication with server has failed
+	 * @return CSV formatted string
+	 * @since 2.5.0
+	 */
+	public String getAddressNomenclature(int nNomenType, Long countryId) 
+	throws ServerException {
+		try {
+			return m_eps.getAddressNomenclature(getResultLogin(true).getSessionId(), nNomenType, countryId);
 		} catch (Exception ex) {
 			throw new ServerException(ex);
 		}
@@ -349,8 +488,24 @@ public class EPSFacade {
 	 */
 	public List<ResultSite> listAllSites(ParamLanguage paramLanguage) 
 	throws ServerException {
+		return listAllSites(paramLanguage, null);
+	}
+
+	/**
+	 * Returns a list of all sites.
+	 * Note: This method is relatively slow (because of the size of its response). You shouldn't call it more than several times a day.
+	 * The method is designed to provide data which should be locally stored/cached by client apps.
+	 * The address-related nomenclature data is updated only several times a year.
+	 * @param paramLanguage Language
+	 * @param countryId Country id
+	 * @throws ServerException Thrown in case communication with server has failed
+	 * @return List of ResultSite instances
+	 * @since 2.5.0
+	 */
+	public List<ResultSite> listAllSites(ParamLanguage paramLanguage, Long countryId) 
+	throws ServerException {
 		try {
-			return m_eps.listAllSites(getResultLogin(true).getSessionId(), paramLanguage);
+			return m_eps.listAllSites(getResultLogin(true).getSessionId(), paramLanguage, countryId);
 		} catch (Exception ex) {
 			throw new ServerException(ex);
 		}
@@ -614,11 +769,33 @@ public class EPSFacade {
 	 */
 	public List<Date> getAllowedDaysForTaking(long lServiceTypeId, Long senderSiteId, Long senderOfficeId, Date dtMinDate) 
 	throws ServerException {
+		return getAllowedDaysForTaking(lServiceTypeId, senderSiteId, senderOfficeId, dtMinDate, null, null);
+	}
+	
+	/**
+	 * Returns the dates when the shipment can be ordered for pick-up.
+	 * The "time" component represents the deadline for creating an order 
+	 * (or the deadline for delivering the shipment to a Speedy office when senderOfficeId is set).
+	 * (This method could be used for the "takingDate" property of ParamPicking or ParamCalculation.) 
+	 * Note: Either senderSiteId or senderOfficeId should be set, or neither of them. Both parameters having "not null" values is not allowed.
+	 * @param nServiceTypeId Service type ID
+	 * @param lSenderSiteId Signed 64-bit – Sender's site ID
+	 * @param senderOfficeId Signed 64-bit – If the sender intends to deliver the shipment to a Speedy office, the office ID could be set as a filter
+	 * @param dtMinDate When the "time" component is set then this date is to be included in the result list only if the time is not after the working time of Speedy;
+	 * @param senderCountryId Country id for sender
+	 * @param senderPostCode Post code for sender
+	 * @throws ServerException Thrown in case communication with server has failed
+	 * @return List of dates
+	 * @since 2.5.0
+	 */
+	public List<Date> getAllowedDaysForTaking(long lServiceTypeId, Long senderSiteId, Long senderOfficeId, Date dtMinDate, Long senderCountryId, String senderPostCode) 
+	throws ServerException {
 		List<XMLGregorianCalendar> listXMLGregorianCalendars;
 		List<Date> listDates;
 		try {
 			listXMLGregorianCalendars = m_eps.getAllowedDaysForTaking(
-					getResultLogin(true).getSessionId(), lServiceTypeId, senderSiteId, senderOfficeId, Util.toXMLGregorianCalendar(dtMinDate)
+					getResultLogin(true).getSessionId(), lServiceTypeId, senderSiteId, senderOfficeId, 
+					Util.toXMLGregorianCalendar(dtMinDate), senderCountryId, senderPostCode
 			);
 		} catch (Exception ex) {
 			throw new ServerException(ex);
@@ -1139,6 +1316,88 @@ public class EPSFacade {
     public List<Integer> getAdditionalUserParams(Date dtDate) throws ServerException {
     	try {
 			return m_eps.getAdditionalUserParams(getResultLogin(true).getSessionId(), Util.toXMLGregorianCalendar(dtDate));
+		} catch (Exception ex) {
+			throw new ServerException(ex);
+		}
+    }
+    
+    /**
+     * Returns a list of countries matching the search criteria.
+	 * The result is limited to 10 records
+     * @param name Country name or part of it
+     * @param language Language 
+     * @return List of countries
+     * @throws ServerException Thrown in case communication with server has failed
+     * @since 2.5.0
+     */
+    public List<ResultCountry> listCountries(String name, ParamLanguage language) throws ServerException {
+    	try {
+			return m_eps.listCountries(getResultLogin(true).getSessionId(), name, language);
+		} catch (Exception ex) {
+			throw new ServerException(ex);
+		}
+    }
+    
+    /**
+     * Returns a list of countries matching the search criteria.
+	 * The result is limited to 10 records
+     * @param filter Country search filter
+     * @param language Language 
+     * @return List of countries
+     * @throws ServerException Thrown in case communication with server has failed
+     * @since 2.5.0
+     */
+    public List<ResultCountry> listCountriesEx(ParamFilterCountry filter, ParamLanguage language) throws ServerException {
+    	try {
+			return m_eps.listCountriesEx(getResultLogin(true).getSessionId(), filter, language);
+		} catch (Exception ex) {
+			throw new ServerException(ex);
+		}
+    }
+    
+    /**
+     * Returns a list of country states matching the search criteria.
+	 * The result is limited to 10 records
+	 * @param countryId Country id
+     * @param name Country state name or part of it
+     * @return List of country states
+     * @throws ServerException Thrown in case communication with server has failed
+     * @since 2.5.0
+     */
+    public List<ResultState> listStates(long countryId, String name) throws ServerException {
+    	try {
+			return m_eps.listStates(getResultLogin(true).getSessionId(), countryId, name);
+		} catch (Exception ex) {
+			throw new ServerException(ex);
+		}
+    }
+    
+    /**
+     * Returns a country state by id
+	 * @param stateId Country state id
+     * @return Country state
+     * @throws ServerException Thrown in case communication with server has failed
+     * @since 2.5.0
+     */
+    public ResultState getStateById(String stateId) throws ServerException {
+    	try {
+			return m_eps.getStateById(getResultLogin(true).getSessionId(), stateId);
+		} catch (Exception ex) {
+			throw new ServerException(ex);
+		}
+    }
+    
+    /**
+     * Validates post code
+	 * @param countryId Country id
+	 * @param postCode Post code
+     * @return True or false regarding the post code validation result
+     * @throws ServerException Thrown in case communication with server has failed
+     * @since 2.5.0
+     */
+    public boolean validatePostCode(long countryId, String postCode) throws ServerException {
+    	try {
+			return m_eps.validatePostCode(getResultLogin(true).getSessionId(), countryId, postCode);
 		} catch (Exception ex) {
 			throw new ServerException(ex);
 		}

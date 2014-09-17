@@ -40,6 +40,22 @@ class ParamFilterSite {
     private $_region;
 
     /**
+     * Country id
+     * MANDATORY: NO
+     * @var integer signed 64-bit
+     * @since 2.5.0
+     */
+    private $_countryId;
+    
+    /**
+     * Search string
+     * MANDATORY: NO
+     * @var string Search string
+     * @since 2.5.0
+     */
+    private $_searchString;
+
+    /**
      * Set post code
      * @param string $postCode
      */
@@ -118,6 +134,38 @@ class ParamFilterSite {
     public function getRegion() {
         return $this->_region;
     }
+    
+    /**
+     * Set country id
+     * @param integer signed 64-bit $countryId
+     */
+    public function setCountryId($countryId) {
+        $this->_countryId = $countryId;
+    }
+
+    /**
+     * Get country id
+     * @return integer signed 64-bit Country id
+     */
+    public function getCountryId() {
+        return $this->_countryId;
+    }
+    
+    /**
+     * Set search string
+     * @param string $searchString
+     */
+    public function setSearchString($searchString) {
+        $this->_searchString = $searchString;
+    }
+
+    /**
+     * Get search string
+     * @return string Search string
+     */
+    public function getSearchString() {
+        return $this->_searchString;
+    }
 
     /**
      * Return standard class from this class
@@ -130,6 +178,8 @@ class ParamFilterSite {
         $stdClass->type         = $this->_type;
         $stdClass->municipality = $this->_municipality;
         $stdClass->region       = $this->_region;
+        $stdClass->searchString = $this->_searchString;
+        $stdClass->countryId    = $this->_countryId;
         return $stdClass;
     }
 }

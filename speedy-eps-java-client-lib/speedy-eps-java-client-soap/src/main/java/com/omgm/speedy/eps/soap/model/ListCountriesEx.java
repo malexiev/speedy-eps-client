@@ -3,24 +3,22 @@ package com.omgm.speedy.eps.soap.model;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
-import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for listServices complex type.
+ * <p>Java class for listCountriesEx complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="listServices">
+ * &lt;complexType name="listCountriesEx">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="sessionId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="date" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
- *         &lt;element name="language" type="{http://ver01.eps.speedy.sirma.com/}paramLanguage" minOccurs="0"/>         
+ *         &lt;element name="filter" type="{http://ver01.eps.speedy.sirma.com/}paramFilterCountry" minOccurs="0"/>
+ *         &lt;element name="language" type="{http://ver01.eps.speedy.sirma.com/}paramLanguage" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -30,16 +28,15 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "listServices", propOrder = {
+@XmlType(name = "listCountriesEx", propOrder = {
     "sessionId",
-    "date",
+    "filter",
     "language"
 })
-public class ListServices {
+public class ListCountriesEx {
 
     protected String sessionId;
-    @XmlSchemaType(name = "dateTime")
-    protected XMLGregorianCalendar date;
+    protected ParamFilterCountry filter;
     protected ParamLanguage language;
 
     /**
@@ -67,27 +64,27 @@ public class ListServices {
     }
 
     /**
-     * Gets the value of the date property.
+     * Gets the value of the filter property.
      * 
      * @return
      *     possible object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link ParamFilterCountry }
      *     
      */
-    public XMLGregorianCalendar getDate() {
-        return date;
+    public ParamFilterCountry getFilter() {
+        return filter;
     }
 
     /**
-     * Sets the value of the date property.
+     * Sets the value of the filter property.
      * 
      * @param value
      *     allowed object is
-     *     {@link XMLGregorianCalendar }
+     *     {@link ParamFilterCountry }
      *     
      */
-    public void setDate(XMLGregorianCalendar value) {
-        this.date = value;
+    public void setFilter(ParamFilterCountry value) {
+        this.filter = value;
     }
 
     /**
@@ -113,4 +110,5 @@ public class ListServices {
     public void setLanguage(ParamLanguage value) {
         this.language = value;
     }
+
 }

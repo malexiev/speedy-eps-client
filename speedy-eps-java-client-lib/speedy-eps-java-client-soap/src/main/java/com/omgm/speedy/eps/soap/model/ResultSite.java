@@ -23,6 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="postCode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="region" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="countryId" type="{http://www.w3.org/2001/XMLSchema}long"/>         
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -42,7 +43,8 @@ import javax.xml.bind.annotation.XmlType;
     "name",
     "postCode",
     "region",
-    "type"
+    "type",
+    "countryId"
 })
 public class ResultSite {
 
@@ -81,6 +83,12 @@ public class ResultSite {
      * Site type
      */
     protected String type;
+    
+    /**
+     * Country id
+     * @since 2.5.0
+     */
+    protected long countryId;
 
     /**
      * Gets the address nomenclature type.
@@ -193,6 +201,24 @@ public class ResultSite {
      */
     public void setType(String type) {
         this.type = type;
+    }
+    
+    /**
+     * Gets the country id
+     * @return Country id
+     * @since 2.5.0
+     */
+    public long getCountryId() {
+        return countryId;
+    }
+
+    /**
+     * Sets the country id
+     * @param countryId Country id
+     * @since 2.5.0
+     */
+    public void setCountryId(long countryId) {
+        this.countryId = countryId;
     }
 
 }

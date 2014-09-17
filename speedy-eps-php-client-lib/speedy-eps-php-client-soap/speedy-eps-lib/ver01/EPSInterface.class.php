@@ -22,10 +22,13 @@ require_once 'ResultOrderPickingInfo.class.php';
 require_once 'ResultTrackPicking.class.php';
 require_once 'ResultTrackPickingEx.class.php';
 require_once 'ResultSpecialDeliveryRequirement.class.php';
+require_once 'ResultCountry.class.php';
+require_once 'ResultState.class.php';
 require_once 'ParamCalculation.class.php';
 require_once 'ParamFilterSite.class.php';
 require_once 'ParamAddress.class.php';
 require_once 'ParamAddressSearch.class.php';
+require_once 'ParamFilterCountry.class.php';
 require_once 'ParamLanguage.class.php';
 require_once 'ParamPicking.class.php';
 require_once 'ParamPDF.class.php';
@@ -65,10 +68,11 @@ interface EPSInterface {
      * @since 1.0
      * @param string $sessionId
      * @param date $date
+     * @param ParamLanguage $language Language (added in 2.5.0)
      * @throws ServerException Thrown in case communication with server has failed
      * @return array List of ResultCourierService instances
     */
-    public function listServices($sessionId, $date);
+    public function listServices($sessionId, $date, $language);
 
     /**
      * Returns the list of courier services valid on this date and sites.
@@ -77,14 +81,24 @@ interface EPSInterface {
      * @param datetime $date
      * @param integer $senderSiteId Signed 64-bit integer sender's site ID;
      * @param integer $receiverSiteId Signed 64-bit integer receiver's site ID;
+     * @param integer $senderCountryId Signed 64-bit integer sender's country ID (added in 2.5.0);
+     * @param string $senderPostCode sender's post code (added in 2.5.0);
+     * @param integer $receiverCountryId Signed 64-bit integer receiver's country ID (added in 2.5.0);
+     * @param string $receiverPostCode receiver's post code (added in 2.5.0);
+     * @param ParamLanguage $language language (added in 2.5.0)
      * @throws ServerException Thrown in case communication with server has failed
      * @return array List of ResultCourierServiceExt instances
     */
-    public function listServicesForSites($sessionId, $date, $senderSiteId, $receiverSiteId);
+    public function listServicesForSites(
+        $sessionId, $date, $senderSiteId, $receiverSiteId, 
+        $senderCountryId, $senderPostCode, $receiverCountryId, $receiverPostCode, $language
+    );
 
     /**
      * Returns a list of sites matching the search criteria.
      * The result is limited to 10 records
+     * The method is deprecated starting from 2.5.0, "listSitesEx" should be used instead.
+     * @deprecated The method is deprecated, "createPDF" should be used instead.
      * @since 1.0
      * @param string $sessionId
      * @param string $type
@@ -116,28 +130,39 @@ interface EPSInterface {
      * @param integer $receiverSiteId Signed 64-bit Receiver's site ID
      * @param date $date
      * @param boolean $documents Specifies if the shipment consists of documents
+     * @param integer $senderCountryId Signed 64-bit Sender's country ID (added in 2.5.0)
+     * @param string $senderPostCode Sender's post code (added in 2.5.0)
+     * @param integer $receiverCountryId Signed 64-bit Receiver's country ID (added in 2.5.0) 
+     * @param string $receiverPostCode Receiver's post code (added in 2.5.0)
      * @throws ServerException Thrown in case communication with server has failed
      * @return ResultMinMaxReal
     */
-    public function getWeightInterval($sessionId, $serviceTypeId, $senderSiteId, $receiverSiteId, $date, $documents);
+    public function getWeightInterval(
+        $sessionId, $serviceTypeId, $senderSiteId, $receiverSiteId, $date, $documents,
+        $senderCountryId, $senderPostCode, $receiverCountryId, $receiverPostCode
+    );
 
     /**
      * Returns CSV-formatted data (depending on the nomenType value).
      * Column numbers can change in the future so it's recommended to address the data using the column names in the header row.
      * The data for some nomenTypes requires a payed license (additional licensing contract) and permissions (access rights).
      * To obtain such license please contact our IT department or your Speedy key account manager.
+     * Type 1   - returns a list of all countries
+     * Type 50  - returns a list of all states
      * Type 100 - returns a list of all sites.
      * Type 300 - returns a list of all streets (requires a license).
      * Type 400 - returns a list of all quarters (requires a license).
      * Type 500 - returns a list of all common objects (requires a license).
      * Type 700 - returns a list of all block names (requires a license).
+     * Type 800 - returns a list of all post codes (requires a license).
      * @since 1.0
      * @param string $sessionId
      * @param integer $nomenType Signed 32-bit The type of address nomenclature
+     * @param integer $countryId Signed 64-bit Country id (added in 2.5.0)
      * @throws ServerException Thrown in case communication with server has failed
      * @return string CSV formatted
     */
-    public function getAddressNomenclature($sessionId, $nomenType);
+    public function getAddressNomenclature($sessionId, $nomenType, $countryId);
 
     /**
      * Returns a list of all sites.
@@ -147,10 +172,11 @@ interface EPSInterface {
      * @since 1.0
      * @param string $sessionId
      * @param ParamLanguage $paramLanguage Language
+     * @param integer $countryId signed 64-bit Country id (added in 2.5.0)
      * @throws ServerException Thrown in case communication with server has failed
      * @return array List of ResultSite instances
     */
-    public function listAllSites($sessionId, $paramLanguage);
+    public function listAllSites($sessionId, $paramLanguage, $countryId);
 
     /**
      * Returns a site by ID
@@ -279,10 +305,14 @@ interface EPSInterface {
      * @param integer $senderSiteId Signed 64-bit – Sender's site ID
      * @param integer $senderOfficeId Signed 64-bit – If the sender intends to deliver the shipment to a Speedy office, the office ID could be set as a filter
      * @param date $minDate - When the "time" component is set then this date is to be included in the result list only if the time is not after the working time of Speedy;
+     * @param integer $senderCountryId Signed 64-bit Sender's country id (added in 2.5.0)
+     * @param string $senderPostCode Sender's post code (added in 2.5.0)
      * @throws ServerException Thrown in case communication with server has failed
      * @return array List of dates
     */
-    public function getAllowedDaysForTaking($sessionId, $serviceTypeId, $senderSiteId, $senderOfficeId, $minDate);
+    public function getAllowedDaysForTaking(
+        $sessionId, $serviceTypeId, $senderSiteId, $senderOfficeId, $minDate, $senderCountryId, $senderPostCode
+    );
 
     /**
      * Returns a list of addresses matching the search criteria.
@@ -421,7 +451,7 @@ interface EPSInterface {
 
     /**
      * Creates an order for shipments pick-up (i.e. a visit by courier of Speedy).
-     * The retuned list contains objects corresponding to each BOL (one object per BOL).
+     * The returned list contains objects corresponding to each BOL (one object per BOL).
      * When the validation errors list of at least one of the objects is not empty, that means the order has not been created.
      * @since 1.0
      * @param string $sessionId
@@ -578,6 +608,7 @@ interface EPSInterface {
      * @param string $sessionId
      * @param ParamAddress $address Base address
      * @return ResultAddressString
+     * @since 2.3.0
      */
     public function makeAddressString($sessionId, $address);
     
@@ -586,7 +617,65 @@ interface EPSInterface {
      * @param string $sessionId
      * @param date $date Effective date. If null is provided then current date is applied
      * @return array signed 32-bit integers - List of additional user parameters
+     * @since 2.3.0
      */
     public function getAdditionalUserParams($sessionId, $date);
+    
+    /**
+     * Returns a list of countries matching the search criteria.
+     * The result is limited to 10 records
+     * @param string $sessionId
+     * @param string $name Country name or part of it
+     * @param ParamLanguage $language Language 
+     * @return array of ResultCountry
+     * @throws ServerException Thrown in case communication with server has failed
+     * @since 2.5.0
+     */
+    public function listCountries($sessionId, $name, $language);
+    
+    /**
+     * Returns a list of countries matching the search criteria.
+     * The result is limited to 10 records
+     * @param string $sessionId
+     * @param ParamFilterCountry $filter Country search filter
+     * @param ParamLanguage $language Language 
+     * @return array of ResultCountry
+     * @throws ServerException Thrown in case communication with server has failed
+     * @since 2.5.0
+     */
+    public function listCountriesEx($sessionId, $filter, $language);
+    
+    /**
+     * Returns a list of country states matching the search criteria.
+     * The result is limited to 10 records
+     * @param string $sessionId
+     * @param integer $countryId signed 64-bit Country id
+     * @param string $name Country state name or part of it
+     * @return array of ResultState
+     * @throws ServerException Thrown in case communication with server has failed
+     * @since 2.5.0
+     */
+    public function listStates($sessionId, $countryId, $name);
+    
+    /**
+     * Returns a country state by id
+     * @param string $sessionId
+     * @param string $stateId Country state id
+     * @return ResultState Country state
+     * @throws ServerException Thrown in case communication with server has failed
+     * @since 2.5.0
+     */
+    public function getStateById($sessionId, $stateId);
+    
+    /**
+     * Validates post code
+     * @param string $sessionId
+     * @param integer $countryId signed 64-bit Country id
+     * @param string $postCode Post code
+     * @return True or false regarding the post code validation result
+     * @throws ServerException Thrown in case communication with server has failed
+     * @since 2.5.0
+     */
+    public function validatePostCode($sessionId, $countryId, $postCode);
 }
 ?>

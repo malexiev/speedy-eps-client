@@ -7,18 +7,17 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for getAddressNomenclature complex type.
+ * <p>Java class for getStateById complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="getAddressNomenclature">
+ * &lt;complexType name="getStateById">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
  *         &lt;element name="sessionId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="nomenType" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="countryId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
+ *         &lt;element name="stateId" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -28,16 +27,14 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "getAddressNomenclature", propOrder = {
+@XmlType(name = "getStateById", propOrder = {
     "sessionId",
-    "nomenType",
-    "countryId"
+    "stateId"
 })
-public class GetAddressNomenclature {
+public class GetStateById {
 
     protected String sessionId;
-    protected int nomenType;
-    protected Long countryId;
+    protected String stateId;
 
     /**
      * Gets the value of the sessionId property.
@@ -64,34 +61,27 @@ public class GetAddressNomenclature {
     }
 
     /**
-     * Gets the value of the nomenType property.
+     * Gets the value of the stateId property.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public int getNomenType() {
-        return nomenType;
+    public String getStateId() {
+        return stateId;
     }
 
     /**
-     * Sets the value of the nomenType property.
+     * Sets the value of the stateId property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setNomenType(int value) {
-        this.nomenType = value;
+    public void setStateId(String value) {
+        this.stateId = value;
     }
 
-    /**
-     * Gets the value of the countryId property.
-     * 
-     */
-    public Long getCountryId() {
-        return countryId;
-    }
-
-    /**
-     * Sets the value of the countryId property.
-     * 
-     */
-    public void setCountryId(Long countryId) {
-        this.countryId = countryId;
-    }
 }

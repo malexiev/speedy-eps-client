@@ -16,6 +16,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="foreignParcelNumber" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="packId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="parcelId" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *         &lt;element name="seqNo" type="{http://www.w3.org/2001/XMLSchema}int"/>
@@ -31,6 +32,7 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "paramParcelInfo", propOrder = {
+	"foreignParcelNumber",
     "packId",
     "parcelId",
     "seqNo",
@@ -39,6 +41,13 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ParamParcelInfo {
 
+	/**
+	 * Foreign parcel number
+	 * MANDATORY: YES
+	 * @since 2.5.0
+	 */
+	protected String foreignParcelNumber;
+	
 	/**
      * Parcel's pack id
      * MANDATORY: YES
@@ -155,4 +164,22 @@ public class ParamParcelInfo {
     public void setWeight(Double weight) {
         this.weight = weight;
     }
+    
+    /**
+     * Get foreign parcel number
+     * @return Foreign parcel number
+     * @since 2.5.0
+     */
+ 	public String getForeignParcelNumber() {
+ 		return foreignParcelNumber;
+ 	}
+ 		
+ 	/**
+ 	 * Set foreign parcel number
+ 	 * @param foreignParcelNumber Foreign parcel number
+ 	 * @since 2.5.0
+ 	 */
+ 	public void setForeignParcelNumber(String foreignParcelNumber) {
+ 		this.foreignParcelNumber = foreignParcelNumber;
+ 	}
 }

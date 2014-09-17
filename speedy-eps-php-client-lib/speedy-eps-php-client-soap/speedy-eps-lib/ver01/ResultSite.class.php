@@ -56,6 +56,14 @@ class ResultSite {
      * @var AddrNomen
      */
     private $_addrNomen;
+    
+    /**
+     * Site country id
+     * @access private
+     * @var integer signed 64-bit
+     * @since 2.5.0
+     */
+    private $_countryId;
 
     /**
      * Constructs new instance of ResultSite
@@ -69,6 +77,7 @@ class ResultSite {
         $this->_region        = isset($stdClassResultSite->region)       ? $stdClassResultSite->region                   : null;
         $this->_postCode      = isset($stdClassResultSite->postCode)     ? $stdClassResultSite->postCode                 : null;
         $this->_addrNomen     = isset($stdClassResultSite->addrNomen)    ? new AddrNomen($stdClassResultSite->addrNomen) : null;
+        $this->_countryId     = isset($stdClassResultSite->countryId)    ? $stdClassResultSite->countryId                : null;
     }
 
     /**
@@ -125,6 +134,14 @@ class ResultSite {
      */
     public function getAddrNomen() {
         return $this->_addrNomen;
+    }
+    
+    /**
+     * Get site country id
+     * @return integer signed 64-bit Site country id
+     */
+    public function getCountryId() {
+        return $this->_countryId;
     }
 }
 ?>

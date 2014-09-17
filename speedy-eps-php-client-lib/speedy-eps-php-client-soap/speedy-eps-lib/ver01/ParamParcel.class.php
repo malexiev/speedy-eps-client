@@ -41,6 +41,14 @@ class ParamParcel {
      * @var Size
      */
     private $_size;
+    
+    /**
+     * Foreign parcel number
+     * MANDATORY: NO
+     * @var string
+     * @since 2.5.0
+     */
+    private $_foreignParcelNumber;
 
     /**
      * Set BOL number
@@ -121,7 +129,23 @@ class ParamParcel {
     public function getSize() {
         return $this->_size;
     }
-
+    
+    /**
+     * Set foreign parcel number
+     * @param string $foreignParcelNumber
+     */
+    public function setForeignParcelNumber($foreignParcelNumber) {
+    	$this->_foreignParcelNumber = $foreignParcelNumber;
+    }
+    
+    /**
+     * Get foreign parcel number
+     * @return string
+     */
+    public function getForeignParcelNumber() {
+    	return $this->_foreignParcelNumber;
+    }
+    
     /**
      * Return standard class from this class
      * @return stdClass
@@ -135,6 +159,7 @@ class ParamParcel {
         if (isset($this->_size)) {
             $stdClass->size = $this->_size->toStdClass();
         }
+        $stdClass->foreignParcelNumber = $this->_foreignParcelNumber;
         return $stdClass;
     }
 }
