@@ -64,20 +64,29 @@ class ResultSite {
      * @since 2.5.0
      */
     private $_countryId;
+    
+    /**
+     * Serving office id
+     * @access private
+     * @var integer signed 64-bit
+     * @since 2.6.0
+     */
+    private $_servingOfficeId
 
     /**
      * Constructs new instance of ResultSite
      * @param stdClass $stdClassResultSite
      */
     function __construct($stdClassResultSite) {
-        $this->_id            = isset($stdClassResultSite->id)           ? $stdClassResultSite->id                       : null;
-        $this->_type          = isset($stdClassResultSite->type)         ? $stdClassResultSite->type                     : null;
-        $this->_name          = isset($stdClassResultSite->name)         ? $stdClassResultSite->name                     : null;
-        $this->_municipality  = isset($stdClassResultSite->municipality) ? $stdClassResultSite->municipality             : null;
-        $this->_region        = isset($stdClassResultSite->region)       ? $stdClassResultSite->region                   : null;
-        $this->_postCode      = isset($stdClassResultSite->postCode)     ? $stdClassResultSite->postCode                 : null;
-        $this->_addrNomen     = isset($stdClassResultSite->addrNomen)    ? new AddrNomen($stdClassResultSite->addrNomen) : null;
-        $this->_countryId     = isset($stdClassResultSite->countryId)    ? $stdClassResultSite->countryId                : null;
+        $this->_id              = isset($stdClassResultSite->id)              ? $stdClassResultSite->id                       : null;
+        $this->_type            = isset($stdClassResultSite->type)            ? $stdClassResultSite->type                     : null;
+        $this->_name            = isset($stdClassResultSite->name)            ? $stdClassResultSite->name                     : null;
+        $this->_municipality    = isset($stdClassResultSite->municipality)    ? $stdClassResultSite->municipality             : null;
+        $this->_region          = isset($stdClassResultSite->region)          ? $stdClassResultSite->region                   : null;
+        $this->_postCode        = isset($stdClassResultSite->postCode)        ? $stdClassResultSite->postCode                 : null;
+        $this->_addrNomen       = isset($stdClassResultSite->addrNomen)       ? new AddrNomen($stdClassResultSite->addrNomen) : null;
+        $this->_countryId       = isset($stdClassResultSite->countryId)       ? $stdClassResultSite->countryId                : null;
+        $this->_servingOfficeId = isset($stdClassResultSite->servingOfficeId) ? $stdClassResultSite->servingOfficeId          : null;
     }
 
     /**
@@ -142,6 +151,15 @@ class ResultSite {
      */
     public function getCountryId() {
         return $this->_countryId;
+    }
+    
+    /**
+     * Gets serving office id for this site
+     * @return integer signed 64-bit Serving office id
+     * @since 2.6.0
+     */
+    public function getServingOfficeId() {
+        return $this->_servingOfficeId;
     }
 }
 ?>
