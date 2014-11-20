@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlType;
     "sessionId",
     "name",
     "siteId",
-    "language",
+    "language"
 })
 public class ListStreets {
 

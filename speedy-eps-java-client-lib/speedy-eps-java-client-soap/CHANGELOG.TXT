@@ -4,6 +4,12 @@ Java Speedy Web Service client library version @@VERSION
 
 CHANGE LOG
 ----------
+* Version 2.6.0
+  - New property "servingOfficeId" is added in class ResultSite
+  - New type ResultWorkingTime is introduced to specify office working time
+  - New properties "maxParcelDimensions", "maxParcelWeight" and "workingTimeSchedule" are added in class ResultOfficeEx
+  - New method getPickingDeliveryInfo() is available.
+  
 * Version 2.5.0
   - New field foreignParcelNumber added in ParamParcel and ParamParcelInfo
   - New structure ParamReturnServiceRequest is introduced to order return service requests

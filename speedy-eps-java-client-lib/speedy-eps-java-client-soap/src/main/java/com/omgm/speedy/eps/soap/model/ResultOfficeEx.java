@@ -1,8 +1,12 @@
 
 package com.omgm.speedy.eps.soap.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
@@ -24,6 +28,9 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="workingTimeHalfFrom" type="{http://www.w3.org/2001/XMLSchema}short" minOccurs="0"/>
  *         &lt;element name="workingTimeHalfTo" type="{http://www.w3.org/2001/XMLSchema}short" minOccurs="0"/>
  *         &lt;element name="workingTimeTo" type="{http://www.w3.org/2001/XMLSchema}short" minOccurs="0"/>
+ *         &lt;element name="maxParcelDimensions" type="{http://ver01.eps.speedy.sirma.com/}size" minOccurs="0"/>
+ *         &lt;element name="maxParcelWeight" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         &lt;element name="workingTimeSchedule" type="{http://ver01.eps.speedy.sirma.com/}resultWorkingTime" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -45,7 +52,10 @@ import javax.xml.bind.annotation.XmlType;
     "workingTimeFrom",
     "workingTimeHalfFrom",
     "workingTimeHalfTo",
-    "workingTimeTo"
+    "workingTimeTo",
+    "maxParcelDimensions",
+    "maxParcelWeight",
+    "workingTimeSchedule"
 })
 public class ResultOfficeEx {
 
@@ -89,6 +99,22 @@ public class ResultOfficeEx {
      */
     protected Short workingTimeTo;
 
+    /**
+     * Max parcel dimensions (size)
+     */
+    protected Size maxParcelDimensions;
+    
+    /**
+     * Max parcel weight
+     */
+    protected Double maxParcelWeight;
+    
+    /**
+     * Working time schedule
+     */
+    @XmlElement(nillable = true)
+    protected List<ResultWorkingTime> workingTimeSchedule;
+    
     /**
      * Gets the office address
      * @return Office address
@@ -221,4 +247,68 @@ public class ResultOfficeEx {
         this.workingTimeTo = value;
     }
 
+    /**
+     * Gets the maximum parcel dimensions (size)
+     * @return Maximum parcel dimensions (size)
+     * @since 2.6.0
+     */
+    public Size getMaxParcelDimensions() {
+        return maxParcelDimensions;
+    }
+
+    /**
+     * Sets the maximum parcel dimensions (size)
+     * @param maxParcelDimensions Maximum parcel dimensions (size)
+     * @since 2.6.0    
+     */
+    public void setMaxParcelDimensions(Size maxParcelDimensions) {
+        this.maxParcelDimensions = maxParcelDimensions;
+    }
+
+    /**
+     * Gets the maximum parcel weight
+     * @return Maximum parcel weight
+     * @since 2.6.0    
+     */
+    public Double getMaxParcelWeight() {
+        return maxParcelWeight;
+    }
+
+    /**
+     * Sets the maximum parcel weight
+     * @param maxParcelWeight Maximum parcel weight
+     * @since 2.6.0    
+     */
+    public void setMaxParcelWeight(Double maxParcelWeight) {
+        this.maxParcelWeight = maxParcelWeight;
+    }
+
+    /**
+     * Gets the workingTimeSchedule
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the workingTimeSchedule property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getWorkingTimeSchedule().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link ResultWorkingTime }
+     * 
+     * @since 2.6.0
+     */
+    public List<ResultWorkingTime> getWorkingTimeSchedule() {
+        if (workingTimeSchedule == null) {
+            workingTimeSchedule = new ArrayList<ResultWorkingTime>();
+        }
+        return this.workingTimeSchedule;
+    }
 }

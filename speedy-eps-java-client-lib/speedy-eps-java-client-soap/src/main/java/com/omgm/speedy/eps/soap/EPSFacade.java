@@ -1402,4 +1402,21 @@ public class EPSFacade {
 			throw new ServerException(ex);
 		}
     }
+    
+    /**
+	 * This method can be used to get delivery info for a shipment.
+	 * Returns null if no info is available
+	 * @since 2.6.0
+	 * @param lBillOfLading Signed 64-bit
+	 * @param paramLanguage Language
+	 * @throws ServerException Thrown in case communication with server has failed
+	 * @return ResultTrackPickingEx
+	 */
+    public ResultTrackPickingEx getPickingDeliveryInfo(long lBillOfLading, ParamLanguage paramLanguage) throws ServerException {
+    	try {
+			return m_eps.getPickingDeliveryInfo(getResultLogin(true).getSessionId(), lBillOfLading, paramLanguage);
+		} catch (Exception ex) {
+			throw new ServerException(ex);
+		}
+    }
 }
