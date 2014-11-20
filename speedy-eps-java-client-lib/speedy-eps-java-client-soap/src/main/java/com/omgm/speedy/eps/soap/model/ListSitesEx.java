@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType(name = "listSitesEx", propOrder = {
     "sessionId",
     "filter",
-    "language",
+    "language"
 })
 public class ListSitesEx {
 

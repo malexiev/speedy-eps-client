@@ -1261,4 +1261,30 @@ public interface EPSProvider {
         String postCode)
         throws InvalidSessionException_Exception
     ;
+    
+    /**
+     * 
+     * @param sessionId
+     * @param language
+     * @param billOfLading
+     * @return
+     *     returns com.omgm.speedy.eps.soap.model.ResultTrackPickingEx
+     * @throws InvalidSessionException_Exception
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getPickingDeliveryInfo", targetNamespace = "http://ver01.eps.speedy.sirma.com/", className = "com.omgm.speedy.eps.soap.model.GetPickingDeliveryInfo")
+    @ResponseWrapper(localName = "getPickingDeliveryInfoResponse", targetNamespace = "http://ver01.eps.speedy.sirma.com/", className = "com.omgm.speedy.eps.soap.model.GetPickingDeliveryInfoResponse")
+    @Action(input = "http://ver01.eps.speedy.sirma.com/EPSProvider/getPickingDeliveryInfoRequest", output = "http://ver01.eps.speedy.sirma.com/EPSProvider/getPickingDeliveryInfoResponse", fault = {
+        @FaultAction(className = InvalidSessionException_Exception.class, value = "http://ver01.eps.speedy.sirma.com/EPSProvider/getPickingDeliveryInfo/Fault/InvalidSessionException")
+    })
+    public ResultTrackPickingEx getPickingDeliveryInfo(
+        @WebParam(name = "sessionId", targetNamespace = "")
+        String sessionId,
+        @WebParam(name = "billOfLading", targetNamespace = "")
+        long billOfLading,
+        @WebParam(name = "language", targetNamespace = "")
+        ParamLanguage language)
+        throws InvalidSessionException_Exception
+    ;
 }

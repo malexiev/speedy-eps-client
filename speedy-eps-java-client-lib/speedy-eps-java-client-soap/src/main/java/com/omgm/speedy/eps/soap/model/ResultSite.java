@@ -23,7 +23,8 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="postCode" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="region" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="countryId" type="{http://www.w3.org/2001/XMLSchema}long"/>         
+ *         &lt;element name="countryId" type="{http://www.w3.org/2001/XMLSchema}long"/>
+ *         &lt;element name="servingOfficeId" type="{http://www.w3.org/2001/XMLSchema}long"/>                  
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -44,7 +45,8 @@ import javax.xml.bind.annotation.XmlType;
     "postCode",
     "region",
     "type",
-    "countryId"
+    "countryId",
+    "servingOfficeId"
 })
 public class ResultSite {
 
@@ -89,6 +91,12 @@ public class ResultSite {
      * @since 2.5.0
      */
     protected long countryId;
+    
+    /**
+     * Serving office id
+     * @since 2.6.0
+     */
+    protected long servingOfficeId;
 
     /**
      * Gets the address nomenclature type.
@@ -221,4 +229,20 @@ public class ResultSite {
         this.countryId = countryId;
     }
 
+    /**
+     * Gets serving office id for this site
+     * @since 2.6.0
+     */
+    public long getServingOfficeId() {
+        return servingOfficeId;
+    }
+
+    /**
+     * Sets serving office id
+     * @param servingOfficeId Serving office id
+     * @since 2.6.0
+     */
+    public void setServingOfficeId(long servingOfficeId) {
+        this.servingOfficeId = servingOfficeId;
+    }
 }
