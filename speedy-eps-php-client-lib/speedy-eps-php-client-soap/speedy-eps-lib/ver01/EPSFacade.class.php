@@ -942,5 +942,19 @@ class EPSFacade {
         $this->checkStateBeforeCall();
         return $this->_epsInterfaceImpl->validatePostCode($this->getResultLogin(true)->getSessionId(), $countryId, $postCode);
     }
+    
+    /**
+     * This method can be used to get delivery info for a shipment.
+     * Returns null if no info is available
+     * @since 2.6.0
+     * @param billOfLading Signed 64-bit
+     * @param language Language
+     * @throws ServerException Thrown in case communication with server has failed
+     * @return ResultTrackPickingEx
+     */
+    public function getPickingDeliveryInfo($billOfLading, $language) {
+        $this->checkStateBeforeCall();
+        return $this->_epsInterfaceImpl->getPickingDeliveryInfo($this->getResultLogin(true)->getSessionId(), $billOfLading, $language);
+    }
 }
 ?>

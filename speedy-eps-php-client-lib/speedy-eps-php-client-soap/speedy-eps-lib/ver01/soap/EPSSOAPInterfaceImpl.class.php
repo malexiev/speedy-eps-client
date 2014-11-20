@@ -1325,6 +1325,34 @@ class EPSSOAPInterfaceImpl extends SoapClient implements EPSInterface {
         } catch (SoapFault $sf) {
             throw new ServerException($sf);
         }
+    }
+    
+    /**
+     * @see EPSInterface::getStateById()
+     */
+    public function ResultTrackPickingEx getPickingDeliveryInfo($sessionId, $billOfLading, $language) {
+       try {
+            $getPickingDeliveryInfoStdObject = new stdClass();
+            $getPickingDeliveryInfoStdObject->sessionId    = $sessionId;
+            $getPickingDeliveryInfoStdObject->billOfLading = $billOfLading;
+            $getPickingDeliveryInfoStdObject->language     = $language;
+            
+            $response = parent::getPickingDeliveryInfo($getPickingDeliveryInfoStdObject);
+            $arrResultTrackPickingExStdObject = array();
+            if (isset($response->return)) {
+                $arrStdResultTrackPickingExStdObject = $response->return;
+                if (is_array($arrStdResultTrackPickingExStdObject)) {
+                    for($i = 0; $i < count($arrStdResultTrackPickingExStdObject); $i++) {
+                        $arrResultTrackPickingExStdObject[$i] = new ResultTrackPickingEx($arrStdResultTrackPickingExStdObject[$i]);
+                    }
+                } else {
+                    $arrResultTrackPickingExStdObject[0] = new ResultTrackPickingEx($arrStdResultTrackPickingExStdObject);
+                }
+            }
+            return $arrResultTrackPickingExStdObject;
+        } catch (SoapFault $sf) {
+            throw new ServerException($sf);
+        }
     }  
 }
 ?>
