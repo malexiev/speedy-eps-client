@@ -24,13 +24,19 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="region" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="countryId" type="{http://www.w3.org/2001/XMLSchema}long"/>
- *         &lt;element name="servingOfficeId" type="{http://www.w3.org/2001/XMLSchema}long"/>
+ *         &lt;element name="servingOfficeId" type="{http://www.w3.org/2001/XMLSchema}long"/>        
+ *         &lt;element name="coordX" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         &lt;element name="coordY" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         &lt;element name="coordType" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
  * 
+ * <p>Instances of this class are returned as a result of sites speedy web service requests
+ * 
+ * @since 1.0.0
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -43,210 +49,266 @@ import javax.xml.bind.annotation.XmlType;
     "region",
     "type",
     "countryId",
-    "servingOfficeId"
+    "servingOfficeId",
+    "coordX",
+	"coordY",
+	"coordType"
 })
 public class ResultSite {
 
+    /**
+     * Site address nomenclature.
+     * Specifies if speedy have (or have not) address nomenclature (streets, quarters etc.) for this site
+     */
     protected AddrNomen addrNomen;
+    
+    /**
+     * Site ID
+     */
     protected long id;
+    
+    /**
+     * Site municipality name
+     */
     protected String municipality;
+    
+    /**
+     * Site name
+     */
     protected String name;
+    
+    /**
+     * Site post code
+     */
     protected String postCode;
+    
+    /**
+     * Site region name
+     */
     protected String region;
+    
+    /**
+     * Site type
+     */
     protected String type;
+    
+    /**
+     * Country id
+     * @since 2.5.0
+     */
     protected long countryId;
+    
+    /**
+     * Serving office id
+     * @since 2.6.0
+     */
     protected long servingOfficeId;
+    
+    private Double coordX;
+    
+	private Double coordY;
+	
+	private Integer coordType;
 
     /**
-     * Gets the value of the addrNomen property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link AddrNomen }
-     *     
+     * Gets the address nomenclature type.
+     * Specifies if speedy have (or have not) address nomenclature (streets, quarters etc.) for this site
+     * @return Address nomenclature type
      */
     public AddrNomen getAddrNomen() {
         return addrNomen;
     }
 
     /**
-     * Sets the value of the addrNomen property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link AddrNomen }
-     *     
+     * Sets the address nomenclature type
+     * @param addrNomen Address nomenclature type
      */
-    public void setAddrNomen(AddrNomen value) {
-        this.addrNomen = value;
+    public void setAddrNomen(AddrNomen addrNomen) {
+        this.addrNomen = addrNomen;
     }
 
     /**
-     * Gets the value of the id property.
-     * 
+     * Gets the site id
+     * @return Site id
      */
     public long getId() {
         return id;
     }
 
     /**
-     * Sets the value of the id property.
-     * 
+     * Sets the site id
+     * @param id Site id
      */
-    public void setId(long value) {
-        this.id = value;
+    public void setId(long id) {
+        this.id = id;
     }
 
     /**
-     * Gets the value of the municipality property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the municipality name
+     * @return Municipality name
      */
     public String getMunicipality() {
         return municipality;
     }
 
     /**
-     * Sets the value of the municipality property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the municipality name
+     * @param municipality Municipality name
      */
-    public void setMunicipality(String value) {
-        this.municipality = value;
+    public void setMunicipality(String municipality) {
+        this.municipality = municipality;
     }
 
     /**
-     * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the site name
+     * @return Site name
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the site name
+     * @param name Site name
      */
-    public void setName(String value) {
-        this.name = value;
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
-     * Gets the value of the postCode property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the site post code
+     * @return Site post code
      */
     public String getPostCode() {
         return postCode;
     }
 
     /**
-     * Sets the value of the postCode property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the site post code
+     * @param postCode Site post code
      */
-    public void setPostCode(String value) {
-        this.postCode = value;
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
     }
 
     /**
-     * Gets the value of the region property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the site region name
+     * @return Site region name
      */
     public String getRegion() {
         return region;
     }
 
     /**
-     * Sets the value of the region property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the site region name
+     * @param region Site region name
      */
-    public void setRegion(String value) {
-        this.region = value;
+    public void setRegion(String region) {
+        this.region = region;
     }
 
     /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     * Gets the site type
+     * @return Site type
      */
     public String getType() {
         return type;
     }
 
     /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * Sets the site type
+     * @param type Site type
      */
-    public void setType(String value) {
-        this.type = value;
+    public void setType(String type) {
+        this.type = type;
     }
-
+    
     /**
-     * Gets the value of the countryId property.
-     * 
+     * Gets the country id
+     * @return Country id
+     * @since 2.5.0
      */
     public long getCountryId() {
         return countryId;
     }
 
     /**
-     * Sets the value of the countryId property.
-     * 
+     * Sets the country id
+     * @param countryId Country id
+     * @since 2.5.0
      */
-    public void setCountryId(long value) {
-        this.countryId = value;
+    public void setCountryId(long countryId) {
+        this.countryId = countryId;
     }
 
     /**
-     * Gets the value of the servingOfficeId property.
-     * 
+     * Gets serving office id for this site
+     * @since 2.6.0
      */
     public long getServingOfficeId() {
         return servingOfficeId;
     }
 
     /**
-     * Sets the value of the servingOfficeId property.
-     * 
+     * Sets serving office id
+     * @param servingOfficeId Serving office id
+     * @since 2.6.0
      */
-    public void setServingOfficeId(long value) {
-        this.servingOfficeId = value;
+    public void setServingOfficeId(long servingOfficeId) {
+        this.servingOfficeId = servingOfficeId;
+    }
+    
+    /**
+     * Gets the GPS X coordinate
+     * @return GPS X coordinate
+     * @since 2.6.0
+     */
+    public Double getCoordX() {
+        return coordX;
     }
 
+    /**
+     * Sets the GPS X coordinate
+     * @param coordX GPS X coordinate
+     * @since 2.6.0
+     */
+    public void setCoordX(Double coordX) {
+        this.coordX = coordX;
+    }
+
+    /**
+     * Gets the GPS Y coordinate
+     * @return GPS Y coordinate
+     * @since 2.6.0
+     */
+    public Double getCoordY() {
+        return coordY;
+    }
+
+    /**
+     * Sets the GPS Y coordinate
+     * @param coordY GPS Y coordinate
+     * @since 2.6.0
+     */
+    public void setCoordY(Double coordY) {
+        this.coordY = coordY;
+    }
+    
+    /**
+     * Gets the GPS coordinate type
+     * @return GPS coordinate type
+     * @since 2.6.0
+     */
+    public Integer getCoordType() {
+        return coordType;
+    }
+
+    /**
+     * Sets the GPS coordinate type
+     * @param coordType GPS coordinate type
+     * @since 2.6.0
+     */
+    public void setCoordTypeId(Integer coordType) {
+        this.coordType = coordType;
+    }
 }
