@@ -24,7 +24,10 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="region" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="type" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="countryId" type="{http://www.w3.org/2001/XMLSchema}long"/>
- *         &lt;element name="servingOfficeId" type="{http://www.w3.org/2001/XMLSchema}long"/>                  
+ *         &lt;element name="servingOfficeId" type="{http://www.w3.org/2001/XMLSchema}long"/>        
+ *         &lt;element name="coordX" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         &lt;element name="coordY" type="{http://www.w3.org/2001/XMLSchema}double" minOccurs="0"/>
+ *         &lt;element name="coordType" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -46,7 +49,10 @@ import javax.xml.bind.annotation.XmlType;
     "region",
     "type",
     "countryId",
-    "servingOfficeId"
+    "servingOfficeId",
+    "coordX",
+	"coordY",
+	"coordType"
 })
 public class ResultSite {
 
@@ -97,6 +103,12 @@ public class ResultSite {
      * @since 2.6.0
      */
     protected long servingOfficeId;
+    
+    private Double coordX;
+    
+	private Double coordY;
+	
+	private Integer coordType;
 
     /**
      * Gets the address nomenclature type.
@@ -244,5 +256,59 @@ public class ResultSite {
      */
     public void setServingOfficeId(long servingOfficeId) {
         this.servingOfficeId = servingOfficeId;
+    }
+    
+    /**
+     * Gets the GPS X coordinate
+     * @return GPS X coordinate
+     * @since 2.6.0
+     */
+    public Double getCoordX() {
+        return coordX;
+    }
+
+    /**
+     * Sets the GPS X coordinate
+     * @param coordX GPS X coordinate
+     * @since 2.6.0
+     */
+    public void setCoordX(Double coordX) {
+        this.coordX = coordX;
+    }
+
+    /**
+     * Gets the GPS Y coordinate
+     * @return GPS Y coordinate
+     * @since 2.6.0
+     */
+    public Double getCoordY() {
+        return coordY;
+    }
+
+    /**
+     * Sets the GPS Y coordinate
+     * @param coordY GPS Y coordinate
+     * @since 2.6.0
+     */
+    public void setCoordY(Double coordY) {
+        this.coordY = coordY;
+    }
+    
+    /**
+     * Gets the GPS coordinate type
+     * @return GPS coordinate type
+     * @since 2.6.0
+     */
+    public Integer getCoordType() {
+        return coordType;
+    }
+
+    /**
+     * Sets the GPS coordinate type
+     * @param coordType GPS coordinate type
+     * @since 2.6.0
+     */
+    public void setCoordTypeId(Integer coordType) {
+        this.coordType = coordType;
     }
 }
