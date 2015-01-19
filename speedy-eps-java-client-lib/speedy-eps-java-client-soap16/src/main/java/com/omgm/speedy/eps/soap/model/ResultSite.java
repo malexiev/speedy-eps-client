@@ -104,10 +104,22 @@ public class ResultSite {
      */
     protected long servingOfficeId;
     
+    /**
+     * GIS coordinate - X
+     * @since 2.6.0
+     */
     private Double coordX;
     
+    /**
+     * GIS coordinate - Y
+     * @since 2.6.0
+     */
 	private Double coordY;
 	
+	/**
+	 * GIS coordinate type
+	 * @since 2.6.0
+	 */
 	private Integer coordType;
 
     /**

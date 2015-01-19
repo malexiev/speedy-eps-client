@@ -1404,6 +1404,18 @@ public class EPSFacade {
     }
     
     /**
+	 * This method can be used to get delivery info for a shipment in default language 
+	 * Returns null if no info is available
+	 * @since 2.6.0
+	 * @param lBillOfLading Signed 64-bit
+	 * @throws ServerException Thrown in case communication with server has failed
+	 * @return ResultTrackPickingEx
+	 */
+    public ResultTrackPickingEx getPickingDeliveryInfo(long lBillOfLading) throws ServerException {
+		return getPickingDeliveryInfo(lBillOfLading, null);
+    }
+    
+    /**
 	 * This method can be used to get delivery info for a shipment.
 	 * Returns null if no info is available
 	 * @since 2.6.0
