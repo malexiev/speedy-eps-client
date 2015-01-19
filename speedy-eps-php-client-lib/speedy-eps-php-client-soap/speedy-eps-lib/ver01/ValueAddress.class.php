@@ -416,7 +416,7 @@ class ValueAddress {
     }
 
     /**
-     * Get flag for full noemnclature
+     * Get flag for full nomenclature
      * @return boolean
      */
     public function isFullNomenclature() {

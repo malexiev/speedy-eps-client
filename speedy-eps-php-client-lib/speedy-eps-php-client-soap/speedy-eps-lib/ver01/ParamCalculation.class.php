@@ -123,6 +123,14 @@ class ParamCalculation {
      * @var integer Signed 32-bit
      */
     private $_parcelsCount;
+    
+   /**
+     * Data for parcels with explicit/fixed IDs (from the second one onward)
+     * The list has maximum lenght 998
+     * MANDATORY: NO
+     * @var array List of ParamParcelInfo
+     */
+    private $_parcels;
 
     /**
      * Declared weight (the greater of "volume" and "real" weight values).
@@ -781,6 +789,22 @@ class ParamCalculation {
     public function getSenderPostCode() {
         return $this->_senderPostCode;
     }
+    
+    /**
+     * Set data for parcels with explicit/fixed IDs (from the second one onward)
+     * @param array $parcels List of ParamParcelInfo
+     */
+    public function setParcels($parcels) {
+        $this->_parcels = $parcels;
+    }
+
+    /**
+     * Get data for parcels with explicit/fixed IDs (from the second one onward)
+     * @return array List of ParamParcelInfo
+     */
+    public function getParcels() {
+        return $this->_parcels;
+    }
 
     /**
      * Return standard class from this class
@@ -818,6 +842,19 @@ class ParamCalculation {
         $stdClass->receiverPostCode         = $this->_receiverPostCode;
         $stdClass->senderCountryId          = $this->_senderCountryId;
         $stdClass->senderPostCode           = $this->_senderPostCode;
+        
+        $arrStdClassParamParcelInfo = array();
+        if (isset($this->_parcels)) {
+            if (is_array($this->_parcels)) {
+                for($i = 0; $i < count($this->_parcels); $i++) {
+                    $arrStdClassParamParcelInfo[$i] = $this->_parcels[$i]->toStdClass();
+                }
+            } else {
+                $arrStdClassParamParcelInfo[0] = $this->_parcels->toStdClass();
+            }
+        }
+        $stdClass->parcels                  = $arrStdClassParamParcelInfo;
+        
         return $stdClass;
     }
 }

@@ -52,6 +52,14 @@ class ParamAddressSearch {
      * @var string
      */
     private $_entranceNo;
+    
+    /**
+     * Return city center if no address option
+     * MANDATORY: NO
+     * @var boolean
+     * @since 2.6.0
+     */
+    private $_returnCityCenterIfNoAddress;
 
     /**
      * Set site ID
@@ -164,6 +172,22 @@ class ParamAddressSearch {
     public function getEntranceNo() {
         return $this->_entranceNo;
     }
+    
+    /**
+     * Set return city center if no address option flag
+     * @param boolean $returnCityCenterIfNoAddress
+     */
+    public function setReturnCityCenterIfNoAddress($returnCityCenterIfNoAddress) {
+        $this->_returnCityCenterIfNoAddress = $returnCityCenterIfNoAddress;
+    }
+
+    /**
+     * Get return city center if no address option flag
+     * @return boolean
+     */
+    public function isReturnCityCenterIfNoAddress() {
+        return $this->_returnCityCenterIfNoAddress;
+    }
 
     /**
      * Return standard class from this class
@@ -171,13 +195,14 @@ class ParamAddressSearch {
      */
     public function toStdClass() {
         $stdClass = new stdClass();
-        $stdClass->siteId         = $this->_siteId;
-        $stdClass->quarterId      = $this->_quarterId;
-        $stdClass->streetId       = $this->_streetId;
-        $stdClass->commonObjectId = $this->_commonObjectId;
-        $stdClass->blockNo        = $this->_blockNo;
-        $stdClass->streetNo       = $this->_streetNo;
-        $stdClass->entranceNo     = $this->_entranceNo;
+        $stdClass->siteId                      = $this->_siteId;
+        $stdClass->quarterId                   = $this->_quarterId;
+        $stdClass->streetId                    = $this->_streetId;
+        $stdClass->commonObjectId              = $this->_commonObjectId;
+        $stdClass->blockNo                     = $this->_blockNo;
+        $stdClass->streetNo                    = $this->_streetNo;
+        $stdClass->entranceNo                  = $this->_entranceNo;
+        $stdClass->returnCityCenterIfNoAddress = $this->_returnCityCenterIfNoAddress;
         return $stdClass;
     }
 }

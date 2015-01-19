@@ -71,7 +71,26 @@ class ResultSite {
      * @var integer signed 64-bit
      * @since 2.6.0
      */
-    private $_servingOfficeId
+    private $_servingOfficeId;
+    
+    /**
+     * GIS coordinate - X
+     * @var double Signed 64-bit
+     */
+    private $_coordX;
+
+    /**
+     * GIS coordinate - Y
+     * @var double Signed 64-bit
+     */
+    private $_coordY;
+
+    /**
+     * GIS coordinates type
+     * @var integer Signed 32-bit
+     */
+    private $_coordType;
+    
 
     /**
      * Constructs new instance of ResultSite
@@ -87,6 +106,9 @@ class ResultSite {
         $this->_addrNomen       = isset($stdClassResultSite->addrNomen)       ? new AddrNomen($stdClassResultSite->addrNomen) : null;
         $this->_countryId       = isset($stdClassResultSite->countryId)       ? $stdClassResultSite->countryId                : null;
         $this->_servingOfficeId = isset($stdClassResultSite->servingOfficeId) ? $stdClassResultSite->servingOfficeId          : null;
+        $this->_coordX          = isset($stdClassResultSite->coordX)          ? $stdClassResultSite->coordX                   : null;
+        $this->_coordY          = isset($stdClassResultSite->coordY)          ? $stdClassResultSite->coordY                   : null;
+        $this->_coordType       = isset($stdClassResultSite->coordType)       ? $stdClassResultSite->coordType                : null;
     }
 
     /**
@@ -160,6 +182,33 @@ class ResultSite {
      */
     public function getServingOfficeId() {
         return $this->_servingOfficeId;
+    }
+    
+    /**
+     * Get GIS coordinate X
+     * @return double Signed 64-bit
+     * @since 2.6.0
+     */
+    public function getCoordX() {
+        return $this->_coordX;
+    }
+
+    /**
+     * Get GIS coordinate Y
+     * @return double Signed 64-bit
+     * @since 2.6.0
+     */
+    public function getCoordY() {
+        return $this->_coordY;
+    }
+
+    /**
+     * Get GIS coordinate type
+     * @return integer Signed 32-bit
+     * @since 2.6.0
+     */
+    public function getCoordType() {
+        return $this->_coordType;
     }
 }
 ?>

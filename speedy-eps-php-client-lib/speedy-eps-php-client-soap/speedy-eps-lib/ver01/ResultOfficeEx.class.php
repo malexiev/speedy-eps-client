@@ -1,6 +1,8 @@
 <?php
 
 require_once 'ResultAddressEx.class.php';
+require_once 'ResultWorkingTime.class.php';
+
 
 /**
  * Instances of this class are returned as a result of Speedy web service queries for offices
