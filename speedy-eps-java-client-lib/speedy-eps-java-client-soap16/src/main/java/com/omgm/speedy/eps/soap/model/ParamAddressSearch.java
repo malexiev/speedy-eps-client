@@ -30,9 +30,7 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;/complexType>
  * </pre>
  * 
- * <p>Used as a search criteria in address search methods
  * 
- * @since 1.0.0
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "paramAddressSearch", propOrder = {
@@ -47,171 +45,178 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ParamAddressSearch {
 
-	/**
-     * Block No/name
-     * MANDATORY: NO
-     */
     protected String blockNo;
-    
-    /**
-     * Common object ID
-     * MANDATORY: NO
-     */
     protected Long commonObjectId;
-    
-    /**
-     * Entrance
-     * MANDATORY: NO
-     */
     protected String entranceNo;
-    
-    /**
-     * Quarter ID
-     * MANDATORY: NO
-     */
     protected Long quarterId;
-    
-    /**
-     * Site ID
-     * MANDATORY: YES
-     */
     protected long siteId;
-    
-    /**
-     * Street ID
-     * MANDATORY: NO
-     */
     protected Long streetId;
-    
-    /**
-     * Street No
-     * MANDATORY: NO
-     */
     protected String streetNo;
-    
-    /**
-     * Return city center if no address option flag
-     * MANDATORY: NO
-     * @since 2.6.0
-     */
     private boolean returnCityCenterIfNoAddress; 
 
     /**
-     * Gets the blockNo.
-     * @return Block No
+     * Gets the value of the blockNo property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getBlockNo() {
         return blockNo;
     }
 
     /**
-     * Sets the blockNo
-     * @param blockNo Block No
+     * Sets the value of the blockNo property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setBlockNo(String blockNo) {
-        this.blockNo = blockNo;
+    public void setBlockNo(String value) {
+        this.blockNo = value;
     }
 
     /**
-     * Gets the commonObjectId
-     * @return Common object id
+     * Gets the value of the commonObjectId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
      */
     public Long getCommonObjectId() {
         return commonObjectId;
     }
 
     /**
-     * Sets the commonObjectId
-     * @param commonObjectId Common object id
+     * Sets the value of the commonObjectId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
      */
-    public void setCommonObjectId(Long commonObjectId) {
-        this.commonObjectId = commonObjectId;
+    public void setCommonObjectId(Long value) {
+        this.commonObjectId = value;
     }
 
     /**
-     * Gets the entranceNo
-     * @return Entrance No
+     * Gets the value of the entranceNo property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getEntranceNo() {
         return entranceNo;
     }
 
     /**
-     * Sets the entranceNo
-     * @param entranceNo Entrance No
+     * Sets the value of the entranceNo property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setEntranceNo(String entranceNo) {
-        this.entranceNo = entranceNo;
+    public void setEntranceNo(String value) {
+        this.entranceNo = value;
     }
 
     /**
-     * Gets the quarterId
-     * @return Quarter id
+     * Gets the value of the quarterId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
      */
     public Long getQuarterId() {
         return quarterId;
     }
 
     /**
-     * Sets the quarterId
-     * @param quarterId Quarter id
+     * Sets the value of the quarterId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
      */
-    public void setQuarterId(Long quarterId) {
-        this.quarterId = quarterId;
+    public void setQuarterId(Long value) {
+        this.quarterId = value;
     }
 
     /**
-     * Gets the siteId
-     * @return Site id
+     * Gets the value of the siteId property.
+     * 
      */
     public long getSiteId() {
         return siteId;
     }
 
     /**
-     * Sets the siteId
-     * @param siteId Site id
+     * Sets the value of the siteId property.
+     * 
      */
-    public void setSiteId(long siteId) {
-        this.siteId = siteId;
+    public void setSiteId(long value) {
+        this.siteId = value;
     }
 
     /**
-     * Gets the streetId
-     * @return Street id
+     * Gets the value of the streetId property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link Long }
+     *     
      */
     public Long getStreetId() {
         return streetId;
     }
 
     /**
-     * Sets the streetId
-     * @param streetId Street id
+     * Sets the value of the streetId property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link Long }
+     *     
      */
-    public void setStreetId(Long streetId) {
-        this.streetId = streetId;
+    public void setStreetId(Long value) {
+        this.streetId = value;
     }
 
     /**
-     * Gets streetNo
-     * @return Street No
+     * Gets the value of the streetNo property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
     public String getStreetNo() {
         return streetNo;
     }
 
     /**
-     * Sets the streetNo
-     * @param streetNo Street No
+     * Sets the value of the streetNo property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setStreetNo(String streetNo) {
-        this.streetNo = streetNo;
+    public void setStreetNo(String value) {
+        this.streetNo = value;
     }
 
     /**
      * Get return city center if no address option flag
      * @return return city center if no address option flag
-     * @since 2.6.0
      */
     public boolean isReturnCityCenterIfNoAddress() {
 		return returnCityCenterIfNoAddress;
@@ -220,7 +225,6 @@ public class ParamAddressSearch {
     /**
      * Sets the return city center if no address option flag 
      * @param returnCityCenterIfNoAddress Option flag value
-     * @since 2.6.0
      */
 	public void setReturnCityCenterIfNoAddress(boolean returnCityCenterIfNoAddress) {
 		this.returnCityCenterIfNoAddress = returnCityCenterIfNoAddress;
