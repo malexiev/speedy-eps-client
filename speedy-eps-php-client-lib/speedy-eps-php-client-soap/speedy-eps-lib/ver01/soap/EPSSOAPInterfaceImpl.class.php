@@ -1330,7 +1330,7 @@ class EPSSOAPInterfaceImpl extends SoapClient implements EPSInterface {
     /**
      * @see EPSInterface::getStateById()
      */
-    public function ResultTrackPickingEx getPickingDeliveryInfo($sessionId, $billOfLading, $language) {
+    public function getPickingDeliveryInfo($sessionId, $billOfLading, $language) {
        try {
             $getPickingDeliveryInfoStdObject = new stdClass();
             $getPickingDeliveryInfoStdObject->sessionId    = $sessionId;

@@ -30,9 +30,9 @@ class ResultWorkingTime {
      * @param stdClass $stdClassResultWorkingTime
      */
     function __construct($stdClassResultWorkingTime) {
-        $this->_date            = isset($stdClassResultWorkingTime->date)            ? stdClassResultWorkingTime->date            : null;
-        $this->_workingTimeFrom = isset($stdClassResultWorkingTime->workingTimeFrom) ? stdClassResultWorkingTime->workingTimeFrom : null;
-        $this->_workingTimeTo   = isset($stdClassResultWorkingTime->workingTimeTo)   ? stdClassResultWorkingTime->workingTimeTo   : null;
+        $this->_date            = isset($stdClassResultWorkingTime->date)            ? $stdClassResultWorkingTime->date            : null;
+        $this->_workingTimeFrom = isset($stdClassResultWorkingTime->workingTimeFrom) ? $stdClassResultWorkingTime->workingTimeFrom : null;
+        $this->_workingTimeTo   = isset($stdClassResultWorkingTime->workingTimeTo)   ? $stdClassResultWorkingTime->workingTimeTo   : null;
      }
 
     /**
