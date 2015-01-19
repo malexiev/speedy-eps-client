@@ -23,6 +23,7 @@ import javax.xml.bind.annotation.XmlType;
  *         &lt;element name="siteId" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *         &lt;element name="streetId" type="{http://www.w3.org/2001/XMLSchema}long" minOccurs="0"/>
  *         &lt;element name="streetNo" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="returnCityCenterIfNoAddress" type="{http://www.w3.org/2001/XMLSchema}boolean" minOccurs="0"/>         
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -39,7 +40,8 @@ import javax.xml.bind.annotation.XmlType;
     "quarterId",
     "siteId",
     "streetId",
-    "streetNo"
+    "streetNo",
+    "returnCityCenterIfNoAddress"
 })
 public class ParamAddressSearch {
 
@@ -50,6 +52,7 @@ public class ParamAddressSearch {
     protected long siteId;
     protected Long streetId;
     protected String streetNo;
+    private boolean returnCityCenterIfNoAddress; 
 
     /**
      * Gets the value of the blockNo property.
@@ -211,4 +214,19 @@ public class ParamAddressSearch {
         this.streetNo = value;
     }
 
+    /**
+     * Get return city center if no address option flag
+     * @return return city center if no address option flag
+     */
+    public boolean isReturnCityCenterIfNoAddress() {
+		return returnCityCenterIfNoAddress;
+	}
+
+    /**
+     * Sets the return city center if no address option flag 
+     * @param returnCityCenterIfNoAddress Option flag value
+     */
+	public void setReturnCityCenterIfNoAddress(boolean returnCityCenterIfNoAddress) {
+		this.returnCityCenterIfNoAddress = returnCityCenterIfNoAddress;
+	}
 }
