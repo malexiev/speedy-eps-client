@@ -2,6 +2,7 @@
 
 require_once 'ResultAddressEx.class.php';
 require_once 'ResultWorkingTime.class.php';
+require_once 'Size.class.php';
 
 
 /**

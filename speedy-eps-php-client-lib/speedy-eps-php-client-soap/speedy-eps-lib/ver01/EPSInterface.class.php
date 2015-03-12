@@ -24,6 +24,7 @@ require_once 'ResultTrackPickingEx.class.php';
 require_once 'ResultSpecialDeliveryRequirement.class.php';
 require_once 'ResultCountry.class.php';
 require_once 'ResultState.class.php';
+require_once 'ResultPickingInfo.class.php';
 require_once 'ParamCalculation.class.php';
 require_once 'ParamFilterSite.class.php';
 require_once 'ParamAddress.class.php';
@@ -36,6 +37,7 @@ require_once 'ParamParcel.class.php';
 require_once 'ParamOrder.class.php';
 require_once 'ParamSearchByRefNum.class.php';
 require_once 'ParamClientSearch.class.php';
+require_once 'ParamSearchSecondaryPickings.class.php';
 
 /**
  * Speedy EPS Service Interface.
@@ -412,9 +414,10 @@ interface EPSInterface {
      * @since 1.0
      * @param string $sessionId
      * @param integer $billOfLading Signed 64-bit
+     * @param string $cancelComment Cancel comment
      * @throws ServerException Thrown in case communication with server has failed
     */
-    public function invalidatePicking($sessionId, $billOfLading);
+    public function invalidatePicking($sessionId, $billOfLading, $cancelComment);
 
     /**
      * This method is used to update BOL.
@@ -677,5 +680,14 @@ interface EPSInterface {
      * @since 2.5.0
      */
     public function validatePostCode($sessionId, $countryId, $postCode);
+    
+    /**
+     * Returns a list with all not canceled pickings, which are secondary to the picking with the specified billOfLading. 
+     * @param string $sessionId
+     * @param ParamSearchSecondaryPickings $paramSearchSecondaryPickings
+     * @return List of ResultPickingInfo Information about secondary pickings
+     * @since 2.6.0
+     */
+    public function searchSecondaryPickings($sessionId, $paramSearchSecondaryPickings);
 }
 ?>

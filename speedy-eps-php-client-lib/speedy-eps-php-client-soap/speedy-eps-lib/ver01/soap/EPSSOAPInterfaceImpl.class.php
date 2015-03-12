@@ -741,11 +741,12 @@ class EPSSOAPInterfaceImpl extends SoapClient implements EPSInterface {
     /**
      * @see EPSInterface::invalidatePicking()
      */
-    public function invalidatePicking($sessionId, $billOfLading) {
+    public function invalidatePicking($sessionId, $billOfLading, $cancelComment) {
         try {
             $invalidatePickingStdObject = new stdClass();
-            $invalidatePickingStdObject->sessionId    = $sessionId;
-            $invalidatePickingStdObject->billOfLading = $billOfLading;
+            $invalidatePickingStdObject->sessionId     = $sessionId;
+            $invalidatePickingStdObject->billOfLading  = $billOfLading;
+            $invalidatePickingStdObject->cancelComment = $cancelComment;
             parent::invalidatePicking($invalidatePickingStdObject);
         } catch (SoapFault $sf) {
             throw new ServerException($sf);
@@ -1350,6 +1351,33 @@ class EPSSOAPInterfaceImpl extends SoapClient implements EPSInterface {
                 }
             }
             return $arrResultTrackPickingExStdObject;
+        } catch (SoapFault $sf) {
+            throw new ServerException($sf);
+        }
+    }
+    
+    /**
+     * @see EPSInterface::searchSecondaryPickings()
+     */
+    public function searchSecondaryPickings($sessionId, $paramSearchSecondaryPickings) {
+   		try {
+            $searchSecondaryPickingsStdObject = new stdClass();
+            $searchSecondaryPickingsStdObject->sessionId    = $sessionId;
+            $searchSecondaryPickingsStdObject->paramSearchSecondaryPickings = $paramSearchSecondaryPickings->toStdClass();
+            $response = parent::searchSecondaryPickings($searchSecondaryPickingsStdObject);
+            
+            $arrResultPickingInfoStdObject = array();
+            if (isset($response->return)) {
+                $arrStdResultPickingInfoObject = $response->return;
+                if (is_array($arrStdResultPickingInfoObject)) {
+                    for($i = 0; $i < count($arrStdResultPickingInfoObject); $i++) {
+                        $arrResultPickingInfoStdObject[$i] = new ResultPickingInfo($arrStdResultPickingInfoObject[$i]);
+                    }
+                } else {
+                    $arrResultPickingInfoStdObject[0] = new ResultPickingInfo($arrStdResultPickingInfoObject);
+                }
+            }
+            return $arrResultPickingInfoStdObject;
         } catch (SoapFault $sf) {
             throw new ServerException($sf);
         }

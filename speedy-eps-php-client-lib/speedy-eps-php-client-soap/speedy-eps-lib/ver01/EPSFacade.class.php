@@ -603,9 +603,9 @@ class EPSFacade {
      * @throws ClientException Thrown in case EPS interface implementation is not set
      * @throws ServerException Thrown in case communication with server has failed
      */
-    public function invalidatePicking($billOfLading) {
+    public function invalidatePicking($billOfLading, $cancelComment=null) {
         $this->checkStateBeforeCall();
-        return $this->_epsInterfaceImpl->invalidatePicking($this->getResultLogin(true)->getSessionId(), $billOfLading);
+        return $this->_epsInterfaceImpl->invalidatePicking($this->getResultLogin(true)->getSessionId(), $billOfLading, $cancelComment);
     }
 
     /**
@@ -956,5 +956,16 @@ class EPSFacade {
         $this->checkStateBeforeCall();
         return $this->_epsInterfaceImpl->getPickingDeliveryInfo($this->getResultLogin(true)->getSessionId(), $billOfLading, $language);
     }
+    
+    /**
+     * Returns a list with all not canceled pickings, which are secondary to the picking with the specified billOfLading. 
+     * @since 2.6.0
+     * @param paramSearchSecondaryPickings ParamSearchSecondaryPickings
+     * @return List of ResultPickingInfo
+     */
+    public function searchSecondaryPickings($paramSearchSecondaryPickings) {
+    	$this->checkStateBeforeCall();
+        return $this->_epsInterfaceImpl->searchSecondaryPickings($this->getResultLogin(true)->getSessionId(), $paramSearchSecondaryPickings);
+    } 
 }
 ?>

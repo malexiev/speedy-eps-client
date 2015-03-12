@@ -24,12 +24,12 @@ class Size {
      * @var integer Signed 32-bit
      */
     private $_depth;
-    
-     /**
-     * Constructs new instance of ResultAddressEx
-     * @param stdClass $stdClassResultAddressEx
+
+    /**
+     * Constructs new instance of Size
+     * @param stdClass $stdClassSize
      */
-    function __construct($stdClasSize) {
+    function __construct($stdClasSize='') {
         $this->_width  = isset($stdClasSize->width)  ? $stdClasSize->width  : null;
         $this->_height = isset($stdClasSize->height) ? $stdClasSize->height : null;
         $this->_depth  = isset($stdClasSize->depth)  ? $stdClasSize->depth  : null;
