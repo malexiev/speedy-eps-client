@@ -5,7 +5,7 @@
 class Util {
     
     /**
-     * Sepeedy time zone
+     * Speedy time zone
      * @var string
      */
     const SPEEDY_TIME_ZONE = "Europe/Sofia";
