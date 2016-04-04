@@ -12,6 +12,13 @@ class ParamOptionsBeforePayment {
 	 * @var boolean Flag
 	 */
     private $_open;
+    
+    /**
+	 * Test before payment option
+	 * MANDATORY: NO
+	 * @var boolean Flag
+	 */
+    private $_test;
 
 
     /**
@@ -21,6 +28,14 @@ class ParamOptionsBeforePayment {
     public function setOpen($open) {
         $this->_open = $open;
     }
+    
+    /**
+     * Set test option before payment flag
+     * @param boolean $test Test option before payment flag
+     */
+    public function setTest($test) {
+        $this->_test = $test;
+    }
 
     /**
      * Get open option before payment flag
@@ -28,6 +43,14 @@ class ParamOptionsBeforePayment {
      */
     public function isOpen() {
         return $this->_open;
+    }
+    
+    /**
+     * Get test option before payment flag
+     * @return boolean Test option before payment flag
+     */
+    public function isTest() {
+        return $this->_test;
     }
 
     /**
@@ -37,6 +60,7 @@ class ParamOptionsBeforePayment {
     public function toStdClass() {
         $stdClass = new stdClass();
         $stdClass->open = $this->_open;
+        $stdClass->test = $this->_test;
         return $stdClass;
     }
 }
